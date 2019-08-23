@@ -1,0 +1,47 @@
+<h1>About</h1>
+<h1>課程簡介</h1>
+<p>說明課程進行方式, 評分方式與課程目標</p>
+<p>課程進行方式 - 每週講解與示範, 並錄下基本操作影片素材, 週四上機與助教時間, 分組建立帶有字幕的教學影片, 各組員與小組每週維護倉儲與網站內容.</p>
+<p>評分方式 - 利用線上表單, 學員每週進行自評與互評, 教師根據各組員與小組所完成的教學影片, 倉儲維護歷程與網站內容進行評分, 依照上述三種成績與相關流程計算各學員期中與期末成績.</p>
+<p>課程目標 - 學員可利用 Git, Fossil SCM 與 Github 進行分組協同, 獨立維護網站, 利用帶有字幕的教學影片與網頁內容進行工程表達, 學習如何利用電腦、網路與程式執行協同機械產品設計分析與開發.</p>
+<p>附註:</p>
+<p>因機械設計產品開發之異地協同設計需求, 而衍生出對於建立 USB 可攜程式隨身碟之必要.</p>
+<p>因同步分散式程式開發之模式, 而衍生出對於分散式版次管理系統之需求.</p>
+<p>因追求最佳化機械設計流程開發, 而衍生出利用程式及網路進行工程分析之需求.</p>
+<p>因為透過帶字幕的教學影片製作, 可證明對於特定計算機程式主題的了解程度, 並藉由網站簡報資料的建立與發布, 可提高各學員相互學習的成效.</p><h1>亂數分組</h1>
+<p>流程圖符號</p>
+<p><img alt="" height="550" src="/images/flowchart_symbols.png" width="ˋ400"/></p>
+<p>上課第一週即進行學員亂數分組, 計算機程式的實際應用與程式對應語法的介紹, 將從此一程式的開發啟動</p>
+<p>基本流程:</p>
+<p>取得各班修課程成員的學號資料</p>
+<p>決定每組幾人</p>
+<p>將學員學號資料的次序弄亂</p>
+<p>依據每組幾人, 從頭開始分組, 以確定各組成員</p>
+<p>若最後一組人數過少, 將分別依序捕到前述已經分組的組別中</p>
+<p>在課程加退選階段結束後, 各組再清算所餘人數是否得當, 不排除重新分組</p>
+<p>各班檢討是否整個學期只分組一次, 或分組兩次, 或更多次的優缺點, 依據討論結果進行後續課程任務分組</p><h1>github 帳號</h1>
+<p>建立 cp2019 倉儲及對應的 CMSiMDE Github Pages 網頁</p>
+<p>了解基本的 Git 指令與 Github 系統的應用之後, 產生出對 GitExtensions 工具的需求, 也產生出對於透過 SSH keys 提交倉儲版本的需求, 以簡化改版流程.</p>
+<p><a href="https://2019wcm.blogspot.com/search/label/GitExtensions" rel="nofollow">https://2019wcm.blogspot.com/search/label/GitExtensions</a></p>
+<p><a href="https://2019wcm.blogspot.com/search/label/ssh" rel="nofollow">https://2019wcm.blogspot.com/search/label/ssh</a></p>
+<p>申請 Github 帳號</p>
+<p>登入 @gm 電子郵箱, 然後以學號申請 Github 帳號, 待驗證所使用的學號@gm 電子郵箱後, 即可建立 cp2019 倉儲, 特別注意新增 public repository 時, 可啟用 README.md, 隨即可以在近端以</p>
+<p>git clone <a href="https://github.com/學號/cp2019.git">https://github.com/學號/cp2019.git</a></p>
+<p>將遠端 Github 倉儲中的資料, clonr 至 y:\tmp 目錄的 cp2019 目錄中.</p>
+<p>clone 後的 cp2019 目錄有 .git 目錄, 存放該倉儲的設定與版本資料, 以及 README.md 檔案.</p>
+<p>在 .git 目錄中, 與使用者相關的是 config</p>
+<p>利用 git submodule add 納入 CMSiMDE 網際內容管理系統的程式碼</p>
+<p>https://github.com/mdecourse/cmsimde</p>
+<p>利用命令列視窗, 更換目錄至 y:\tmp\cp2019 之後, 執行</p>
+<p>git submodule add https://github.com/mdecourse/cmsimde.git cmsimde</p>
+<p><br/>意即, 在此目錄中, 將 https://github.com/mdecourse/cmsimde.git 倉儲資料納為近端 cmsimde 目錄的內容, 且作為 submodule, 也就是設定一個倉儲的子模組, 並將此子模組與 https://github.com/mdecourse/cmsimde.git 倉儲目前的最新版本內容.</p>
+<p>將子模組中 up_dir 目錄中的內容往前搬一個目錄</p>
+<p>在 y:\tmp\cp2019\cmsimde 目錄中, 以</p>
+<p>python wsgi.py</p>
+<p>就可以啟動近端的動態網際內容管理系統, 作為近端改版之用, 可以瀏覽器中的 https://localhost:9443 連接所啟用的 CMS (Content Management System).</p>
+<p>並以 admin 管理者密碼登入.</p>
+<p>進入 config 修改網頁標題, 並且修改倉儲中的 init.py, 修改 site_title</p>
+<p>改版後要推送資料前, 可以利用 generate_pages 將內容轉為動態網頁後, 則必須再退回 y:\tmp\cp2019 目錄之後, 必須完成 git config 的 user.name 與 user.email 之後, 可以利用:</p>
+<p>git add .<br/>git commit -m "提交說明"<br/>git push</p>
+<p>以 SSH 對 cp2019 倉儲進行改版</p>
+<p>如何產生所需的 keys, 放在哪裡, public key 要送到哪裡, 設定如何寫, 在 http 模式下, 代理主機如何執行設定, 在 ssh 模式下, 代理主機要如何設定? 若近端啟動後使用超過一個 github 帳號身分, 又如何設定 http 與 ssh 模式下的倉儲改版與提交?</p>
