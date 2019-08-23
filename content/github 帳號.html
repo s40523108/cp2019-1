@@ -137,7 +137,7 @@ init_mathjax();
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li><a href='課程簡介.html'>課程簡介</a><li><a href='亂數分組.html'>亂數分組</a><li><a href='github 帳號.html'>github 帳號</a></li>
+                     <li><a href='About.html'>About</a><li><a href='課程簡介.html'>課程簡介</a><li><a href='亂數分組.html'>亂數分組</a><li><a href='github 帳號.html'>github 帳號</a><li class='has-children'><a href='示範專案.html'>示範專案</a><ul class='dropdown'><li><a href='Python.html'>Python</a><li><a href='ANSIC.html'>ANSIC</a><li><a href='C++.html'>C++</a><li><a href='Dart.html'>Dart</a></li>
                       </ul>
                 </nav>
               </div>
@@ -148,7 +148,7 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">亂數分組 << <a href='亂數分組.html'>Previous</a> <br /><h1>github 帳號</h1>
+    <div id="tipue_search_content">亂數分組 << <a href='亂數分組.html'>Previous</a> <a href='示範專案.html'>Next</a> >> 示範專案<br /><h1>github 帳號</h1>
 <p>建立 cp2019 倉儲及對應的 CMSiMDE Github Pages 網頁</p>
 <p>了解基本的 Git 指令與 Github 系統的應用之後, 產生出對 GitExtensions 工具的需求, 也產生出對於透過 SSH keys 提交倉儲版本的需求, 以簡化改版流程.</p>
 <p><a href="https://2019wcm.blogspot.com/search/label/GitExtensions" rel="nofollow">https://2019wcm.blogspot.com/search/label/GitExtensions</a></p>
@@ -170,10 +170,11 @@ init_mathjax();
 <p>就可以啟動近端的動態網際內容管理系統, 作為近端改版之用, 可以瀏覽器中的 https://localhost:9443 連接所啟用的 CMS (Content Management System).</p>
 <p>並以 admin 管理者密碼登入.</p>
 <p>進入 config 修改網頁標題, 並且修改倉儲中的 init.py, 修改 site_title</p>
-<p>改版後要推送資料前, 可以利用 generate_pages 將內容轉為動態網頁後, 則必須再退回 y:\tmp\cp2019 目錄之後, 必須完成 git config 的 user.name 與 user.email 之後, 可以利用:</p>
+<p>改版後要推送資料前, 可以利用 generate_pages 將內容轉為動態網頁後, 可以利用 SciTE 開啟倉儲中的 http-server.py 檔案後以 Tools -&gt; Go 執行, 可以在瀏覽器中以 <a href="https://localhost:8444">https://localhost:8444</a> 檢查近端的靜態網頁內容, 確定無誤後. 則必須再退回 y:\tmp\cp2019 目錄之後, 必須完成 git config 的 user.name 與 user.email 之後, 可以利用:</p>
 <p>git add .<br/>git commit -m "提交說明"<br/>git push</p>
 <p>以 SSH 對 cp2019 倉儲進行改版</p>
-<p>如何產生所需的 keys, 放在哪裡, public key 要送到哪裡, 設定如何寫, 在 http 模式下, 代理主機如何執行設定, 在 ssh 模式下, 代理主機要如何設定? 若近端啟動後使用超過一個 github 帳號身分, 又如何設定 http 與 ssh 模式下的倉儲改版與提交?</p><br />亂數分組 << <a href='亂數分組.html'>Previous</a> </div>
+<p>如何產生所需的 keys, 放在哪裡, public key 要送到哪裡, 設定如何寫, 在 http 模式下, 代理主機如何執行設定, 在 ssh 模式下, 代理主機要如何設定? 若近端啟動後使用超過一個 github 帳號身分, 又如何設定 http 與 ssh 模式下的倉儲改版與提交?</p>
+<br />亂數分組 << <a href='亂數分組.html'>Previous</a> <a href='示範專案.html'>Next</a> >> 示範專案</div>
         
     <!-- footer -->
       <div class="container">
