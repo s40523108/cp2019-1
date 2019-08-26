@@ -160,7 +160,135 @@ init_mathjax();
 <p>優點:</p>
 <p style="padding-left: 30px;">執行速度較全部存入 USB 快</p>
 <p>缺點:</p>
-<p style="padding-left: 30px;">其他用戶對硬碟系統資料更動後, 使用上會受影響.</p><br />QandA << <a href='QandA.html'>Previous</a> <a href='課程筆記.html'>Next</a> >> 課程筆記</div>
+<p style="padding-left: 30px;">其他用戶對硬碟系統資料更動後, 使用上會受影響.</p>
+<h4>全部使用隨身碟內容啟動的 start.bat 批次檔案:</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+set Disk=y
+subst %Disk%: "data"
+
+%Disk%:
+
+set HomePath=%Disk%:\home_mdecourse
+set HomeDrive=%Disk%:\home_mdecourse
+set Home=%Disk%:\home_mdecourse
+set USERPROFILE=%Disk%:\home_mdecourse
+
+REM 將系統 Python 程式的 io 設為 utf-8
+set PYTHONIOENCODING="utf-8"
+
+set PYTHONPATH=%Disk%:\py373\DLLs;%Disk%:\py373\Lib;%Disk%:\py373\Lib\site-packages;
+set PYTHONHOME=%Disk%:\py373
+
+REM for flutter
+set java_home=%Disk%:\java\jdk8u222-b10
+set ANDROID_SDK_home=%Disk%:\home_mdecourse
+set GRADLE_USER_home=%Disk%:\home_mdecourse
+set ANDROID_SDK_ROOT=%Disk%:\android\sdk
+set PUB_CACHE=%Disk%:\home_mdecourse\pub
+
+REM set _JAVA_OPTIONS=-Duser.home=%HOME%
+set path_flutter=%Disk%:\android\sdk\tools;%Disk%:\android\sdk\tools\bin;%Disk%:\android\sdk\platform-tools;%Disk%:\flutter\bin;%Disk%:\flutter\bin\cache\dart-sdk\bin;
+
+set path_python=%Disk%:\py373;%Disk%:\py373\Scripts;
+set path_msys2=%Disk%:\msys64\mingw64\bin;
+REM coreutils is for compiling fossil scm
+set path_coreutils=%Disk%:\coreutils-5.3.0\bin;%Disk%:\depends22_x64;
+set path_tcc=%Disk%:\tcc;
+set path_cmake=%Disk%:\cmake-3.10.1-win64-x64\bin;
+set path_nodejs=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm;
+set path_git=%Disk%:\portablegit\bin;
+set path_xming=%Disk%:\Xming;
+set path_latex=%Disk%:\Pandoc;%Disk%:\TinyTeX\bin\win32;
+set path_vscode=%Disk%:\vscode;
+
+path=%path%;%Disk%:;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;
+
+start /MIN cmd.exe
+start /MIN cmd.exe
+start /MIN cmd.exe
+start /MIN cmd.exe
+
+start /MIN %Disk%:\wscite415\wscite\SciTE.exe
+start /MIN %Disk%:\wscite415\wscite\SciTE.exe
+
+
+Exit</pre>
+<h4>只存放設定與自我倉儲的  start.bat 批次檔案:</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+set Disk=y
+subst %Disk%: "data"
+
+%Disk%:
+
+REM 設定所使用的硬碟目錄
+set CDisk=G:\201906_fall\data
+set DDisk=D:\flutter_portable_final\data
+
+set HomePath=%Disk%:\home
+set HomeDrive=%Disk%:\home
+set Home=%Disk%:\home
+set USERPROFILE=%Disk%:\home
+
+REM 將系統 Python 程式的 io 設為 utf-8
+set PYTHONIOENCODING="utf-8"
+
+set PYTHONPATH=%CDisk%\py373\DLLs;%CDisk%\py373\Lib;%CDisk%\py373\Lib\site-packages;
+set PYTHONHOME=%CDisk%\py373
+
+REM for flutter
+set java_home=%DDisk%\java\jdk8u222-b10
+set ANDROID_SDK_home=%DDisk%\home
+set GRADLE_USER_home=%DDisk%\home
+set ANDROID_SDK_ROOT=%DDisk%\android\sdk
+set PUB_CACHE=%DDisk%\home_mdecourse\pub
+
+REM set _JAVA_OPTIONS=-Duser.home=%HOME%
+set path_flutter=%DDisk%\android\sdk\tools;%DDisk%\android\sdk\tools\bin;%DDisk%\android\sdk\platform-tools;%DDisk%\flutter\bin;%DDisk%\flutter\bin\cache\dart-sdk\bin;
+
+set path_python=%CDisk%\py373;%CDisk%\py373\Scripts;
+set path_msys2=%CDisk%\msys64\mingw64\bin;
+REM coreutils is for compiling fossil scm
+set path_coreutils=%CDisk%\coreutils-5.3.0\bin;%CDisk%\depends22_x64;
+set path_tcc=%CDisk%\tcc;
+set path_cmake=%CDisk%\cmake-3.10.1-win64-x64\bin;
+set path_nodejs=%CDisk%\nodejs;%CDisk%\nodejs\appdata\roaming\npm;
+set path_git=%CDisk%\portablegit\bin;
+set path_xming=%CDisk%\Xming;
+set path_latex=%CDisk%\Pandoc;%CDisk%\TinyTeX\bin\win32;
+set path_vscode=%DDisk%\vscode;
+
+path=%path%;%Disk%:;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;
+
+start /MIN cmd.exe
+start /MIN cmd.exe
+start /MIN cmd.exe
+start /MIN cmd.exe
+
+start /MIN %CDisk%\wscite415\wscite\SciTE.exe
+start /MIN %CDisk%\wscite415\wscite\SciTE.exe
+
+
+Exit</pre>
+<h4>stop.bat 批次檔案:</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
+set Disk=y
+path=%PATH%;
+
+taskkill /IM python.exe /F
+taskkill /IM pythonw.exe /F
+taskkill /IM node.exe /F
+taskkill /IM Range.exe /F
+taskkill /IM SciTE.exe /F
+taskkill /IM adb.exe /F
+taskkill /IM code.exe /F
+taskkill /IM java.exe /F
+
+REM 終止虛擬硬碟與目錄的對應
+subst %Disk%: /D
+REM 關閉 cmd 指令視窗
+taskkill /IM cmd.exe /F
+EXIT</pre>
+<p></p><br />QandA << <a href='QandA.html'>Previous</a> <a href='課程筆記.html'>Next</a> >> 課程筆記</div>
         
     <!-- footer -->
       <div class="container">
