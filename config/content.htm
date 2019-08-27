@@ -104,10 +104,11 @@ set java_home=%DDisk%\java\jdk8u222-b10
 set ANDROID_SDK_home=%DDisk%\home
 set GRADLE_USER_home=%DDisk%\home
 set ANDROID_SDK_ROOT=%DDisk%\android\sdk
-set PUB_CACHE=%DDisk%\home_mdecourse\pub
+set PUB_CACHE=%Disk%\home\pub
 
 REM set _JAVA_OPTIONS=-Duser.home=%HOME%
-set path_flutter=%DDisk%\android\sdk\tools;%DDisk%\android\sdk\tools\bin;%DDisk%\android\sdk\platform-tools;%DDisk%\flutter\bin;%DDisk%\flutter\bin\cache\dart-sdk\bin;
+REM %DDisk%\home\pub\bin is for webdev
+set path_flutter=%DDisk%\android\sdk\tools;%DDisk%\android\sdk\tools\bin;%DDisk%\android\sdk\platform-tools;%DDisk%\flutter\bin;%DDisk%\flutter\bin\cache\dart-sdk\bin;%Disk%\home\pub\bin;
 
 set path_python=%CDisk%\py373;%CDisk%\py373\Scripts;
 set path_msys2=%CDisk%\msys64\mingw64\bin;
@@ -152,7 +153,9 @@ subst %Disk%: /D
 REM 關閉 cmd 指令視窗
 taskkill /IM cmd.exe /F
 EXIT</pre>
-<p></p><h2>課程筆記</h2>
+<p>請注意:</p>
+<p>因為開啟 code 後所需先前的相關 Flutter 專案, 會將與 Android 相關, 取得的 package 放在 PUB_CACHE (即 y:\home\pub), 以及  .android (即 y:\home\.android) 目錄中, 因此搬遷資料時必須同時複製此一目錄內容.</p>
+<p>而且需要建立 y:\home\AppData\Roaming 目錄, 以便存放 vscode 啟動後的 logs 檔案.</p><h2>課程筆記</h2>
 <h4>利用倉儲與網頁紀錄筆記</h4>
 <p>優點:</p>
 <p style="padding-left: 30px;">快速方便且能引入大量線上靜態與動態影片資料</p>
@@ -264,7 +267,8 @@ EXIT</pre>
 <p style="padding-left: 30px;"><a href="https://github.com/flutter-ui-challenges/flutter_web_challenge_googlemaps">https://github.com/flutter-ui-challenges/flutter_web_challenge_googlemaps</a></p>
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/writing-a-flutter-data-entry-form-app-for-a-rental-agency-e5a7dab20596">https://medium.com/flutter-community/writing-a-flutter-data-entry-form-app-for-a-rental-agency-e5a7dab20596</a></p>
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713">https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713</a></p>
-<p style="padding-left: 30px;"><a href="https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b">https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b</a></p><h3>Dart</h3>
+<p style="padding-left: 30px;"><a href="https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b">https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b</a></p>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-QRQIKtPTlI" width="560"></iframe></p><h3>Dart</h3>
 <p><a href="https://dart.dev/guides/language">https://dart.dev/guides/language</a></p>
 <p><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
 <p><a href="https://dart.dev/tools/sdk/archive">https://dart.dev/tools/sdk/archive</a></p>
@@ -407,3 +411,15 @@ EXIT</pre>
 <p>All declared variables in Dart are initially given the special value of null.</p>
 <p>Unlike in algebra class, the = operator in Dart does not strictly represent equivalence. It's known as the assignment operator, so x = 5 is an expression instructing the computer to assign the value 5 to a memory location named x. </p>
 <p><iframe height="500" src="https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691" width="600"></iframe></p>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/8F2uemqLwvE" width="560"></iframe></p>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/OLjyCy-7U2U" width="560"></iframe></p><h3>DartPad</h3>
+<p>DartPad 有原始碼, 我們可以建立一個網際的 Dart 程式語言教學套件嗎?</p>
+<p><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
+<p>讓使用者所練習的 Dart 程式可以存檔, 可以呼叫修改, 也可以轉換成 Web, Mobile 與單機程式?</p>
+<p>或者利用 Dart 建立一個以機械設計流程為主體的網際內容管理系統?</p>
+<p>自行 Build dart-pad:</p>
+<p>git clone <a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
+<p>之後, 進入 dart-pad 目錄之後, 以 pub get 取得所需 dependencies</p>
+<p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案.</p>
+<p>之後刪除 .git 與 .gitignore 檔案,  將 build 目錄改名為 docs 並設為 Github Pages 得到:</p>
+<p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p>
