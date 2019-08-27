@@ -203,6 +203,7 @@ EXIT</pre>
 <p>將遠端 Github 倉儲中的資料, clonr 至 y:\tmp 目錄的 cp2019 目錄中.</p>
 <p>clone 後的 cp2019 目錄有 .git 目錄, 存放該倉儲的設定與版本資料, 以及 README.md 檔案.</p>
 <p>在 .git 目錄中, 與使用者相關的是 config</p>
+<h4>以子模組方式納入 CMSiMDE</h4>
 <p>利用 git submodule add 納入 CMSiMDE 網際內容管理系統的程式碼</p>
 <p>https://github.com/mdecourse/cmsimde</p>
 <p>利用命令列視窗, 更換目錄至 y:\tmp\cp2019 之後, 執行</p>
@@ -216,8 +217,19 @@ EXIT</pre>
 <p>進入 config 修改網頁標題, 並且修改倉儲中的 init.py, 修改 site_title</p>
 <p>改版後要推送資料前, 可以利用 generate_pages 將內容轉為動態網頁後, 可以利用 SciTE 開啟倉儲中的 http-server.py 檔案後以 Tools -&gt; Go 執行, 可以在瀏覽器中以 <a href="https://localhost:8444">https://localhost:8444</a> 檢查近端的靜態網頁內容, 確定無誤後. 則必須再退回 y:\tmp\cp2019 目錄之後, 必須完成 git config 的 user.name 與 user.email 之後, 可以利用:</p>
 <p>git add .<br/>git commit -m "提交說明"<br/>git push</p>
-<p>以 SSH 對 cp2019 倉儲進行改版</p>
-<p>如何產生所需的 keys, 放在哪裡, public key 要送到哪裡, 設定如何寫, 在 http 模式下, 代理主機如何執行設定, 在 ssh 模式下, 代理主機要如何設定? 若近端啟動後使用超過一個 github 帳號身分, 又如何設定 http 與 ssh 模式下的倉儲改版與提交?</p><h2>Github Guide</h2>
+<h4>以 SSH 對 cp2019 倉儲進行改版</h4>
+<p>如何產生所需的 keys, 放在哪裡, public key 要送到哪裡, 設定如何寫, 在 http 模式下, 代理主機如何執行設定, 在 ssh 模式下, 代理主機要如何設定? 若近端啟動後使用超過一個 github 帳號身分, 又如何設定 http 與 ssh 模式下的倉儲改版與提交?</p>
+<h4>如何 git clone 帶有子模組的倉儲</h4>
+<p style="padding-left: 30px;"><a href="https://git-scm.com/book/zh-tw/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E7%B5%84-Submodules">git submodule 使用說明</a></p>
+<p>當在近端 git clone 帶有子模組的倉儲時, 首先:</p>
+<p style="padding-left: 30px;">git clone 倉儲_URL.git 近端倉儲名稱</p>
+<p>之後, 以 git submodule init 啟始子模組, 接著以 git submodule update 下載所對應版本的子模組內容.</p>
+<h4>為何倉儲中要引用子模組?</h4>
+<p style="padding-left: 30px;">子模組架構的設計與引用, 可以讓子模組的開發者根據需求隨時改版, 而引用者只需要確立所引用的子模組版次號, 即可在原始引用組態 (組成內容與狀態) 下正確協同工作.</p>
+<p style="padding-left: 30px;">在機械設計流程, 想像所有系統與元件都是虛擬物件, 與 github 中的倉儲程式碼類似.</p>
+<p style="padding-left: 30px;">當導入一只特殊規格的電動馬達後, 配合減速機與機構執行所需工作, 若將該馬達當成 git 的子模組, 負責研發此電動馬達的團隊, 可以不斷根據新技術的導入或修正先前的設計, 所產生新的馬達版本, 不會影響使用舊馬達版本的用戶. (請注意, 引入子模組之後的倉儲, 在其 .git 目錄中的 config 與倉儲目錄中的 .gitmodules 都註記所引用的子模組來源.)</p>
+<p style="padding-left: 30px;">這時引用該馬達的機械設計模擬系統, 在不變更使用該馬達元件版本的情況下, 原始設計可以繼續出貨, 若需配合該馬達的新功能而修改其他設計之後, 只需要執行 git submodule update, 就可以取得該馬達的最新型功能, 產生最新版的機械設計內容. </p>
+<h4>各組利用 Python 程式模組, 練習建立並使用 git 子模組.</h4><h2>Github Guide</h2>
 <p><a href="https://guides.github.com/">https://guides.github.com/</a></p>
 <p><a href="https://guides.github.com/activities/hello-world/">https://guides.github.com/activities/hello-world/</a></p><h1>示範專案</h1>
 <p>Python: 一般運算與資料處理應用, 網際內容管理, GUI for 電腦輔助機械設計工程分析</p>
@@ -251,7 +263,8 @@ EXIT</pre>
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/flutter-firebase-realtime-database-crud-operations-using-provider-c242a01f6a10">https://medium.com/flutter-community/flutter-firebase-realtime-database-crud-operations-using-provider-c242a01f6a10</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/flutter-ui-challenges/flutter_web_challenge_googlemaps">https://github.com/flutter-ui-challenges/flutter_web_challenge_googlemaps</a></p>
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/writing-a-flutter-data-entry-form-app-for-a-rental-agency-e5a7dab20596">https://medium.com/flutter-community/writing-a-flutter-data-entry-form-app-for-a-rental-agency-e5a7dab20596</a></p>
-<p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713">https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713</a></p><h3>Dart</h3>
+<p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713">https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713</a></p>
+<p style="padding-left: 30px;"><a href="https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b">https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b</a></p><h3>Dart</h3>
 <p><a href="https://dart.dev/guides/language">https://dart.dev/guides/language</a></p>
 <p><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
 <p><a href="https://dart.dev/tools/sdk/archive">https://dart.dev/tools/sdk/archive</a></p>
@@ -265,3 +278,132 @@ EXIT</pre>
 <h4>Dart FFI</h4>
 <p><a href="https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md">https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md</a></p>
 <p><a href="https://github.com/mjohnsullivan/ffi">https://github.com/mjohnsullivan/ffi</a></p>
+<h4>Dart Pad</h4>
+<p>embeded gist: <a href="https://gist.github.com/scrum-1/d83c705a831668f76d2a39b97c5cb1c9">https://gist.github.com/scrum-1/d83c705a831668f76d2a39b97c5cb1c9</a></p>
+<p><a href="https://dartpad.dev/embed-html.html?id=d83c705a831668f76d2a39b97c5cb1c9">https://dartpad.dev/embed-html.html?id=d83c705a831668f76d2a39b97c5cb1c9</a></p>
+<h4>Hello Dart</h4>
+<p><a href="https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691">https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691</a></p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">void main() {
+  print("Hello, World!");
+}</pre>
+<h4>Dart 程式語言</h4>
+<p><a href="https://da-bootcamp.firebaseapp.com/?course=start_programming_dart">https://da-bootcamp.firebaseapp.com/?course=start_programming_dart</a> </p>
+<p>每一個 Dart 程式都以小寫英文字母的 main() 主函式開始執行, 函式可以從 () 小括號中間接受輸入, 也可以產生輸出, 小括號中間空白, 表示這個函式沒有輸入的設計, 而 main 之前的 void 表示目前的函式也沒有輸出的設計.</p>
+<p>Dart 程式的執行範圍區隔與 C/C++ 等程式語法相同, 利用 {} 來界定該函式的有效範圍 (Python 程式語法是利用縮排, 以每四個空白鍵為單位, 每一個縮排範圍內的程式碼界定為一區.</p>
+<p>在這個 Dart 程式中, void 與 print 都是關鍵字 (main 不屬於關鍵字, 可以當作變數名稱, 但並不建議使用), 關鍵字在程式語言的語法中稱為保留字, 具有特殊的用法與意義, 當使用者要命名變數時, 不可以使用該程式語言中所規定的關鍵字.</p>
+<p>而 Dart 程式語法中的關鍵字共有:</p>
+<h4>Keywords</h4>
+<p>The following table lists the words that the Dart language treats specially.</p>
+<table class="table table-striped nowrap">
+<tbody>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#abstract-classes">abstract</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#important-concepts">dynamic</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#implicit-interfaces">implements</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#importing-only-part-of-a-library">show</a> <sup alt="contextual keyword" title="contextual keyword">1</sup></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#type-test-operators">as</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#if-and-else">else</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#using-libraries">import</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#class-variables-and-methods">static</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#assert">assert</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#enumerated-types">enum</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#for-loops">in</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#extending-a-class">super</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#asynchrony-support">async</a> <sup alt="contextual keyword" title="contextual keyword">1</sup></td>
+<td><a href="https://dart.dev/guides/libraries/create-library-packages">export</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a class="external" href="https://stackoverflow.com/questions/28595501/was-the-interface-keyword-removed-from-dart">interface</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#switch-and-case">switch</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#asynchrony-support">await</a> <sup alt="limited reserved word" title="limited reserved word">3</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#extending-a-class">extends</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#type-test-operators">is</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#generators">sync</a> <sup alt="contextual keyword" title="contextual keyword">1</sup></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#break-and-continue">break</a></td>
+<td><a class="external" href="https://stackoverflow.com/questions/24929659/what-does-external-mean-in-dart">external</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#libraries-and-visibility">library</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#constructors">this</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#switch-and-case">case</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#factory-constructors">factory</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins">mixin</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#throw">throw</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#catch">catch</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#booleans">false</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#using-constructors">new</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#booleans">true</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#instance-variables">class</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#final-and-const">final</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#default-value">null</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#catch">try</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#final-and-const">const</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#finally">finally</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#catch">on</a> <sup alt="contextual keyword" title="contextual keyword">1</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#typedefs">typedef</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#break-and-continue">continue</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#for-loops">for</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#overridable-operators">operator</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#variables">var</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/sound-problems#the-covariant-keyword">covariant</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#functions">Function</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/libraries/create-library-packages#organizing-a-library-package">part</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a class="external" href="https://medium.com/dartlang/dart-2-legacy-of-the-void-e7afb5f44df0">void</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#switch-and-case">default</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#getters-and-setters">get</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#catch">rethrow</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#while-and-do-while">while</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#lazily-loading-a-library">deferred</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#importing-only-part-of-a-library">hide</a> <sup alt="contextual keyword" title="contextual keyword">1</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#functions">return</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#adding-features-to-a-class-mixins">with</a></td>
+</tr>
+<tr>
+<td><a href="https://dart.dev/guides/language/language-tour#while-and-do-while">do</a></td>
+<td><a href="https://dart.dev/guides/language/language-tour#if-and-else">if</a></td>
+<td><a class="external" href="https://api.dart.dev/stable/dart-core/Set-class.html">set</a> <sup alt="built-in-identifier" title="built-in-identifier">2</sup></td>
+<td><a href="https://dart.dev/guides/language/language-tour#generators">yield</a> <sup alt="limited reserved word" title="limited reserved word">3</sup></td>
+</tr>
+</tbody>
+</table>
+<p>Avoid using these words as identifiers. However, if necessary, the keywords marked with superscripts can be identifiers:</p>
+<ul>
+<li>
+<p>Words with the superscript<span> </span><strong>1</strong><span> </span>are<span> </span><strong>contextual keywords</strong>, which have meaning only in specific places. They’re valid identifiers everywhere.</p>
+</li>
+<li>
+<p>Words with the superscript<span> </span><strong>2</strong><span> </span>are<span> </span><strong>built-in identifiers</strong>. To simplify the task of porting JavaScript code to Dart, these keywords are valid identifiers in most places, but they can’t be used as class or type names, or as import prefixes.</p>
+</li>
+<li>
+<p>Words with the superscript<span> </span><strong>3</strong><span> </span>are newer, limited reserved words related to the<span> </span><a href="https://dart.dev/guides/language/language-tour#asynchrony-support">asynchrony support</a><span> </span>that was added after Dart’s 1.0 release. You can’t use<span> </span><code class="highlighter-rouge">await</code><span> </span>or<span> </span><code class="highlighter-rouge">yield</code><span> </span>as an identifier in any function body marked with<span> </span><code class="highlighter-rouge">async</code>,<span> </span><code class="highlighter-rouge">async*</code>, or<span> </span><code class="highlighter-rouge">sync*</code>.</p>
+</li>
+</ul>
+<p>All other words in the table are<span> </span><strong>reserved words</strong>, which can’t be identifiers.</p>
+<p>上述 Dart 程式段中的 ";" 表示該行至分號的位置為一個完整可執行段程式 (use a semicolon to tell the interpreter where your statement ends.), 這一點也與 C/C++ 程式語法相同,  (Python 程式則一般利用跳行來界定可執行段, 但也可以利用 ";" 來界定).</p>
+<h4>變數</h4>
+<p>了解 Dart 程式的基本用法後, 也知道那些英文字是設計作為保留關鍵字, 接下來就需要了解有關程式中有關變數的命名.</p>
+<p>All declared variables in Dart are initially given the special value of null.</p>
+<p>Unlike in algebra class, the = operator in Dart does not strictly represent equivalence. It's known as the assignment operator, so x = 5 is an expression instructing the computer to assign the value 5 to a memory location named x. </p>
+<p><iframe height="300" src="https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691" width="400"></iframe></p>
