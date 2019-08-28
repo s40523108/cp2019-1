@@ -195,7 +195,91 @@ EXIT</pre>
 <p>Perhaps you’re writing a test suite for such a library and find writing the testing code a tedious task. Or maybe you’ve written a program that could use an extension language, and you don’t want to design and implement a whole new language for your application.</p>
 <p>Python is just the language for you.</p>
 <p>首先我們將採用 Python 進行亂數分組, 各分組也可以研究看看, 假如採用 C, C++, Java, Javascript, Lua 或 Dart 進行類似的工作, 該如何進行?</p>
-<p>是直接在命令列中執行, 寫一個配合的 GUI, 在網頁介面中執行, 或者在手機或平板上執行? 各有何種應用情境? </p><h1>github 帳號</h1>
+<p>是直接在命令列中執行, 寫一個配合的 GUI, 在網頁介面中執行, 或者在手機或平板上執行? 各有何種應用情境? </p>
+<h4>近端資料讀取亂數分組程式</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import random
+filename = 'cdaw1_student_list.txt'
+# 每組人數
+num_in_one_group = 8
+# 組序由 1 開始
+group = 1
+# 各班分組後所得數列
+c2019 = []
+with open(filename) as f:
+    # 讀進全部檔案, 轉進數列, 並同時將各行的 \n 去除
+    read_data = f.read().splitlines() 
+print("共有 " + str(len(read_data)) + " 位學員")
+# 利用 shuffle 將數列隨機弄亂
+random.shuffle(read_data)
+for i in range(len(read_data)):
+    # 利用整數相除的餘數進行分組
+    if i%num_in_one_group == 0:
+        # 列出分隔符號
+        print("-"*20)
+        print("group " + str(group) +":")
+        # 在分組區隔時重置各組學員數列
+        group_list = []
+        print()
+        # 同時列出與分隔標註對應 i 的數列內容
+        print(read_data[i])
+        group_list.append(read_data[i])
+        group = group + 1
+    else:
+        # 逐一列出同組的其他學員
+        print(read_data[i])
+        group_list.append(read_data[i])
+    if i%num_in_one_group == 0:
+        c2019.append(group_list)
+# c2019 為該班分組後所得分組數列
+print(c2019)</pre>
+<h4>從網站讀取資料亂數分組程式</h4>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import random
+import urllib3
+
+target_url = "https://raw.githubusercontent.com/mdecourse/cd2019/gh-pages/data/cda/cdaw1_student_list.txt"
+
+# 從 url 讀取資料, 之後利用 splitlines() 存入學員學號字串數列中
+http = urllib3.PoolManager()
+response = http.request('GET', target_url)
+data = response.data.decode('utf-8')
+read_data = data.splitlines() 
+#print(read_data)
+
+# 每組人數
+num_in_one_group = 10
+# 組序由 1 開始
+group = 1
+# 各班分組後所得數列
+c2019 = []
+print("共有 " + str(len(read_data)) + " 位學員")
+# 利用 shuffle 將數列隨機弄亂
+random.shuffle(read_data)
+for i in range(len(read_data)):
+    # 利用整數相除的餘數進行分組
+    if i%num_in_one_group == 0:
+        # 列出分隔符號
+        print("-"*20)
+        print("group " + str(group) +":")
+        # 在分組區隔時重置各組學員數列
+        group_list = []
+        print()
+        # 同時列出與分隔標註對應 i 的數列內容
+        print(read_data[i])
+        group_list.append(read_data[i])
+        group = group + 1
+    else:
+        # 逐一列出同組的其他學員
+        print(read_data[i])
+        group_list.append(read_data[i])
+    if i%num_in_one_group == 0:
+        c2019.append(group_list)
+# c2019 為該班分組後所得分組數列
+print(c2019)</pre>
+<p>為何使用 Dart?</p>
+<p>因為 Dart 是具有潛力, 而且能夠適應未來可攜裝置與 IOTs 整合環境變化應用的程式語言.</p>
+<p>使用 Dart 執行亂數分組:</p>
+<p><a href="https://dartpad.dev/embed-dart.html?id=9f69e77cb456b97cccc8eb5a9dbd991c">https://dartpad.dev/embed-dart.html?id=9f69e77cb456b97cccc8eb5a9dbd991c</a></p>
+<p>結合 <a href="https://gist.github.com/mdecourse/9f69e77cb456b97cccc8eb5a9dbd991c">gist</a> 與 <a href="https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide">dartpad.dev</a>, 也可以從 <a href="https://mde.tw/dartpad/">https://mde.tw/dartpad/</a> 右上方 Samples 選擇亂數分組程式執行.</p><h1>github 帳號</h1>
 <p>建立 cp2019 倉儲及對應的 CMSiMDE Github Pages 網頁</p>
 <p>了解基本的 Git 指令與 Github 系統的應用之後, 產生出對 GitExtensions 工具的需求, 也產生出對於透過 SSH keys 提交倉儲版本的需求, 以簡化改版流程.</p>
 <p><a href="https://2019wcm.blogspot.com/search/label/GitExtensions" rel="nofollow">https://2019wcm.blogspot.com/search/label/GitExtensions</a></p>
@@ -243,6 +327,42 @@ EXIT</pre>
 <p><a href="/downloads/python3.7.2_tutorial.pdf">python 3.7.2 tutorial.pdf</a></p>
 <p>亂數分組與 CMSiMDE</p>
 <p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a></p>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VjUBzMWyIHQ" width="560"></iframe></p>
+<p>課程評分程式</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
+根據評分表單中的 自評分數, 互評得分, 教師評分, 計算學員課程成績
+'''
+
+def diff(自評分數, 互評得分):
+    return abs(自評分數 - 互評得分)
+    
+def max(自評分數, 互評得分):
+    if 自評分數 &gt; 互評得分:
+        return 自評分數
+    else:
+        return 互評得分
+
+def 分組比分(自評分數, 互評得分):
+    if diff(自評分數, 互評得分) &lt; 5:
+        學員得分 = max(自評分數, 互評得分)
+    else:
+        學員得分 = 互評得分 - diff(自評分數, 互評得分)
+    return 學員得分
+    
+def 全班比分(學員得分, 教師評分):
+    if diff(學員得分, 教師評分) &lt; 5:
+        學員成績 = max(學員得分, 教師評分)
+    else:
+        學員成績 = 教師評分 - diff(學員得分, 教師評分)/4
+    return 學員成績
+
+def 學員成績(自評分數, 互評得分, 教師評分):
+    學員分組得分 = 分組比分(自評分數, 互評得分)
+    學員課程成績 = 全班比分(學員分組得分, 教師評分)
+    return 學員課程成績
+    
+print(學員成績(80, 70, 60))
+print(學員成績(60, 70, 80))</pre>
 <p></p><h2>ANSIC</h2>
 <p>Fossil SCM</p>
 <p><a href="https://www.fossil-scm.org/">https://www.fossil-scm.org</a></p><h2>C++</h2>
@@ -269,33 +389,33 @@ EXIT</pre>
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713">https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713</a></p>
 <p style="padding-left: 30px;"><a href="https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b">https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b</a></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-QRQIKtPTlI" width="560"></iframe></p><h3>Dart</h3>
-<p><a href="https://dart.dev/guides/language">https://dart.dev/guides/language</a></p>
-<p><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
-<p><a href="https://dart.dev/tools/sdk/archive">https://dart.dev/tools/sdk/archive</a></p>
-<p><a href="https://dartpad.dartlang.org/">https://dartpad.dartlang.org/</a></p>
-<p><a href="https://flutter.dev/">https://flutter.dev/</a></p>
-<p><a href="https://github.com/flutter/samples">https://github.com/flutter/samples</a></p>
-<p><a href="https://github.com/Solido/awesome-flutter">https://github.com/Solido/awesome-flutter</a></p>
+<p style="padding-left: 30px;"><a href="https://dart.dev/guides/language">https://dart.dev/guides/language</a></p>
+<p style="padding-left: 30px;"><a href="https://dart.dev/tools/sdk/archive">https://dart.dev/tools/sdk/archive</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/dart-lang/sdk">https://github.com/dart-lang/sdk</a></p>
 <h4>安裝 Dart SDK</h4>
-<p><a href="https://dart.dev/get-dart">https://dart.dev/get-dart</a></p>
-<p><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/2.4.1/sdk/dartsdk-windows-x64-release.zip">https://storage.googleapis.com/dart-archive/channels/stable/release/2.4.1/sdk/dartsdk-windows-x64-release.zip</a></p>
+<p style="padding-left: 30px;"><a href="https://dart.dev/get-dart">https://dart.dev/get-dart</a></p>
+<p style="padding-left: 30px;"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/2.4.1/sdk/dartsdk-windows-x64-release.zip">https://storage.googleapis.com/dart-archive/channels/stable/release/2.4.1/sdk/dartsdk-windows-x64-release.zip</a></p>
 <h4>Dart FFI</h4>
-<p><a href="https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md">https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md</a></p>
-<p><a href="https://github.com/mjohnsullivan/ffi">https://github.com/mjohnsullivan/ffi</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md">https://github.com/dart-lang/sdk/blob/master/samples/ffi/sqlite/docs/sqlite-tutorial.md</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/mjohnsullivan/ffi">https://github.com/mjohnsullivan/ffi</a></p>
 <h4>Dart Pad</h4>
-<p>embeded gist: <a href="https://gist.github.com/scrum-1/d83c705a831668f76d2a39b97c5cb1c9">https://gist.github.com/scrum-1/d83c705a831668f76d2a39b97c5cb1c9</a></p>
-<p><a href="https://dartpad.dev/embed-html.html?id=d83c705a831668f76d2a39b97c5cb1c9">https://dartpad.dev/embed-html.html?id=d83c705a831668f76d2a39b97c5cb1c9</a></p>
+<p style="padding-left: 30px;">embeded gist: <a href="https://gist.github.com/scrum-1/d83c705a831668f76d2a39b97c5cb1c9">https://gist.github.com/scrum-1/d83c705a831668f76d2a39b97c5cb1c9</a></p>
+<p style="padding-left: 30px;"><a href="https://dartpad.dev/embed-html.html?id=d83c705a831668f76d2a39b97c5cb1c9">https://dartpad.dev/embed-html.html?id=d83c705a831668f76d2a39b97c5cb1c9</a></p>
 <h4>Hello Dart</h4>
-<p><a href="https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691">https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691</a></p>
+<p style="padding-left: 30px;"><a href="https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691">https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691</a></p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">void main() {
   print("Hello, World!");
 }</pre>
 <h4>Dart 程式語言</h4>
-<p><a href="https://da-bootcamp.firebaseapp.com/?course=start_programming_dart">https://da-bootcamp.firebaseapp.com/?course=start_programming_dart</a> </p>
-<p>每一個 Dart 程式都以小寫英文字母的 main() 主函式開始執行, 函式可以從 () 小括號中間接受輸入, 也可以產生輸出, 小括號中間空白, 表示這個函式沒有輸入的設計, 而 main 之前的 void 表示目前的函式也沒有輸出的設計.</p>
-<p>Dart 程式的執行範圍區隔與 C/C++ 等程式語法相同, 利用 {} 來界定該函式的有效範圍 (Python 程式語法是利用縮排, 以每四個空白鍵為單位, 每一個縮排範圍內的程式碼界定為一區.</p>
-<p>在這個 Dart 程式中, void 與 print 都是關鍵字 (main 不屬於關鍵字, 可以當作變數名稱, 但並不建議使用), 關鍵字在程式語言的語法中稱為保留字, 具有特殊的用法與意義, 當使用者要命名變數時, 不可以使用該程式語言中所規定的關鍵字.</p>
-<p>而 Dart 程式語法中的關鍵字共有:</p>
+<p>資料來源:</p>
+<p style="padding-left: 30px;"><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
+<p style="padding-left: 30px;"><a href="https://da-bootcamp.firebaseapp.com/?course=start_programming_dart">https://da-bootcamp.firebaseapp.com/?course=start_programming_dart</a> </p>
+<p>每一個 Dart 程式都以小寫英文字母的 main() 主函式開始執行, 計算機程式語法中的函式與數學中的函式相同, 可以從 () 小括號中間接受輸入, 也可以產生輸出, 小括號中間空白, 表示這個函式沒有輸入的設計, 而 main 之前的 void 表示目前的函式也沒有輸出的設計.</p>
+<p>Dart 程式的執行範圍區隔與 C/C++ 等程式語法相同, 利用大括號 {} 來界定該函式的有效範圍 (註: Python 程式語法則是採用縮排, 以每四個空白鍵為單位, 每一個縮排範圍內的程式碼界定為同一區).</p>
+<p>在這個 Dart 程式中, void 是關鍵字, 而 main() 是主函式, 也是每一個 Dart 程式會首先執行的函示, 而 print() 是用來列印資料的核心函式 (core function), 在 print() 中作為輸入的 "Hello, World" 以雙引號界定的資料稱為字串 (string), 字串也可以用單引號界定.</p>
+<p>main 與 print 並不屬於關鍵字, 可以當作變數名稱, 但並不建議使用.</p>
+<p>關鍵字在程式語言的語法中稱為保留字, 具有特殊的用法與意義, 當使用者要命名變數時, 不可以使用該程式語言中所規定的關鍵字.</p>
+<p>而 Dart 程式語法中的關鍵字共有以下 60 個:</p>
 <h4>Keywords</h4>
 <p>The following table lists the words that the Dart language treats specially.</p>
 <table class="table table-striped nowrap">
@@ -405,14 +525,125 @@ EXIT</pre>
 </li>
 </ul>
 <p>All other words in the table are<span> </span><strong>reserved words</strong>, which can’t be identifiers.</p>
-<p>上述 Dart 程式段中的 ";" 表示該行至分號的位置為一個完整可執行段程式 (use a semicolon to tell the interpreter where your statement ends.), 這一點也與 C/C++ 程式語法相同,  (Python 程式則一般利用跳行來界定可執行段, 但也可以利用 ";" 來界定).</p>
-<h4>變數</h4>
-<p>了解 Dart 程式的基本用法後, 也知道那些英文字是設計作為保留關鍵字, 接下來就需要了解有關程式中有關變數的命名.</p>
+<p>上述 Dart 程式段中的符號 ";" 表示該行至分號的位置為一個完整可執行段程式 (use a semicolon to tell the interpreter where your statement ends.), 這一點也與 C/C++ 程式語法相同,  (Python 程式則一般利用跳行來界定可執行段, 但也可以利用 ";" 來界定).</p>
+<h4>變數 (Variables)</h4>
+<p>了解 Dart 程式的基本用法, 也知道那些英文字是被設計作為保留關鍵字後, 接下來就需要了解有關程式中有關變數的命名.</p>
+<p>Variables are a basic building block of most modern programs. In short, a variable is an alias for a computer memory location, at which something of interest will be stored.</p>
+<p>Whatever is stored there is said to be the variable's value. If you've studied the basics of algebra, you might remember variables mostly as single-letter stand-ins for numbers that helped you conceptualize and solve complex equations. Dart's variables are similar but not exactly the same, as they're capable of standing in for all kinds of values: numbers, strings of characters, or even more complex structures representing people, economic transactions, or geographic locations.</p>
 <p>All declared variables in Dart are initially given the special value of null.</p>
 <p>Unlike in algebra class, the = operator in Dart does not strictly represent equivalence. It's known as the assignment operator, so x = 5 is an expression instructing the computer to assign the value 5 to a memory location named x. </p>
-<p><iframe height="500" src="https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691" width="600"></iframe></p>
+<p><iframe height="315" src="https://dartpad.dartlang.org/embed-inline.html?id=1a980b16e56b1d1781720bf7d1ffc691" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/8F2uemqLwvE" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/OLjyCy-7U2U" width="560"></iframe></p><h3>DartPad</h3>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/OLjyCy-7U2U" width="560"></iframe></p>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/7onA7LeBD0o" width="560"></iframe></p>
+<h4>型別 (Types)</h4>
+<p>推斷型別 (Inferred Types)</p>
+<p>Variables in Dart come in many different types. Some variables are meant to hold numbers, some characters, and some point to more complex values. When declaring variables, you can allow Dart to attempt to infer your variable's intended type or you can be explicit.</p>
+<p>In the last lesson, you declared your variables using the var keyword (short for "variable"), like this:</p>
+<p>    var x;</p>
+<p>When you declare a variable using var, Dart tries to infer the variable's type. If you don't initialize the new variable with a value in the same statement as the declaration, Dart has nothing on which to base an inference, so the variable is considered to be of type dynamic. As a dynamic variable, x is able to accept values of any valid type.</p>
+<p>Mixing it Up</p>
+<p>In this example, the type of the variable called x is declared but not initialized with a value, and becomes dynamic, so code like this wouldn't be a problem:</p>
+<p>    var x;<br/>    x = 5;<br/>    x = "Dart is great.";</p>
+<p>The code declares x, then instructs Dart to store a value of 5 at the memory location aliased as x. That value is an integer, a whole number with no fractional part. The next line assigns the value "Dart is great.", a string of characters, to x. That's a versatile variable.</p>
+<p>Disappearing Number Trick</p>
+<p>Try out this code:</p>
+<p>    void main() {<br/>        var x;<br/>        x = 5;<br/>        x = "Dart is great.";<br/>        print(x);<br/>    }</p>
+<p>Can you predict what will be printed? If you run the code, you'll see that "Dart is great." appears in the console. What happened to the 5? After x was declared, it was assigned the value 5, but the next instruction assigned a string of characters to x, obliterating the numeric value. Since x is of type dynamic, the code analyzer does not flag the potential issue.</p>
+<p>You Can't Do That</p>
+<p>Modify the code to look like this:</p>
+<p>    void main() {<br/>    var x = 5;<br/>    x = "Dart is great.";<br/>    print(x);<br/>    }</p>
+<p>This code causes DartPad to display an error, saying that you're mixing types. Because you've initialized x with an integer number value at the same time you declared it, Dart infers that x is supposed to hold integers from that point on. Now x is of type int.</p>
+<p>You can override Dart's inference by specifying that you want your variable to be dynamic. Try changing the declaration to look like this and see the error disappear:</p>
+<p>    dynamic x = 5;</p>
+<p>Or you could explicitly declare and initialize x as an int, which is probably the best option under most circumstances:</p>
+<p>    int x = 5;</p>
+<p>Using the int keyword, you've created a variable meant to hold integers, so if you later try to assign a string of characters to it (a String type), Dart complains. The error is back. The analyzer is just trying to keep you from shooting yourself in the foot.</p>
+<p>Errors Stop Execution</p>
+<p>Note that if you run the code with mismatched types, execution will fail. You should always eliminate all reported errors before attempting to run your code.</p>
+<p>Why Use Explicit Types?</p>
+<p>Dart was perfectly happy to let you assign any value to your variable without errors when you declared x to be of type dynamic, so why would you restrict yourself with more specific types? The language has a sound type system that's designed to help you find problems before running your code. If you intend to use x to hold integer values, like grid coordinates maybe, then it's probably a mistake to assign it a string of characters. If you use explicit type annotations, Dart can help you catch these kinds of problems before they become run-time errors—bugs.</p>
+<p>The Fix is In</p>
+<p>To fix things up, try this:</p>
+<p>    void main() {<br/>        String x = "Dart is great.";<br/>        print(x);<br/>    }</p>
+<p>Now that x is explicitly declared to be of type String, DartPad is happy, secure in the assumption that you know what you're doing. In this example, you could also have used var and allowed Dart to infer the String type from the initialization value.</p>
+<p>Hey! Why is int lowercase, but String is capitalized? This may seem like a plot to make things more confusing for you than they need to be, but really the reason lies in the way programming languages have evolved over time. Dart was built to be familiar to those coming from other languages, like Java or C++. Unlike Dart, those languages have the concept of primitive types, special types that are fundamentally supported. Primitives are typically denoted by lowercase language keywords, while complex or user-defined types are capitalized. Even though all Dart types are simply objects, and Dart has no primitives, the language designers opted for familiarity in this case. </p>
+<p>Fundamental Types</p>
+<p>There is no limit to the number of types a program may have, but there are a few types that are fundamental to Dart:</p>
+<table>
+<tbody>
+<tr>
+<th>
+<p></p>
+<p></p>
+<p>Type</p>
+</th>
+<th>Description</th>
+<th>Examples</th>
+</tr>
+<tr>
+<td>int</td>
+<td>Integer (whole number)</td>
+<td>5, -13, 0</td>
+</tr>
+<tr>
+<td>double</td>
+<td>Floating-point number (decimals)</td>
+<td>3.14, 18.0, -33.999</td>
+</tr>
+<tr>
+<td>num</td>
+<td>Integer or floating-point number</td>
+<td>5, 3.14, -13, 999.666</td>
+</tr>
+<tr>
+<td>bool</td>
+<td>Boolean</td>
+<td>true, false</td>
+</tr>
+<tr>
+<td>String</td>
+<td>String of zero or more characters</td>
+<td>"hi", "John Smith", "X", ""</td>
+</tr>
+<tr>
+<td>List</td>
+<td>List of values in series</td>
+<td>[1, 2, 3], ["one", "two", "three"]</td>
+</tr>
+<tr>
+<td>Map</td>
+<td>Map of values by key</td>
+<td>{"x": 8, "y": 16}</td>
+</tr>
+<tr>
+<td>dynamic</td>
+<td>Any type</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4>運算子  (Operators)</h4>
+<p>In Dart, operators instruct the computer to perform operations on operands. An operand is any value upon which an operation is to be carried out.</p>
+<p>複合賦值運算子 (Compound Assignment Operators)</p>
+<p>字串 (Strings)</p>
+<p>單位換算範例</p>
+<p>判斷式</p>
+<p>布林運算</p>
+<p>模數運算 (Modulo Operator)</p>
+<p>開關 (多中選一)</p>
+<p>循環迴圈 (While Loops)</p>
+<p>D0-While 迴圈</p>
+<p>For 迴圈</p>
+<p>函式</p>
+<p>函式變數</p>
+<p>函式回傳</p>
+<p>變數範圍</p>
+<p>數列 (Lists)</p>
+<p>常數</p>
+<p>Final 變數</p>
+<p></p>
+<p></p><h3>DartPad</h3>
 <p>DartPad 有原始碼, 我們可以建立一個網際的 Dart 程式語言教學套件嗎?</p>
 <p><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
 <p>讓使用者所練習的 Dart 程式可以存檔, 可以呼叫修改, 也可以轉換成 Web, Mobile 與單機程式?</p>
