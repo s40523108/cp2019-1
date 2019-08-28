@@ -325,6 +325,8 @@ print(c2019)</pre>
 <p>Dart: 配合 Flutter SDK 開發手機應用程式</p>
 <p>手機程式作為介面 &lt;-&gt; Python Flask 作為 Server 端程式負責與其他 C/C++/Python 核心執行運算</p><h2>Python</h2>
 <p><a href="/downloads/python3.7.2_tutorial.pdf">python 3.7.2 tutorial.pdf</a></p>
+<p><a href="https://rd.springer.com/content/pdf/10.1007%2F978-3-030-20290-3.pdf">Begineers Guide to Python 3 Programming.pdf</a></p>
+<p><a href="https://rd.springer.com/content/pdf/10.1007%2F978-3-030-18873-3.pdf">The Python Workbook.pdf</a></p>
 <p>亂數分組與 CMSiMDE</p>
 <p><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/VjUBzMWyIHQ" width="560"></iframe></p>
@@ -383,12 +385,16 @@ print(學員成績(60, 70, 80))</pre>
 <p style="padding-left: 30px;">執行第二步在操作系統中所安裝的 Bluestacks, 開啟後, 在命令列中以 adb connect localhost:5555, 以便之後將 Visual Studio Code 中的 Flutter 程式結果呈現在 Bluestacks 虛擬手機畫面中.</p>
 <p style="padding-left: 30px;">由於 Bluestacks 採用與 Virualbox 相同的虛擬主機模式, 適合在 CPU 等級較低的電腦上執行開發, 也可以在 Visual Studio Code 中按下 Ctrl + Shift + P, 然後輸入 flutter, 除了可以新建 Flutter 專案外, 也可以透過 Android Virtual Devices 指令, 建立 emulator, 並將編譯完成的手機程式結果, 呈現在對應的 emulator 中.</p>
 <p style="padding-left: 30px;">當然, 若使用者已經安裝並設置<a href="https://developer.android.com/studio/run/win-usb">https://developer.android.com/studio/run/win-usb</a>, 也可以直接利用 USB 連接實體 Android 手機進行程式開發測試.</p>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://flutterbyexample.com/">https://flutterbyexample.com/</a></p>
+<p style="padding-left: 30px;"><a href="https://proandroiddev.com/mythbuster-10-rumors-about-flutter-why-its-not-worse-than-android-kotlin-f1a1acbe587d">https://proandroiddev.com/mythbuster-10-rumors-about-flutter-why-its-not-worse-than-android-kotlin-f1a1acbe587d</a></p>
 <h4>專案範例</h4>
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/flutter-firebase-realtime-database-crud-operations-using-provider-c242a01f6a10">https://medium.com/flutter-community/flutter-firebase-realtime-database-crud-operations-using-provider-c242a01f6a10</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/flutter-ui-challenges/flutter_web_challenge_googlemaps">https://github.com/flutter-ui-challenges/flutter_web_challenge_googlemaps</a></p>
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/writing-a-flutter-data-entry-form-app-for-a-rental-agency-e5a7dab20596">https://medium.com/flutter-community/writing-a-flutter-data-entry-form-app-for-a-rental-agency-e5a7dab20596</a></p>
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713">https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713</a></p>
 <p style="padding-left: 30px;"><a href="https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b">https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b</a></p>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/tBzJOb2Dopg" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-QRQIKtPTlI" width="560"></iframe></p><h3>Dart</h3>
 <p style="padding-left: 30px;"><a href="https://dart.dev/guides/language">https://dart.dev/guides/language</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/tools/sdk/archive">https://dart.dev/tools/sdk/archive</a></p>
@@ -407,6 +413,44 @@ print(學員成績(60, 70, 80))</pre>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">void main() {
   print("Hello, World!");
 }</pre>
+<p>另一個 Dart 範例</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import "dart:math" as math;
+
+class Point {
+  // final 型別表示此變數只能設對應值一次, 即便在 runtime 期
+  // num 型別表示此變數可以是 int 或 float 數值
+  final num x, y;
+  Point(this.x, this.y);
+  Point.origin()
+      : x = 0,
+        y = 0;
+  num distanceTo(Point other) {
+    var dx = x - other.x;
+    var dy = y - other.y;
+    return math.sqrt(dx * dx + dy * dy);
+  }
+
+  Point operator +(Point other) =&gt; Point(x + other.x, y + other.y);
+}
+
+void main() {
+  var p1 = Point(10, 10);
+  var p2 = Point.origin();
+  var distance = p1.distanceTo(p2);
+  print(distance);
+}
+</pre>
+<h4>Dart Nullable Operator</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// assign y to x, unless y is null, 
+// otherwise assign z
+x = y ?? z;
+
+// assign y to x if x is null
+x ??= y
+
+// call foo() only if x is not null
+x?.foo();</pre>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/Mm7TPZHk_KU" width="560"></iframe></p>
 <h4>Dart 程式語言</h4>
 <p>資料來源:</p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
@@ -527,6 +571,17 @@ print(學員成績(60, 70, 80))</pre>
 </ul>
 <p>All other words in the table are<span> </span><strong>reserved words</strong>, which can’t be identifiers.</p>
 <p>上述 Dart 程式段中的符號 ";" 表示該行至分號的位置為一個完整可執行段程式 (use a semicolon to tell the interpreter where your statement ends.), 這一點也與 C/C++ 程式語法相同,  (Python 程式則一般利用跳行來界定可執行段, 但也可以利用 ";" 來界定).</p>
+<h4>程式註解</h4>
+<p>Dart 程式語法支援三種註解方式:</p>
+<p>    // 這是一般的單行註解</p>
+<p>    /* 這是多行註解開始</p>
+<p>        可以橫跨多行說明文字, 程式在執行時會忽略其中內容</p>
+<p>    這是多行註解結束 */ </p>
+<p>而第三種註解則用於產生程式的說明文件檔案:</p>
+<p>    /// 這是單行的特殊的文件說明註解</p>
+<p>    /** 這是多行的文件說明註解開始</p>
+<p>        可以橫跨多行說明文字, 程式在執行時會忽略其中內容</p>
+<p>    這是多行的文件註解結束 */ </p>
 <h4>變數 (Variables)</h4>
 <p>了解 Dart 程式的基本用法, 也知道那些英文字是被設計作為保留關鍵字後, 接下來就需要了解有關程式中有關變數的命名.</p>
 <p>Variables are a basic building block of most modern programs. In short, a variable is an alias for a computer memory location, at which something of interest will be stored.</p>
@@ -624,10 +679,13 @@ print(學員成績(60, 70, 80))</pre>
 </tr>
 </tbody>
 </table>
+<p>Dart art 的 const 與 final 型別</p>
+<p>The "const" and "final" keywords, both of which define a variable as being a constant, a final immutable value. "final" means you can only set it once, but you can do so at runtime, while "const" means you can only set it once, but its value must be knowable at compile-time.</p>
 <h4>運算子  (Operators)</h4>
 <p>In Dart, operators instruct the computer to perform operations on operands. An operand is any value upon which an operation is to be carried out.</p>
 <p>複合賦值運算子 (Compound Assignment Operators)</p>
-<p>字串 (Strings)</p>
+<h4>字串 (Strings)</h4>
+<p>Dart 的字串連結, 可以直接兩個以上單引號字串或雙引號字串連在一起, 或者透過 "+" 加號連接多個字串.</p>
 <p>單位換算範例</p>
 <p>判斷式</p>
 <p>布林運算</p>
@@ -643,7 +701,9 @@ print(學員成績(60, 70, 80))</pre>
 <p>數列 (Lists)</p>
 <p>常數</p>
 <p>Final 變數</p>
-<p></p>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://learnxinyminutes.com/docs/dart/?ref=hackr.io">https://learnxinyminutes.com/docs/dart/?ref=hackr.io</a></p>
+<p style="padding-left: 30px;"><a href="https://itnext.io/learn-dart-before-you-flutter-d1c0be6cf892">https://itnext.io/learn-dart-before-you-flutter-d1c0be6cf892</a></p>
 <p></p><h3>DartPad</h3>
 <p>DartPad 有原始碼, 我們可以建立一個網際的 Dart 程式語言教學套件嗎?</p>
 <p><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>

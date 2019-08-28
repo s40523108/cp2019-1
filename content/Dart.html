@@ -166,6 +166,44 @@ init_mathjax();
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">void main() {
   print("Hello, World!");
 }</pre>
+<p>另一個 Dart 範例</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import "dart:math" as math;
+
+class Point {
+  // final 型別表示此變數只能設對應值一次, 即便在 runtime 期
+  // num 型別表示此變數可以是 int 或 float 數值
+  final num x, y;
+  Point(this.x, this.y);
+  Point.origin()
+      : x = 0,
+        y = 0;
+  num distanceTo(Point other) {
+    var dx = x - other.x;
+    var dy = y - other.y;
+    return math.sqrt(dx * dx + dy * dy);
+  }
+
+  Point operator +(Point other) =&gt; Point(x + other.x, y + other.y);
+}
+
+void main() {
+  var p1 = Point(10, 10);
+  var p2 = Point.origin();
+  var distance = p1.distanceTo(p2);
+  print(distance);
+}
+</pre>
+<h4>Dart Nullable Operator</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// assign y to x, unless y is null, 
+// otherwise assign z
+x = y ?? z;
+
+// assign y to x if x is null
+x ??= y
+
+// call foo() only if x is not null
+x?.foo();</pre>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/Mm7TPZHk_KU" width="560"></iframe></p>
 <h4>Dart 程式語言</h4>
 <p>資料來源:</p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
@@ -286,6 +324,17 @@ init_mathjax();
 </ul>
 <p>All other words in the table are<span> </span><strong>reserved words</strong>, which can’t be identifiers.</p>
 <p>上述 Dart 程式段中的符號 ";" 表示該行至分號的位置為一個完整可執行段程式 (use a semicolon to tell the interpreter where your statement ends.), 這一點也與 C/C++ 程式語法相同,  (Python 程式則一般利用跳行來界定可執行段, 但也可以利用 ";" 來界定).</p>
+<h4>程式註解</h4>
+<p>Dart 程式語法支援三種註解方式:</p>
+<p>    // 這是一般的單行註解</p>
+<p>    /* 這是多行註解開始</p>
+<p>        可以橫跨多行說明文字, 程式在執行時會忽略其中內容</p>
+<p>    這是多行註解結束 */ </p>
+<p>而第三種註解則用於產生程式的說明文件檔案:</p>
+<p>    /// 這是單行的特殊的文件說明註解</p>
+<p>    /** 這是多行的文件說明註解開始</p>
+<p>        可以橫跨多行說明文字, 程式在執行時會忽略其中內容</p>
+<p>    這是多行的文件註解結束 */ </p>
 <h4>變數 (Variables)</h4>
 <p>了解 Dart 程式的基本用法, 也知道那些英文字是被設計作為保留關鍵字後, 接下來就需要了解有關程式中有關變數的命名.</p>
 <p>Variables are a basic building block of most modern programs. In short, a variable is an alias for a computer memory location, at which something of interest will be stored.</p>
@@ -383,10 +432,13 @@ init_mathjax();
 </tr>
 </tbody>
 </table>
+<p>Dart art 的 const 與 final 型別</p>
+<p>The "const" and "final" keywords, both of which define a variable as being a constant, a final immutable value. "final" means you can only set it once, but you can do so at runtime, while "const" means you can only set it once, but its value must be knowable at compile-time.</p>
 <h4>運算子  (Operators)</h4>
 <p>In Dart, operators instruct the computer to perform operations on operands. An operand is any value upon which an operation is to be carried out.</p>
 <p>複合賦值運算子 (Compound Assignment Operators)</p>
-<p>字串 (Strings)</p>
+<h4>字串 (Strings)</h4>
+<p>Dart 的字串連結, 可以直接兩個以上單引號字串或雙引號字串連在一起, 或者透過 "+" 加號連接多個字串.</p>
 <p>單位換算範例</p>
 <p>判斷式</p>
 <p>布林運算</p>
@@ -402,7 +454,9 @@ init_mathjax();
 <p>數列 (Lists)</p>
 <p>常數</p>
 <p>Final 變數</p>
-<p></p>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://learnxinyminutes.com/docs/dart/?ref=hackr.io">https://learnxinyminutes.com/docs/dart/?ref=hackr.io</a></p>
+<p style="padding-left: 30px;"><a href="https://itnext.io/learn-dart-before-you-flutter-d1c0be6cf892">https://itnext.io/learn-dart-before-you-flutter-d1c0be6cf892</a></p>
 <p></p><br />Flutter << <a href='Flutter.html'>Previous</a> <a href='DartPad.html'>Next</a> >> DartPad</div>
         
     <!-- footer -->
