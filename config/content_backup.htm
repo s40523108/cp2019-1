@@ -460,7 +460,7 @@ import beditor
     
 hello_prog = beditor.gist("d9d4fe5b22d0af855603a683c153236e", "hello_world.py").get_file()
 # 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
-hello = beditor.editor(hello_prog, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+hello = beditor.editor(hello_prog, "kw_editor", "kw_console", "kw_container", "kw_py_src")
 # id 為 "hello" 的按鈕點按時, 執行 hello 物件中的 prog 方法
 doc["hello"].bind('click', hello.prog)
 </script>
@@ -472,7 +472,7 @@ from browser import document as doc
 import beditor
     
 gist_prog = beditor.gist("d9d4fe5b22d0af855603a683c153236e", "get_gist_file.py").get_file()
-gist = beditor.editor(gist_prog, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+gist = beditor.editor(gist_prog, "kw_editor", "kw_console", "kw_container", "kw_py_src")
 doc["gist"].bind('click', gist.prog)
 </script>
 </p>
