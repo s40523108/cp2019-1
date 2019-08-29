@@ -137,7 +137,7 @@ init_mathjax();
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='QandA.html'>QandA</a><li><a href='USB 隨身碟.html'>USB 隨身碟</a><li><a href='課程筆記.html'>課程筆記</a></li></ul><li><a href='課程簡介.html'>課程簡介</a><li><a href='亂數分組.html'>亂數分組</a><li class='has-children'><a href='github 帳號.html'>github 帳號</a><ul class='dropdown'><li><a href='Github Guide.html'>Github Guide</a></li></ul><li class='has-children'><a href='示範專案.html'>示範專案</a><ul class='dropdown'><li><a href='Python.html'>Python</a><li><a href='ANSIC.html'>ANSIC</a><li><a href='C++.html'>C++</a><li class='has-children'><a href='Flutter.html'>Flutter</a><ul class='dropdown'><li><a href='Dart.html'>Dart</a><li><a href='DartPad.html'>DartPad</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='QandA.html'>QandA</a><li><a href='USB 隨身碟.html'>USB 隨身碟</a><li><a href='課程筆記.html'>課程筆記</a></li></ul><li><a href='課程簡介.html'>課程簡介</a><li><a href='亂數分組.html'>亂數分組</a><li class='has-children'><a href='github 帳號.html'>github 帳號</a><ul class='dropdown'><li><a href='Github Guide.html'>Github Guide</a></li></ul><li class='has-children'><a href='示範專案.html'>示範專案</a><ul class='dropdown'><li class='has-children'><a href='Python.html'>Python</a><ul class='dropdown'><li><a href='Python 程式環境.html'>Python 程式環境</a></li></ul><li><a href='ANSIC.html'>ANSIC</a><li><a href='C++.html'>C++</a><li class='has-children'><a href='Flutter.html'>Flutter</a><ul class='dropdown'><li><a href='Dart.html'>Dart</a><li><a href='DartPad.html'>DartPad</a></li>
                       </ul>
                 </nav>
               </div>
@@ -180,6 +180,8 @@ init_mathjax();
 <p>當在近端 git clone 帶有子模組的倉儲時, 首先:</p>
 <p style="padding-left: 30px;">git clone 倉儲_URL.git 近端倉儲名稱</p>
 <p>之後, 以 git submodule init 啟始子模組, 接著以 git submodule update 下載所對應版本的子模組內容.</p>
+<p>假如倉儲中所使用的 submodule 已經改版, 希望將先前所引用的版本升級至最新版本 (例如: master 分支內容), 可以進入該子模組所在目錄, 然後執行:</p>
+<p style="padding-left: 30px;">git pull origin master</p>
 <h4>為何倉儲中要引用子模組?</h4>
 <p style="padding-left: 30px;">子模組架構的設計與引用, 可以讓子模組的開發者根據需求隨時改版, 而引用者只需要確立所引用的子模組版次號, 即可在原始引用組態 (組成內容與狀態) 下正確協同工作.</p>
 <p style="padding-left: 30px;">在機械設計流程, 想像所有系統與元件都是虛擬物件, 與 github 中的倉儲程式碼類似.</p>

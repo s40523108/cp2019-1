@@ -311,6 +311,8 @@ print(c2019)</pre>
 <p>當在近端 git clone 帶有子模組的倉儲時, 首先:</p>
 <p style="padding-left: 30px;">git clone 倉儲_URL.git 近端倉儲名稱</p>
 <p>之後, 以 git submodule init 啟始子模組, 接著以 git submodule update 下載所對應版本的子模組內容.</p>
+<p>假如倉儲中所使用的 submodule 已經改版, 希望將先前所引用的版本升級至最新版本 (例如: master 分支內容), 可以進入該子模組所在目錄, 然後執行:</p>
+<p style="padding-left: 30px;">git pull origin master</p>
 <h4>為何倉儲中要引用子模組?</h4>
 <p style="padding-left: 30px;">子模組架構的設計與引用, 可以讓子模組的開發者根據需求隨時改版, 而引用者只需要確立所引用的子模組版次號, 即可在原始引用組態 (組成內容與狀態) 下正確協同工作.</p>
 <p style="padding-left: 30px;">在機械設計流程, 想像所有系統與元件都是虛擬物件, 與 github 中的倉儲程式碼類似.</p>
@@ -319,6 +321,13 @@ print(c2019)</pre>
 <h4>各組利用 Python 程式模組, 練習建立並使用 git 子模組.</h4><h2>Github Guide</h2>
 <p><a href="https://guides.github.com/">https://guides.github.com/</a></p>
 <p><a href="https://guides.github.com/activities/hello-world/">https://guides.github.com/activities/hello-world/</a></p><h1>示範專案</h1>
+<h4>計算機程式能夠解決甚麼問題?</h4>
+<p>首先必須確立運用計算機程式的重要關鍵, 取決於領域知識 (Domain Knowledge) 範圍內所要解決的問題. </p>
+<p>學習計算機程式的目的, 在於透過與電腦的溝通, 然後逐一解決各專業領域中所碰到的問題.</p>
+<p>因此, 在學習如何寫程式的過程, 必須經歷以下過程:</p>
+<p style="padding-left: 30px;">如何與電腦溝通? - 了解電腦如何運作, 網路如何連接, 程式系統如何搭建?</p>
+<p style="padding-left: 30px;">要解決甚麼問題? - 學習如何定義問題, 透過對問題的瞭解, 逐步尋求解決方法.</p>
+<p style="padding-left: 30px;">如何利用電腦程式解決這個問題? - 解決同一問題的方法不只一種, 所有解決方案都必須設法持續改進.</p>
 <p>Python: 一般運算與資料處理應用, 網際內容管理, GUI for 電腦輔助機械設計工程分析</p>
 <p>ANSI C: 建立 Fossil SCM</p>
 <p>C++: Solvespace 與 Pyslvs 平面機構合成與分析內之幾何運算核心</p>
@@ -365,7 +374,110 @@ def 學員成績(自評分數, 互評得分, 教師評分):
     
 print(學員成績(80, 70, 60))
 print(學員成績(60, 70, 80))</pre>
-<p></p><h2>ANSIC</h2>
+<p></p><h3>Python 程式環境</h3>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['/static/']});
+}
+</script>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="/static/ace/ace.js" type="text/javascript"></script>
+<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
+<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".py");
+}
+</script>
+</p>
+<p><!-- 印出版次與關鍵字程式 --></p>
+<p>
+<script type="text/python3">
+from browser import document as doc
+from browser import html
+import ace
+
+# 清除畫布
+def clear_bd(ev):
+    bd = doc["brython_div"]
+    bd.clear()
+
+# Brython 3.7.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
+Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+
+Ace.editor.setValue("""# 導入 sys 模組
+import sys
+# 導入 keyword 模組
+import keyword
+
+def helloWorld():
+    print("Hello World!")
+
+helloWorld()
+
+# 利用 sys 模組中的 version_info 印出 Python 版次
+print("Python version: ", sys.version_info)
+# 利用 keyword 模組中的 kwlist 印出關鍵字
+print("Python keywords: ", keyword.kwlist)
+""")
+Ace.editor.scrollToRow(0)
+Ace.editor.gotoLine(0)
+
+# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
+doc['kw_run'].bind('click', Ace.run)
+doc['kw_show_console'].bind('click', Ace.show_console)
+doc['kw_clear_console'].bind('click', Ace.clear_console)
+doc['clear_bd'].bind('click', clear_bd)
+</script>
+</p>
+<p><!-- 用來顯示程式碼的 editor 區域 --></p>
+<div id="kw_editor" style="width: 600px; height: 300px;"></div>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form>
+<p><button id="kw_run">Run</button> <button id="kw_show_console">Output</button> <button id="kw_clear_console">清除輸出區</button><button id="clear_bd">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
+<div id="brython_div"></div>
+<div class="col-md-0" height="1" id="graphics-column" width="1"></div>
+<p><!-- ****************************** hello start -->
+<script type="text/python3">
+from browser import document as doc
+# 導入位於 static 目錄下的 beditor.py 
+import beditor
+    
+hello_prog = beditor.gist("d9d4fe5b22d0af855603a683c153236e", "hello_world.py").get_file()
+# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
+hello = beditor.editor(hello_prog, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+# id 為 "hello" 的按鈕點按時, 執行 hello 物件中的 prog 方法
+doc["hello"].bind('click', hello.prog)
+</script>
+</p>
+<p><!-- ****************************** hello end --></p>
+<p><!-- ****************************** get_gist_file start -->
+<script type="text/python3">
+from browser import document as doc
+import beditor
+    
+gist_prog = beditor.gist("d9d4fe5b22d0af855603a683c153236e", "get_gist_file.py").get_file()
+gist = beditor.editor(gist_prog, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+doc["gist"].bind('click', gist.prog)
+</script>
+</p>
+<p><!-- ****************************** get_gist_file end --></p>
+<p><button id="hello">Hello World</button> <button id="gist">Gist</button></p><h2>ANSIC</h2>
 <p>Fossil SCM</p>
 <p><a href="https://www.fossil-scm.org/">https://www.fossil-scm.org</a></p><h2>C++</h2>
 <p>Solvespace and Pyslvs</p>
