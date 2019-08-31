@@ -382,7 +382,10 @@ print(學員成績(60, 70, 80))</pre>
 <p>Solvespace and Pyslvs</p>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a></p>
 <p><a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a></p><h2>Flutter</h2>
-<p><a href="https://flutter.dev/docs">https://flutter.dev/docs</a></p>
+<p style="padding-left: 30px;"><a href="https://flutter.dev/docs">https://flutter.dev/docs</a></p>
+<p style="padding-left: 30px;">Flutter 實戰: <a href="https://book.flutterchina.club/">https://book.flutterchina.club/</a> (<a href="https://github.com/flutterchina/flutter-in-action">Github</a>)</p>
+<p>Flutter 與 Web 架構:</p>
+<p style="padding-left: 30px;"><a href="https://medium.com/flutter/hummingbird-building-flutter-for-the-web-e687c2a023a8">https://medium.com/flutter/hummingbird-building-flutter-for-the-web-e687c2a023a8</a></p>
 <p>Flutter 升級:</p>
 <p style="padding-left: 30px;">flutter upgrade</p>
 <p>Flutter 移除 analytics:</p>
@@ -414,7 +417,6 @@ print(學員成績(60, 70, 80))</pre>
 <h4>pubspec.yaml 中的支援版次表示法:</h4>
 <p><a href="https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub">https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub</a></p>
 <h4>Flutter Web</h4>
-<p style="padding-left: 30px;"><a href="/downloads/Flutter For Web_ a concrete example.pdf"></a></p>
 <p>利用 Flutter 建立網際前端程式: </p>
 <p style="padding-left: 30px;"><a href="https://github.com/flutter/flutter_web">https://github.com/flutter/flutter_web</a></p>
 <p>必須確認 Y:\\home\pub\bin 已經納入指令搜尋路徑中, 因為 webdev.bat 存放在此目錄, Flutter Web 將 dart 轉為 Javascript 時需要執行 webdev build 轉換指令, 將網際系統放入 build 目錄中.</p>
@@ -424,11 +426,22 @@ print(學員成績(60, 70, 80))</pre>
 <p><span>根據</span></p>
 <p style="padding-left: 30px;"><a href="https://github.com/flutter/samples">https://github.com/flutter/samples</a> 目錄中的 web 範例進行練習</p>
 <p>完成後, 進入專案目錄, 以 webdev serve 進行測試, 以 webdev build 轉出專案網際內容.</p>
+<p>Flutter Web 範例:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/vision_challenge">https://github.com/mdecourse/vision_challenge</a> (將每次改版 build 的內容複製到 Github Pages 對應的 docs 目錄中)</p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/vision_challenge">http://mde.tw/vision_challenge</a> </p>
 <p></p><h3>Dart</h3>
+<p style="padding-left: 30px;">"Dart 2 was a huge upgrade to the Dart platform. It completed the transformation from our early web roots to a mainstream programming language suitable for fast development of rich user experiences across mobile and web. Dart is somewhat unique as a language in offering both a virtual machine (VM) and compilation to both native machine code and JavaScript. This supports the differing needs of the various platforms, for both development and production."</p>
+<p style="padding-left: 30px; text-align: right;">-- <a href="https://medium.com/dartlang/announcing-dart-2-1-improved-performance-usability-9f55fca6f31a">Landing Dart 2</a></p>
 <p style="padding-left: 30px;"><a href="/downloads/Beginning Programming with Dart.pdf">Beginning Programming with Dart.pdf</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/guides/language">https://dart.dev/guides/language</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/tools/sdk/archive">https://dart.dev/tools/sdk/archive</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/dart-lang/sdk">https://github.com/dart-lang/sdk</a></p>
+<h4>Dart News and Update:</h4>
+<p style="padding-left: 30px;"><a href="https://news.dartlang.org/">https://news.dartlang.org/</a></p>
+<h4>Dart Packages</h4>
+<p style="padding-left: 30px;"><a href="https://pub.dev/">https://pub.dev/</a></p>
+<h4>Dart Mixins</h4>
+<p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/dart-what-are-mixins-3a72344011f3">https://medium.com/flutter-community/dart-what-are-mixins-3a72344011f3</a></p>
 <h4>安裝 Dart SDK</h4>
 <p style="padding-left: 30px;"><a href="https://dart.dev/get-dart">https://dart.dev/get-dart</a></p>
 <p style="padding-left: 30px;"><a href="https://storage.googleapis.com/dart-archive/channels/stable/release/2.4.1/sdk/dartsdk-windows-x64-release.zip">https://storage.googleapis.com/dart-archive/channels/stable/release/2.4.1/sdk/dartsdk-windows-x64-release.zip</a></p>
@@ -792,4 +805,41 @@ void main() {
   margin: auto;
   border: solid thin black;
 }</pre>
-<p></p>
+<h4>ROC Flag on Dartpad:</h4>
+<p style="padding-left: 30px;"><a href="http://mde.tw/dartpad/?id=b51f4d2a76e394421057a70e7d281b66">http://mde.tw/dartpad/?id=b51f4d2a76e394421057a70e7d281b66</a></p>
+<p>將 Dart Pad 上的 rocflag.dart, index.html 與 style.css 整合為單一網際頁面的方法:</p>
+<p>利用 dart2js 將 rocflag.dart 轉為 rocflag.js</p>
+<p style="padding-left: 30px;">dart2js -o rocflag.js rocflag.dart</p>
+<p>將 style.css 納入 index.html 中, 並導入 rocflag.js 程式.</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;title&gt;ROC Flag in Dart&lt;/title&gt;
+  &lt;!-- 將 dartpad 中的 style.css 放入 head 標註中 &gt;
+  &lt;style type="text/css"&gt;
+      html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    #wrapper {
+      width: 300px;
+      margin: auto;
+      border: solid thin black;
+}
+  &lt;/style&gt;
+  &lt;!-- 將利用 dart2js 轉出的 rocflag.js 放入 script 標註中 &gt;
+  &lt;script defer src="rocflag.js" type="application/javascript"&gt;&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;!-- 將 dartpad 中 index.html 的 canvas 標註放入 body 頁面中 --&gt;
+&lt;div id="wrapper"&gt;
+  &lt;canvas id="canvas" width="300" height="200"&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p><a href="/downloads/dart_ex/rocflag/index.html">/downloads/dart_ex/rocflag/index.html</a></p>
