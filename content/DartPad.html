@@ -158,7 +158,48 @@ init_mathjax();
 <p>之後, 進入 dart-pad 目錄之後, 以 pub get 取得所需 dependencies</p>
 <p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案.</p>
 <p>之後刪除 .git 與 .gitignore 檔案,  將 build 目錄改名為 docs 並設為 Github Pages 得到:</p>
-<p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p><br />Dart << <a href='Dart.html'>Previous</a> </div>
+<p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p>
+<p>Canvas 繪圖範例</p>
+<p>main.dart</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
+import 'dart:math' as Math;
+
+CanvasElement canvas;    
+CanvasRenderingContext2D ctx;
+int width = 200;
+int height = 200;
+
+void main() {
+  canvas = querySelector('#canvas');
+  ctx = canvas.getContext('2d');
+  
+  canvas.width = width;
+  canvas.height = height;
+  ctx.clearRect(0, 0, width, height);
+
+  ctx.beginPath();
+  ctx.arc(75, 75, 30, 0, Math.pi * 2, true); 
+  ctx.stroke();
+}</pre>
+<p>index.html</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;div id="wrapper"&gt;
+  &lt;canvas id="canvas" width="450" height="450"&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+</pre>
+<p>main.css</p>
+<pre class="brush:css;auto-links:false;toolbar:false" contenteditable="false">html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  width: 450px;
+  margin: auto;
+  border: solid thin black;
+}</pre>
+<p></p><br />Dart << <a href='Dart.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">

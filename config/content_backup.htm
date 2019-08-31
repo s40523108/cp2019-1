@@ -8,6 +8,8 @@
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cp2019">https://github.com/mdecourse/cp2019</a></p>
 <p style="padding-left: 30px;"><span><a href="https://github.com/mdecourse/cp2019_fall">https://github.com/mdecourse/cp2019_fall</a></span></p>
 <p style="padding-left: 30px;"><span><a href="https://github.com/mdecourse/cp2019_summer">https://github.com/mdecourse/cp2019_summer</a></span></p>
+<h4><span>參考資料:</span></h4>
+<p style="padding-left: 30px;"><span><a href="https://www.reddit.com/r/learnprogramming">https://www.reddit.com/r/learnprogramming</a></span></p>
 <p><span></span></p>
 <p></p><h2>QandA</h2>
 <p>與計算機程式課程有關的問題, 請在 <a href="https://github.com/mdecourse/cp2019/issues/4">https://github.com/mdecourse/cp2019/issues/4</a> 中提出.</p>
@@ -374,116 +376,17 @@ def 學員成績(自評分數, 互評得分, 教師評分):
     
 print(學員成績(80, 70, 60))
 print(學員成績(60, 70, 80))</pre>
-<p></p><h3>Python 程式環境</h3>
-<script src="/static/brython.js"></script>
-<script src="/static/brython_stdlib.js"></script>
-<script>
-window.onload=function(){
-brython({debug:1, pythonpath:['/static/']});
-}
-</script>
-<p><!-- 導入 FileSaver 與 filereader --></p>
-<p>
-<script src="/static/ace/FileSaver.min.js" type="text/javascript"></script>
-<script src="/static/ace/filereader.js" type="text/javascript"></script>
-</p>
-<p><!-- 導入 ace --></p>
-<p>
-<script src="/static/ace/ace.js" type="text/javascript"></script>
-<script src="/static/ace/ext-language_tools.js" type="text/javascript"></script>
-<script src="/static/ace/mode-python3.js" type="text/javascript"></script>
-<script src="/static/ace/snippets/python.js" type="text/javascript"></script>
-</p>
-<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["py_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
-<p>
-<script type="text/javascript">
-function doSave(storage_id, filename){
-    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
-    filename = document.getElementById(filename).value
-    saveAs(blob, filename+".py");
-}
-</script>
-</p>
-<p><!-- 印出版次與關鍵字程式 --></p>
-<p>
-<script type="text/python3">
-from browser import document as doc
-from browser import html
-import ace
-
-# 清除畫布
-def clear_bd(ev):
-    bd = doc["brython_div"]
-    bd.clear()
-
-# Brython 3.7.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
-Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
-
-Ace.editor.setValue("""# 導入 sys 模組
-import sys
-# 導入 keyword 模組
-import keyword
-
-def helloWorld():
-    print("Hello World!")
-
-helloWorld()
-
-# 利用 sys 模組中的 version_info 印出 Python 版次
-print("Python version: ", sys.version_info)
-# 利用 keyword 模組中的 kwlist 印出關鍵字
-print("Python keywords: ", keyword.kwlist)
-""")
-Ace.editor.scrollToRow(0)
-Ace.editor.gotoLine(0)
-
-# 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
-doc['kw_run'].bind('click', Ace.run)
-doc['kw_show_console'].bind('click', Ace.show_console)
-doc['kw_clear_console'].bind('click', Ace.clear_console)
-doc['clear_bd'].bind('click', clear_bd)
-</script>
-</p>
-<p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor" style="width: 600px; height: 300px;"></div>
-<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
-<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form>
-<p><button id="kw_run">Run</button> <button id="kw_show_console">Output</button> <button id="kw_clear_console">清除輸出區</button><button id="clear_bd">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
-<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
-<div id="brython_div"></div>
-<div class="col-md-0" height="1" id="graphics-column" width="1"></div>
-<p><!-- ****************************** hello start -->
-<script type="text/python3">
-from browser import document as doc
-# 導入位於 static 目錄下的 beditor.py 
-import beditor
-    
-hello_prog = beditor.gist("d9d4fe5b22d0af855603a683c153236e", "hello_world.py").get_file()
-# 利用 beditor.py 中的 editor 類別建立案例, 對應到 kw1
-hello = beditor.editor(hello_prog, "kw_editor", "kw_console", "kw_container", "kw_py_src")
-# id 為 "hello" 的按鈕點按時, 執行 hello 物件中的 prog 方法
-doc["hello"].bind('click', hello.prog)
-</script>
-</p>
-<p><!-- ****************************** hello end --></p>
-<p><!-- ****************************** get_gist_file start -->
-<script type="text/python3">
-from browser import document as doc
-import beditor
-    
-gist_prog = beditor.gist("d9d4fe5b22d0af855603a683c153236e", "get_gist_file.py").get_file()
-gist = beditor.editor(gist_prog, "kw_editor", "kw_console", "kw_container", "kw_py_src")
-doc["gist"].bind('click', gist.prog)
-</script>
-</p>
-<p><!-- ****************************** get_gist_file end --></p>
-<p><button id="hello">Hello World</button> <button id="gist">Gist</button></p><h2>ANSIC</h2>
+<p></p><h2>ANSIC</h2>
 <p>Fossil SCM</p>
 <p><a href="https://www.fossil-scm.org/">https://www.fossil-scm.org</a></p><h2>C++</h2>
 <p>Solvespace and Pyslvs</p>
 <p><a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a></p>
 <p><a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a></p><h2>Flutter</h2>
 <p><a href="https://flutter.dev/docs">https://flutter.dev/docs</a></p>
+<p>Flutter 升級:</p>
+<p style="padding-left: 30px;">flutter upgrade</p>
+<p>Flutter 移除 analytics:</p>
+<p style="padding-left: 30px;">flutter config --no-analytics</p>
 <p>第一步:</p>
 <p style="padding-left: 30px;">在校園網路或以 VPN 或設定代理主機, 下載 <a href="https://link.springer.com/book/10.1007/978-1-4842-4972-7">2019 Pratical Flutter 電子書</a>.</p>
 <p style="padding-left: 30px;">登入 @gm 電子郵箱後, 下載可放入 USB 隨身碟運作的可攜系統:</p>
@@ -507,7 +410,22 @@ doc["gist"].bind('click', gist.prog)
 <p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713">https://medium.com/flutter-community/using-svg-in-flutter-3dcf7b1dd713</a></p>
 <p style="padding-left: 30px;"><a href="https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b">https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b</a></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/tBzJOb2Dopg" width="560"></iframe></p>
-<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-QRQIKtPTlI" width="560"></iframe></p><h3>Dart</h3>
+<p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-QRQIKtPTlI" width="560"></iframe></p>
+<h4>pubspec.yaml 中的支援版次表示法:</h4>
+<p><a href="https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub">https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub</a></p>
+<h4>Flutter Web</h4>
+<p style="padding-left: 30px;"><a href="/downloads/Flutter For Web_ a concrete example.pdf"></a></p>
+<p>利用 Flutter 建立網際前端程式: </p>
+<p style="padding-left: 30px;"><a href="https://github.com/flutter/flutter_web">https://github.com/flutter/flutter_web</a></p>
+<p>必須確認 Y:\\home\pub\bin 已經納入指令搜尋路徑中, 因為 webdev.bat 存放在此目錄, Flutter Web 將 dart 轉為 Javascript 時需要執行 webdev build 轉換指令, 將網際系統放入 build 目錄中.</p>
+<p>webdev.bat 的啟動透過執行:</p>
+<p style="padding-left: 30px;"><span>flutter packages pub global activate webdev</span></p>
+<p><span>以 code 指令啟動隨身系統中的 Visual Studio Code, 然後以 Ctrl + Shift + P 帶出 Flutter: New Web Project, 點選後建立新的 Flutter Web 專案.</span></p>
+<p><span>根據</span></p>
+<p style="padding-left: 30px;"><a href="https://github.com/flutter/samples">https://github.com/flutter/samples</a> 目錄中的 web 範例進行練習</p>
+<p>完成後, 進入專案目錄, 以 webdev serve 進行測試, 以 webdev build 轉出專案網際內容.</p>
+<p></p><h3>Dart</h3>
+<p style="padding-left: 30px;"><a href="/downloads/Beginning Programming with Dart.pdf">Beginning Programming with Dart.pdf</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/guides/language">https://dart.dev/guides/language</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/tools/sdk/archive">https://dart.dev/tools/sdk/archive</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/dart-lang/sdk">https://github.com/dart-lang/sdk</a></p>
@@ -813,6 +731,13 @@ x?.foo();</pre>
 <p>數列 (Lists)</p>
 <p>常數</p>
 <p>Final 變數</p>
+<h4>程式範例</h4>
+<p><a href="https://github.com/dart-lang/dart-pad/wiki/Gists">https://github.com/dart-lang/dart-pad/wiki/Gists</a></p>
+<p>HttpClient 類別位於 dart:io 程式庫中, 只能在 Server 中執行.</p>
+<p style="padding-left: 30px;"><a href="https://api.dartlang.org/stable/2.1.1/dart-io/HttpClient-class.html">https://api.dartlang.org/stable/2.1.1/dart-io/HttpClient-class.html</a></p>
+<p>HttpRequest 類別位於  dart:html 程式庫中, 只能在網際 Client 中執行.</p>
+<p style="padding-left: 30px;"><a href="https://api.dartlang.org/stable/2.0.0/dart-html/HttpRequest-class.html">https://api.dartlang.org/stable/2.0.0/dart-html/HttpRequest-class.html</a></p>
+<p style="padding-left: 30px;"><a href="https://dart.dev/tutorials/web/fetch-data">https://dart.dev/tutorials/web/fetch-data</a></p>
 <h4>參考資料</h4>
 <p style="padding-left: 30px;"><a href="https://learnxinyminutes.com/docs/dart/?ref=hackr.io">https://learnxinyminutes.com/docs/dart/?ref=hackr.io</a></p>
 <p style="padding-left: 30px;"><a href="https://itnext.io/learn-dart-before-you-flutter-d1c0be6cf892">https://itnext.io/learn-dart-before-you-flutter-d1c0be6cf892</a></p>
@@ -827,3 +752,44 @@ x?.foo();</pre>
 <p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案.</p>
 <p>之後刪除 .git 與 .gitignore 檔案,  將 build 目錄改名為 docs 並設為 Github Pages 得到:</p>
 <p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p>
+<p>Canvas 繪圖範例</p>
+<p>main.dart</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
+import 'dart:math' as Math;
+
+CanvasElement canvas;    
+CanvasRenderingContext2D ctx;
+int width = 200;
+int height = 200;
+
+void main() {
+  canvas = querySelector('#canvas');
+  ctx = canvas.getContext('2d');
+  
+  canvas.width = width;
+  canvas.height = height;
+  ctx.clearRect(0, 0, width, height);
+
+  ctx.beginPath();
+  ctx.arc(75, 75, 30, 0, Math.pi * 2, true); 
+  ctx.stroke();
+}</pre>
+<p>index.html</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;div id="wrapper"&gt;
+  &lt;canvas id="canvas" width="450" height="450"&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+</pre>
+<p>main.css</p>
+<pre class="brush:css;auto-links:false;toolbar:false" contenteditable="false">html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#wrapper {
+  width: 450px;
+  margin: auto;
+  border: solid thin black;
+}</pre>
+<p></p>
