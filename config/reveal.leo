@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Created by Leo: http://leoeditor.com/leo_toc.html -->
 <leo_file xmlns:leo="http://leoeditor.com/namespaces/leo-python-editor/1.1" >
-<leo_header file_format="2" tnodes="0" max_tnode_index="0" clone_windows="0"/>
-<globals body_outline_ratio="0.5" body_secondary_ratio="0.5">
-	<global_window_position top="50" left="50" height="500" width="700"/>
-	<global_log_window_position top="0" left="0" height="0" width="0"/>
-</globals>
+<leo_header file_format="2"/>
+<globals/>
 <preferences/>
 <find_panel_settings/>
 <vnodes>
@@ -13,28 +10,46 @@
 <v t="leo.20180902120538.2"><vh>@data qt-gui-plugin-style-sheet</vh></v>
 <v t="leo.20180902120538.3"><vh>@string initial_split_orientation = horizontal</vh></v>
 </v>
-<v t="leo.20180902120523.1" a="E"><vh>編輯 reveal</vh>
-<v t="leo.20180902120523.2" a="E"><vh>@path ./../reveal</vh>
-<v t="leo.20180902120523.3" a="E"><vh>@clean index.html</vh>
-<v t="leo.20180902120523.4" a="E"><vh>html</vh>
+<v t="leo.20180902120523.1"><vh>編輯 reveal</vh>
+<v t="leo.20180902120523.2"><vh>@path ./../reveal</vh>
+<v t="leo.20180902120523.3"><vh>@clean index.html</vh>
+<v t="leo.20180902120523.4"><vh>html</vh>
 <v t="leo.20180902120523.5"><vh>head</vh></v>
-<v t="leo.20180902120523.6" a="E"><vh>body</vh>
-<v t="leo.20180902120523.7" a="E"><vh>reveal div</vh>
-<v t="leo.20180902120523.8" a="E"><vh>slides div</vh>
-<v t="leo.20180902120523.9" a="E"><vh>封面投影片</vh>
+<v t="leo.20180902120523.6"><vh>body</vh>
+<v t="leo.20180902120523.7"><vh>reveal div</vh>
+<v t="leo.20180902120523.8"><vh>slides div</vh>
+<v t="leo.20180902120523.9"><vh>封面投影片</vh>
 <v t="leo.20180902120523.10"><vh>封面投影片內容</vh></v>
 </v>
-<v t="leo.20180902120523.11" a="E"><vh>快捷鍵</vh>
+<v t="leo.20190903075709.1"><vh>課程簡介1</vh>
+<v t="leo.20190903075709.2"><vh>課程簡介1</vh></v>
+</v>
+<v t="leo.20190903083945.1"><vh>課程簡介2</vh>
+<v t="leo.20190903083945.2"><vh>課程簡介2</vh></v>
+</v>
+<v t="leo.20190903082136.1"><vh>課程目標</vh>
+<v t="leo.20190903082136.2"><vh>課程目標</vh></v>
+</v>
+<v t="leo.20190903084435.1"><vh>程式為何重要?</vh>
+<v t="leo.20190903084435.2"><vh>程式為何重要?</vh></v>
+</v>
+<v t="leo.20190903080039.1"><vh>Dartpad</vh>
+<v t="leo.20190903080039.2"><vh>iframe 導入Dartpad</vh></v>
+</v>
+<v t="leo.20190903080658.1"><vh>Why Dart?</vh>
+<v t="leo.20190903080658.2"><vh>Why Dart?</vh></v>
+</v>
+<v t="leo.20180902120523.11"><vh>快捷鍵</vh>
 <v t="leo.20180902120523.12"><vh>投影片快捷鍵</vh></v>
 </v>
 <v t="leo.20180902120523.13"><vh>各式內容引用範例</vh>
-<v t="leo.20180902120523.14" a="E"><vh>導入數學符號與方程式</vh>
+<v t="leo.20180902120523.14"><vh>導入數學符號與方程式</vh>
 <v t="leo.20180902120523.15"><vh>LaTeX 格式方程式</vh></v>
 </v>
-<v t="leo.20180902120523.16" a="E"><vh>導入縮排程式碼</vh>
+<v t="leo.20180902120523.16"><vh>導入縮排程式碼</vh>
 <v t="leo.20180902120523.17"><vh>引用程式碼</vh></v>
 </v>
-<v t="leo.20180902120523.18" a="E"><vh>導入影片</vh>
+<v t="leo.20180902120523.18"><vh>導入影片</vh>
 <v t="leo.20180902120523.19"><vh>iframe 導入影片</vh></v>
 </v>
 </v>
@@ -48,7 +63,7 @@
 </vnodes>
 <tnodes>
 <t tx="leo.20180902120523.1"></t>
-<t tx="leo.20180902120523.10">## CMSimfly 網際內容管理
+<t tx="leo.20180902120523.10">## Computer Programming
 
 ### KMOLab
 
@@ -56,7 +71,7 @@
 Created by [KMOLab](http://lab.kmol.info/)
 &lt;/small&gt;
 
-[CMSimfly 網誌](./../blog/index.html)
+[2019Fall CP](./../blog/index.html)
 
 
 </t>
@@ -170,7 +185,7 @@ make.start()
 <t tx="leo.20180902120523.5">&lt;head&gt;
     &lt;meta charset="utf-8"&gt;
 &lt;title&gt;
-CMSimfly 網際內容管理
+2019 Fall CP Reveal.js
 &lt;/title&gt;
     &lt;meta name="description" content="A framework for easily creating beautiful presentations using HTML"&gt;
     &lt;meta name="author" content="Hakim El Hattab"&gt;
@@ -326,5 +341,115 @@ QLineEdit#editorLabel {
 }</t>
 <t tx="leo.20180902120538.3">horizontal: body pane to the left
 vertical: body pane on the botton</t>
+<t tx="leo.20190903075709.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20190903075709.2"># 課程簡介
+
+* 以 Dart 程式語言為主
+* 每位學員利用 Github 建立網站
+* 採用 CMSiMDE 內容管理系統
+* 採用 Reveal.js 網際簡報
+* 採用 Pelican 網誌系統
+* 採用 Blogger 網誌系統
+
+</t>
+<t tx="leo.20190903080039.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20190903080039.2">## Dartpad
+
+&lt;iframe src="https://mde.tw/dartpad" width="800" height="550"&gt;&lt;/iframe&gt;
+</t>
+<t tx="leo.20190903080658.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20190903080658.2"># Why Dart?
+
+* 2011 年 Google 主導開發的新世代程式語言
+* 具備 Javascript (1995) 與 C# (2000) 的優點
+* 目前透過 Flutter SDK (2017) 正逐漸受到重視
+* 利用 Dartpad 適合作為初學者第一套程式語言
+* 可開發與後端運算環境整合的網際與手機程式
+* 希望能與現有的 Python, C, C++ 程式結合使用
+
+</t>
+<t tx="leo.20190903082136.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20190903082136.2"># 課程目標
+
+* 了解計算機程式的重要性
+* 了解為何使用 Git 與 Github
+* 能夠利用 Dart 建立簡單的程式
+* 透過分組執行專案, 學習協同設計
+* 透過網站的維護, 學習網際內容管理
+* 透過字幕影片錄製, 學習口語文字表達
+
+
+</t>
+<t tx="leo.20190903083945.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20190903083945.2"># 課程簡介 (續)
+
+* 採用 ShareX 錄製操作過程影片
+* 利用 FFmpeg.exe 編輯 mp4 影片
+* 利用 Leo Editor 編輯簡報與網誌
+* 利用 GitExtensions 協助 Github 管理
+* 利用 SciTE 編輯所有 UTF-8 文字內容
+* 利用  Visual Studio Code 編輯程式
+
+</t>
+<t tx="leo.20190903084435.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20190903084435.2"># 程式為何重要?
+
+* 計算機程式為何重要?
+* 數位裝置與網路結合的生活環境
+* 當電腦程式已經能深度學習與思考
+* 當各種自動化與智能系統不斷普及
+* 現代人"不會全部"被機器與電腦程式所取代
+* 現代人必須不斷朝智能機器無法取代的路前進
+
+
+</t>
 </tnodes>
 </leo_file>
