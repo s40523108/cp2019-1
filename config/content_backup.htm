@@ -807,6 +807,7 @@ x?.foo();</pre>
 <p>HttpRequest 類別位於  dart:html 程式庫中, 只能在網際 Client 中執行.</p>
 <p style="padding-left: 30px;"><a href="https://api.dartlang.org/stable/2.0.0/dart-html/HttpRequest-class.html">https://api.dartlang.org/stable/2.0.0/dart-html/HttpRequest-class.html</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/tutorials/web/fetch-data">https://dart.dev/tutorials/web/fetch-data</a></p>
+<p style="padding-left: 30px;"><a href="https://codeburst.io/deploying-dart-2-apps-on-heroku-27fa120f1ec4">https://codeburst.io/deploying-dart-2-apps-on-heroku-27fa120f1ec4</a></p>
 <h4>參考資料</h4>
 <p style="padding-left: 30px;"><a href="https://learnxinyminutes.com/docs/dart/?ref=hackr.io">https://learnxinyminutes.com/docs/dart/?ref=hackr.io</a></p>
 <p style="padding-left: 30px;"><a href="https://itnext.io/learn-dart-before-you-flutter-d1c0be6cf892">https://itnext.io/learn-dart-before-you-flutter-d1c0be6cf892</a></p><h3>Dart on Server</h3>
@@ -922,3 +923,42 @@ void main() {
 &lt;/html&gt;
 </pre>
 <p><a href="/downloads/dart_ex/rocflag/index.html">/downloads/dart_ex/rocflag/index.html</a></p>
+<h2>Learn Dart</h2>
+<h4>Dart 2 啟動</h4>
+<p><a href="https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html">https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html</a> 宣布後, Dart 第二版正式啟動, 目前現存的許多與 Dart 第一版有關的資料頓時失去作用. </p>
+<p>其中也包括:</p>
+<p style="padding-left: 30px;">Dart for Absolute Beginners (2014)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-6482-8">https://link.springer.com/book/10.1007/978-1-4302-6482-8</a></p>
+<p>Dart2 與 Dart1 的差異請參考: <a href="https://dart.dev/dart-2">https://dart.dev/dart-2</a></p>
+<hr/>
+<h4>初學 Dart 的規劃</h4>
+<p>Dart 程式語言從 2011 年至 <a href="https://en.wikipedia.org/wiki/Flutter_(software)">2017 年 Flutter 出現</a>之前, 在無法全面取代 Javascript 的情況下, 採取了利用<a href="https://dart.dev/platforms">多平台</a>的方式進行推廣, 也就是目前以:</p>
+<p style="padding-left: 30px;">跨手機平台的 JIT + VM 執行開發, 將所完成的手機程式以 AOT + Runtime 進行部署.</p>
+<p style="padding-left: 30px;">Web 部分以 dartdevc 執行開發, 並將所完成的 dart 程式以 dart2js 轉為 Javascript 後在瀏覽器中前台執行.</p>
+<p>即便如此, 就 Web 開發部分, 除了歷史較久的 <a href="https://angulardart.dev/">Dartangular</a> 外, 目前也啟動了依附在 <a href="https://flutter.dev/">Flutter</a> 的 <a href="https://flutter.dev/web">Flutter for Web</a>.</p>
+<p>上述的 Dart 多平台開發模式, 假如再納入類似 <a href="https://flask.palletsprojects.com">Python Flask</a> 的伺服器端開發框架: <a href="https://aqueduct.io/">https://aqueduct.io/</a>, 從初學者的角度來看, 可能很難入門, 因為手機平台開發需要有對 Android 與 iOS 等操作系統的基本概念, 而 Web 開發又牽涉到必須學習 HTML5 與 CSS.</p>
+<p>因此在本課程採用 Dart 進行教學, 對初學者的規劃為:</p>
+<ol>
+<li>從 <a href="https://link.springer.com/book/10.1007/978-1-4302-6482-8">Dart for Absolute Beginners (2014)</a> 中適用於 Dart 2 的基本語法開始, 直接在 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 中練習, 先了解 Dart 2 程式語言的用法之後, 再加上 Html5 中的 Canvas 繪圖, 配合 CSS 的編寫, 可以在 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 完成靜態與動態繪圖.</li>
+<li>接下來則配合第一階段在 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 所編寫的 .dart, .html 以及 .css 等檔案, 以 dart2js -o main.js main.dart 指令, 將 .dart 轉為 .js 後, 結合 .html 與 .css 在單一網頁中執行靜態繪圖與動態繪圖程式.</li>
+<li>第三階段則利用 <a href="https://link.springer.com/book/10.1007/978-1-4842-4972-7">Practical Flutter (2019)</a>, 讓使用者登入 @gm 電子郵箱後, 下載 <a href="https://drive.google.com/file/d/1_Mfw1U8yUkYGlVcoFzpvijtRFdKgP93U/view?usp=sharing">flutter_portable_final.7z</a>, 放入 USB 隨身碟, 或者與先前下載的 <a href="https://drive.google.com/file/d/1fxMdqdCoCL__O1IpZ-Sv-A_4-c77Wx4E/view?usp=sharing">2019Fall可攜套件.7z</a>, 整合設定, 打造可以利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://www.bluestacks.com">Bluestacks</a> 進行手機 (以 Android 為主) 程式開發的環境. 並嘗試修改第一與第二階段所完成的程式, 直接在 Android 模擬器或實體手機上執行.</li>
+</ol>
+<hr/>
+<p>在第一階段中, 可以輔助學習的資料包括:</p>
+<p style="padding-left: 30px;"><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
+<p style="padding-left: 30px;"><a href="https://da-bootcamp.firebaseapp.com/?course=start_programming_dart">https://da-bootcamp.firebaseapp.com/?course=start_programming_dart</a> </p>
+<p>將分別完成</p>
+<ol>
+<li><a href="http://mde.tw/dartpad/?id=215ba63265350c02dfbd586dfd30b8c3">Hello World!</a> (主函式, 註解, 資料列印與基本語法)</li>
+<li><a href="http://mde.tw/dartpad?id=9f69e77cb456b97cccc8eb5a9dbd991c">亂數分組</a> (變數, 資料型別, 資料 io, 數列, 迴圈, 模數運算, 判斷式)</li>
+<li><a href="http://mde.tw/dartpad?id=e93b969fed77325db0b848a85f1cf78e">int2double</a> (類別, 物件導向)</li>
+<li><a href="http://mde.tw/dartpad?id=b51f4d2a76e394421057a70e7d281b66">ROC Flag</a> (Html5 Canvas 靜態繪圖, CSS)</li>
+<li><a href="http://mde.tw/dartpad?id=fc5ad3a8136c27de79f5a33e33d5c5f6">Snake Game</a> <span>(Html5 Canvas 動態態繪圖, CSS)</span></li>
+<li><a href="http://mde.tw/dartpad?id=e9c5f81ea67eb3826f30fc5bb2e98cd1">Solar System</a> <span>(Html5 Canvas 動態態繪圖, CSS)</span></li>
+<li><a href="http://mde.tw/dartpad?id=92c95776f09f38b2fe635cccec31e773">Rabbit Count</a> (HTML 表單與滑鼠事件, CSS)</li>
+<li><a href="http://mde.tw/dartpad?id=0c7e4bbb880d11f0335d5b5da49e86db">Ping Pong Game</a> (HTML5 Canvas 動態繪圖, 滑鼠事件, CSS)</li>
+</ol>
+<p>第二階段, 將 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 中 Samples 範例利用 dart2js 轉為單一 html 程式, 送到各組員的 Github Pages 網站中執行.</p>
+<p>第三階段, 透過 <a href="https://drive.google.com/file/d/1_Mfw1U8yUkYGlVcoFzpvijtRFdKgP93U/view?usp=sharing">flutter_portable_final.7z</a>, 中的 Flutter SDK 與 Visual Studio Code, 將 Samples 範例程式轉為 Android 程式, 在 Bluestacks 中執行.</p>
+<p></p>
+<p></p>
