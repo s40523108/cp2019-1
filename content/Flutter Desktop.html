@@ -148,96 +148,11 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Dart on Server << <a href='Dart on Server.html'>Previous</a> <a href='Learn Dart.html'>Next</a> >> Learn Dart<br /><h1>DartPad</h1>
-<p style="padding-left: 30px;"><a href="https://dart.dev/tools/dartpad">https://dart.dev/tools/dartpad</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
-<p style="padding-left: 30px;"><a href="https://dart.dev/tutorials/web/low-level-html/remove-elements">https://dart.dev/tutorials/web/low-level-html/remove-elements</a></p>
-<p>讓使用者所練習的 Dart 程式可以存檔, 可以呼叫修改, 也可以轉換成 Web, Mobile 與單機程式?</p>
-<p>或者利用 Dart 建立一個以機械設計流程為主體的網際內容管理系統?</p>
-<p>自行 Build dart-pad:</p>
-<p>git clone <a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
-<p>之後, 進入 dart-pad 目錄之後, 以 pub get 取得所需 dependencies</p>
-<p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案. <span>(注意: 使用 webdev.bat 時, 必須查看批次檔案中所引用的 dart 所在路徑是否正確)</span></p>
-<p>之後刪除 .git 與 .gitignore 檔案,  將 build 目錄改名為 docs 並設為 Github Pages 得到:</p>
-<p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p>
-<p>Canvas 繪圖範例</p>
-<p>main.dart</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
-import 'dart:math' as Math;
-
-CanvasElement canvas;    
-CanvasRenderingContext2D ctx;
-int width = 200;
-int height = 200;
-
-void main() {
-  canvas = querySelector('#canvas');
-  ctx = canvas.getContext('2d');
-  
-  canvas.width = width;
-  canvas.height = height;
-  ctx.clearRect(0, 0, width, height);
-
-  ctx.beginPath();
-  ctx.arc(75, 75, 30, 0, Math.pi * 2, true); 
-  ctx.stroke();
-}</pre>
-<p>index.html</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;div id="wrapper"&gt;
-  &lt;canvas id="canvas" width="450" height="450"&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-</pre>
-<p>main.css</p>
-<pre class="brush:css;auto-links:false;toolbar:false" contenteditable="false">html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-#wrapper {
-  width: 450px;
-  margin: auto;
-  border: solid thin black;
-}</pre>
-<h4>ROC Flag on Dartpad:</h4>
-<p style="padding-left: 30px;"><a href="http://mde.tw/dartpad/?id=b51f4d2a76e394421057a70e7d281b66">http://mde.tw/dartpad/?id=b51f4d2a76e394421057a70e7d281b66</a></p>
-<p>將 Dart Pad 上的 rocflag.dart, index.html 與 style.css 整合為單一網際頁面的方法:</p>
-<p>利用 dart2js 將 rocflag.dart 轉為 rocflag.js</p>
-<p style="padding-left: 30px;">dart2js -o rocflag.js rocflag.dart</p>
-<p>將 style.css 納入 index.html 中, 並導入 rocflag.js 程式.</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;ROC Flag in Dart&lt;/title&gt;
-  &lt;!-- 將 dartpad 中的 style.css 放入 head 標註中 &gt;
-  &lt;style type="text/css"&gt;
-      html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    #wrapper {
-      width: 300px;
-      margin: auto;
-      border: solid thin black;
-}
-  &lt;/style&gt;
-  &lt;!-- 將利用 dart2js 轉出的 rocflag.js 放入 script 標註中 &gt;
-  &lt;script defer src="rocflag.js" type="application/javascript"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- 將 dartpad 中 index.html 的 canvas 標註放入 body 頁面中 --&gt;
-&lt;div id="wrapper"&gt;
-  &lt;canvas id="canvas" width="300" height="200"&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-<p><a href="./../downloads/dart_ex/rocflag/index.html">/downloads/dart_ex/rocflag/index.html</a></p><br />Dart on Server << <a href='Dart on Server.html'>Previous</a> <a href='Learn Dart.html'>Next</a> >> Learn Dart</div>
+    <div id="tipue_search_content">Flutter Web << <a href='Flutter Web.html'>Previous</a> <a href='Dart.html'>Next</a> >> Dart<br /><h1>Flutter Desktop</h1>
+<p><a href="https://github.com/google/flutter-desktop-embedding">https://github.com/google/flutter-desktop-embedding</a></p>
+<p><a href="https://github.com/flutter/flutter/wiki/Desktop-shells">https://github.com/flutter/flutter/wiki/Desktop-shells</a></p>
+<p><a href="https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0">https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0</a></p>
+<p><a href="https://github.com/go-flutter-desktop">https://github.com/go-flutter-desktop</a> (through <a href="https://golang.org/">Go</a>)</p><br />Flutter Web << <a href='Flutter Web.html'>Previous</a> <a href='Dart.html'>Next</a> >> Dart</div>
         
     <!-- footer -->
       <div class="container">

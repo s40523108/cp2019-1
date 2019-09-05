@@ -36,9 +36,11 @@
 <p style="padding-left: 30px;">分組報告</p>
 <h2>QandA</h2>
 <p>與計算機程式課程有關的問題, 請在 <a href="https://github.com/mdecourse/cp2019/issues/4">https://github.com/mdecourse/cp2019/issues/4</a> 中提出.</p>
-<p>在校區內所使用的電腦, 可以透過 <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> 取得各項教育版軟體, 其中包括 Windows 操作系統與 MS Office 以及 AutoDesk 教育版相關套件.</p>
-<p>當使用者位於校區外, 希望連線使用校區內的相關電腦資料, 包括下載教育版軟體或使用各項電子期刊或電子書, 可以利用 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn</a> 連線後使用.</p>
-<h2>USB 隨身碟</h2>
+<p>在校區內所使用的電腦 (若只需下載 .iso 可以設定系上提供的 Proxy  server 後下載), 可以透過 <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> 取得各項教育版軟體, 其中包括 Windows 操作系統與 MS Office 以及 AutoDesk 教育版相關套件.</p>
+<p><a href="https://software.nfu.edu.tw/Windows/tw/Win_Pro_Ent_Edu_N_10_1809_64bit_Chinese_Traditional.iso">Windows 10 1809.iso</a>     <a href="https://software.nfu.edu.tw/KMS/windows_kms.bat">kms.bat</a> (每半年認證, 若在校外必須透過 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a> 連線後進行)</p>
+<p><a href="https://software.nfu.edu.tw/Office/tw/Visio_Pro_2016_64Ch.iso">Office 2016.iso</a>    <a href="https://software.nfu.edu.tw/KMS/Office_2016_KMS.bat">kms.bat</a> <span>(每半年認證, 若在校外必須透過</span><span><span> </span></span><a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a><span><span> </span>連線後進行)</span></p>
+<p><a href="https://software.nfu.edu.tw/Autodesk/autodesk.iso">AutoDesk PDSU.iso</a> (利用 @gm 電子郵箱驗證後, 取得學生版三年使用授權)</p>
+<p>當使用者位於校區外, 希望連線使用校區內的相關電腦資料, 包括下載教育版軟體或使用各項電子期刊或電子書, 可以利用 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn</a> 連線後使用.</p><h2>USB 隨身碟</h2>
 <p>本課程建議使用隨身碟儲存所有與課程相關的倉儲或網頁資料, 也可只將與個人設定相關及倉儲存放在 USB 隨身碟中.</p>
 <p>注意: 將資料存入 USB 隨身碟之前, 務必檢查所使用格式化的規格, 一般出廠 USB 格式化仍採用 <a href="https://zh.wikipedia.org/wiki/FAT">FAT32</a> 格式, 之後將無法存放大於 4GB 的檔案, 因此建議使用之前將 USB 隨身碟格式化為<a href="https://zh.wikipedia.org/wiki/ExFAT"> exFAT</a> 格式.</p>
 <h4>USB 存放整個可攜系統</h4>
@@ -180,9 +182,8 @@ REM 關閉 cmd 指令視窗
 taskkill /IM cmd.exe /F
 EXIT</pre>
 <p>請注意:</p>
-<p>因為開啟 code 後所需先前的相關 Flutter 專案, 會將與 Android 相關, 取得的 package 放在 PUB_CACHE (即 y:\home\pub), 以及  .android (即 y:\home\.android) 目錄中, 因此搬遷資料時必須同時複製此一目錄內容.</p>
-<p>而且需要建立 y:\home\AppData\Roaming 目錄, 以便存放 vscode 啟動後的 logs 檔案.</p>
-<h2>課程筆記</h2>
+<p>因為開啟 code 後所需先前的相關 Flutter 專案, 會將與 Android 相關, 取得的 package 放在 PUB_CACHE (即 y:\home\pub), 以及  .android (即 y:\home\.android) 目錄中, 因此搬遷資料時必須同時複製此一目錄內容. 且轉移系統設定時, 必須查驗各 .bat 中所使用的 dart sdk 所在位置.</p>
+<p>而且需要建立 y:\home\AppData\Roaming 目錄, 以便存放 vscode 啟動後的 logs 檔案.</p><h2>課程筆記</h2>
 <h4>利用倉儲與網頁紀錄筆記</h4>
 <p>優點:</p>
 <p style="padding-left: 30px;">快速方便且能引入大量線上靜態與動態影片資料</p>
@@ -453,10 +454,105 @@ print(學員成績(60, 70, 80))</pre>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-QRQIKtPTlI" width="560"></iframe></p>
 <h4>pubspec.yaml 中的支援版次表示法:</h4>
 <p><a href="https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub">https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub</a></p>
-<h4>Flutter Web</h4>
+<h3>Flutter Mobile</h3>
+<p>Practical Flutter (2019)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4972-7">https://link.springer.com/book/10.1007/978-1-4842-4972-7</a></p>
+<p>Chapter 7: Flutter Chat 希望以 Flask + SocketIo 取代 Node.js</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mnlightstone/Chatroom-Flask-Socketio">https://github.com/mnlightstone/Chatroom-Flask-Socketio</a></p>
+<p style="padding-left: 30px;"><a href="https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d">https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d</a> (<a href="https://github.com/Samhita-alla/flask-chat-app-article">Source codes</a>)</p>
+<p style="padding-left: 30px;">需要透過 python -m pip install flask_socketio 安裝模組. 而且 socketio.js 必須使用 2.0 以上版本, 才能以 UTF-8 編碼:</p>
+<p style="padding-left: 60px;"><a href="https://cdnjs.com/libraries/socket.io/2.2.0">https://cdnjs.com/libraries/socket.io/2.2.0</a></p>
+<p style="padding-left: 30px;">例如使用: </p>
+<p style="padding-left: 60px;"><a href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js</a> </p>
+<p>以 <a href="https://github.com/Samhita-alla/flask-chat-app-article">https://github.com/Samhita-alla/flask-chat-app-article</a> 為例:</p>
+<p>所需 Python 模組包含:</p>
+<p>Flask==0.12.2<br/>flask-socketio<br/>eventlet==0.17.4<br/>gunicorn==18.0.0</p>
+<p>其 main.py:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, render_template
+from flask_socketio import SocketIO
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
+socketio = SocketIO(app)
+
+
+@app.route('/')
+def sessions():
+    return render_template('session.html')
+
+
+def messageReceived(methods=['GET', 'POST']):
+    print('message was received!!!')
+
+
+@socketio.on('my event')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('my response', json, callback=messageReceived)
+
+
+if __name__ == '__main__':
+    socketio.run(app, debug=True)
+</pre>
+<p>位於 templates 目錄中的 session.html</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">  &lt;!DOCTYPE html&gt;
+  &lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Flask_Chat_App&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+
+    &lt;h3 style='color: #ccc;font-size: 30px;'&gt;No message yet..&lt;/h3&gt;
+    &lt;div class="message_holder"&gt;&lt;/div&gt;
+
+    &lt;form action="" method="POST"&gt;
+      &lt;input type="text" class="username" placeholder="User Name"/&gt;
+      &lt;input type="text" class="message" placeholder="Messages"/&gt;
+      &lt;input type="submit"/&gt;
+    &lt;/form&gt;
+
+    &lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+      socket.on( 'connect', function() {
+        socket.emit( 'my event', {
+          data: 'User Connected'
+        } )
+        var form = $( 'form' ).on( 'submit', function( e ) {
+          e.preventDefault()
+          let user_name = $( 'input.username' ).val()
+          let user_input = $( 'input.message' ).val()
+          socket.emit( 'my event', {
+            user_name : user_name,
+            message : user_input
+          } )
+          $( 'input.message' ).val( '' ).focus()
+        } )
+      } )
+      socket.on( 'my response', function( msg ) {
+        console.log( msg )
+        if( typeof msg.user_name !== 'undefined' ) {
+          $( 'h3' ).remove()
+          $( 'div.message_holder' ).append( '&lt;div&gt;&lt;b style="color: #000"&gt;'+msg.user_name+'&lt;/b&gt; '+msg.message+'&lt;/div&gt;' )
+        }
+      })
+    &lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;</pre>
+<p>此外, 若 Server 端也要使用 Dart, 可以試著利用 <a href="https://aqueduct.io/">https://aqueduct.io/</a> 與 Socketio.js 製作.</p>
+<p>參考:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/stablekernel/aqueduct_examples">https://github.com/stablekernel/aqueduct_examples</a></p>
+<p style="padding-left: 30px;"><a href="https://aqueduct.io/docs/http/websockets/">https://aqueduct.io/docs/http/websockets/</a></p>
+<p style="padding-left: 30px;"><a href="https://medium.com/dartlang/building-a-chat-app-in-dart-815fcd0e5a31">https://medium.com/dartlang/building-a-chat-app-in-dart-815fcd0e5a31</a></p>
+<p style="padding-left: 30px;"><a href="https://codeburst.io/build-a-chat-application-in-dart-2-part-1-567eacdcf0c8">https://codeburst.io/build-a-chat-application-in-dart-2-part-1-567eacdcf0c8</a></p>
+<p style="padding-left: 30px;"><a href="https://codeburst.io/build-a-chat-application-in-dart-part-2-d43a4d450487">https://codeburst.io/build-a-chat-application-in-dart-part-2-d43a4d450487</a></p><h3>Flutter Web</h3>
 <p>利用 Flutter 建立網際前端程式: </p>
 <p style="padding-left: 30px;"><a href="https://github.com/flutter/flutter_web">https://github.com/flutter/flutter_web</a></p>
-<p>必須確認 Y:\\home\pub\bin 已經納入指令搜尋路徑中, 因為 webdev.bat 存放在此目錄, Flutter Web 將 dart 轉為 Javascript 時需要執行 webdev build 轉換指令, 將網際系統放入 build 目錄中.</p>
+<p>必須確認 Y:\\home\pub\bin 已經納入指令搜尋路徑中, 因為 webdev.bat 存放在此目錄, Flutter Web 將 dart 轉為 Javascript 時需要執行 webdev build 轉換指令, 將網際系統放入 build 目錄中. (注意: 使用 webdev.bat 時, 必須查看批次檔案中所引用的 dart 所在路徑是否正確)</p>
 <p>webdev.bat 的啟動透過執行:</p>
 <p style="padding-left: 30px;"><span>flutter packages pub global activate webdev</span></p>
 <p><span>以 code 指令啟動隨身系統中的 Visual Studio Code, 然後以 Ctrl + Shift + P 帶出 Flutter: New Web Project, 點選後建立新的 Flutter Web 專案.</span></p>
@@ -466,7 +562,12 @@ print(學員成績(60, 70, 80))</pre>
 <p>Flutter Web 範例:</p>
 <p style="padding-left: 30px;"><a href="https://github.com/mdecourse/vision_challenge">https://github.com/mdecourse/vision_challenge</a> (將每次改版 build 的內容複製到 Github Pages 對應的 docs 目錄中)</p>
 <p style="padding-left: 30px;"><a href="http://mde.tw/vision_challenge">http://mde.tw/vision_challenge</a> </p>
-<p></p><h3>Dart</h3>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/flutter-create-and-deploy-a-website-from-scratch-4a026ebd6c">https://medium.com/flutter-community/flutter-create-and-deploy-a-website-from-scratch-4a026ebd6c</a></p><h3>Flutter Desktop</h3>
+<p><a href="https://github.com/google/flutter-desktop-embedding">https://github.com/google/flutter-desktop-embedding</a></p>
+<p><a href="https://github.com/flutter/flutter/wiki/Desktop-shells">https://github.com/flutter/flutter/wiki/Desktop-shells</a></p>
+<p><a href="https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0">https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0</a></p>
+<p><a href="https://github.com/go-flutter-desktop">https://github.com/go-flutter-desktop</a> (through <a href="https://golang.org/">Go</a>)</p><h2>Dart</h2>
 <p><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
 <p><a href="https://renato.athaydes.com/posts/interesting-dart-features.html">https://renato.athaydes.com/posts/interesting-dart-features.html</a> (<a href="/downloads/interesting_dart_features.pdf">pdf</a>)</p>
 <p><a href="https://www.raywenderlich.com/4482551-dart-basics">https://www.raywenderlich.com/4482551-dart-basics</a></p>
@@ -819,6 +920,10 @@ x?.foo();</pre>
 <p><a href="https://stablekernel.com/binding-rest-interface-postgres-dart/">https://stablekernel.com/binding-rest-interface-postgres-dart/</a></p>
 <p><a href="https://stablekernel.com/concurrency-in-server-side-dart/">https://stablekernel.com/concurrency-in-server-side-dart/</a></p>
 <p><a href="https://medium.com/swlh/server-side-dart-with-postgresql-142e9eec1ed1">https://medium.com/swlh/server-side-dart-with-postgresql-142e9eec1ed1</a></p>
+<p>Chat in Dart: <a href="https://github.com/graphicbeacon/dart-bulma-chat-app">https://github.com/graphicbeacon/dart-bulma-chat-app</a> </p>
+<p style="padding-left: 30px;"><a href="https://dev.to/graphicbeacon/build-a-basic-chat-application-in-dart-2-part-1-4ekj">https://dev.to/graphicbeacon/build-a-basic-chat-application-in-dart-2-part-1-4ekj</a></p>
+<p style="padding-left: 30px;"><a href="https://dev.to/graphicbeacon/build-a-chat-application-in-dart-2-part-2-48df">https://dev.to/graphicbeacon/build-a-chat-application-in-dart-2-part-2-48df</a></p>
+<p style="padding-left: 30px;"><a href="https://dev.to/graphicbeacon/build-a-chat-application-in-dart-part-3-1bm5">https://dev.to/graphicbeacon/build-a-chat-application-in-dart-part-3-1bm5</a></p>
 <p>簡單的 http 伺服器:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import 'dart:io';
 
@@ -842,7 +947,7 @@ main() async {
 <p>自行 Build dart-pad:</p>
 <p>git clone <a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
 <p>之後, 進入 dart-pad 目錄之後, 以 pub get 取得所需 dependencies</p>
-<p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案.</p>
+<p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案. <span>(注意: 使用 webdev.bat 時, 必須查看批次檔案中所引用的 dart 所在路徑是否正確)</span></p>
 <p>之後刪除 .git 與 .gitignore 檔案,  將 build 目錄改名為 docs 並設為 Github Pages 得到:</p>
 <p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p>
 <p>Canvas 繪圖範例</p>
@@ -922,8 +1027,7 @@ void main() {
 &lt;/body&gt;
 &lt;/html&gt;
 </pre>
-<p><a href="/downloads/dart_ex/rocflag/index.html">/downloads/dart_ex/rocflag/index.html</a></p>
-<h2>Learn Dart</h2>
+<p><a href="/downloads/dart_ex/rocflag/index.html">/downloads/dart_ex/rocflag/index.html</a></p><h2>Learn Dart</h2>
 <h4>Dart 2 啟動</h4>
 <p><a href="https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html">https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html</a> 宣布後, Dart 第二版正式啟動, 目前現存的許多與 Dart 第一版有關的資料頓時失去作用. </p>
 <p>其中也包括:</p>
@@ -949,7 +1053,7 @@ void main() {
 <p style="padding-left: 30px;"><a href="https://da-bootcamp.firebaseapp.com/?course=start_programming_dart">https://da-bootcamp.firebaseapp.com/?course=start_programming_dart</a> </p>
 <p>將分別完成</p>
 <ol>
-<li><a href="http://mde.tw/dartpad/?id=215ba63265350c02dfbd586dfd30b8c3">Hello World!</a> (主函式, 註解, 資料列印與基本語法)</li>
+<li><a href="http://mde.tw/dartpad/?id=215ba63265350c02dfbd586dfd30b8c3">Hello World!</a>, <a href="http://mde.tw/dartpad/?id=2d3ce078f1c3d383c0c20e88270f6d6b">Hello Dart!</a> (主函式, 註解, 資料列印與基本語法)</li>
 <li><a href="http://mde.tw/dartpad?id=9f69e77cb456b97cccc8eb5a9dbd991c">亂數分組</a> (變數, 資料型別, 資料 io, 數列, 迴圈, 模數運算, 判斷式)</li>
 <li><a href="http://mde.tw/dartpad?id=e93b969fed77325db0b848a85f1cf78e">int2double</a> (類別, 物件導向)</li>
 <li><a href="http://mde.tw/dartpad?id=b51f4d2a76e394421057a70e7d281b66">ROC Flag</a> (Html5 Canvas 靜態繪圖, CSS)</li>

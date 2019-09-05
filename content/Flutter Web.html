@@ -148,96 +148,21 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Dart on Server << <a href='Dart on Server.html'>Previous</a> <a href='Learn Dart.html'>Next</a> >> Learn Dart<br /><h1>DartPad</h1>
-<p style="padding-left: 30px;"><a href="https://dart.dev/tools/dartpad">https://dart.dev/tools/dartpad</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
-<p style="padding-left: 30px;"><a href="https://dart.dev/tutorials/web/low-level-html/remove-elements">https://dart.dev/tutorials/web/low-level-html/remove-elements</a></p>
-<p>讓使用者所練習的 Dart 程式可以存檔, 可以呼叫修改, 也可以轉換成 Web, Mobile 與單機程式?</p>
-<p>或者利用 Dart 建立一個以機械設計流程為主體的網際內容管理系統?</p>
-<p>自行 Build dart-pad:</p>
-<p>git clone <a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
-<p>之後, 進入 dart-pad 目錄之後, 以 pub get 取得所需 dependencies</p>
-<p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案. <span>(注意: 使用 webdev.bat 時, 必須查看批次檔案中所引用的 dart 所在路徑是否正確)</span></p>
-<p>之後刪除 .git 與 .gitignore 檔案,  將 build 目錄改名為 docs 並設為 Github Pages 得到:</p>
-<p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p>
-<p>Canvas 繪圖範例</p>
-<p>main.dart</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
-import 'dart:math' as Math;
-
-CanvasElement canvas;    
-CanvasRenderingContext2D ctx;
-int width = 200;
-int height = 200;
-
-void main() {
-  canvas = querySelector('#canvas');
-  ctx = canvas.getContext('2d');
-  
-  canvas.width = width;
-  canvas.height = height;
-  ctx.clearRect(0, 0, width, height);
-
-  ctx.beginPath();
-  ctx.arc(75, 75, 30, 0, Math.pi * 2, true); 
-  ctx.stroke();
-}</pre>
-<p>index.html</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;div id="wrapper"&gt;
-  &lt;canvas id="canvas" width="450" height="450"&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-</pre>
-<p>main.css</p>
-<pre class="brush:css;auto-links:false;toolbar:false" contenteditable="false">html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-#wrapper {
-  width: 450px;
-  margin: auto;
-  border: solid thin black;
-}</pre>
-<h4>ROC Flag on Dartpad:</h4>
-<p style="padding-left: 30px;"><a href="http://mde.tw/dartpad/?id=b51f4d2a76e394421057a70e7d281b66">http://mde.tw/dartpad/?id=b51f4d2a76e394421057a70e7d281b66</a></p>
-<p>將 Dart Pad 上的 rocflag.dart, index.html 與 style.css 整合為單一網際頁面的方法:</p>
-<p>利用 dart2js 將 rocflag.dart 轉為 rocflag.js</p>
-<p style="padding-left: 30px;">dart2js -o rocflag.js rocflag.dart</p>
-<p>將 style.css 納入 index.html 中, 並導入 rocflag.js 程式.</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;ROC Flag in Dart&lt;/title&gt;
-  &lt;!-- 將 dartpad 中的 style.css 放入 head 標註中 &gt;
-  &lt;style type="text/css"&gt;
-      html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    #wrapper {
-      width: 300px;
-      margin: auto;
-      border: solid thin black;
-}
-  &lt;/style&gt;
-  &lt;!-- 將利用 dart2js 轉出的 rocflag.js 放入 script 標註中 &gt;
-  &lt;script defer src="rocflag.js" type="application/javascript"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- 將 dartpad 中 index.html 的 canvas 標註放入 body 頁面中 --&gt;
-&lt;div id="wrapper"&gt;
-  &lt;canvas id="canvas" width="300" height="200"&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-<p><a href="./../downloads/dart_ex/rocflag/index.html">/downloads/dart_ex/rocflag/index.html</a></p><br />Dart on Server << <a href='Dart on Server.html'>Previous</a> <a href='Learn Dart.html'>Next</a> >> Learn Dart</div>
+    <div id="tipue_search_content">Flutter Mobile << <a href='Flutter Mobile.html'>Previous</a> <a href='Flutter Desktop.html'>Next</a> >> Flutter Desktop<br /><h1>Flutter Web</h1>
+<p>利用 Flutter 建立網際前端程式: </p>
+<p style="padding-left: 30px;"><a href="https://github.com/flutter/flutter_web">https://github.com/flutter/flutter_web</a></p>
+<p>必須確認 Y:\\home\pub\bin 已經納入指令搜尋路徑中, 因為 webdev.bat 存放在此目錄, Flutter Web 將 dart 轉為 Javascript 時需要執行 webdev build 轉換指令, 將網際系統放入 build 目錄中. (注意: 使用 webdev.bat 時, 必須查看批次檔案中所引用的 dart 所在路徑是否正確)</p>
+<p>webdev.bat 的啟動透過執行:</p>
+<p style="padding-left: 30px;"><span>flutter packages pub global activate webdev</span></p>
+<p><span>以 code 指令啟動隨身系統中的 Visual Studio Code, 然後以 Ctrl + Shift + P 帶出 Flutter: New Web Project, 點選後建立新的 Flutter Web 專案.</span></p>
+<p><span>根據</span></p>
+<p style="padding-left: 30px;"><a href="https://github.com/flutter/samples">https://github.com/flutter/samples</a> 目錄中的 web 範例進行練習</p>
+<p>完成後, 進入專案目錄, 以 webdev serve 進行測試, 以 webdev build 轉出專案網際內容.</p>
+<p>Flutter Web 範例:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/vision_challenge">https://github.com/mdecourse/vision_challenge</a> (將每次改版 build 的內容複製到 Github Pages 對應的 docs 目錄中)</p>
+<p style="padding-left: 30px;"><a href="http://mde.tw/vision_challenge">http://mde.tw/vision_challenge</a> </p>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://medium.com/flutter-community/flutter-create-and-deploy-a-website-from-scratch-4a026ebd6c">https://medium.com/flutter-community/flutter-create-and-deploy-a-website-from-scratch-4a026ebd6c</a></p><br />Flutter Mobile << <a href='Flutter Mobile.html'>Previous</a> <a href='Flutter Desktop.html'>Next</a> >> Flutter Desktop</div>
         
     <!-- footer -->
       <div class="container">

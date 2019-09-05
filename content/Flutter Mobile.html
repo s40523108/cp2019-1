@@ -148,96 +148,102 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Dart on Server << <a href='Dart on Server.html'>Previous</a> <a href='Learn Dart.html'>Next</a> >> Learn Dart<br /><h1>DartPad</h1>
-<p style="padding-left: 30px;"><a href="https://dart.dev/tools/dartpad">https://dart.dev/tools/dartpad</a></p>
-<p style="padding-left: 30px;"><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
-<p style="padding-left: 30px;"><a href="https://dart.dev/tutorials/web/low-level-html/remove-elements">https://dart.dev/tutorials/web/low-level-html/remove-elements</a></p>
-<p>讓使用者所練習的 Dart 程式可以存檔, 可以呼叫修改, 也可以轉換成 Web, Mobile 與單機程式?</p>
-<p>或者利用 Dart 建立一個以機械設計流程為主體的網際內容管理系統?</p>
-<p>自行 Build dart-pad:</p>
-<p>git clone <a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
-<p>之後, 進入 dart-pad 目錄之後, 以 pub get 取得所需 dependencies</p>
-<p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案. <span>(注意: 使用 webdev.bat 時, 必須查看批次檔案中所引用的 dart 所在路徑是否正確)</span></p>
-<p>之後刪除 .git 與 .gitignore 檔案,  將 build 目錄改名為 docs 並設為 Github Pages 得到:</p>
-<p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p>
-<p>Canvas 繪圖範例</p>
-<p>main.dart</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
-import 'dart:math' as Math;
+    <div id="tipue_search_content">Flutter << <a href='Flutter.html'>Previous</a> <a href='Flutter Web.html'>Next</a> >> Flutter Web<br /><h1>Flutter Mobile</h1>
+<p>Practical Flutter (2019)</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4972-7">https://link.springer.com/book/10.1007/978-1-4842-4972-7</a></p>
+<p>Chapter 7: Flutter Chat 希望以 Flask + SocketIo 取代 Node.js</p>
+<p style="padding-left: 30px;"><a href="https://github.com/mnlightstone/Chatroom-Flask-Socketio">https://github.com/mnlightstone/Chatroom-Flask-Socketio</a></p>
+<p style="padding-left: 30px;"><a href="https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d">https://codeburst.io/building-your-first-chat-application-using-flask-in-7-minutes-f98de4adfa5d</a> (<a href="https://github.com/Samhita-alla/flask-chat-app-article">Source codes</a>)</p>
+<p style="padding-left: 30px;">需要透過 python -m pip install flask_socketio 安裝模組. 而且 socketio.js 必須使用 2.0 以上版本, 才能以 UTF-8 編碼:</p>
+<p style="padding-left: 60px;"><a href="https://cdnjs.com/libraries/socket.io/2.2.0">https://cdnjs.com/libraries/socket.io/2.2.0</a></p>
+<p style="padding-left: 30px;">例如使用: </p>
+<p style="padding-left: 60px;"><a href="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js">https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js</a> </p>
+<p>以 <a href="https://github.com/Samhita-alla/flask-chat-app-article">https://github.com/Samhita-alla/flask-chat-app-article</a> 為例:</p>
+<p>所需 Python 模組包含:</p>
+<p>Flask==0.12.2<br/>flask-socketio<br/>eventlet==0.17.4<br/>gunicorn==18.0.0</p>
+<p>其 main.py:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">from flask import Flask, render_template
+from flask_socketio import SocketIO
 
-CanvasElement canvas;    
-CanvasRenderingContext2D ctx;
-int width = 200;
-int height = 200;
+app = Flask(__name__)
+app.config['SECRET_KEY'] = 'vnkdjnfjknfl1232#'
+socketio = SocketIO(app)
 
-void main() {
-  canvas = querySelector('#canvas');
-  ctx = canvas.getContext('2d');
-  
-  canvas.width = width;
-  canvas.height = height;
-  ctx.clearRect(0, 0, width, height);
 
-  ctx.beginPath();
-  ctx.arc(75, 75, 30, 0, Math.pi * 2, true); 
-  ctx.stroke();
-}</pre>
-<p>index.html</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;div id="wrapper"&gt;
-  &lt;canvas id="canvas" width="450" height="450"&gt;&lt;/canvas&gt;
-&lt;/div&gt;
+@app.route('/')
+def sessions():
+    return render_template('session.html')
+
+
+def messageReceived(methods=['GET', 'POST']):
+    print('message was received!!!')
+
+
+@socketio.on('my event')
+def handle_my_custom_event(json, methods=['GET', 'POST']):
+    print('received my event: ' + str(json))
+    socketio.emit('my response', json, callback=messageReceived)
+
+
+if __name__ == '__main__':
+    socketio.run(app, debug=True)
 </pre>
-<p>main.css</p>
-<pre class="brush:css;auto-links:false;toolbar:false" contenteditable="false">html, body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
+<p>位於 templates 目錄中的 session.html</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">  &lt;!DOCTYPE html&gt;
+  &lt;html lang="en"&gt;
+  &lt;head&gt;
+    &lt;title&gt;Flask_Chat_App&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
 
-#wrapper {
-  width: 450px;
-  margin: auto;
-  border: solid thin black;
-}</pre>
-<h4>ROC Flag on Dartpad:</h4>
-<p style="padding-left: 30px;"><a href="http://mde.tw/dartpad/?id=b51f4d2a76e394421057a70e7d281b66">http://mde.tw/dartpad/?id=b51f4d2a76e394421057a70e7d281b66</a></p>
-<p>將 Dart Pad 上的 rocflag.dart, index.html 與 style.css 整合為單一網際頁面的方法:</p>
-<p>利用 dart2js 將 rocflag.dart 轉為 rocflag.js</p>
-<p style="padding-left: 30px;">dart2js -o rocflag.js rocflag.dart</p>
-<p>將 style.css 納入 index.html 中, 並導入 rocflag.js 程式.</p>
-<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;!DOCTYPE html&gt;
-&lt;html lang="en"&gt;
-&lt;head&gt;
-  &lt;meta charset="UTF-8"&gt;
-  &lt;title&gt;ROC Flag in Dart&lt;/title&gt;
-  &lt;!-- 將 dartpad 中的 style.css 放入 head 標註中 &gt;
-  &lt;style type="text/css"&gt;
-      html, body {
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+    &lt;h3 style='color: #ccc;font-size: 30px;'&gt;No message yet..&lt;/h3&gt;
+    &lt;div class="message_holder"&gt;&lt;/div&gt;
 
-    #wrapper {
-      width: 300px;
-      margin: auto;
-      border: solid thin black;
-}
-  &lt;/style&gt;
-  &lt;!-- 將利用 dart2js 轉出的 rocflag.js 放入 script 標註中 &gt;
-  &lt;script defer src="rocflag.js" type="application/javascript"&gt;&lt;/script&gt;
-&lt;/head&gt;
-&lt;body&gt;
-&lt;!-- 將 dartpad 中 index.html 的 canvas 標註放入 body 頁面中 --&gt;
-&lt;div id="wrapper"&gt;
-  &lt;canvas id="canvas" width="300" height="200"&gt;&lt;/canvas&gt;
-&lt;/div&gt;
-&lt;/body&gt;
-&lt;/html&gt;
-</pre>
-<p><a href="./../downloads/dart_ex/rocflag/index.html">/downloads/dart_ex/rocflag/index.html</a></p><br />Dart on Server << <a href='Dart on Server.html'>Previous</a> <a href='Learn Dart.html'>Next</a> >> Learn Dart</div>
+    &lt;form action="" method="POST"&gt;
+      &lt;input type="text" class="username" placeholder="User Name"/&gt;
+      &lt;input type="text" class="message" placeholder="Messages"/&gt;
+      &lt;input type="submit"/&gt;
+    &lt;/form&gt;
+
+    &lt;!-- jQuery (necessary for Bootstrap's JavaScript plugins) --&gt;
+    &lt;script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"&gt;&lt;/script&gt;
+    &lt;script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js"&gt;&lt;/script&gt;
+    &lt;script type="text/javascript"&gt;
+      var socket = io.connect('http://' + document.domain + ':' + location.port);
+
+      socket.on( 'connect', function() {
+        socket.emit( 'my event', {
+          data: 'User Connected'
+        } )
+        var form = $( 'form' ).on( 'submit', function( e ) {
+          e.preventDefault()
+          let user_name = $( 'input.username' ).val()
+          let user_input = $( 'input.message' ).val()
+          socket.emit( 'my event', {
+            user_name : user_name,
+            message : user_input
+          } )
+          $( 'input.message' ).val( '' ).focus()
+        } )
+      } )
+      socket.on( 'my response', function( msg ) {
+        console.log( msg )
+        if( typeof msg.user_name !== 'undefined' ) {
+          $( 'h3' ).remove()
+          $( 'div.message_holder' ).append( '&lt;div&gt;&lt;b style="color: #000"&gt;'+msg.user_name+'&lt;/b&gt; '+msg.message+'&lt;/div&gt;' )
+        }
+      })
+    &lt;/script&gt;
+
+  &lt;/body&gt;
+  &lt;/html&gt;</pre>
+<p>此外, 若 Server 端也要使用 Dart, 可以試著利用 <a href="https://aqueduct.io/">https://aqueduct.io/</a> 與 Socketio.js 製作.</p>
+<p>參考:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/stablekernel/aqueduct_examples">https://github.com/stablekernel/aqueduct_examples</a></p>
+<p style="padding-left: 30px;"><a href="https://aqueduct.io/docs/http/websockets/">https://aqueduct.io/docs/http/websockets/</a></p>
+<p style="padding-left: 30px;"><a href="https://medium.com/dartlang/building-a-chat-app-in-dart-815fcd0e5a31">https://medium.com/dartlang/building-a-chat-app-in-dart-815fcd0e5a31</a></p>
+<p style="padding-left: 30px;"><a href="https://codeburst.io/build-a-chat-application-in-dart-2-part-1-567eacdcf0c8">https://codeburst.io/build-a-chat-application-in-dart-2-part-1-567eacdcf0c8</a></p>
+<p style="padding-left: 30px;"><a href="https://codeburst.io/build-a-chat-application-in-dart-part-2-d43a4d450487">https://codeburst.io/build-a-chat-application-in-dart-part-2-d43a4d450487</a></p><br />Flutter << <a href='Flutter.html'>Previous</a> <a href='Flutter Web.html'>Next</a> >> Flutter Web</div>
         
     <!-- footer -->
       <div class="container">
