@@ -63,6 +63,7 @@
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCpp.js"></script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCss.js"></script>
 <script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushCSharp.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/syntaxhighlighter/shBrushDart.js"></script>
 <link type="text/css" rel="stylesheet" href="./../cmsimde/static/syntaxhighlighter/css/shCoreDefault.css"/>
 <script type="text/javascript">SyntaxHighlighter.all();</script>
 
@@ -137,7 +138,7 @@ init_mathjax();
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='QandA.html'>QandA</a><li><a href='USB 隨身碟.html'>USB 隨身碟</a><li><a href='課程筆記.html'>課程筆記</a></li></ul><li><a href='課程簡介.html'>課程簡介</a><li><a href='亂數分組.html'>亂數分組</a><li class='has-children'><a href='github 帳號.html'>github 帳號</a><ul class='dropdown'><li><a href='Github Guide.html'>Github Guide</a></li></ul><li class='has-children'><a href='示範專案.html'>示範專案</a><ul class='dropdown'><li><a href='Python.html'>Python</a><li class='has-children'><a href='Flutter.html'>Flutter</a><ul class='dropdown'><li><a href='Flutter Mobile.html'>Flutter Mobile</a><li><a href='Flutter Web.html'>Flutter Web</a><li><a href='Flutter Desktop.html'>Flutter Desktop</a></li></ul><li class='has-children'><a href='Dart.html'>Dart</a><ul class='dropdown'><li><a href='Dart on Server.html'>Dart on Server</a><li><a href='DartPad.html'>DartPad</a></li></ul><li><a href='Learn Dart.html'>Learn Dart</a></li>
+                     <li class='has-children'><a href='About.html'>About</a><ul class='dropdown'><li><a href='課程簡介.html'>課程簡介</a><li><a href='亂數分組.html'>亂數分組</a><li><a href='QandA.html'>QandA</a><li><a href='USB 隨身碟.html'>USB 隨身碟</a><li><a href='課程筆記.html'>課程筆記</a></li></ul><li class='has-children'><a href='Github.html'>Github</a><ul class='dropdown'><li><a href='Github Guide.html'>Github Guide</a></li></ul><li class='has-children'><a href='DartLang.html'>DartLang</a><ul class='dropdown'><li><a href='Dart2 Spec.html'>Dart2 Spec</a></li></ul><li class='has-children'><a href='Reference.html'>Reference</a><ul class='dropdown'><li><a href='Python.html'>Python</a><li class='has-children'><a href='Flutter.html'>Flutter</a><ul class='dropdown'><li><a href='Flutter Mobile.html'>Flutter Mobile</a><li><a href='Flutter Web.html'>Flutter Web</a><li><a href='Flutter Desktop.html'>Flutter Desktop</a></li></ul><li class='has-children'><a href='Dart.html'>Dart</a><ul class='dropdown'><li><a href='Dart on Server.html'>Dart on Server</a><li><a href='DartPad.html'>DartPad</a></li>
                       </ul>
                 </nav>
               </div>
@@ -148,47 +149,43 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">亂數分組 << <a href='亂數分組.html'>Previous</a> <a href='Github Guide.html'>Next</a> >> Github Guide<br /><h1>github 帳號</h1>
-<p>建立 cp2019 倉儲及對應的 CMSiMDE Github Pages 網頁</p>
-<p>了解基本的 Git 指令與 Github 系統的應用之後, 產生出對 GitExtensions 工具的需求, 也產生出對於透過 SSH keys 提交倉儲版本的需求, 以簡化改版流程.</p>
-<p><a href="https://2019wcm.blogspot.com/search/label/GitExtensions" rel="nofollow">https://2019wcm.blogspot.com/search/label/GitExtensions</a></p>
-<p><a href="https://2019wcm.blogspot.com/search/label/ssh" rel="nofollow">https://2019wcm.blogspot.com/search/label/ssh</a></p>
-<p>申請 Github 帳號</p>
-<p>登入 @gm 電子郵箱, 然後以學號申請 Github 帳號, 待驗證所使用的學號@gm 電子郵箱後, 即可建立 cp2019 倉儲, 特別注意新增 public repository 時, 可啟用 README.md, 隨即可以在近端以</p>
-<p>git clone <a href="https://github.com/學號/cp2019.git">https://github.com/學號/cp2019.git</a></p>
-<p>將遠端 Github 倉儲中的資料, clonr 至 y:\tmp 目錄的 cp2019 目錄中.</p>
-<p>clone 後的 cp2019 目錄有 .git 目錄, 存放該倉儲的設定與版本資料, 以及 README.md 檔案.</p>
-<p>在 .git 目錄中, 與使用者相關的是 config</p>
-<h4>以子模組方式納入 CMSiMDE</h4>
-<p>利用 git submodule add 納入 CMSiMDE 網際內容管理系統的程式碼</p>
-<p>https://github.com/mdecourse/cmsimde</p>
-<p>利用命令列視窗, 更換目錄至 y:\tmp\cp2019 之後, 執行</p>
-<p>git submodule add https://github.com/mdecourse/cmsimde.git cmsimde</p>
-<p>意即, 在此目錄中, 將 https://github.com/mdecourse/cmsimde.git 倉儲資料納為近端 cmsimde 目錄的內容, 且作為 submodule, 也就是設定一個倉儲的子模組, 並將此子模組與 https://github.com/mdecourse/cmsimde.git 倉儲目前的最新版本內容.</p>
-<p>將子模組中 up_dir 目錄中的內容往前搬一個目錄</p>
-<p>在 y:\tmp\cp2019\cmsimde 目錄中, 以</p>
-<p>python wsgi.py</p>
-<p>就可以啟動近端的動態網際內容管理系統, 作為近端改版之用, 可以瀏覽器中的 https://localhost:9443 連接所啟用的 CMS (Content Management System).</p>
-<p>並以 admin 管理者密碼登入.</p>
-<p>進入 config 修改網頁標題, 並且修改倉儲中的 init.py, 修改 site_title</p>
-<p>改版後要推送資料前, 可以利用 generate_pages 將內容轉為動態網頁後, 可以利用 SciTE 開啟倉儲中的 http-server.py 檔案後以 Tools -&gt; Go 執行, 可以在瀏覽器中以 <a href="https://localhost:8444">https://localhost:8444</a> 檢查近端的靜態網頁內容, 確定無誤後. 則必須再退回 y:\tmp\cp2019 目錄之後, 必須完成 git config 的 user.name 與 user.email 之後, 可以利用:</p>
-<p>git add .<br/>git commit -m "提交說明"<br/>git push</p>
-<h4>以 SSH 對 cp2019 倉儲進行改版</h4>
-<p>如何產生所需的 keys, 放在哪裡, public key 要送到哪裡, 設定如何寫, 在 http 模式下, 代理主機如何執行設定, 在 ssh 模式下, 代理主機要如何設定? 若近端啟動後使用超過一個 github 帳號身分, 又如何設定 http 與 ssh 模式下的倉儲改版與提交?</p>
-<h4>如何 git clone 帶有子模組的倉儲</h4>
-<p style="padding-left: 30px;"><a href="https://git-scm.com/book/zh-tw/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E7%B5%84-Submodules">git submodule 使用說明</a></p>
-<p>當在近端 git clone 帶有子模組的倉儲時, 首先:</p>
-<p style="padding-left: 30px;">git clone 倉儲_URL.git 近端倉儲名稱</p>
-<p>之後, 以 git submodule init 啟始子模組, 接著以 git submodule update 下載所對應版本的子模組內容.</p>
-<p>假如倉儲中所使用的 submodule 已經改版, 希望將先前所引用的版本升級至最新版本 (例如: master 分支內容), 可以進入該子模組所在目錄, 然後執行:</p>
-<p style="padding-left: 30px;">git pull origin master</p>
-<h4>為何倉儲中要引用子模組?</h4>
-<p style="padding-left: 30px;">子模組架構的設計與引用, 可以讓子模組的開發者根據需求隨時改版, 而引用者只需要確立所引用的子模組版次號, 即可在原始引用組態 (組成內容與狀態) 下正確協同工作.</p>
-<p style="padding-left: 30px;">在機械設計流程, 想像所有系統與元件都是虛擬物件, 與 github 中的倉儲程式碼類似.</p>
-<p style="padding-left: 30px;">當導入一只特殊規格的電動馬達後, 配合減速機與機構執行所需工作, 若將該馬達當成 git 的子模組, 負責研發此電動馬達的團隊, 可以不斷根據新技術的導入或修正先前的設計, 所產生新的馬達版本, 不會影響使用舊馬達版本的用戶. (請注意, 引入子模組之後的倉儲, 在其 .git 目錄中的 config 與倉儲目錄中的 .gitmodules 都註記所引用的子模組來源.)</p>
-<p style="padding-left: 30px;">這時引用該馬達的機械設計模擬系統, 在不變更使用該馬達元件版本的情況下, 原始設計可以繼續出貨, 若需配合該馬達的新功能而修改其他設計之後, 只需要執行 git submodule update, 就可以取得該馬達的最新型功能, 產生最新版的機械設計內容. </p>
-<h4>各組利用 Python 程式模組, 練習建立並使用 git 子模組.</h4>
-<br />亂數分組 << <a href='亂數分組.html'>Previous</a> <a href='Github Guide.html'>Next</a> >> Github Guide</div>
+    <div id="tipue_search_content">DartLang << <a href='DartLang.html'>Previous</a> <a href='Reference.html'>Next</a> >> Reference<br /><h1>Dart2 Spec</h1>
+<p><a href="./../downloads/DartLangSpecDraft_2.3.0_dev.pdf">DartLangSpecDraft_2.3.0_dev.pdf</a></p>
+<p><span>&lt;&gt; 表示其中包含項目為必選項</span></p>
+<p>[] 表示其中包含項目為可選項</p>
+<p>{} 表示其中包含項目為可重複 0 次至無限次數的選項</p>
+<p>| 表示左右兩邊可以任選一項</p>
+<p>::= 表示可被定義為</p>
+<p>引號裡的項目代表其本身</p>
+<p>?: 表示操作符左邊的符號 (或括號中的一組符號) 是可選項, 可出現 0 次至無限次數</p>
+<p>*: 表示可以重複多次</p>
+<p>+: 表示可以出現多次</p>
+<p><a href="https://thosakwe.com/the-story-of-my-migration-to-dart-2/">https://thosakwe.com/the-story-of-my-migration-to-dart-2/</a></p>
+<p>上述文章中說明 Dart2 最新規格中的 Dart is a class-based, single-inheritance, pure object-oriented programming language. Dart is optionally typed and supports reified generics.</p>
+<p><span>reified generics 代表最新的 Dart2 strongly-typed and sound, with reification of generics. 以下為範例:</span></p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">//var myIntegers = &lt;int&gt;[1, 2, 3];
+var myIntegers = &lt;dynamic&gt;[1, 2, 3];
+
+void main(){
+doIt(myIntegers);
+}
+
+void doIt(List&lt;int&gt; numbers) {
+    print('Hi');
+}</pre>
+<p>上列程式執行時會報錯, 因為 myIntegers 宣告時並非 int, 即便其內容為 int.</p>
+<p>必須改為:</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">var myIntegers = &lt;int&gt;[1, 2, 3];
+//var myIntegers = &lt;dynamic&gt;[1, 2, 3];
+
+void main(){
+doIt(myIntegers);
+}
+
+void doIt(List&lt;int&gt; numbers) {
+    print('Hi');
+}</pre>
+<p></p><br />DartLang << <a href='DartLang.html'>Previous</a> <a href='Reference.html'>Next</a> >> Reference</div>
         
     <!-- footer -->
       <div class="container">
