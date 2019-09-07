@@ -145,7 +145,34 @@ print(c2019)</pre>
 <p>因為 Dart 是具有潛力, 而且能夠適應未來可攜裝置與 IOTs 整合環境變化應用的程式語言.</p>
 <p>使用 Dart 執行亂數分組:</p>
 <p><a href="https://dartpad.dev/embed-dart.html?id=9f69e77cb456b97cccc8eb5a9dbd991c">https://dartpad.dev/embed-dart.html?id=9f69e77cb456b97cccc8eb5a9dbd991c</a></p>
-<p>結合 <a href="https://gist.github.com/mdecourse/9f69e77cb456b97cccc8eb5a9dbd991c">gist</a> 與 <a href="https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide">dartpad.dev</a>, 也可以從 <a href="https://mde.tw/dartpad/">https://mde.tw/dartpad/</a> 右上方 Samples 選擇亂數分組程式執行.</p><h2>QandA</h2>
+<p>結合 <a href="https://gist.github.com/mdecourse/9f69e77cb456b97cccc8eb5a9dbd991c">gist</a> 與 <a href="https://github.com/dart-lang/dart-pad/wiki/Embedding-Guide">dartpad.dev</a>, 也可以從 <a href="https://mde.tw/dartpad/">https://mde.tw/dartpad/</a> 右上方 Samples 選擇亂數分組程式執行.</p><h2>FFmpeg</h2>
+<p>FFmpeg 手冊: <a href="http://ffmpeg.org/ffmpeg.html">http://ffmpeg.org/ffmpeg.html</a></p>
+<h4>FFmpeg GUI:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/amiaopensource/ffmpeg-amia-wiki/wiki/3)-Graphical-User-Interface-Applications-using-FFmpeg">https://github.com/amiaopensource/ffmpeg-amia-wiki/wiki/3)-Graphical-User-Interface-Applications-using-FFmpeg</a></p>
+<p style="padding-left: 60px;"><a href="http://qwinff.github.io/">http://qwinff.github.io/</a></p>
+<p style="padding-left: 60px;"><a href="http://www.avanti.arrozcru.org/">http://www.avanti.arrozcru.org/</a></p>
+<p style="padding-left: 60px;"><a href="https://github.com/winff">https://github.com/winff</a></p>
+<p style="padding-left: 60px;"><a href="http://www.ffmpegx.com/">http://www.ffmpegx.com/</a></p>
+<p style="padding-left: 60px;"><a href="https://handbrake.fr/">https://handbrake.fr/</a></p>
+<p style="padding-left: 60px;"><a href="http://www.squared5.com/">http://www.squared5.com/</a></p>
+<p style="padding-left: 60px;"><a href="https://sourceforge.net/projects/ffmpegyag/">https://sourceforge.net/projects/ffmpegyag/</a></p>
+<h4>擷取 mp4 片段檔案</h4>
+<p>從 origin.mp4 影片中的第一秒開始, 切出 15 分鐘的影片, 存為 new.mp4</p>
+<p style="padding-left: 30px;">ffmpeg -i origin.mp4 -ss 00:00:01 -t 00:15:00 -async 1 new.mp4</p>
+<h4>刪除影片中的聲音資料</h4>
+<p style="padding-left: 30px;">ffmpeg -i origin.mp4 -c copy -an new.mp4</p>
+<p>合併 mp4 檔案</p>
+<p>建立 allmp4.txt 內容為<br/>file '/path/to/1.mp4'<br/>file '/path/to/2.mp4'<br/>file '/path/to/3.mp4'</p>
+<p>將 1.mp4, 2.mp4 與 3.mp4 合併為 new.mp4</p>
+<p style="padding-left: 30px;">ffmpeg -f concat -i allmp4.txt -c copy new.mp4</p>
+<h4>影片中加入字幕</h4>
+<p>利用 <a href="http://www.aegisub.org/">http://www.aegisub.org/</a> 可攜版本工具加入字幕</p>
+<p>直接將 input.srt 字幕資料 burn 入 input.mp4</p>
+<p style="padding-left: 30px;">ffmpeg -i input.mp4 -vf subtitles=input.srt output.mp4</p>
+<h4>影片畫面中座標 x=5, y=950 位置中加入圖檔</h4>
+<h4 style="padding-left: 30px;"><img alt="" height="30" src="/images/kmol_102x30_color.png" width="102"/></h4>
+<p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p>
+<h2>QandA</h2>
 <p>與計算機程式課程有關的問題, 請在 <a href="https://github.com/mdecourse/cp2019/issues/4">https://github.com/mdecourse/cp2019/issues/4</a> 中提出.</p>
 <p>在校區內所使用的電腦 (若只需下載 .iso 可以設定系上提供的 Proxy  server 後下載), 可以透過 <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> 取得各項教育版軟體, 其中包括 Windows 操作系統與 MS Office 以及 AutoDesk 教育版相關套件.</p>
 <p><a href="https://software.nfu.edu.tw/Windows/tw/Win_Pro_Ent_Edu_N_10_1809_64bit_Chinese_Traditional.iso">Windows 10 1809.iso</a>     <a href="https://software.nfu.edu.tw/KMS/windows_kms.bat">kms.bat</a> (每半年認證, 若在校外必須透過 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a> 連線後進行)</p>
