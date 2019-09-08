@@ -422,7 +422,15 @@ print(學員成績(60, 70, 80))</pre>
 <p style="padding-left: 60px;"><a href="https://drive.google.com/file/d/1fxMdqdCoCL__O1IpZ-Sv-A_4-c77Wx4E/view?usp=sharing">2019Fall可攜套件.7z</a></p>
 <p style="padding-left: 60px;"><a href="https://drive.google.com/file/d/1oUbvEWYbWAZM6nIfhQqC8oCcb9fcCJ5F/view?usp=sharing">GitExtensions.7z</a></p>
 <p style="padding-left: 30px;"><span style="background-color: #ffff00;">5:5: 了解如何建立 Github 帳號, 如何建立 cp2019 網站</span></p>
-<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> </p><h2>Task2</h2>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> </p>
+<p style="padding-left: 60px;">在此一階段, 若希望利用 SSH (Secure Shell) 模式對 Github 連線, 必須了解:</p>
+<p style="padding-left: 90px;">1. Github 支援 HTTPS 與 SSH 等兩種連線方式, 採用 HTTPS 必須推送時輸入驗證權限的帳號與密碼, 若採用 SSH 模式連線, 則透過 Github 帳號上所存放的 pub key, 與近端使用者指定位置的 private key 進行認證.</p>
+<p style="padding-left: 90px;">2. 每一個倉儲從 Github clone 下來之後, 便會將預計使用的 HTTPS 或 SSH連線的 URL 註記在 .git 目錄中的 config 檔案中</p>
+<p style="padding-left: 90px;">3. 通常利用可攜環境啟動 portablegit 之後,  SSH 所使用的 private key 路徑設定, 通常存於 y:\home\.ssh 目錄下的  config 檔案中.</p>
+<p style="padding-left: 90px;">4. 如何利用 portablegit 中的 sh.exe 建立所需的 public key 與 private key?</p>
+<p style="padding-left: 90px;">5. public key 該送到 Github 的何處?</p>
+<p style="padding-left: 90px;">6. y:\home\.ssh\config  定檔案中除了宣告 private  key 所在位置外, 還必須注意個人使用多帳號與多 private keys 設定方式, 以及如何在 SSH 連線模式下設定 Proxy Server.</p>
+<p style="padding-left: 90px;">7. <a href="https://2019wcm.blogspot.com/search/label/ssh">參考資料</a></p><h2>Task2</h2>
 <h4>Task2: <span>(佔學期成績 10%)</span></h4>
 <p style="padding-left: 30px;">利用 Dartpad 執行亂數分組</p>
 <p style="padding-left: 60px;">了解如何利用 ShareX 拍攝操作影片</p>
