@@ -165,7 +165,7 @@ init_mathjax();
 <p>直接將 input.srt 字幕資料 burn 入 input.mp4</p>
 <p style="padding-left: 30px;">ffmpeg -i input.mp4 -vf subtitles=input.srt output.mp4</p>
 <h4>影片畫面中座標 x=5, y=950 位置中加入圖檔</h4>
-<h4 style="padding-left: 30px;"><img alt="" height="30" src="./../images/kmol_102x30_color.png" width="102"/></h4>
+<h4 style="padding-left: 30px;"><img alt="" height="30" src="./../images/kmol_102x30_color.png" width="102"/><img alt="" height="30" src="./../images/kmol_102x30_color.png" width="102"/></h4>
 <p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p>
 <h4>其他圖形化工具:</h4>
 <p style="padding-left: 30px;"><a href="http://www.aegisub.org/">http://www.aegisub.org/</a> (Font: SimSun, Size: 40, Bold, Primary, Color (255, 200, 5))</p>
