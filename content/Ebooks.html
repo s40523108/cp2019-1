@@ -149,150 +149,22 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">QandA << <a href='QandA.html'>Previous</a> <a href='課程筆記.html'>Next</a> >> 課程筆記<br /><h1>USB 隨身碟</h1>
-<p>本課程建議使用隨身碟儲存所有與課程相關的倉儲或網頁資料, 也可只將與個人設定相關及倉儲存放在 USB 隨身碟中.</p>
-<p>注意: 將資料存入 USB 隨身碟之前, 務必檢查所使用格式化的規格, 一般出廠 USB 格式化仍採用 <a href="https://zh.wikipedia.org/wiki/FAT">FAT32</a> 格式, 之後將無法存放大於 4GB 的檔案, 因此建議使用之前將 USB 隨身碟格式化為<a href="https://zh.wikipedia.org/wiki/ExFAT"> exFAT</a> 格式.</p>
-<h4>USB 存放整個可攜系統</h4>
-<p>優點:</p>
-<p style="padding-left: 30px;">可以自行配置安裝系統中的模組</p>
-<p>缺點:</p>
-<p style="padding-left: 30px;">執行速度比硬碟慢</p>
-<h4>USB 只存放設定與自我倉儲</h4>
-<p>優點:</p>
-<p style="padding-left: 30px;">執行速度較全部存入 USB 快</p>
-<p>缺點:</p>
-<p style="padding-left: 30px;">其他用戶對硬碟系統資料更動後, 使用上會受影響.</p>
-<h4>全部使用隨身碟內容啟動的 start.bat 批次檔案:</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
-set Disk=y
-subst %Disk%: "data"
-
-%Disk%:
-
-set HomePath=%Disk%:\home_mdecourse
-set HomeDrive=%Disk%:\home_mdecourse
-set Home=%Disk%:\home_mdecourse
-set USERPROFILE=%Disk%:\home_mdecourse
-
-REM 將系統 Python 程式的 io 設為 utf-8
-set PYTHONIOENCODING="utf-8"
-
-set PYTHONPATH=%Disk%:\py373\DLLs;%Disk%:\py373\Lib;%Disk%:\py373\Lib\site-packages;
-set PYTHONHOME=%Disk%:\py373
-
-REM for flutter
-set java_home=%Disk%:\java\jdk8u222-b10
-set ANDROID_SDK_home=%Disk%:\home_mdecourse
-set GRADLE_USER_home=%Disk%:\home_mdecourse
-set ANDROID_SDK_ROOT=%Disk%:\android\sdk
-set PUB_CACHE=%Disk%:\home_mdecourse\pub
-
-REM set _JAVA_OPTIONS=-Duser.home=%HOME%
-set path_flutter=%Disk%:\android\sdk\tools;%Disk%:\android\sdk\tools\bin;%Disk%:\android\sdk\platform-tools;%Disk%:\flutter\bin;%Disk%:\flutter\bin\cache\dart-sdk\bin;
-
-set path_python=%Disk%:\py373;%Disk%:\py373\Scripts;
-set path_msys2=%Disk%:\msys64\mingw64\bin;
-REM coreutils is for compiling fossil scm
-set path_coreutils=%Disk%:\coreutils-5.3.0\bin;%Disk%:\depends22_x64;
-set path_tcc=%Disk%:\tcc;
-set path_cmake=%Disk%:\cmake-3.10.1-win64-x64\bin;
-set path_nodejs=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm;
-set path_git=%Disk%:\portablegit\bin;
-set path_xming=%Disk%:\Xming;
-set path_latex=%Disk%:\Pandoc;%Disk%:\TinyTeX\bin\win32;
-set path_vscode=%Disk%:\vscode;
-
-path=%path%;%Disk%:;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;
-
-start /MIN cmd.exe
-start /MIN cmd.exe
-start /MIN cmd.exe
-start /MIN cmd.exe
-
-start /MIN %Disk%:\wscite415\wscite\SciTE.exe
-start /MIN %Disk%:\wscite415\wscite\SciTE.exe
-
-
-Exit</pre>
-<h4>只存放設定與自我倉儲的  start.bat 批次檔案:</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
-set Disk=y
-subst %Disk%: "data"
-
-%Disk%:
-
-REM 設定所使用的硬碟目錄
-set CDisk=G:\201906_fall\data
-set DDisk=D:\flutter_portable_final\data
-
-set HomePath=%Disk%:\home
-set HomeDrive=%Disk%:\home
-set Home=%Disk%:\home
-set USERPROFILE=%Disk%:\home
-
-REM 將系統 Python 程式的 io 設為 utf-8
-set PYTHONIOENCODING="utf-8"
-
-set PYTHONPATH=%CDisk%\py373\DLLs;%CDisk%\py373\Lib;%CDisk%\py373\Lib\site-packages;
-set PYTHONHOME=%CDisk%\py373
-
-REM for flutter
-set java_home=%DDisk%\java\jdk8u222-b10
-set ANDROID_SDK_home=%DDisk%\home
-set GRADLE_USER_home=%DDisk%\home
-set ANDROID_SDK_ROOT=%DDisk%\android\sdk
-set PUB_CACHE=%Disk%\home\pub
-
-REM set _JAVA_OPTIONS=-Duser.home=%HOME%
-REM %DDisk%\home\pub\bin is for webdev
-set path_flutter=%DDisk%\android\sdk\tools;%DDisk%\android\sdk\tools\bin;%DDisk%\android\sdk\platform-tools;%DDisk%\flutter\bin;%DDisk%\flutter\bin\cache\dart-sdk\bin;%Disk%\home\pub\bin;
-
-set path_python=%CDisk%\py373;%CDisk%\py373\Scripts;
-set path_msys2=%CDisk%\msys64\mingw64\bin;
-REM coreutils is for compiling fossil scm
-set path_coreutils=%CDisk%\coreutils-5.3.0\bin;%CDisk%\depends22_x64;
-set path_tcc=%CDisk%\tcc;
-set path_cmake=%CDisk%\cmake-3.10.1-win64-x64\bin;
-set path_nodejs=%CDisk%\nodejs;%CDisk%\nodejs\appdata\roaming\npm;
-set path_git=%CDisk%\portablegit\bin;
-set path_xming=%CDisk%\Xming;
-set path_latex=%CDisk%\Pandoc;%CDisk%\TinyTeX\bin\win32;
-set path_vscode=%DDisk%\vscode;
-
-path=%path%;%Disk%:;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;
-
-start /MIN cmd.exe
-start /MIN cmd.exe
-start /MIN cmd.exe
-start /MIN cmd.exe
-
-start /MIN %CDisk%\wscite415\wscite\SciTE.exe
-start /MIN %CDisk%\wscite415\wscite\SciTE.exe
-
-
-Exit</pre>
-<h4>stop.bat 批次檔案:</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
-set Disk=y
-path=%PATH%;
-
-taskkill /IM python.exe /F
-taskkill /IM pythonw.exe /F
-taskkill /IM node.exe /F
-taskkill /IM Range.exe /F
-taskkill /IM SciTE.exe /F
-taskkill /IM adb.exe /F
-taskkill /IM code.exe /F
-taskkill /IM java.exe /F
-
-REM 終止虛擬硬碟與目錄的對應
-subst %Disk%: /D
-REM 關閉 cmd 指令視窗
-taskkill /IM cmd.exe /F
-EXIT</pre>
-<p>請注意:</p>
-<p>因為開啟 code 後所需先前的相關 Flutter 專案, 會將與 Android 相關, 取得的 package 放在 PUB_CACHE (即 y:\home\pub), 以及  .android (即 y:\home\.android) 目錄中, 因此搬遷資料時必須同時複製此一目錄內容. 且轉移系統設定時, 必須查驗各 .bat 中所使用的 dart sdk 所在位置.</p>
-<p>而且需要建立 y:\home\AppData\Roaming 目錄, 以便存放 vscode 啟動後的 logs 檔案.</p><br />QandA << <a href='QandA.html'>Previous</a> <a href='課程筆記.html'>Next</a> >> 課程筆記</div>
+    <div id="tipue_search_content">Python << <a href='Python.html'>Previous</a> <a href='Flutter.html'>Next</a> >> Flutter<br /><h1>Ebooks</h1>
+<p>2014 年出版的 Dart for absolute begineers</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-6482-8">https://link.springer.com/book/10.1007/978-1-4302-6482-8</a></p>
+<p>導讀:</p>
+<p style="padding-left: 30px;">可以利用 <a href="https://translate.google.com.tw/?op=translate&amp;sl=en&amp;tl=zh-TW">https://translate.google.com.tw/?op=translate&amp;sl=en&amp;tl=zh-TW</a> </p>
+<p style="padding-left: 30px;">與 <a href="https://www.merriam-webster.com/dictionary/">https://www.merriam-webster.com/dictionary/</a> 協助理解 ebook 內容.</p>
+<p style="padding-left: 30px;">第一章可以完全跳過, 因為所包含的工具屬於 Dart1, 本課程所使用的為 2018 年 2 月所發布的 Dart2 標準.</p>
+<p style="padding-left: 30px;">第二章的 Hello World 程式可以直接在 <a href="http://mde.tw/dartpad">http://mde.tw/dartpad</a> 上執行. 而網頁表單版的 Hello World 則可以將原本的網頁版程式, 拆成 dart, html 與 css 等三部分, 在 dartpad 上勾選 "show web content" 後執行, 若要直接在瀏覽器中執行, 則必須利用位於 y:\dart-sdk/bin/dart2js.bat 或 y:\flutter\bin\cache\dart-sdk\bin\dart2js.bat 將 helloworldfancy.dart 以:</p>
+<p style="padding-left: 30px;">dart2js -o helloworldfancy.js helloworldfancy.dart</p>
+<p style="padding-left: 30px;">轉為 helloworldfancy.js 後以 &lt;script&gt; 標註導入 html 檔案中執行.</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/dartpad?id=7a8f67a86c6b99f6a172984d8133083e">helloworldfancy.dart on Dartpad</a></p>
+<p style="padding-left: 30px;">練習題目:</p>
+<p style="padding-left: 60px;">將 helloworldfancy.dart 轉為 .js 後, 直接在瀏覽器中執行.</p>
+<p style="padding-left: 60px;">helloworldfancy.dart 轉為 .js 之後, 能否嵌入 CMSiMDE 的頁面中?</p>
+<p style="padding-left: 30px;">第三章: Some Programming Fundamentals</p>
+<p style="padding-left: 30px;">var, String, List, num 等為變數的型別 (type) 宣告, 特別注意 Sting 與 List 以大寫字母開頭.</p><br />Python << <a href='Python.html'>Previous</a> <a href='Flutter.html'>Next</a> >> Flutter</div>
         
     <!-- footer -->
       <div class="container">

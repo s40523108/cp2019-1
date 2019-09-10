@@ -158,7 +158,7 @@ print(c2019)</pre>
 <p>直接將 input.srt 字幕資料 burn 入 input.mp4</p>
 <p style="padding-left: 30px;">ffmpeg -i input.mp4 -vf subtitles=input.srt output.mp4</p>
 <h4>影片畫面中座標 x=5, y=950 位置中加入圖檔</h4>
-<h4 style="padding-left: 30px;"><img alt="" height="30" src="/images/kmol_102x30_color.png" width="102"/><img alt="" height="30" src="/images/kmol_102x30_color.png" width="102"/></h4>
+<h4 style="padding-left: 30px;"><img alt="" height="30" src="/images/kmol_102x30_color.png" width="102"/></h4>
 <p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p>
 <h4>其他圖形化工具:</h4>
 <p style="padding-left: 30px;"><a href="http://www.aegisub.org/">http://www.aegisub.org/</a> (Font: SimSun, Size: 40, Bold, Primary, Color (255, 200, 5))</p>
@@ -644,9 +644,26 @@ def 學員成績(自評分數, 互評得分, 教師評分):
 print(學員成績(80, 70, 60))
 print(學員成績(60, 70, 80))</pre>
 <p></p>
-<h2>Flutter</h2>
+<h2>Ebooks</h2>
+<p>2014 年出版的 Dart for absolute begineers</p>
+<p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-6482-8">https://link.springer.com/book/10.1007/978-1-4302-6482-8</a></p>
+<p>導讀:</p>
+<p style="padding-left: 30px;">可以利用 <a href="https://translate.google.com.tw/?op=translate&amp;sl=en&amp;tl=zh-TW">https://translate.google.com.tw/?op=translate&amp;sl=en&amp;tl=zh-TW</a> </p>
+<p style="padding-left: 30px;">與 <a href="https://www.merriam-webster.com/dictionary/">https://www.merriam-webster.com/dictionary/</a> 協助理解 ebook 內容.</p>
+<p style="padding-left: 30px;">第一章可以完全跳過, 因為所包含的工具屬於 Dart1, 本課程所使用的為 2018 年 2 月所發布的 Dart2 標準.</p>
+<p style="padding-left: 30px;">第二章的 Hello World 程式可以直接在 <a href="http://mde.tw/dartpad">http://mde.tw/dartpad</a> 上執行. 而網頁表單版的 Hello World 則可以將原本的網頁版程式, 拆成 dart, html 與 css 等三部分, 在 dartpad 上勾選 "show web content" 後執行, 若要直接在瀏覽器中執行, 則必須利用位於 y:\dart-sdk/bin/dart2js.bat 或 y:\flutter\bin\cache\dart-sdk\bin\dart2js.bat 將 helloworldfancy.dart 以:</p>
+<p style="padding-left: 30px;">dart2js -o helloworldfancy.js helloworldfancy.dart</p>
+<p style="padding-left: 30px;">轉為 helloworldfancy.js 後以 &lt;script&gt; 標註導入 html 檔案中執行.</p>
+<p style="padding-left: 30px;"><a href="https://mde.tw/dartpad?id=7a8f67a86c6b99f6a172984d8133083e">helloworldfancy.dart on Dartpad</a></p>
+<p style="padding-left: 30px;">練習題目:</p>
+<p style="padding-left: 60px;">將 helloworldfancy.dart 轉為 .js 後, 直接在瀏覽器中執行.</p>
+<p style="padding-left: 60px;">helloworldfancy.dart 轉為 .js 之後, 能否嵌入 CMSiMDE 的頁面中?</p>
+<p style="padding-left: 30px;">第三章: Some Programming Fundamentals</p>
+<p style="padding-left: 30px;">var, String, List, num 等為變數的型別 (type) 宣告, 特別注意 Sting 與 List 以大寫字母開頭.</p><h2>Flutter</h2>
 <p style="padding-left: 30px;"><a href="https://flutter.dev/docs">https://flutter.dev/docs</a></p>
+<p style="padding-left: 30px;"><a href="https://www.reddit.com/r/FlutterDev/">https://www.reddit.com/r/FlutterDev/</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/flutter/flutter/projects">https://github.com/flutter/flutter/projects</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/flutter/samples">https://github.com/flutter/samples</a></p>
 <p style="padding-left: 30px;"><a href="https://flutterchina.club/docs/">https://flutterchina.club/docs/</a></p>
 <p style="padding-left: 30px;">Flutter 實戰: <a href="https://book.flutterchina.club/">https://book.flutterchina.club/</a> (<a href="https://github.com/flutterchina/flutter-in-action">Github</a>)</p>
 <p>Flutter 與 Web 架構:</p>
@@ -685,8 +702,7 @@ print(學員成績(60, 70, 80))</pre>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/tBzJOb2Dopg" width="560"></iframe></p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/-QRQIKtPTlI" width="560"></iframe></p>
 <h4>pubspec.yaml 中的支援版次表示法:</h4>
-<p><a href="https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub">https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub</a></p>
-<h3>Flutter Mobile</h3>
+<p><a href="https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub">https://stackoverflow.com/questions/53563079/what-is-the-caret-sign-before-the-dependency-version-number-in-flutters-pub</a></p><h3>Flutter Mobile</h3>
 <p>Practical Flutter (2019)</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4972-7">https://link.springer.com/book/10.1007/978-1-4842-4972-7</a></p>
 <p>Chapter 7: Flutter Chat 希望以 Flask + SocketIo 取代 Node.js</p>
@@ -805,6 +821,7 @@ if __name__ == '__main__':
 <p><a href="https://www.raywenderlich.com/4482551-dart-basics">https://www.raywenderlich.com/4482551-dart-basics</a></p>
 <p><a href="https://github.com/smartherd/DartTutorial">https://github.com/smartherd/DartTutorial</a></p>
 <p><a href="http://jpryan.me/dartbyexample/">http://jpryan.me/dartbyexample/</a> (<a href="https://github.com/johnpryan/dartbyexample">Github</a>)</p>
+<p><a href="https://codingwithjoe.com/dart-fundamentals-async-await/">https://codingwithjoe.com/dart-fundamentals-async-await/</a></p>
 <p><a href="/downloads/Dart2-Cheatsheet.pdf">Dart2-Cheatsheet.pdf</a></p>
 <p><a href="https://translate.google.com.tw/translate?hl=zh-TW&amp;sl=ja&amp;tl=en&amp;u=https%3A%2F%2Fwww.cresc.co.jp%2Ftech%2Fjava%2FGoogle_Dart2%2Flanguage%2Foverview%2Foverview.html">Dart2 Overview</a></p>
 <p><a href="https://translate.google.com.tw/translate?hl=zh-TW&amp;sl=ja&amp;tl=en&amp;u=https%3A%2F%2Fwww.cresc.co.jp%2Ftech%2Fjava%2FGoogle_Dart2%2Fintroduction%2Fmain_page.html">Dart2 Language Basics</a></p>
@@ -1152,6 +1169,8 @@ x?.foo();</pre>
 <p><a href="https://stablekernel.com/binding-rest-interface-postgres-dart/">https://stablekernel.com/binding-rest-interface-postgres-dart/</a></p>
 <p><a href="https://stablekernel.com/concurrency-in-server-side-dart/">https://stablekernel.com/concurrency-in-server-side-dart/</a></p>
 <p><a href="https://medium.com/swlh/server-side-dart-with-postgresql-142e9eec1ed1">https://medium.com/swlh/server-side-dart-with-postgresql-142e9eec1ed1</a></p>
+<p><a href="https://itnext.io/part-2-a-complete-guide-for-building-restful-applications-using-aqueduct-c58688ab8b8e">https://itnext.io/part-2-a-complete-guide-for-building-restful-applications-using-aqueduct-c58688ab8b8e</a></p>
+<p><a href="https://itnext.io/authentication-with-jwt-in-dart-6fbc70130806">https://itnext.io/authentication-with-jwt-in-dart-6fbc70130806</a></p>
 <p>Chat in Dart: <a href="https://github.com/graphicbeacon/dart-bulma-chat-app">https://github.com/graphicbeacon/dart-bulma-chat-app</a> </p>
 <p style="padding-left: 30px;"><a href="https://dev.to/graphicbeacon/build-a-basic-chat-application-in-dart-2-part-1-4ekj">https://dev.to/graphicbeacon/build-a-basic-chat-application-in-dart-2-part-1-4ekj</a></p>
 <p style="padding-left: 30px;"><a href="https://dev.to/graphicbeacon/build-a-chat-application-in-dart-2-part-2-48df">https://dev.to/graphicbeacon/build-a-chat-application-in-dart-2-part-2-48df</a></p>
