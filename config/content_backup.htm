@@ -24,7 +24,7 @@
 <ol>
 <li style="padding-left: 30px;"><span>建議各學員針對課程所指定之作業或課題時, 務必先在個人網頁與網誌登錄相關搜尋結果, 初步完成之個人操作影片, 以及個人擬解決問題的想法後, 再參與分組討論與任務執行.</span></li>
 <li style="padding-left: 30px;"><span>除第一週外, 每位組員必須在次週上課前完成個人倉儲的資料維護, 並至<a href="https://forms.gle/hztfjHLkrAaLyntv6">課程評量表單</a>完成自評與同組組員互評.</span></li>
-<li style="padding-left: 30px;"><span>任何課程相關問題可以至 <a href="https://github.com/mdecourse/cp2019/issues/4">Q&amp;A</a> (需登入) 或<a href="https://forms.gle/hztfjHLkrAaLyntv6">回饋表單</a> (無需登入) 提出.</span></li>
+<li style="padding-left: 30px;"><span>任何課程相關問題可以至 <a href="https://github.com/mdecourse/cp2019/issues/4">Q&amp;A</a> (需登入) 或<a href="https://forms.gle/39mqLTmso6JfHuD27">回饋表單</a> (無需登入) 提出.</span></li>
 </ol>
 <hr/>
 <p style="padding-left: 30px;">學員出席 (10%)</p>
@@ -332,7 +332,32 @@ EXIT</pre>
 <p>請注意:</p>
 <p>因為開啟 code 後所需先前的相關 Flutter 專案, 會將與 Android 相關, 取得的 package 放在 PUB_CACHE (即 y:\home\pub), 以及  .android (即 y:\home\.android) 目錄中, 因此搬遷資料時必須同時複製此一目錄內容. 且轉移系統設定時, 必須查驗各 .bat 中所使用的 dart sdk 所在位置.</p>
 <p>而且需要建立 y:\home\AppData\Roaming 目錄, 以便存放 vscode 啟動後的 logs 檔案.</p>
-<h2>課程筆記</h2>
+<h3>USB 程式系統</h3>
+<h4>背景知識</h4>
+<hr/>
+<p>2019 年 Fall 計算機程式系統的前半段, 各學員可以直接在 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 上寫程式, 寫完後則利用 Github 帳號上的 <a href="https://help.github.com/en/articles/creating-gists">Gists</a> 儲存並引用 Dart 網際程式. </p>
+<p>但是利用 Github Pages 建立個人的網頁時, 近端仍需要能夠執行 <a href="https://git-scm.com/download/win">Git</a> 功能, 能夠編輯文字檔案或程式檔案, 並且需要 Python3 程式環境, 並且對 Python3 安裝 <a href="https://palletsprojects.com/p/flask/">flask</a>, <a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/">bs4</a>, <a href="https://pypi.org/project/lxml/">lxml</a>, <a href="https://blog.getpelican.com/">pelican</a>, <a href="https://github.com/Python-Markdown/markdown">markdown</a> 以及 <a href="https://leoeditor.com/">leo</a> 等模組.</p>
+<p>因為各學員建立網頁用的 <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 網際內容管理程式, 採用 Python Flask 網際框架編寫, 而且使用 bs4 解讀網頁標註, 而且透過 lxml 將動態 html 內容轉為靜態內容, 因此要在近端利用 CMSiMDE 的動態系統編輯內容, 且轉為只含 html, javascript 以及 css 的靜態網頁, 近端程式環境就需要 Python3 加上 flask, bs4 以及 lxml 模組.</p>
+<p>至於 Python3 中的 pelican 與 markdown 主要在 CMSiMDE 網際內容管理系統中, 建立網誌用, 而管理 CMSiMDE 中的網誌與網際投影系統 - reveal.js, 則需要 Leo 大綱編輯器, 因此 Python3 除了必須安裝 flask, bs4, lxml 模組外, 還需要安裝 pelican, markdown 以及 leo 模組.</p>
+<hr/>
+<h4>建立隨身碟程式系統</h4>
+<hr/>
+<p><a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a><span> (登入 @gm 帳號後下載, 210 MB 解開壓縮後約 900 MB) 就是根據上述的背景知識, 在純 Python 環境中安裝各相關模組之後, 再利用 <a href="https://git-scm.com/download/win">Portablegit</a> 作為執行 Git 指令的系統.</span></p>
+<p><span>建立隨身碟程式系統的第一步就是確認隨身碟所使用的規格, 假如不是採用 extFAT 格式化, 之後將無法儲存大於 4GB 的單一 檔案, 這裡所建議的 USB 容量是至少 128 GB USB3.0 以上規格的隨身碟, 並且已經格式化為 extFAT 規格.</span></p>
+<p><span>只要下載 <a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a>, 在隨身碟中解開即可, 接下來就可以從隨身碟以 start.bat 開啟隨身程式系統, 以 stop.bat 退出系統後, 再利用 Windows 10 操作系統中的退出隨身碟指令, 就可以取出隨身碟離開.</span></p>
+<p>接下來各學員的任務就是充分了解 start.bat 以及 stop.bat 的設定, 並且熟悉有關利用 https 與 ssh 對 Github 倉儲連線的相關設定, 並且能夠在 IPv4 與 IPv6 環境下配合修改相關 Proxy 伺服器的設定, 以及各 git config 與倉儲提交身分綁定相關細節, 就可以在每週根據教學進度, 利用  <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 以及 <a href="https://help.github.com/en/articles/creating-gists">Github Gists</a> 連結內容, 更新自己的網站.</p>
+<hr/>
+<h4>相關議題</h4>
+<hr/>
+<p>為什麼 USB 隨身碟需要儲存單一檔案大於 4GB 的資料?</p>
+<p style="padding-left: 30px;">因為若使用 <a href="https://www.virtualbox.org/">Virtualbox</a> 建立  Windows 10 虛擬主機進行相關測試, 最小的單一檔案將大於 10GB.</p>
+<p style="padding-left: 30px;">另外, 利用 Ubuntu 18.04 三個階段的虛擬主機檔案, 從純系統的 2GB 起, 安裝 X-Win 之後就會超過 4GB, 因此將 128 GB 的隨身碟以 extFAT 格式化是必要的.</p>
+<p style="padding-left: 60px;"><a href="https://drive.google.com/open?id=1qWbtu5qioji8MO_-whcaaixMYo3S4mal">Windows 10 64 位元.vmdk 下載</a> (10GB)</p>
+<p style="padding-left: 60px;">純 <a href="https://drive.google.com/open?id=1ZyVmFvBjDL5FRZ4QmmwUDYdQzTHo5qOu">Ubuntu 18.04.vdi 下載</a> (2GB)</p>
+<p style="padding-left: 60px;">安裝 <a href="https://drive.google.com/open?id=1Y3wHAyeyUEQkE3ZzEGOYFXvhnNAZaOcK">Mate 桌面的 Ubuntu 18.04.vdi 下載</a> (7GB)</p>
+<p style="padding-left: 60px;">安裝 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi 下載</a> (12GB)</p>
+<p>為什麼需要使用虛擬主機?</p>
+<p style="padding-left: 30px;">學習計算機程式編寫網際近端與遠端程式互動時, 可以利用近端的虛擬主機作為伺服器, 配置動態的 CMSiMDE 與 Fossil SCM 伺服器, 可以自行建立與 Github 相當的網際內容管理系統, 若再加上了解如何自行建立同時支援 IPv4 與 IPv6 通訊協定的 <a href="http://www.squid-cache.org/">Squid Proxy 伺服器</a>, 將可以在網際程式開發流程中學習全面的整合知識.</p><h2>課程筆記</h2>
 <h4>利用倉儲與網頁紀錄筆記</h4>
 <p>優點:</p>
 <p style="padding-left: 30px;">快速方便且能引入大量線上靜態與動態影片資料</p>
@@ -694,7 +719,7 @@ print(學員成績(60, 70, 80))</pre>
 <p style="padding-left: 60px;"><a href="http://www.codenextgen.com/why-should-you-choose-dart-and-python-for-2019/">為什麼該學 Dart?</a> (除了 C, C++, Lua, Python 與 Javascript 之外)</p>
 <p style="padding-left: 90px;">C 與 Lua: 擅長各式硬體控制</p>
 <p style="padding-left: 90px;">C++: 建立 CAD/E/M 運算核心</p>
-<p style="padding-left: 90px;">Python: Prototyping 後經由 <a href="https://cython.org/">Cython</a> 轉為 C++)</p>
+<p style="padding-left: 90px;">Python: Prototyping 後經由 <a href="https://cython.org/">Cython</a> 轉為 C++</p>
 <p style="padding-left: 90px;">Javascript: Web programming (由 Dart 轉 js 嵌入網頁執行)</p>
 <p style="padding-left: 90px;">Dart: Server, Web and Mobile programming (透過 Flutter SDK)</p>
 <p style="padding-left: 90px;">C/C++ 核心 (含 Python+Cython) 作為設計分析與硬體控制核心, 以 Lua 及 Python 中繼進行組態調控, Web Server 以 Dart 開發, Web 與 Mobile Client 端則採 Dart 與 Flutter 執行開發.</p>
