@@ -41,16 +41,23 @@
 <p style="padding-left: 30px;">操作錄影</p>
 <p style="padding-left: 30px;">學員實習</p>
 <p style="padding-left: 30px;">分組報告</p><h2>課程簡介</h2>
-<p>說明課程進行方式, 評分方式與課程目標</p>
-<p>課程進行方式 - 每週講解與示範, 並錄下基本操作影片素材, 週四上機與助教時間, 分組建立帶有字幕的教學影片, 各組員與小組每週維護倉儲與網站內容.</p>
-<p>評分方式 - 利用線上表單, 學員每週進行自評與互評, 教師根據各組員與小組所完成的教學影片, 倉儲維護歷程與網站內容進行評分, 依照上述三種成績與相關流程計算各學員期中與期末成績.</p>
-<p>課程目標 - 學員可利用 Git 與 Github 進行分組協同, 獨立維護網站, 利用帶有字幕的教學影片與網頁內容進行工程表達, 學習如何利用電腦、網路與程式執行協同機械產品設計分析與開發.</p>
-<p>附註:</p>
-<p>因機械設計產品開發之異地協同設計需求, 而衍生出對於建立 USB 可攜程式隨身碟之必要.</p>
-<p>因同步分散式程式開發之模式, 而衍生出對於分散式版次管理系統之需求.</p>
-<p>因追求最佳化機械設計流程開發, 而衍生出利用程式及網路進行工程分析之需求.</p>
-<p>因為透過帶字幕的教學影片製作, 可證明對於特定計算機程式主題的了解程度, 並藉由網站簡報資料的建立與發布, 可提高各學員相互學習的成效.</p>
-<h2>課程表單</h2>
+<p>說明課程進行方式:</p>
+<p style="padding-left: 30px;">實際操作示範並拍攝成 mp4 供學員參考</p>
+<p style="padding-left: 30px;">學員將上課操作影片整理成帶字幕的教學影片, 並嵌入個人網頁</p>
+<p style="padding-left: 30px;">每週提供助教時間, 可執行上機練習、磁區內容重整與學員問題解答</p>
+<p style="padding-left: 30px;">分組解決指定問題時, 分為組員個人之心得整理, 與所有組員協同研討之結論</p>
+<p>評分方式:</p>
+<p style="padding-left: 30px;">依照組員自評、互評與教師評分綜合進行計分</p>
+<p>課程目標:</p>
+<p style="padding-left: 30px;"><span>使用可攜程式系統、網際內容管理系統與 Github, 管理各學員與分組學習內容, 同時利用 Dart 程式語言, 設法打造可用於電腦輔助機械設計流程的工具.</span></p>
+<p><span>程式開發架構:</span></p>
+<p style="padding-left: 30px;"><span>利用  <a href="https://www.virtualbox.org/">Virtualbox</a> 安裝 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi 下載</a><span> (12GB) 後, 就可以在 Windows 10 環境下配置虛擬的 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 動態主機、<a href="https://fossil-scm.org">Fossil SCM</a> 伺服器、<a href="https://github.com/KmolYuan/Pyslvs-UI">Pyslvs</a> 、<a href="http://www.coppeliarobotics.com/">V-rep</a> 、<a href="https://cyberbotics.com/">Webots</a> 套件與 <a href="http://www.squid-cache.org/">Squid</a> 代理主機.</span></span></p>
+<p style="padding-left: 30px;"><span><span>此一架構的程式開發標的, 即是要結合近端的瀏覽器、手機、平板介面與各種伺服器, 整合成一套機電資軟硬體系統, 前端的程式套件主要利用 <a href="https://dart.dev/">Dart</a> 開發, 負責擷取設計參數 (包含文字與數字內容, 以及靜態與動態影像等), 而後端的伺服器則包含 C/C++/Python (<a href="https://cython.org/">Cython</a>) 程式所開發的 CAD/CAE/CAM 機械設計運算核心.  透過數學運算與機械設計製造原理分析後, 將結果送回前端的使用者介面, 或依照前端介面的參數指示, 進行後端機電資實體系統的作動.</span></span></p>
+<p style="padding-left: 30px;"><span><span>範例:</span></span></p>
+<p style="padding-left: 60px;"><span><span><a href="http://mde.tw/cad2019/content/Task1.html">http://mde.tw/cad2019/content/Task1.html</a> 中利用瀏覽器連線到 Python 與 <a href="https://github.com/pallets/flask">Flask</a> 框架所建立的伺服器程式後, 可以滑鼠點擊前後左右圖像, 從伺服器的特定埠號送出控制訊號, 用來控制遠端 <a href="http://www.coppeliarobotics.com/">V-rep</a> 模擬系統中的行走車.</span></span></p>
+<p style="padding-left: 60px;">本課程的目標之一, 就是希望利用 <a href="https://dart.dev/">Dart</a> 開發出能夠取代上列 Python 前端程式介面, 並延伸至手機與平板介面, 以便更有效對虛擬或實體的機電資系統進行控制或雙向資訊互動.</p>
+<p style="padding-left: 60px;"></p>
+<p><span></span></p><h2>課程表單</h2>
 <p><span>計算機程式每週自評與互評表單:</span><span><span> </span><a href="https://forms.gle/hztfjHLkrAaLyntv6">https://forms.gle/hztfjHLkrAaLyntv6</a> (必須登入 @gm 帳號)</span></p>
 <p><span><a href="https://github.com/mdecourse/cp2019/issues/4">計算機程式課程 Q and A </a>(需登入 Github 帳號)</span></p>
 <p><span><a href="https://forms.gle/S5omHaKXR8HvDsmy5">課程回饋表單</a><span><span> </span>(無需登入 @gm 帳號)</span></span></p><h2>亂數分組</h2>
