@@ -356,11 +356,43 @@ EXIT</pre>
 <p style="padding-left: 60px;">純 <a href="https://drive.google.com/open?id=1ZyVmFvBjDL5FRZ4QmmwUDYdQzTHo5qOu">Ubuntu 18.04.vdi 下載</a> (2GB)</p>
 <p style="padding-left: 60px;">安裝 <a href="https://drive.google.com/open?id=1Y3wHAyeyUEQkE3ZzEGOYFXvhnNAZaOcK">Mate 桌面的 Ubuntu 18.04.vdi 下載</a> (7GB)</p>
 <p style="padding-left: 60px;">安裝 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi 下載</a> (12GB)</p>
-<p>為什麼 USB 隨身碟中的可攜程式環境需要有多個啟動 start.bat 環境?</p>
+<p>為什麼 USB 隨身碟中的可攜程式環境可能需要有多個啟動 start.bat 環境?</p>
 <p style="padding-left: 30px;">由於每一個電腦使用環境各有不同的網路架構與設定, 因此在電腦輔助設計室與其他不同電腦使用地點, 為免除多次修改 home 目錄下的 .gitconfig 以及 home\.ssh 目錄下的 config 檔案設定, 最佳的因應方法為: 在不同電腦使用環境時, 啟動因應該地點配置的啟動 start.bat 與 home 設定內容.</p>
+<p style="padding-left: 30px;">在此必須注意的是, 不同的 start.bat 可能指到不同的 home 目錄, 而在 <a href="https://flutter.dev">Flutter</a> 手機開發流程中, <a href="https://pub.dev/flutter">pub</a> 將相關資料存入可攜系統 home 中的 pub 目錄, 可能造成此目錄容量達 1GB, 若在不同 start.bat 與 home 設定下都需要進行 <a href="https://flutter.dev">Flutter</a> 手機程式開發, 將需要較大容量的 USB隨身碟.</p>
 <p>如何將 Dart 網際程式寫在 Gists, 如何利用 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 引用?</p>
 <p style="padding-left: 30px;">各學員登入 Github 之後, 從右上方下拉式功能表點選 Your Gists, 即進入個人的 Gist 區, 再點選右上方的 + 號, 就可以新增 Gist 資料, 其中可以包含 .dart, .html 與 .css 等三種檔案, 新增後即可以取得各筆 Gist 的編碼.</p>
 <p style="padding-left: 30px;">要在 Dartpad 中引用, 只需將各 Gist 檔案的編碼, 在 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 中加上 ?id=編號, 例如: 引用 Gist 編號為 60ad22240eb79d2b25e2ea1bcdd8f0c6 的 Dart 程式範例, 為 <a href="https://mde.tw/dartpad?id=60ad22240eb79d2b25e2ea1bcdd8f0c6">https://mde.tw/dartpad?id=60ad22240eb79d2b25e2ea1bcdd8f0c6</a> </p>
+<p>以 SSH 協定維護 Github 倉儲的考量.</p>
+<p style="padding-left: 30px;">Github 倉儲的維護提供 HTTPS 與 SSH 等兩種連線模式, 使用 HTTPS 時需要在 push 時輸入帳號與密碼, 而 SSH 連線則採用公私鑰配對的方式進行認證.</p>
+<p style="padding-left: 30px;">當使用 SSH 協定維護 Github 倉儲時, 則必須注意 portablegit 所提供的 connect.ext, 因此其 <a href="https://github.com/git/git/blob/master/connect.c">https://github.com/git/git/blob/master/connect.c</a> 目前無法使用 IPv6 代理主機連線, 因此若在純 IPv6 模式下, 必須改採 <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty/Plink</a> 與 <a href="https://git-scm.com/download/win">Git</a> 結合的方式進行.</p>
+<p style="padding-left: 30px;">希望在純 IPv6 模式下, 使用 IPv6/IPv4 雙支援的代理主機對 Github 連線, 必須注意三項要點:</p>
+<p style="padding-left: 30px;">要點1: 啟動時將 GIT_SSH 環境變數設為 y:\putty\plink.exe, Git 指令啟動時, 就會使用 plink.exe 以 ssh 模式對 Github 倉儲連線.</p>
+<p style="padding-left: 30px;">要點2: Github 的 SSH 與 GPG keys 設定只接受 <a href="https://en.wikipedia.org/wiki/OpenSSH">OpenSSH</a>  格式的 public key 輸入, 但是近端的  Git 指令若透過 putty 的 plink.exe 連線, 則只接受 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA</a> 格式的 key 格式認證. 因此近端 putty 的 AUTH 設定, 必須先將 OpenSSH 格式的 keys 利用 putty 工具組中的 puttygen.exe 轉為 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA </a>格式後才能使用.</p>
+<p style="padding-left: 30px;">要點3: Putty 將設定存在 registry, 而且 plink.exe 可以使用 putty.exe 的 session 設定, 因此若要採用 IPv6 proxy 設定, 是以 github.com 為 putty 的 session 名稱, 然後指定 SSH 設定下的 Auth 指定 private key, 並在 PROXY 設定所使用的 HTTP 協定代理主機.</p>
+<p style="padding-left: 30px;">啟動 start.bat 附加:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for putty
+set GIT_HOME=%CDisk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe</pre>
+<p style="padding-left: 30px;">homt/.ssh/config 設定:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># no proxy at home
+#ProxyCommand y:/PortableGit/mingw64/bin/connect.exe -H proxy.mde.nfu.edu.tw:3128 %h %p
+# set git_ssh=y:/putty/plink.exe with auth under putty github.com session setup
+ProxyCommand y:/putty/plink.exe github.com %h %p
+ 
+Host github.com
+    User git
+    Port 22
+    Hostname github.com
+    
+    # for connect.exe need openssh key format
+    #IdentityFile "y:\home\.ssh\id_rsa_mdecourse"
+    # for plink.exe need rsa key format but set under putty github.com session
+    # plink.exe do not need the following setting
+    #IdentityFile "y:\home\.ssh\mdecourse_putty_private.ppk"
+ 
+    TCPKeepAlive yes
+    IdentitiesOnly yes
+</pre>
 <p>為什麼需要使用虛擬主機?</p>
 <p style="padding-left: 30px;">學習計算機程式編寫網際近端與遠端程式互動時, 可以利用近端的虛擬主機作為伺服器, 配置動態的 CMSiMDE 與 Fossil SCM 伺服器, 可以自行建立與 Github 相當的網際內容管理系統, 若再加上了解如何自行建立同時支援 IPv4 與 IPv6 通訊協定的 <a href="http://www.squid-cache.org/">Squid Proxy 伺服器</a>, 將可以在網際程式開發流程中學習全面的整合知識.</p>
 <p><a href="https://drive.google.com/file/d/1oUbvEWYbWAZM6nIfhQqC8oCcb9fcCJ5F/view?usp=sharing">GitExtensions.7z</a> 有何用途?</p>
