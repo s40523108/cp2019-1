@@ -362,13 +362,13 @@ EXIT</pre>
 <p>如何將 Dart 網際程式寫在 Gists, 如何利用 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 引用?</p>
 <p style="padding-left: 30px;">各學員登入 Github 之後, 從右上方下拉式功能表點選 Your Gists, 即進入個人的 Gist 區, 再點選右上方的 + 號, 就可以新增 Gist 資料, 其中可以包含 .dart, .html 與 .css 等三種檔案, 新增後即可以取得各筆 Gist 的編碼.</p>
 <p style="padding-left: 30px;">要在 Dartpad 中引用, 只需將各 Gist 檔案的編碼, 在 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 中加上 ?id=編號, 例如: 引用 Gist 編號為 60ad22240eb79d2b25e2ea1bcdd8f0c6 的 Dart 程式範例, 為 <a href="https://mde.tw/dartpad?id=60ad22240eb79d2b25e2ea1bcdd8f0c6">https://mde.tw/dartpad?id=60ad22240eb79d2b25e2ea1bcdd8f0c6</a> </p>
-<p>以 SSH 協定維護 Github 倉儲的考量.</p>
+<p>以 SSH 協定維護 Github 倉儲的考量. (<a href="https://drive.google.com/file/d/1ISq1TJuaZyYZnfU33l-b7ifzmO3ejlEV/view?usp=sharing">下載 putty.7z</a> SSH 連線工具組)</p>
 <p style="padding-left: 30px;">Github 倉儲的維護提供 HTTPS 與 SSH 等兩種連線模式, 使用 HTTPS 時需要在 push 時輸入帳號與密碼, 而 SSH 連線則採用公私鑰配對的方式進行認證.</p>
 <p style="padding-left: 30px;">當使用 SSH 協定維護 Github 倉儲時, 則必須注意 portablegit 所提供的 connect.ext, 因此其 <a href="https://github.com/git/git/blob/master/connect.c">https://github.com/git/git/blob/master/connect.c</a> 目前無法使用 IPv6 代理主機連線, 因此若在純 IPv6 模式下, 必須改採 <a href="https://www.chiark.greenend.org.uk/~sgtatham/putty/">Putty/Plink</a> 與 <a href="https://git-scm.com/download/win">Git</a> 結合的方式進行.</p>
 <p style="padding-left: 30px;">希望在純 IPv6 模式下, 使用 IPv6/IPv4 雙支援的代理主機對 Github 連線, 必須注意三項要點:</p>
 <p style="padding-left: 30px;">要點1: 啟動時將 GIT_SSH 環境變數設為 y:\putty\plink.exe, Git 指令啟動時, 就會使用 plink.exe 以 ssh 模式對 Github 倉儲連線.</p>
 <p style="padding-left: 30px;">要點2: Github 的 SSH 與 GPG keys 設定只接受 <a href="https://en.wikipedia.org/wiki/OpenSSH">OpenSSH</a>  格式的 public key 輸入, 但是近端的  Git 指令若透過 putty 的 plink.exe 連線, 則只接受 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA</a> 格式的 key 格式認證. 因此近端 putty 的 AUTH 設定, 必須先將 OpenSSH 格式的 keys 利用 putty 工具組中的 puttygen.exe 轉為 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA </a>格式後才能使用.</p>
-<p style="padding-left: 30px;">要點3: Putty 將設定存在 registry, 而且 plink.exe 可以使用 putty.exe 的 session 設定, 因此若要採用 IPv6 proxy 設定, 是以 github.com 為 putty 的 session 名稱, 然後指定 SSH 設定下的 Auth 指定 private key, 並在 PROXY 設定所使用的 HTTP 協定代理主機.</p>
+<p style="padding-left: 30px;">要點3: Putty 將設定存在 registry,  Computer\HKEY_CURRENT_USER\Software\SimonTatham, 而且 plink.exe 可以使用 putty.exe 的 session 設定, 因此若要採用 IPv6 proxy 設定, 是以 github.com 為 putty 的 session 名稱, 然後指定 SSH 設定下的 Auth 指定 private key, 並在 PROXY 設定所使用的 HTTP 協定代理主機. 當 putty 設定 github.com session 完成後, 必須以 git 為帳號連線一次, 以便將 github.com 網站的 public key 存檔, 讓隨後的 git push 無需再對連線主機進行後續認證. (若不在 putty 先行對 github.com 主機連線, 在 plink ssh 連線下將無法儲存相關的認證檔案.)</p>
 <p style="padding-left: 30px;">啟動 start.bat 附加:</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for putty
 set GIT_HOME=%CDisk%:\portablegit\bin\
