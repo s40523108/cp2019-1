@@ -1351,6 +1351,10 @@ main() async {
 <p>若要自行以 Python 建立用來伺服 dartpad 的 WWW 伺服器, 必須送出 "Access-Control-Allow-Origin" header, 若採 https 則必須支援 TLS 1.2 以上的版本, 此伺服器所需的 self-signed certificate 可以利用:</p>
 <p>openssl req -x509 -new -nodes -sha256 -utf8 -days 3650 -newkey rsa:2048 -keyout localhost.key -out localhost.crt</p>
 <p>建立所需的 localhost.key 與 localhost.crt</p>
+<p>範例倉儲:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/scrum-4/dartpad">https://github.com/scrum-4/dartpad</a></p>
+<p>範例 dartpad:</p>
+<p style="padding-left: 30px;"><a href="https://scrum-4.github.io/dartpad">https://scrum-4.github.io/dartpad</a> </p>
 <p>可用於伺服 dartpad 的 http-server.py:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
 import subprocess
