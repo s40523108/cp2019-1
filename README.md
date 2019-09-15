@@ -3,8 +3,4 @@
 
 相關網頁:
 
-<a href="http://mde.tw/cp2019_summer">http://mde.tw/cp2019_summer</a>
-
-<a href="http://mde.tw/cp2019_fall">http://mde.tw/cp2019_fall</a>
-
 <a href="http://mde.tw/cp2019">http://mde.tw/cp2019</a>

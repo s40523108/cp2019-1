@@ -1340,8 +1340,21 @@ main() async {
 <p style="padding-left: 30px;"><a href="https://dart.dev/tools/dartpad">https://dart.dev/tools/dartpad</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/tutorials/web/low-level-html/remove-elements">https://dart.dev/tutorials/web/low-level-html/remove-elements</a></p>
-<p>讓使用者所練習的 Dart 程式可以存檔, 可以呼叫修改, 也可以轉換成 Web, Mobile 與單機程式?</p>
-<p>或者利用 Dart 建立一個以機械設計流程為主體的網際內容管理系統?</p>
+<p>Dartpad 的執行需要 <a href="https://github.com/dart-lang/dart-services">https://github.com/dart-lang/dart-services</a>, 因此啟動 dartpad 的 WWW 伺服器需要允許 <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">https://en.wikipedia.org/wiki/Cross-origin_resource_sharing</a>, 同時在 dartpad 中提供資料的其他 WWW 伺服器也需要支援 CORS.</p>
+<p>為了讓 CMSiMDE 能夠全域支援 CORS, 必須以 python -m pip install flask_cors 安裝 flask_cors, 並且在 CMSiMDE 的 <a href="https://github.com/mdecourse/cmsimde/blob/5acf7403a8e4615edc93711dcb17a5a56438e0bc/flaskapp.py">flaskapp.py</a> 中納入 CORS.</p>
+<p>例如:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入CORS
+# python -m pip install flask_cors
+from flask_cors import CORS
+
+# 其他原始碼
+
+app = Flask(__name__)
+CORS(app, support_credentials=False)
+
+# 其他原始碼</pre>
+<p></p>
+<hr/>
 <p>自行 Build dart-pad:</p>
 <p>git clone <a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
 <p>之後, 進入 dart-pad 目錄之後, 以 pub get 取得所需 dependencies</p>

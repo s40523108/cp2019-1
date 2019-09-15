@@ -153,7 +153,7 @@ init_mathjax();
 <p style="padding-left: 30px;"><a href="https://dart.dev/tools/dartpad">https://dart.dev/tools/dartpad</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/tutorials/web/low-level-html/remove-elements">https://dart.dev/tutorials/web/low-level-html/remove-elements</a></p>
-<p>Dartpad 的執行需要 <a href="https://github.com/dart-lang/dart-services">https://github.com/dart-lang/dart-services</a>, 因此啟動 dartpad 的 WWW 伺服器需要允許 <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">https://en.wikipedia.org/wiki/Cross-origin_resource_sharing</a>, 同時在 dartpad 中提供資料的其他 WWW 伺服器也需要支援 CORS.</p>
+<p>Dartpad 的執行需要 <a href="https://github.com/dart-lang/dart-services">https://github.com/dart-lang/dart-services</a>, (所需設定位於 <a href="https://github.com/mdecourse/dartpad/blob/master/lib/services/common.dart">https://github.com/mdecourse/dartpad/blob/master/lib/services/common.dart</a>, 若需全部在近端使用 dartpad, 必須修改設定, 並自行啟動 dart-services), 因此使用跨網域啟動 dartpad 的 WWW 伺服器需要允許 <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">https://en.wikipedia.org/wiki/Cross-origin_resource_sharing</a>, 同時在 dartpad 中提供資料的其他 WWW 伺服器也需要支援 CORS.</p>
 <p>為了讓 CMSiMDE 能夠全域支援 CORS, 必須以 python -m pip install flask_cors 安裝 flask_cors, 並且在 CMSiMDE 的 <a href="https://github.com/mdecourse/cmsimde/blob/5acf7403a8e4615edc93711dcb17a5a56438e0bc/flaskapp.py">flaskapp.py</a> 中納入 CORS.</p>
 <p>例如:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入CORS
