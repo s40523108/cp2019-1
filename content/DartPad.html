@@ -161,6 +161,48 @@ init_mathjax();
 <p>然後以 webdev build 之後, 將會在 build  目錄中產生所需的相關檔案. <span>(注意: 使用 webdev.bat 時, 必須查看批次檔案中所引用的 dart 所在路徑是否正確)</span></p>
 <p>之後刪除 .git 與 .gitignore 檔案,  將 build 目錄改名為 docs 並設為 Github Pages 得到:</p>
 <p><a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> </p>
+<p>若要自行以 Python 建立用來伺服 dartpad 的 WWW 伺服器, 必須送出 "Access-Control-Allow-Origin" header, 若採 https 則必須支援 TLS 1.2 以上的版本, 此伺服器所需的 self-signed certificate 可以利用:</p>
+<p>openssl req -x509 -new -nodes -sha256 -utf8 -days 3650 -newkey rsa:2048 -keyout localhost.key -out localhost.crt</p>
+<p>建立所需的 localhost.key 與 localhost.crt</p>
+<p>範例倉儲:</p>
+<p style="padding-left: 30px;"><a href="https://github.com/scrum-4/dartpad">https://github.com/scrum-4/dartpad</a></p>
+<p>範例 dartpad:</p>
+<p style="padding-left: 30px;"><a href="https://scrum-4.github.io/dartpad">https://scrum-4.github.io/dartpad</a> </p>
+<p>可用於伺服 dartpad 的 http-server.py:</p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import os
+import subprocess
+import threading
+import http.server, ssl
+
+# openssl req -x509 -new -nodes -sha256 -utf8 -days 3650 -newkey rsa:2048 -keyout localhost.key -out localhost.crt
+
+class AcaoHTTPRequestHandler(http.server.SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_my_headers()
+
+        http.server.SimpleHTTPRequestHandler.end_headers(self)
+
+    def send_my_headers(self):
+        self.send_header("Access-Control-Allow-Origin", "*")
+
+def domake():
+    # build directory
+    #os.chdir("./../")
+    server_address = ('localhost', 4444)
+    httpd = http.server.HTTPServer(server_address, AcaoHTTPRequestHandler)
+    httpd.socket = ssl.wrap_socket(httpd.socket,
+                                   server_side=True,
+                                   certfile='localhost.crt',
+                                   keyfile='localhost.key',
+                                   ssl_version=ssl.PROTOCOL_TLSv1_2)
+    print(os.getcwd())
+    print("4444 https server started")
+    httpd.serve_forever()
+
+# 利用執行緒執行 https 伺服器
+make = threading.Thread(target=domake)
+make.start()
+</pre>
 <p>Canvas 繪圖範例</p>
 <p>main.dart</p>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
