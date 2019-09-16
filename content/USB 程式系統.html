@@ -153,15 +153,15 @@ init_mathjax();
 <h4>背景知識</h4>
 <hr/>
 <p>2019 年 Fall 計算機程式系統的前半段, 只要能上網, 各學員可以直接在 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 上寫程式, 寫完後則利用 Github 帳號上的 <a href="https://help.github.com/en/articles/creating-gists">Gists</a> 儲存並引用 Dart 網際程式. </p>
-<p>但是利用 Github Pages 建立個人的網頁時, 近端仍需要能夠執行 <a href="https://git-scm.com/download/win">Git</a> 功能, 能夠編輯文字檔案或程式檔案, 並且需要 Python3 程式環境, 並且對 Python3 安裝 <a href="https://palletsprojects.com/p/flask/">flask</a>, <a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/">bs4</a>, <a href="https://pypi.org/project/lxml/">lxml</a>, <a href="https://blog.getpelican.com/">pelican</a>, <a href="https://github.com/Python-Markdown/markdown">markdown</a> 以及 <a href="https://leoeditor.com/">leo</a> 等模組.</p>
-<p>因為各學員建立網頁用的 <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 網際內容管理程式, 採用 Python Flask 網際框架編寫, 而且使用 bs4 解讀網頁標註, 而且透過 lxml 將動態 html 內容轉為靜態內容, 因此要在近端利用 CMSiMDE 的動態系統編輯內容, 且轉為只含 html, javascript 以及 css 的靜態網頁, 近端程式環境就需要 Python3 加上 flask, bs4 以及 lxml 模組.</p>
+<p>但是利用 <a href="https://pages.github.com/">Github Pages</a> 建立個人的網頁時, 近端仍需要能夠執行 <a href="https://git-scm.com/download/win">Git</a> 功能, 能夠編輯文字檔案或程式檔案, 並且需要 Python3 程式環境, 並且對 Python3 安裝 <a href="https://palletsprojects.com/p/flask/">flask</a>, <a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/">bs4</a>, <a href="https://pypi.org/project/lxml/">lxml</a>, <a href="https://blog.getpelican.com/">pelican</a>, <a href="https://github.com/Python-Markdown/markdown">markdown</a> 以及 <a href="https://leoeditor.com/">leo</a> 等模組.</p>
+<p>因為各學員建立網頁用的 <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 網際內容管理程式, 採用 Python <a href="https://github.com/pallets/flask">Flask</a> 網際框架編寫, 而且使用 bs4 解讀網頁標註, 而且透過 lxml 將動態 html 內容轉為靜態內容, 因此要在近端利用 CMSiMDE 的動態系統編輯內容, 且轉為只含 html, javascript 以及 css 的靜態網頁, 近端程式環境就需要 Python3 加上 flask, bs4 以及 lxml 模組. (為了讓 CMSiMDE 可以跨網域存取資料, 又加上 flask_cors 模組)</p>
 <p>至於 Python3 中的 pelican 與 markdown 主要在 CMSiMDE 網際內容管理系統中, 建立網誌用, 而管理 CMSiMDE 中的網誌與網際投影系統 - reveal.js, 則需要 Leo 大綱編輯器, 因此 Python3 除了必須安裝 flask, bs4, lxml 模組外, 還需要安裝 pelican, markdown 以及 leo 模組.</p>
 <hr/>
 <h4>建立隨身碟程式系統</h4>
 <hr/>
 <p><a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a><span> (登入 @gm 帳號後下載, 210 MB 解開壓縮後約 900 MB) 就是根據上述的背景知識, 在純 Python 環境中安裝各相關模組之後, 再利用 <a href="https://git-scm.com/download/win">Portablegit</a> 作為執行 Git 指令的系統.</span></p>
 <p><span>建立隨身碟程式系統的第一步就是確認隨身碟所使用的規格, 假如不是採用 extFAT 格式化, 之後將無法儲存大於 4GB 的單一 檔案, 這裡所建議的 USB 容量是至少 128 GB USB3.0 以上規格的隨身碟, 並且已經格式化為 extFAT 規格.</span></p>
-<p><span>只要下載 <a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a>, 在隨身碟中解開即可, 接下來就可以從隨身碟以 start.bat 開啟隨身程式系統, 以 stop.bat 退出系統後, 再利用 Windows 10 操作系統中的退出隨身碟指令, 就可以取出隨身碟離開.</span></p>
+<p><span>只要下載 <a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a>, 在隨身碟中解開即可 (為了使用最新版的 CMSiMDE, 必須利用 python -m pip install flask_cors 安裝 flask_cors 模組), 接下來就可以從隨身碟以 start.bat 開啟隨身程式系統, 以 stop.bat 退出系統後, 再利用 Windows 10 操作系統中的退出隨身碟指令, 就可以取出隨身碟離開.</span></p>
 <p>接下來各學員的任務就是充分了解 start.bat 以及 stop.bat 的設定, 並且熟悉有關利用 https 與 ssh 對 Github 倉儲連線的相關設定, 並且能夠在 IPv4 與 IPv6 環境下配合修改相關 Proxy 伺服器的設定, 以及各 git config 與倉儲提交身分綁定相關細節, 就可以在每週根據教學進度, 利用  <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 以及 <a href="https://help.github.com/en/articles/creating-gists">Github Gists</a> 連結內容, 更新自己的網站.</p>
 <hr/>
 <h4>相關議題</h4>
@@ -187,11 +187,11 @@ init_mathjax();
 <p style="padding-left: 30px;">要點2: Github 的 SSH 與 GPG keys 設定只接受 <a href="https://en.wikipedia.org/wiki/OpenSSH">OpenSSH</a>  格式的 public key 輸入, 但是近端的  Git 指令若透過 putty 的 plink.exe 連線, 則只接受 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA</a> 格式的 key 格式認證. 因此近端 putty 的 AUTH 設定, 必須先將 OpenSSH 格式的 keys 利用 putty 工具組中的 puttygen.exe 轉為 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA </a>格式後才能使用.</p>
 <p style="padding-left: 30px;">要點3: Putty 將設定存在 registry,  Computer\HKEY_CURRENT_USER\Software\SimonTatham, 而且 plink.exe 可以使用 putty.exe 的 session 設定, 因此若要採用 IPv6 proxy 設定, 是以 github.com 為 putty 的 session 名稱, 然後指定 SSH 設定下的 Auth 指定 private key, 並在 PROXY 設定所使用的 HTTP 協定代理主機. 當 putty 設定 github.com session 完成後, 必須以 git 為帳號連線一次, 以便將 github.com 網站的 public key 存檔, 讓隨後的 git push 無需再對連線主機進行後續認證. (若不在 putty 先行對 github.com 主機連線, 在 plink ssh 連線下將無法儲存相關的認證檔案.)</p>
 <p style="padding-left: 30px;">啟動 start.bat 附加:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for putty
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">REM for putty
 set GIT_HOME=%CDisk%:\portablegit\bin\
 set GIT_SSH=%Disk%:\putty\plink.exe</pre>
 <p style="padding-left: 30px;">homt/.ssh/config 設定:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># no proxy at home
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false"># no proxy at home
 #ProxyCommand y:/PortableGit/mingw64/bin/connect.exe -H proxy.mde.nfu.edu.tw:3128 %h %p
 # set git_ssh=y:/putty/plink.exe with auth under putty github.com session setup
 ProxyCommand y:/putty/plink.exe github.com %h %p

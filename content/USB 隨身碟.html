@@ -162,59 +162,7 @@ init_mathjax();
 <p style="padding-left: 30px;">執行速度較全部存入 USB 快</p>
 <p>缺點:</p>
 <p style="padding-left: 30px;">其他用戶對硬碟系統資料更動後, 使用上會受影響.</p>
-<h4>全部使用隨身碟內容啟動的 start.bat 批次檔案:</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
-set Disk=y
-subst %Disk%: "data"
-
-%Disk%:
-
-set HomePath=%Disk%:\home_mdecourse
-set HomeDrive=%Disk%:\home_mdecourse
-set Home=%Disk%:\home_mdecourse
-set USERPROFILE=%Disk%:\home_mdecourse
-
-REM 將系統 Python 程式的 io 設為 utf-8
-set PYTHONIOENCODING="utf-8"
-
-set PYTHONPATH=%Disk%:\py373\DLLs;%Disk%:\py373\Lib;%Disk%:\py373\Lib\site-packages;
-set PYTHONHOME=%Disk%:\py373
-
-REM for flutter
-set java_home=%Disk%:\java\jdk8u222-b10
-set ANDROID_SDK_home=%Disk%:\home_mdecourse
-set GRADLE_USER_home=%Disk%:\home_mdecourse
-set ANDROID_SDK_ROOT=%Disk%:\android\sdk
-set PUB_CACHE=%Disk%:\home_mdecourse\pub
-
-REM set _JAVA_OPTIONS=-Duser.home=%HOME%
-set path_flutter=%Disk%:\android\sdk\tools;%Disk%:\android\sdk\tools\bin;%Disk%:\android\sdk\platform-tools;%Disk%:\flutter\bin;%Disk%:\flutter\bin\cache\dart-sdk\bin;
-
-set path_python=%Disk%:\py373;%Disk%:\py373\Scripts;
-set path_msys2=%Disk%:\msys64\mingw64\bin;
-REM coreutils is for compiling fossil scm
-set path_coreutils=%Disk%:\coreutils-5.3.0\bin;%Disk%:\depends22_x64;
-set path_tcc=%Disk%:\tcc;
-set path_cmake=%Disk%:\cmake-3.10.1-win64-x64\bin;
-set path_nodejs=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm;
-set path_git=%Disk%:\portablegit\bin;
-set path_xming=%Disk%:\Xming;
-set path_latex=%Disk%:\Pandoc;%Disk%:\TinyTeX\bin\win32;
-set path_vscode=%Disk%:\vscode;
-
-path=%path%;%Disk%:;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;
-
-start /MIN cmd.exe
-start /MIN cmd.exe
-start /MIN cmd.exe
-start /MIN cmd.exe
-
-start /MIN %Disk%:\wscite415\wscite\SciTE.exe
-start /MIN %Disk%:\wscite415\wscite\SciTE.exe
-
-
-Exit</pre>
-<h4>只存放設定與自我倉儲的  start.bat 批次檔案:</h4>
+<h4>start.bat 啟動設定檔案:</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
 set Disk=y
 subst %Disk%: "data"
@@ -222,8 +170,10 @@ subst %Disk%: "data"
 %Disk%:
 
 REM 設定所使用的硬碟目錄
-set CDisk=G:\201906_fall\data
-set DDisk=D:\flutter_portable_final\data
+REM set CDisk=G:\201906_fall\data
+set CDisk=H:\201906_fall\data
+REM set DDisk=D:\flutter_portable_final\data
+set DDisk=H:\flutter_portable_final\data
 
 set HomePath=%Disk%:\home
 set HomeDrive=%Disk%:\home
@@ -241,11 +191,15 @@ set java_home=%DDisk%\java\jdk8u222-b10
 set ANDROID_SDK_home=%DDisk%\home
 set GRADLE_USER_home=%DDisk%\home
 set ANDROID_SDK_ROOT=%DDisk%\android\sdk
-set PUB_CACHE=%Disk%\home\pub
+set PUB_CACHE=%Disk%:\home\pub
+
+REM for putty
+set GIT_HOME=%CDisk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe
 
 REM set _JAVA_OPTIONS=-Duser.home=%HOME%
 REM %DDisk%\home\pub\bin is for webdev
-set path_flutter=%DDisk%\android\sdk\tools;%DDisk%\android\sdk\tools\bin;%DDisk%\android\sdk\platform-tools;%DDisk%\flutter\bin;%DDisk%\flutter\bin\cache\dart-sdk\bin;%Disk%\home\pub\bin;
+set path_flutter=%DDisk%\android\sdk\tools;%DDisk%\android\sdk\tools\bin;%DDisk%\android\sdk\platform-tools;%DDisk%\flutter\bin;%DDisk%\flutter\bin\cache\dart-sdk\bin;%Disk%:\home\pub\bin;
 
 set path_python=%CDisk%\py373;%CDisk%\py373\Scripts;
 set path_msys2=%CDisk%\msys64\mingw64\bin;
@@ -258,8 +212,10 @@ set path_git=%CDisk%\portablegit\bin;
 set path_xming=%CDisk%\Xming;
 set path_latex=%CDisk%\Pandoc;%CDisk%\TinyTeX\bin\win32;
 set path_vscode=%DDisk%\vscode;
+set path_depot=%DDisk%:\buildtools;
+set path_putty=%Disk%:\putty;
 
-path=%path%;%Disk%:;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;
+path=%path%;%Disk%:;%path_depot%;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;%path_putty%;
 
 start /MIN cmd.exe
 start /MIN cmd.exe
@@ -271,7 +227,8 @@ start /MIN %CDisk%\wscite415\wscite\SciTE.exe
 
 
 Exit</pre>
-<h4>stop.bat 批次檔案:</h4>
+<h4></h4>
+<h4>stop.bat 關閉程式檔案:</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
 set Disk=y
 path=%PATH%;
@@ -293,7 +250,36 @@ EXIT</pre>
 <p>請注意:</p>
 <p>因為開啟 code 後所需先前的相關 Flutter 專案, 會將與 Android 相關, 取得的 package 放在 PUB_CACHE (即 y:\home\pub), 以及  .android (即 y:\home\.android) 目錄中, 因此搬遷資料時必須同時複製此一目錄內容. 且轉移系統設定時, 必須查驗各 .bat 中所使用的 dart sdk 所在位置.</p>
 <p>而且需要建立 y:\home\AppData\Roaming 目錄, 以便存放 vscode 啟動後的 logs 檔案.</p>
-<br />QandA << <a href='QandA.html'>Previous</a> <a href='USB 程式系統.html'>Next</a> >> USB 程式系統</div>
+<p>另外, 利用 putty 與 plink 對 Github 以 ssh 連線時, putty 將 session 存入 Windows 10 的系統組態中 (條件一) , 且 git 從環境變數 GIT_SSH 中確認 (條件二) plink.exe 位置, 最後再結合 y:\home\.ssh\config (條件三) 與各倉儲 .git 目錄中的 config 連線 url 設定 (條件四) 完成倉儲版次推送, 因此流程中必須確認此四個條件是否彼此吻合.</p>
+<p>條件一: putty 的 github.com session 設定是否使用正確的 RSA key 格式 (利用 puttygen.exe 轉換 Github 所使用的 OpenSSH keys) (參考用 <a href="./../downloads/putty_home_reg.7z">putty_home_reg.7z</a>)</p>
+<p>條件二:  啟動時 GIT_SSH 環境變數設定</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for putty
+set GIT_HOME=%CDisk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe</pre>
+<p>條件三: y:\home\.ssh\config 使用代理程式設定</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># no proxy at home
+#ProxyCommand y:/PortableGit/mingw64/bin/connect.exe -H proxy.mde.nfu.edu.tw:3128 %h %p
+# set git_ssh=y:/putty/plink.exe with auth under putty github.com session setup
+ProxyCommand y:/putty/plink.exe github.com %h %p
+ 
+Host github.com
+    User git
+    Port 22
+    Hostname github.com
+    
+    # for connect.exe need openssh key format
+    #IdentityFile "y:\home\.ssh\id_rsa_mdecourse"
+    # for plink.exe need rsa key format but set under putty github.com session
+    # plink.exe do not need the following setting
+    #IdentityFile "y:\home\.ssh\mdecourse_putty_private.ppk"
+ 
+    TCPKeepAlive yes
+    IdentitiesOnly yes</pre>
+<p>條件四: 各倉儲中 .git 目錄中 config url 連線方式設定</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[remote "origin"]
+    #url = https://github.com/mdecourse/cp2019.git
+    url = git@github.com:mdecourse/cp2019.git</pre>
+<p></p><br />QandA << <a href='QandA.html'>Previous</a> <a href='USB 程式系統.html'>Next</a> >> USB 程式系統</div>
         
     <!-- footer -->
       <div class="container">

@@ -151,14 +151,19 @@ init_mathjax();
         </header>
     <div id="tipue_search_content">About << <a href='About.html'>Previous</a> <a href='課程表單.html'>Next</a> >> 課程表單<br /><h1>課程簡介</h1>
 <p>說明課程進行方式:</p>
-<p style="padding-left: 30px;">實際操作示範並拍攝成 mp4 供學員參考</p>
-<p style="padding-left: 30px;">學員將上課操作影片整理成帶字幕的教學影片, 並嵌入個人網頁</p>
-<p style="padding-left: 30px;">每週提供助教時間, 可執行上機練習、磁區內容重整與學員問題解答</p>
+<p style="padding-left: 30px;">實際操作示範並利用 <a href="https://getsharex.com/">ShareX</a> 拍攝成 mp4 供學員參考</p>
+<p style="padding-left: 30px;">學員將上課操作影片整理成帶字幕 (透過 <a href="http://www.aegisub.org/">Aegisub</a>, <a href="http://www.avidemux.org/nightly/win64_support/">Avidemux</a>, 以及 <a href="https://www.openshot.org/">Openshot</a>) 的教學影片, 並嵌入個人網頁</p>
+<p style="padding-left: 30px;">每週提供助教時間 (週四晚上 19:30-21:30), 可執行上機練習、磁區內容重整與學員問題解答</p>
 <p style="padding-left: 30px;">分組解決指定問題時, 分為組員個人之心得整理, 與所有組員協同研討之結論</p>
 <p>評分方式:</p>
 <p style="padding-left: 30px;">依照組員自評、互評與教師評分綜合進行計分</p>
 <p>課程目標:</p>
 <p style="padding-left: 30px;"><span>使用可攜程式系統、網際內容管理系統與 Github, 管理各學員與分組學習內容, 同時利用 Dart 程式語言, 設法打造可用於電腦輔助機械設計流程的工具.</span></p>
+<p><span>網路連線:</span></p>
+<p style="padding-left: 30px;"><span>為了能夠利用廣域網路搜尋資料, 進行協同設計, 各學員在電腦輔助設計室使用電腦, 最重要的設定除了開機就是上網.</span></p>
+<p style="padding-left: 30px;"><span>由於 IPv4 協定的網路連線受限於單一外部 IPv4 位址的限制, 導致上網頻寬受到限制, 因此在儘可能的情況下, 將使用 IPv6 協定上網. (<a href="./../downloads/認識IPv4與IPv6的差異.pdf">IPv4 與 IPv6 網路協定差異.pdf</a>, <a href="https://www.ibm.com/support/knowledgecenter/zh-tw/ssw_ibm_i_71/rzai2/rzai2compipv4ipv6.htm">比較 IPv4 與 IPv6</a>)</span></p>
+<p style="padding-left: 30px;">儘管透過純 IPv6 協定上網有許多好處, 但是部分網站 (例如: <a href="https://github.com">https://github.com</a>) 尚未支援 IPv6 協定連線, 因此在電腦輔助設計室以純 IPv6 協定上網後, 必須根據各種不同的連線協定 (例如: 瀏覽器的 html 協定, python pip 模組安裝, git http 與 git ssh 連線) 設定不同的雙支援代理主機.</p>
+<p style="padding-left: 30px;">另外, 在各組員獨立開發程式的過程, 可以全程在單機環境與區域網路連線下利用 <a href="https://www.virtualbox.org/">Virtualbox</a> 虛擬主機模擬遠端伺服器的情況下執行各項任務, 以 <a href="https://fossil-scm.org">Fossil SCM</a> 代替 Github  進行分散式版次管理, 只有在需要將所完成的倉儲版本送到 Github  時才需要連線上廣域網路.</p>
 <p><span>程式開發架構:</span></p>
 <p style="padding-left: 30px;"><span>利用  <a href="https://www.virtualbox.org/">Virtualbox</a> 安裝 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi 下載</a><span> (12GB) 後, 就可以在 Windows 10 環境下配置虛擬的 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 動態主機、<a href="https://fossil-scm.org">Fossil SCM</a> 伺服器、<a href="https://github.com/KmolYuan/Pyslvs-UI">Pyslvs</a> 、<a href="http://www.coppeliarobotics.com/">V-rep</a> 、<a href="https://cyberbotics.com/">Webots</a> 套件與 <a href="http://www.squid-cache.org/">Squid</a> 代理主機.</span></span></p>
 <p style="padding-left: 30px;"><span><span>此一架構的程式開發標的, 即是要結合近端的瀏覽器、手機、平板介面與各種伺服器, 整合成一套機電資軟硬體系統, 前端的程式套件主要利用 <a href="https://dart.dev/">Dart</a> 開發, 負責擷取設計參數 (包含文字與數字內容, 以及靜態與動態影像等), 而後端的伺服器則包含 C/C++/Python (<a href="https://cython.org/">Cython</a>) 程式所開發的 CAD/CAE/CAM 機械設計運算核心.  透過數學運算與機械設計製造原理分析後, 將結果送回前端的使用者介面, 或依照前端介面的參數指示, 進行後端機電資實體系統的作動.</span></span></p>

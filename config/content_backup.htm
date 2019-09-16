@@ -42,14 +42,19 @@
 <p style="padding-left: 30px;">學員實習</p>
 <p style="padding-left: 30px;">分組報告</p><h2>課程簡介</h2>
 <p>說明課程進行方式:</p>
-<p style="padding-left: 30px;">實際操作示範並拍攝成 mp4 供學員參考</p>
-<p style="padding-left: 30px;">學員將上課操作影片整理成帶字幕的教學影片, 並嵌入個人網頁</p>
-<p style="padding-left: 30px;">每週提供助教時間, 可執行上機練習、磁區內容重整與學員問題解答</p>
+<p style="padding-left: 30px;">實際操作示範並利用 <a href="https://getsharex.com/">ShareX</a> 拍攝成 mp4 供學員參考</p>
+<p style="padding-left: 30px;">學員將上課操作影片整理成帶字幕 (透過 <a href="http://www.aegisub.org/">Aegisub</a>, <a href="http://www.avidemux.org/nightly/win64_support/">Avidemux</a>, 以及 <a href="https://www.openshot.org/">Openshot</a>) 的教學影片, 並嵌入個人網頁</p>
+<p style="padding-left: 30px;">每週提供助教時間 (週四晚上 19:30-21:30), 可執行上機練習、磁區內容重整與學員問題解答</p>
 <p style="padding-left: 30px;">分組解決指定問題時, 分為組員個人之心得整理, 與所有組員協同研討之結論</p>
 <p>評分方式:</p>
 <p style="padding-left: 30px;">依照組員自評、互評與教師評分綜合進行計分</p>
 <p>課程目標:</p>
 <p style="padding-left: 30px;"><span>使用可攜程式系統、網際內容管理系統與 Github, 管理各學員與分組學習內容, 同時利用 Dart 程式語言, 設法打造可用於電腦輔助機械設計流程的工具.</span></p>
+<p><span>網路連線:</span></p>
+<p style="padding-left: 30px;"><span>為了能夠利用廣域網路搜尋資料, 進行協同設計, 各學員在電腦輔助設計室使用電腦, 最重要的設定除了開機就是上網.</span></p>
+<p style="padding-left: 30px;"><span>由於 IPv4 協定的網路連線受限於單一外部 IPv4 位址的限制, 導致上網頻寬受到限制, 因此在儘可能的情況下, 將使用 IPv6 協定上網. (<a href="/downloads/認識IPv4與IPv6的差異.pdf">IPv4 與 IPv6 網路協定差異.pdf</a>, <a href="https://www.ibm.com/support/knowledgecenter/zh-tw/ssw_ibm_i_71/rzai2/rzai2compipv4ipv6.htm">比較 IPv4 與 IPv6</a>)</span></p>
+<p style="padding-left: 30px;">儘管透過純 IPv6 協定上網有許多好處, 但是部分網站 (例如: <a href="https://github.com">https://github.com</a>) 尚未支援 IPv6 協定連線, 因此在電腦輔助設計室以純 IPv6 協定上網後, 必須根據各種不同的連線協定 (例如: 瀏覽器的 html 協定, python pip 模組安裝, git http 與 git ssh 連線) 設定不同的雙支援代理主機.</p>
+<p style="padding-left: 30px;">另外, 在各組員獨立開發程式的過程, 可以全程在單機環境與區域網路連線下利用 <a href="https://www.virtualbox.org/">Virtualbox</a> 虛擬主機模擬遠端伺服器的情況下執行各項任務, 以 <a href="https://fossil-scm.org">Fossil SCM</a> 代替 Github  進行分散式版次管理, 只有在需要將所完成的倉儲版本送到 Github  時才需要連線上廣域網路.</p>
 <p><span>程式開發架構:</span></p>
 <p style="padding-left: 30px;"><span>利用  <a href="https://www.virtualbox.org/">Virtualbox</a> 安裝 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi 下載</a><span> (12GB) 後, 就可以在 Windows 10 環境下配置虛擬的 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 動態主機、<a href="https://fossil-scm.org">Fossil SCM</a> 伺服器、<a href="https://github.com/KmolYuan/Pyslvs-UI">Pyslvs</a> 、<a href="http://www.coppeliarobotics.com/">V-rep</a> 、<a href="https://cyberbotics.com/">Webots</a> 套件與 <a href="http://www.squid-cache.org/">Squid</a> 代理主機.</span></span></p>
 <p style="padding-left: 30px;"><span><span>此一架構的程式開發標的, 即是要結合近端的瀏覽器、手機、平板介面與各種伺服器, 整合成一套機電資軟硬體系統, 前端的程式套件主要利用 <a href="https://dart.dev/">Dart</a> 開發, 負責擷取設計參數 (包含文字與數字內容, 以及靜態與動態影像等), 而後端的伺服器則包含 C/C++/Python (<a href="https://cython.org/">Cython</a>) 程式所開發的 CAD/CAE/CAM 機械設計運算核心.  透過數學運算與機械設計製造原理分析後, 將結果送回前端的使用者介面, 或依照前端介面的參數指示, 進行後端機電資實體系統的作動.</span></span></p>
@@ -60,7 +65,7 @@
 <p><span></span></p><h2>課程表單</h2>
 <p><span>計算機程式每週自評與互評表單:</span><span><span> </span><a href="https://forms.gle/hztfjHLkrAaLyntv6">https://forms.gle/hztfjHLkrAaLyntv6</a> (必須登入 @gm 帳號)</span></p>
 <p><span><a href="https://github.com/mdecourse/cp2019/issues/4">計算機程式課程 Q and A </a>(需登入 Github 帳號)</span></p>
-<p><span><a href="https://forms.gle/S5omHaKXR8HvDsmy5">課程回饋表單</a><span><span> </span>(無需登入 @gm 帳號)</span></span></p><h2>亂數分組</h2>
+<p><span><a href="https://forms.gle/S5omHaKXR8HvDsmy5">課程回饋表單</a><span><span> </span>(無需登入)</span></span></p><h2>亂數分組</h2>
 <p>流程圖符號</p>
 <p><img alt="" height="550" src="/images/flowchart_symbols.png" width="ˋ400"/></p>
 <p>上課第一週即進行學員亂數分組, 計算機程式的實際應用與程式對應語法的介紹, 將從此一程式的開發啟動</p>
@@ -189,13 +194,14 @@ print(c2019)</pre>
 <p style="padding-left: 30px;"></p>
 <p></p>
 <h2>QandA</h2>
-<p>與計算機程式課程有關的問題, 請在 <a href="https://github.com/mdecourse/cp2019/issues/4">https://github.com/mdecourse/cp2019/issues/4</a> 中提出.</p>
-<p>在校區內所使用的電腦 (若只需下載 .iso 可以設定系上提供的 Proxy  server 後下載), 可以透過 <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> 取得各項教育版軟體, 其中包括 Windows 操作系統與 MS Office 以及 AutoDesk 教育版相關套件.</p>
-<p><a href="https://software.nfu.edu.tw/Windows/tw/Win_Pro_Ent_Edu_N_10_1809_64bit_Chinese_Traditional.iso">Windows 10 1809.iso</a>     <a href="https://software.nfu.edu.tw/KMS/windows_kms.bat">kms.bat</a> (每半年認證, 若在校外必須透過 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a> 連線後進行)</p>
-<p><a href="https://software.nfu.edu.tw/Office/tw/Visio_Pro_2016_64Ch.iso">Office 2016.iso</a>    <a href="https://software.nfu.edu.tw/KMS/Office_2016_KMS.bat">kms.bat</a> <span>(每半年認證, 若在校外必須透過</span><span><span> </span></span><a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a><span><span> </span>連線後進行)</span></p>
-<p><a href="https://software.nfu.edu.tw/Autodesk/autodesk.iso">AutoDesk PDSU.iso</a> (利用 @gm 電子郵箱驗證後, 取得學生版三年使用授權)</p>
-<p>當使用者位於校區外, 希望連線使用校區內的相關電腦資料, 包括下載教育版軟體或使用各項電子期刊或電子書, 可以利用 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn</a> 連線後使用.</p>
-<h2>USB 隨身碟</h2>
+<p>與計算機程式課程有關的問題, 請登入 Github 帳號後, 在 <a href="https://github.com/mdecourse/cp2019/issues/4">https://github.com/mdecourse/cp2019/issues/4</a> 中提出.</p>
+<p>其他與課程相關的建議, 請填寫<a href="https://forms.gle/S5omHaKXR8HvDsmy5">課程回饋表單</a> <span>(無需登入).</span></p>
+<p><span>教育版軟體下載:</span></p>
+<p style="padding-left: 30px;">在校區內所使用的電腦 (若只需下載 .iso 可以設定系上提供的 Proxy  server 後下載), 可以透過 <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> 取得各項教育版軟體, 其中包括 Windows 操作系統與 MS Office 以及 AutoDesk 教育版相關套件.</p>
+<p style="padding-left: 30px;"><a href="https://software.nfu.edu.tw/Windows/tw/Win_Pro_Ent_Edu_N_10_1809_64bit_Chinese_Traditional.iso">Windows 10 1809.iso</a>     <a href="https://software.nfu.edu.tw/KMS/windows_kms.bat">kms.bat</a> (每半年認證, 若在校外必須透過 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a> 連線後進行)</p>
+<p style="padding-left: 30px;"><a href="https://software.nfu.edu.tw/Office/tw/Visio_Pro_2016_64Ch.iso">Office 2016.iso</a>    <a href="https://software.nfu.edu.tw/KMS/Office_2016_KMS.bat">kms.bat</a> <span>(每半年認證, 若在校外必須透過</span><span><span> </span></span><a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a><span><span> </span>連線後進行)</span></p>
+<p style="padding-left: 30px;"><a href="https://software.nfu.edu.tw/Autodesk/autodesk.iso">AutoDesk PDSU.iso</a> (利用 @gm 電子郵箱驗證後, 取得學生版三年使用授權)</p>
+<p style="padding-left: 30px;">當使用者位於校區外, 希望連線使用校區內的相關電腦資料, 包括下載教育版軟體或使用各項電子期刊或電子書, 可以利用 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn</a> 連線後使用.</p><h2>USB 隨身碟</h2>
 <p>本課程建議使用隨身碟儲存所有與課程相關的倉儲或網頁資料, 也可只將與個人設定相關及倉儲存放在 USB 隨身碟中.</p>
 <p>注意: 將資料存入 USB 隨身碟之前, 務必檢查所使用格式化的規格, 一般出廠 USB 格式化仍採用 <a href="https://zh.wikipedia.org/wiki/FAT">FAT32</a> 格式, 之後將無法存放大於 4GB 的檔案, 因此建議使用之前將 USB 隨身碟格式化為<a href="https://zh.wikipedia.org/wiki/ExFAT"> exFAT</a> 格式.</p>
 <h4>USB 存放整個可攜系統</h4>
@@ -208,59 +214,7 @@ print(c2019)</pre>
 <p style="padding-left: 30px;">執行速度較全部存入 USB 快</p>
 <p>缺點:</p>
 <p style="padding-left: 30px;">其他用戶對硬碟系統資料更動後, 使用上會受影響.</p>
-<h4>全部使用隨身碟內容啟動的 start.bat 批次檔案:</h4>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
-set Disk=y
-subst %Disk%: "data"
-
-%Disk%:
-
-set HomePath=%Disk%:\home_mdecourse
-set HomeDrive=%Disk%:\home_mdecourse
-set Home=%Disk%:\home_mdecourse
-set USERPROFILE=%Disk%:\home_mdecourse
-
-REM 將系統 Python 程式的 io 設為 utf-8
-set PYTHONIOENCODING="utf-8"
-
-set PYTHONPATH=%Disk%:\py373\DLLs;%Disk%:\py373\Lib;%Disk%:\py373\Lib\site-packages;
-set PYTHONHOME=%Disk%:\py373
-
-REM for flutter
-set java_home=%Disk%:\java\jdk8u222-b10
-set ANDROID_SDK_home=%Disk%:\home_mdecourse
-set GRADLE_USER_home=%Disk%:\home_mdecourse
-set ANDROID_SDK_ROOT=%Disk%:\android\sdk
-set PUB_CACHE=%Disk%:\home_mdecourse\pub
-
-REM set _JAVA_OPTIONS=-Duser.home=%HOME%
-set path_flutter=%Disk%:\android\sdk\tools;%Disk%:\android\sdk\tools\bin;%Disk%:\android\sdk\platform-tools;%Disk%:\flutter\bin;%Disk%:\flutter\bin\cache\dart-sdk\bin;
-
-set path_python=%Disk%:\py373;%Disk%:\py373\Scripts;
-set path_msys2=%Disk%:\msys64\mingw64\bin;
-REM coreutils is for compiling fossil scm
-set path_coreutils=%Disk%:\coreutils-5.3.0\bin;%Disk%:\depends22_x64;
-set path_tcc=%Disk%:\tcc;
-set path_cmake=%Disk%:\cmake-3.10.1-win64-x64\bin;
-set path_nodejs=%Disk%:\nodejs;%Disk%:\nodejs\appdata\roaming\npm;
-set path_git=%Disk%:\portablegit\bin;
-set path_xming=%Disk%:\Xming;
-set path_latex=%Disk%:\Pandoc;%Disk%:\TinyTeX\bin\win32;
-set path_vscode=%Disk%:\vscode;
-
-path=%path%;%Disk%:;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;
-
-start /MIN cmd.exe
-start /MIN cmd.exe
-start /MIN cmd.exe
-start /MIN cmd.exe
-
-start /MIN %Disk%:\wscite415\wscite\SciTE.exe
-start /MIN %Disk%:\wscite415\wscite\SciTE.exe
-
-
-Exit</pre>
-<h4>只存放設定與自我倉儲的  start.bat 批次檔案:</h4>
+<h4>start.bat 啟動設定檔案:</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
 set Disk=y
 subst %Disk%: "data"
@@ -268,8 +222,10 @@ subst %Disk%: "data"
 %Disk%:
 
 REM 設定所使用的硬碟目錄
-set CDisk=G:\201906_fall\data
-set DDisk=D:\flutter_portable_final\data
+REM set CDisk=G:\201906_fall\data
+set CDisk=H:\201906_fall\data
+REM set DDisk=D:\flutter_portable_final\data
+set DDisk=H:\flutter_portable_final\data
 
 set HomePath=%Disk%:\home
 set HomeDrive=%Disk%:\home
@@ -287,11 +243,15 @@ set java_home=%DDisk%\java\jdk8u222-b10
 set ANDROID_SDK_home=%DDisk%\home
 set GRADLE_USER_home=%DDisk%\home
 set ANDROID_SDK_ROOT=%DDisk%\android\sdk
-set PUB_CACHE=%Disk%\home\pub
+set PUB_CACHE=%Disk%:\home\pub
+
+REM for putty
+set GIT_HOME=%CDisk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe
 
 REM set _JAVA_OPTIONS=-Duser.home=%HOME%
 REM %DDisk%\home\pub\bin is for webdev
-set path_flutter=%DDisk%\android\sdk\tools;%DDisk%\android\sdk\tools\bin;%DDisk%\android\sdk\platform-tools;%DDisk%\flutter\bin;%DDisk%\flutter\bin\cache\dart-sdk\bin;%Disk%\home\pub\bin;
+set path_flutter=%DDisk%\android\sdk\tools;%DDisk%\android\sdk\tools\bin;%DDisk%\android\sdk\platform-tools;%DDisk%\flutter\bin;%DDisk%\flutter\bin\cache\dart-sdk\bin;%Disk%:\home\pub\bin;
 
 set path_python=%CDisk%\py373;%CDisk%\py373\Scripts;
 set path_msys2=%CDisk%\msys64\mingw64\bin;
@@ -304,8 +264,10 @@ set path_git=%CDisk%\portablegit\bin;
 set path_xming=%CDisk%\Xming;
 set path_latex=%CDisk%\Pandoc;%CDisk%\TinyTeX\bin\win32;
 set path_vscode=%DDisk%\vscode;
+set path_depot=%DDisk%:\buildtools;
+set path_putty=%Disk%:\putty;
 
-path=%path%;%Disk%:;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;
+path=%path%;%Disk%:;%path_depot%;%path_python%;%path_msys2%;%path_tcc%;%path_git%;%path_cmake%;%path_coreutils%;%path_flutter%;%path_vscode%;%path_putty%;
 
 start /MIN cmd.exe
 start /MIN cmd.exe
@@ -317,7 +279,8 @@ start /MIN %CDisk%\wscite415\wscite\SciTE.exe
 
 
 Exit</pre>
-<h4>stop.bat 批次檔案:</h4>
+<h4></h4>
+<h4>stop.bat 關閉程式檔案:</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">@echo off
 set Disk=y
 path=%PATH%;
@@ -339,19 +302,48 @@ EXIT</pre>
 <p>請注意:</p>
 <p>因為開啟 code 後所需先前的相關 Flutter 專案, 會將與 Android 相關, 取得的 package 放在 PUB_CACHE (即 y:\home\pub), 以及  .android (即 y:\home\.android) 目錄中, 因此搬遷資料時必須同時複製此一目錄內容. 且轉移系統設定時, 必須查驗各 .bat 中所使用的 dart sdk 所在位置.</p>
 <p>而且需要建立 y:\home\AppData\Roaming 目錄, 以便存放 vscode 啟動後的 logs 檔案.</p>
-<h3>USB 程式系統</h3>
+<p>另外, 利用 putty 與 plink 對 Github 以 ssh 連線時, putty 將 session 存入 Windows 10 的系統組態中 (條件一) , 且 git 從環境變數 GIT_SSH 中確認 (條件二) plink.exe 位置, 最後再結合 y:\home\.ssh\config (條件三) 與各倉儲 .git 目錄中的 config 連線 url 設定 (條件四) 完成倉儲版次推送, 因此流程中必須確認此四個條件是否彼此吻合.</p>
+<p>條件一: putty 的 github.com session 設定是否使用正確的 RSA key 格式 (利用 puttygen.exe 轉換 Github 所使用的 OpenSSH keys) (參考用 <a href="/downloads/putty_home_reg.7z">putty_home_reg.7z</a>)</p>
+<p>條件二:  啟動時 GIT_SSH 環境變數設定</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for putty
+set GIT_HOME=%CDisk%:\portablegit\bin\
+set GIT_SSH=%Disk%:\putty\plink.exe</pre>
+<p>條件三: y:\home\.ssh\config 使用代理程式設定</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># no proxy at home
+#ProxyCommand y:/PortableGit/mingw64/bin/connect.exe -H proxy.mde.nfu.edu.tw:3128 %h %p
+# set git_ssh=y:/putty/plink.exe with auth under putty github.com session setup
+ProxyCommand y:/putty/plink.exe github.com %h %p
+ 
+Host github.com
+    User git
+    Port 22
+    Hostname github.com
+    
+    # for connect.exe need openssh key format
+    #IdentityFile "y:\home\.ssh\id_rsa_mdecourse"
+    # for plink.exe need rsa key format but set under putty github.com session
+    # plink.exe do not need the following setting
+    #IdentityFile "y:\home\.ssh\mdecourse_putty_private.ppk"
+ 
+    TCPKeepAlive yes
+    IdentitiesOnly yes</pre>
+<p>條件四: 各倉儲中 .git 目錄中 config url 連線方式設定</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[remote "origin"]
+    #url = https://github.com/mdecourse/cp2019.git
+    url = git@github.com:mdecourse/cp2019.git</pre>
+<p></p><h3>USB 程式系統</h3>
 <h4>背景知識</h4>
 <hr/>
 <p>2019 年 Fall 計算機程式系統的前半段, 只要能上網, 各學員可以直接在 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 上寫程式, 寫完後則利用 Github 帳號上的 <a href="https://help.github.com/en/articles/creating-gists">Gists</a> 儲存並引用 Dart 網際程式. </p>
-<p>但是利用 Github Pages 建立個人的網頁時, 近端仍需要能夠執行 <a href="https://git-scm.com/download/win">Git</a> 功能, 能夠編輯文字檔案或程式檔案, 並且需要 Python3 程式環境, 並且對 Python3 安裝 <a href="https://palletsprojects.com/p/flask/">flask</a>, <a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/">bs4</a>, <a href="https://pypi.org/project/lxml/">lxml</a>, <a href="https://blog.getpelican.com/">pelican</a>, <a href="https://github.com/Python-Markdown/markdown">markdown</a> 以及 <a href="https://leoeditor.com/">leo</a> 等模組.</p>
-<p>因為各學員建立網頁用的 <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 網際內容管理程式, 採用 Python Flask 網際框架編寫, 而且使用 bs4 解讀網頁標註, 而且透過 lxml 將動態 html 內容轉為靜態內容, 因此要在近端利用 CMSiMDE 的動態系統編輯內容, 且轉為只含 html, javascript 以及 css 的靜態網頁, 近端程式環境就需要 Python3 加上 flask, bs4 以及 lxml 模組.</p>
+<p>但是利用 <a href="https://pages.github.com/">Github Pages</a> 建立個人的網頁時, 近端仍需要能夠執行 <a href="https://git-scm.com/download/win">Git</a> 功能, 能夠編輯文字檔案或程式檔案, 並且需要 Python3 程式環境, 並且對 Python3 安裝 <a href="https://palletsprojects.com/p/flask/">flask</a>, <a href="https://beautifulsoup.readthedocs.io/zh_CN/v4.4.0/">bs4</a>, <a href="https://pypi.org/project/lxml/">lxml</a>, <a href="https://blog.getpelican.com/">pelican</a>, <a href="https://github.com/Python-Markdown/markdown">markdown</a> 以及 <a href="https://leoeditor.com/">leo</a> 等模組.</p>
+<p>因為各學員建立網頁用的 <a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> 網際內容管理程式, 採用 Python <a href="https://github.com/pallets/flask">Flask</a> 網際框架編寫, 而且使用 bs4 解讀網頁標註, 而且透過 lxml 將動態 html 內容轉為靜態內容, 因此要在近端利用 CMSiMDE 的動態系統編輯內容, 且轉為只含 html, javascript 以及 css 的靜態網頁, 近端程式環境就需要 Python3 加上 flask, bs4 以及 lxml 模組. (為了讓 CMSiMDE 可以跨網域存取資料, 又加上 flask_cors 模組)</p>
 <p>至於 Python3 中的 pelican 與 markdown 主要在 CMSiMDE 網際內容管理系統中, 建立網誌用, 而管理 CMSiMDE 中的網誌與網際投影系統 - reveal.js, 則需要 Leo 大綱編輯器, 因此 Python3 除了必須安裝 flask, bs4, lxml 模組外, 還需要安裝 pelican, markdown 以及 leo 模組.</p>
 <hr/>
 <h4>建立隨身碟程式系統</h4>
 <hr/>
 <p><a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a><span> (登入 @gm 帳號後下載, 210 MB 解開壓縮後約 900 MB) 就是根據上述的背景知識, 在純 Python 環境中安裝各相關模組之後, 再利用 <a href="https://git-scm.com/download/win">Portablegit</a> 作為執行 Git 指令的系統.</span></p>
 <p><span>建立隨身碟程式系統的第一步就是確認隨身碟所使用的規格, 假如不是採用 extFAT 格式化, 之後將無法儲存大於 4GB 的單一 檔案, 這裡所建議的 USB 容量是至少 128 GB USB3.0 以上規格的隨身碟, 並且已經格式化為 extFAT 規格.</span></p>
-<p><span>只要下載 <a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a>, 在隨身碟中解開即可, 接下來就可以從隨身碟以 start.bat 開啟隨身程式系統, 以 stop.bat 退出系統後, 再利用 Windows 10 操作系統中的退出隨身碟指令, 就可以取出隨身碟離開.</span></p>
+<p><span>只要下載 <a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a>, 在隨身碟中解開即可 (為了使用最新版的 CMSiMDE, 必須利用 python -m pip install flask_cors 安裝 flask_cors 模組), 接下來就可以從隨身碟以 start.bat 開啟隨身程式系統, 以 stop.bat 退出系統後, 再利用 Windows 10 操作系統中的退出隨身碟指令, 就可以取出隨身碟離開.</span></p>
 <p>接下來各學員的任務就是充分了解 start.bat 以及 stop.bat 的設定, 並且熟悉有關利用 https 與 ssh 對 Github 倉儲連線的相關設定, 並且能夠在 IPv4 與 IPv6 環境下配合修改相關 Proxy 伺服器的設定, 以及各 git config 與倉儲提交身分綁定相關細節, 就可以在每週根據教學進度, 利用  <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 以及 <a href="https://help.github.com/en/articles/creating-gists">Github Gists</a> 連結內容, 更新自己的網站.</p>
 <hr/>
 <h4>相關議題</h4>
@@ -377,11 +369,11 @@ EXIT</pre>
 <p style="padding-left: 30px;">要點2: Github 的 SSH 與 GPG keys 設定只接受 <a href="https://en.wikipedia.org/wiki/OpenSSH">OpenSSH</a>  格式的 public key 輸入, 但是近端的  Git 指令若透過 putty 的 plink.exe 連線, 則只接受 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA</a> 格式的 key 格式認證. 因此近端 putty 的 AUTH 設定, 必須先將 OpenSSH 格式的 keys 利用 putty 工具組中的 puttygen.exe 轉為 <a href="https://en.wikipedia.org/wiki/RSA_(cryptosystem)">RSA </a>格式後才能使用.</p>
 <p style="padding-left: 30px;">要點3: Putty 將設定存在 registry,  Computer\HKEY_CURRENT_USER\Software\SimonTatham, 而且 plink.exe 可以使用 putty.exe 的 session 設定, 因此若要採用 IPv6 proxy 設定, 是以 github.com 為 putty 的 session 名稱, 然後指定 SSH 設定下的 Auth 指定 private key, 並在 PROXY 設定所使用的 HTTP 協定代理主機. 當 putty 設定 github.com session 完成後, 必須以 git 為帳號連線一次, 以便將 github.com 網站的 public key 存檔, 讓隨後的 git push 無需再對連線主機進行後續認證. (若不在 putty 先行對 github.com 主機連線, 在 plink ssh 連線下將無法儲存相關的認證檔案.)</p>
 <p style="padding-left: 30px;">啟動 start.bat 附加:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">REM for putty
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false">REM for putty
 set GIT_HOME=%CDisk%:\portablegit\bin\
 set GIT_SSH=%Disk%:\putty\plink.exe</pre>
 <p style="padding-left: 30px;">homt/.ssh/config 設定:</p>
-<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># no proxy at home
+<pre class="brush:lua;auto-links:false;toolbar:false" contenteditable="false"># no proxy at home
 #ProxyCommand y:/PortableGit/mingw64/bin/connect.exe -H proxy.mde.nfu.edu.tw:3128 %h %p
 # set git_ssh=y:/putty/plink.exe with auth under putty github.com session setup
 ProxyCommand y:/putty/plink.exe github.com %h %p
@@ -1340,7 +1332,7 @@ main() async {
 <p style="padding-left: 30px;"><a href="https://dart.dev/tools/dartpad">https://dart.dev/tools/dartpad</a></p>
 <p style="padding-left: 30px;"><a href="https://github.com/dart-lang/dart-pad">https://github.com/dart-lang/dart-pad</a></p>
 <p style="padding-left: 30px;"><a href="https://dart.dev/tutorials/web/low-level-html/remove-elements">https://dart.dev/tutorials/web/low-level-html/remove-elements</a></p>
-<p>Dartpad 的執行需要 <a href="https://github.com/dart-lang/dart-services">https://github.com/dart-lang/dart-services</a>, 因此啟動 dartpad 的 WWW 伺服器需要允許 <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">https://en.wikipedia.org/wiki/Cross-origin_resource_sharing</a>, 同時在 dartpad 中提供資料的其他 WWW 伺服器也需要支援 CORS.</p>
+<p>Dartpad 的執行需要 <a href="https://github.com/dart-lang/dart-services">https://github.com/dart-lang/dart-services</a>, (所需設定位於 <a href="https://github.com/mdecourse/dartpad/blob/master/lib/services/common.dart">https://github.com/mdecourse/dartpad/blob/master/lib/services/common.dart</a>, 若需全部在近端使用 dartpad, 必須修改設定, 並自行啟動 dart-services), 因此使用跨網域啟動 dartpad 的 WWW 伺服器需要允許 <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">https://en.wikipedia.org/wiki/Cross-origin_resource_sharing</a>, 同時在 dartpad 中提供資料的其他 WWW 伺服器也需要支援 CORS.</p>
 <p>為了讓 CMSiMDE 能夠全域支援 CORS, 必須以 python -m pip install flask_cors 安裝 flask_cors, 並且在 CMSiMDE 的 <a href="https://github.com/mdecourse/cmsimde/blob/5acf7403a8e4615edc93711dcb17a5a56438e0bc/flaskapp.py">flaskapp.py</a> 中納入 CORS.</p>
 <p>例如:</p>
 <pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># 導入CORS
