@@ -621,6 +621,25 @@ void main() {
 <p style="padding-left: 30px;">中的範例說明, 完成各組期末專案.</p>
 <p style="padding-left: 30px;">期末分組專案: 請根據上述 Task1 ~ Task4 的內容做為參考, 討論如何完成一個能夠在網頁與手機上執行的期末專案.</p>
 <h1>Github</h1>
+<h4>基本原理</h4>
+<p style="padding-left: 30px;"><span style="background-color: #ccffcc;">分散式版次管理</span></p>
+<p style="padding-left: 60px;">Github 是一個採用 git <a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a> (Distributed Version Control System, DVCS) 技術的網站服務, 與 git 類似的技術<a href="https://en.wikipedia.org/wiki/List_of_version-control_software#Distributed_model">還有</a> <a href="https://fossil-scm.org">Fossil SCM</a>、<a href="https://bazaar.canonical.com/en/">Bazaar</a>、<a href="https://www.mercurial-scm.org/">Mercurial</a> 等.</p>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a>系統主要用於協同內容開發, 參與協同的成員可以<span style="background-color: #ffff00;">同步</span>在近端電腦上, 無需上網的情況下執行內容附加, 當各成員完成一定內容改版後, 採<span style="background-color: #ffff00;">非同步</span>對遠端共用的伺服器進行改版, 若該成員的改版內容與遠端內容產生衝突時, 則由該成員解決衝突內容後, 決定遠端的協同內容版本.</p>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a><span>系統的重要特性是, 只對內容執行附加, 因此多人協同的資料<span style="background-color: #ffff00;">不會丟失</span>, 且各成員在提交推送、解決衝突後合併、以及建立版本分支進行測試的工作模式下, 各成員近端皆保有一份與遠端相近版本的內容, 且有彼此互相建立<span style="background-color: #ffff00;">完整備份</span>資料的功能, 即使特定近端內容毀損, 也能透過 clone 在近端取得一份最新版本內容, 若遠端資料毀損, 則可由任一套近端版本取代.</span></p>
+<p style="padding-left: 60px;"><span><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a><span>系統的另一個特性是, 各成員可以利用分支切換 (branch checkout), <span style="background-color: #ffff00;">查驗各版本</span>的完整內容, 且各成員在對特定版本附加內容時, 並<span style="background-color: #ffff00;">不會重複存檔</span>, 只透過指標技術, 對應至特定資料內容.</span></span></p>
+<p style="padding-left: 30px;"><span style="background-color: #ccffcc;"><a href="https://pages.github.com/" style="background-color: #ccffcc;">Github Pages</a></span></p>
+<p style="padding-left: 60px;"><a href="https://pages.github.com/">Github Pages</a> 是 Github 公司對用戶系統倉儲所提供的一項服務, 允許使用者利用倉儲主分支 (master branch) 內容, 或主分支中的 docs 目錄, 建立 WWW 網站, 且 Github 會將使用者所指定的 <a href="https://pages.github.com/">Github Pages</a> 內容與</p>
+<p style="padding-left: 90px;">帳號.github.io/倉儲名稱</p>
+<p style="padding-left: 60px;">網站名稱對應.</p>
+<p style="padding-left: 60px;">且若使用者所建立的 <a href="https://pages.github.com/">Github Pages</a> 倉儲, 命名為 " 帳號.github.io" 時, 此一特定倉儲名稱即會設定成網站名稱.</p>
+<p style="padding-left: 30px;"><span style="background-color: #ccffcc;"><a href="https://github.com/mdecourse/cmsimde" style="background-color: #ccffcc;">CMSiMDE</a> 網站內容管理系統</span></p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 是一套以 <a href="https://www.python.org/">Python</a> <a href="https://www.fullstackpython.com/flask.html">Flask</a> 網際框架編寫的內容管理系統, 執行時需要 <a href="https://github.com/pallets/flask">flask</a>, <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">bs4</a>, <a href="https://pypi.org/project/lxml/">lxml</a> 與 <a href="https://pypi.org/project/Flask-Cors/">flask_cors</a> 等模組.</p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 的引用, 建議採用 <a href="https://git-scm.com/book/zh-tw/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E7%B5%84-Submodules">git submodule</a> add 的模式, 以方便隨時取得 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 系統的最新版本內容.</p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 的設計是在使用者的倉儲中, 以子模組 cmsimde 的目錄名稱存在, 且使用者必須將 up_dir 的內容, 複製到使用 <a href="/get_page/Github/Github Pages">Github Pages</a> 的倉儲中, <a href="https://pages.github.com/">Github Pages</a> 支援動態模式與靜態模式, 動態模式以 cmsimde 目錄中的 wsgi.py 啟動, 當使用者進入 cmsimde 子目錄執行</p>
+<p style="padding-left: 90px;">python wsgi.py</p>
+<p style="padding-left: 60px;">時, 意即要使用 Python 解譯器 (interpreter) 執行 wsgi.py 程式, 啟動後使用者可以利用瀏覽器 <a>https://localhost:9443</a> 進入, 以 admin 作為預定地管理者密碼登入編輯內容. 且利用程式系統中的 WSciTE 編輯器, 開啟倉儲中的 http-server.py, 且以 Tools-&gt;Go 執行後, 可在瀏覽器 <a href="https://localhost:8444">https://localhost:8444</a> 檢視此一動態內容管理系統 content 目錄中的靜態內容, 而此一靜態內容即是使用者將 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 倉儲送到 <a href="https://pages.github.com/">Github Pages</a> 所將呈現的</p>
+<p style="padding-left: 90px;"><span>帳號.github.io/倉儲名稱</span></p>
+<p style="padding-left: 60px;">網站內容.</p>
 <p>建立 cp2019 倉儲及對應的 CMSiMDE Github Pages 網頁</p>
 <p>了解基本的 Git 指令與 Github 系統的應用之後, 產生出對 GitExtensions 工具的需求, 也產生出對於透過 SSH keys 提交倉儲版本的需求, 以簡化改版流程.</p>
 <p><a href="https://2019wcm.blogspot.com/search/label/GitExtensions" rel="nofollow">https://2019wcm.blogspot.com/search/label/GitExtensions</a></p>
@@ -659,8 +678,7 @@ void main() {
 <p style="padding-left: 30px;">在機械設計流程, 想像所有系統與元件都是虛擬物件, 與 github 中的倉儲程式碼類似.</p>
 <p style="padding-left: 30px;">當導入一只特殊規格的電動馬達後, 配合減速機與機構執行所需工作, 若將該馬達當成 git 的子模組, 負責研發此電動馬達的團隊, 可以不斷根據新技術的導入或修正先前的設計, 所產生新的馬達版本, 不會影響使用舊馬達版本的用戶. (請注意, 引入子模組之後的倉儲, 在其 .git 目錄中的 config 與倉儲目錄中的 .gitmodules 都註記所引用的子模組來源.)</p>
 <p style="padding-left: 30px;">這時引用該馬達的機械設計模擬系統, 在不變更使用該馬達元件版本的情況下, 原始設計可以繼續出貨, 若需配合該馬達的新功能而修改其他設計之後, 只需要執行 git submodule update, 就可以取得該馬達的最新型功能, 產生最新版的機械設計內容. </p>
-<h4>各組利用 Python 程式模組, 練習建立並使用 git 子模組.</h4>
-<h2>Github Guide</h2>
+<h4>各組利用 Python 程式模組, 練習建立並使用 git 子模組.</h4><h2>Github Guide</h2>
 <p><a href="https://guides.github.com/">https://guides.github.com/</a></p>
 <p><a href="https://guides.github.com/activities/hello-world/">https://guides.github.com/activities/hello-world/</a></p>
 <h1>DartLang</h1>
