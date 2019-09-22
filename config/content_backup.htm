@@ -623,23 +623,23 @@ void main() {
 <h1>Github</h1>
 <h4>基本原理</h4>
 <p style="padding-left: 30px;"><span style="background-color: #ccffcc;">分散式版次管理</span></p>
-<p style="padding-left: 30px;">Github 是一個採用 git <a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a> (Distributed Version Control System, DVCS) 技術的網站服務, 與 git 類似的技術<a href="https://en.wikipedia.org/wiki/List_of_version-control_software#Distributed_model">還有</a> <a href="https://fossil-scm.org">Fossil SCM</a>、<a href="https://bazaar.canonical.com/en/">Bazaar</a>、<a href="https://www.mercurial-scm.org/">Mercurial</a> 等.</p>
-<p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a>系統主要用於協同內容開發, 參與協同的成員可以<span style="background-color: #ffff00;">同步</span>在近端電腦上, 無需上網的情況下執行內容附加, 當各成員完成一定內容改版後, 採<span style="background-color: #ffff00;">非同步</span>對遠端共用的伺服器進行改版, 若該成員的改版內容與遠端內容產生衝突時, 則由該成員解決衝突內容後, 決定遠端的協同內容版本.</p>
-<p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a><span>系統的重要特性是, 只對內容執行附加, 因此多人協同的資料<span style="background-color: #ffff00;">不會丟失</span>, 且各成員在提交推送、解決衝突後合併、以及建立版本分支進行測試的工作模式下, 各成員近端皆保有一份與遠端相近版本的內容, 且有彼此互相建立<span style="background-color: #ffff00;">完整備份</span>資料的功能, 即使特定近端內容毀損, 也能透過 clone 在近端取得一份最新版本內容, 若遠端資料毀損, 則可由任一套近端版本取代.</span></p>
-<p style="padding-left: 30px;"><span><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a><span>系統的另一個特性是, 各成員可以利用分支切換 (branch checkout), <span style="background-color: #ffff00;">查驗各版本</span>的完整內容, 且各成員在對特定版本附加內容時, 並<span style="background-color: #ffff00;">不會重複存檔</span>, 只透過指標技術, 對應至特定資料內容.</span></span></p>
+<p style="padding-left: 60px;">Github 是一個採用 git <a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a> (Distributed Version Control System, DVCS) 技術的網站服務, 與 git 類似的技術<a href="https://en.wikipedia.org/wiki/List_of_version-control_software#Distributed_model">還有</a> <a href="https://fossil-scm.org">Fossil SCM</a>、<a href="https://bazaar.canonical.com/en/">Bazaar</a>、<a href="https://www.mercurial-scm.org/">Mercurial</a> 等.</p>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a>系統主要用於協同內容開發, 參與協同的成員可以<span style="background-color: #ffff00;">同步</span>在近端電腦上, 無需上網的情況下執行內容附加, 當各成員完成一定內容改版後, 採<span style="background-color: #ffff00;">非同步</span>對遠端共用的伺服器進行改版, 若該成員的改版內容與遠端內容產生衝突時, 則由該成員解決衝突內容後, 決定遠端的協同內容版本.</p>
+<p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a><span>系統的重要特性是, 只對內容執行附加, 因此多人協同的資料<span style="background-color: #ffff00;">不會丟失</span>, 且各成員在提交推送、解決衝突後合併、以及建立版本分支進行測試的工作模式下, 各成員近端皆保有一份與遠端相近版本的內容, 且有彼此互相建立<span style="background-color: #ffff00;">完整備份</span>資料的功能, 即使特定近端內容毀損, 也能透過 clone 在近端取得一份最新版本內容, 若遠端資料毀損, 則可由任一套近端版本取代.</span></p>
+<p style="padding-left: 60px;"><span><a href="https://en.wikipedia.org/wiki/Distributed_version_control">分散式版次管理</a><span>系統的另一個特性是, 各成員可以利用分支切換 (branch checkout), <span style="background-color: #ffff00;">查驗各版本</span>的完整內容, 且各成員在對特定版本附加內容時, 並<span style="background-color: #ffff00;">不會重複存檔</span>, 只透過指標技術, 對應至特定資料內容.</span></span></p>
 <p style="padding-left: 30px;"><span style="background-color: #ccffcc;"><a href="https://pages.github.com/" style="background-color: #ccffcc;">Github Pages</a></span></p>
-<p style="padding-left: 30px;"><a href="https://pages.github.com/">Github Pages</a> 是 Github 公司對用戶系統倉儲所提供的一項服務, 允許使用者利用倉儲主分支 (master branch) 內容, 或主分支中的 docs 目錄, 建立 WWW 網站, 且 Github 會將使用者所指定的 <a href="https://pages.github.com/">Github Pages</a> 內容與</p>
-<p style="padding-left: 60px;">帳號.github.io/倉儲名稱</p>
-<p style="padding-left: 30px;">網站名稱對應.</p>
-<p style="padding-left: 30px;">且若使用者所建立的 <a href="https://pages.github.com/">Github Pages</a> 倉儲, 命名為 " 帳號.github.io" 時, 此一特定倉儲名稱即會設定成網站名稱.</p>
+<p style="padding-left: 60px;"><a href="https://pages.github.com/">Github Pages</a> 是 Github 公司對用戶系統倉儲所提供的一項服務, 允許使用者利用倉儲主分支 (master branch) 內容, 或主分支中的 docs 目錄, 建立 WWW 網站, 且 Github 會將使用者所指定的 <a href="https://pages.github.com/">Github Pages</a> 內容與</p>
+<p style="padding-left: 90px;">帳號.github.io/倉儲名稱</p>
+<p style="padding-left: 60px;">網站名稱對應.</p>
+<p style="padding-left: 60px;">且若使用者所建立的 <a href="https://pages.github.com/">Github Pages</a> 倉儲, 命名為 " 帳號.github.io" 時, 此一特定倉儲名稱即會設定成網站名稱.</p>
 <p style="padding-left: 30px;"><span style="background-color: #ccffcc;"><a href="https://github.com/mdecourse/cmsimde" style="background-color: #ccffcc;">CMSiMDE</a> 網站內容管理系統</span></p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 是一套以 <a href="https://www.python.org/">Python</a> <a href="https://www.fullstackpython.com/flask.html">Flask</a> 網際框架編寫的內容管理系統, 執行時需要 <a href="https://github.com/pallets/flask">flask</a>, <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">bs4</a>, <a href="https://pypi.org/project/lxml/">lxml</a> 與 <a href="https://pypi.org/project/Flask-Cors/">flask_cors</a> 等模組.</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 的引用, 建議採用 <a href="https://git-scm.com/book/zh-tw/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E7%B5%84-Submodules">git submodule</a> add 的模式, 以方便隨時取得 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 系統的最新版本內容.</p>
-<p style="padding-left: 30px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 的設計是在使用者的倉儲中, 以子模組 cmsimde 的目錄名稱存在, 且使用者必須將 up_dir 的內容, 複製到使用 <a href="/get_page/Github/Github Pages">Github Pages</a> 的倉儲中, <a href="https://pages.github.com/">Github Pages</a> 支援動態模式與靜態模式, 動態模式以 cmsimde 目錄中的 wsgi.py 啟動, 當使用者進入 cmsimde 子目錄執行</p>
-<p style="padding-left: 60px;">python wsgi.py</p>
-<p style="padding-left: 30px;">時, 意即要使用 Python 解譯器 (interpreter) 執行 wsgi.py 程式, 啟動後使用者可以利用瀏覽器 <a>https://localhost:9443</a> 進入, 以 admin 作為預定地管理者密碼登入編輯內容. 且利用程式系統中的 WSciTE 編輯器, 開啟倉儲中的 http-server.py, 且以 Tools-&gt;Go 執行後, 可在瀏覽器 <a href="https://localhost:8444">https://localhost:8444</a> 檢視此一動態內容管理系統 content 目錄中的靜態內容, 而此一靜態內容即是使用者將 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 倉儲送到 <a href="https://pages.github.com/">Github Pages</a> 所將呈現的</p>
-<p style="padding-left: 60px;"><span>帳號.github.io/倉儲名稱</span></p>
-<p style="padding-left: 30px;">網站內容.</p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 是一套以 <a href="https://www.python.org/">Python</a> <a href="https://www.fullstackpython.com/flask.html">Flask</a> 網際框架編寫的內容管理系統, 執行時需要 <a href="https://github.com/pallets/flask">flask</a>, <a href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">bs4</a>, <a href="https://pypi.org/project/lxml/">lxml</a> 與 <a href="https://pypi.org/project/Flask-Cors/">flask_cors</a> 等模組.</p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 的引用, 建議採用 <a href="https://git-scm.com/book/zh-tw/v1/Git-%E5%B7%A5%E5%85%B7-%E5%AD%90%E6%A8%A1%E7%B5%84-Submodules">git submodule</a> add 的模式, 以方便隨時取得 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 系統的最新版本內容.</p>
+<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 的設計是在使用者的倉儲中, 以子模組 cmsimde 的目錄名稱存在, 且使用者必須將 up_dir 的內容, 複製到使用 <a href="/get_page/Github/Github Pages">Github Pages</a> 的倉儲中, <a href="https://pages.github.com/">Github Pages</a> 支援動態模式與靜態模式, 動態模式以 cmsimde 目錄中的 wsgi.py 啟動, 當使用者進入 cmsimde 子目錄執行</p>
+<p style="padding-left: 90px;">python wsgi.py</p>
+<p style="padding-left: 60px;">時, 意即要使用 Python 解譯器 (interpreter) 執行 wsgi.py 程式, 啟動後使用者可以利用瀏覽器 <a>https://localhost:9443</a> 進入, 以 admin 作為預定地管理者密碼登入編輯內容. 且利用程式系統中的 WSciTE 編輯器, 開啟倉儲中的 http-server.py, 且以 Tools-&gt;Go 執行後, 可在瀏覽器 <a href="https://localhost:8444">https://localhost:8444</a> 檢視此一動態內容管理系統 content 目錄中的靜態內容, 而此一靜態內容即是使用者將 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 倉儲送到 <a href="https://pages.github.com/">Github Pages</a> 所將呈現的</p>
+<p style="padding-left: 90px;"><span>帳號.github.io/倉儲名稱</span></p>
+<p style="padding-left: 60px;">網站內容.</p>
 <p>建立 cp2019 倉儲及對應的 CMSiMDE Github Pages 網頁</p>
 <p>了解基本的 Git 指令與 Github 系統的應用之後, 產生出對 GitExtensions 工具的需求, 也產生出對於透過 SSH keys 提交倉儲版本的需求, 以簡化改版流程.</p>
 <p><a href="https://2019wcm.blogspot.com/search/label/GitExtensions" rel="nofollow">https://2019wcm.blogspot.com/search/label/GitExtensions</a></p>
@@ -681,7 +681,22 @@ void main() {
 <h4>各組利用 Python 程式模組, 練習建立並使用 git 子模組.</h4><h2>Github Guide</h2>
 <p><a href="https://guides.github.com/">https://guides.github.com/</a></p>
 <p><a href="https://guides.github.com/activities/hello-world/">https://guides.github.com/activities/hello-world/</a></p>
-<h1>DartLang</h1>
+<h2>Fossil SCM</h2>
+<p><a href="https://fossil-scm.org/">https://fossil-scm.org</a> 是一套專門用來管理 <a href="https://www.sqlite.org/index.html">SQLite</a> 資料庫系統的分散式版次管理系統.</p>
+<p>Fossil SCM 的原始碼位於 <a href="https://fossil-scm.org/home/dir?ci=tip">https://fossil-scm.org/home/dir?ci=tip</a></p>
+<p>在 Windows 10 環境下學習使用 Fossil SCM 的第一步就是從 <a href="https://fossil-scm.org/home/uv/download.html">https://fossil-scm.org/home/uv/download.html</a> 下載 fossil.exe.</p>
+<p>下載後可將 fossil.exe 放在隨身系統 data 目錄中 (也就是啟動 start.bat 後, 設為隨身碟虛擬根目錄的 y:\), 並且將 y:\ 納入命令搜尋路徑中. 就可以利用 </p>
+<p style="padding-left: 30px;">fossil version</p>
+<p>查看目前所使用的 fossil.exe 版本.</p>
+<p>一般在 KMOLab 的課程中, 是利用 Virtualbox 的 Ubuntu 虛擬主機配置 Fossil SCM 伺服器, 意即在 Ubuntu 中下載 Linux 版的 fossil, 並且透過與 <a href="https://www.stunnel.org/">Stunnel</a> 的整合設定, 讓 Fossil SCM 可以隨 Ubuntu 伺服器開機啟動.</p>
+<p>初學者在配置 Windows 10 client 端的 fossil.exe 與 Ubuntu 伺服器端的 fossil 時, 必須注意兩端所使用的 fossil 版次是否一致. 否則將會導致部分新功能無法匹配.</p>
+<p>以下用來在各班分組學習使用  Fossil SCM 的規劃是, 以組為單位下載已經配置 Fossil SCM 的 Virtualbox 虛擬主機 Ubuntu 伺服器系統:</p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi 下載</a><span> (12GB)</span></p>
+<p><span>可以將此一虛擬主機檔案放在各組組長電腦硬碟中, 學習如何利用  Virtualbox 虛擬主機中的橋接網路 (bridged network) 設定, 讓此一帶有 Fossil SCM 系統的伺服器, 可以在電腦輔助設計室讓所有組員擷取, 以學習如何將先前送到 Github 的版本資料改由 Fossil SCM系統進行管理. 或者設法同步置放在 Github 與 Fossil SCM 伺服器中的版本資料.</span></p>
+<p><span>另外, 也可以在此一 Ubuntu 虛擬主機自行設法配置 Linux 版本下的 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a>, 了解 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 系統中前端 Javascript 程式 (由 dart 編寫轉出) 如何與後端的 <a href="https://github.com/dart-lang/dart-services">Dart service</a> 結合運作.</span></p>
+<p><span>而 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 所使用的網際伺服器, 前端 Javascript 與後端 dart 整合運用的模式, 當計算機程式的學習透過 <a href="https://flutter.dev">Flutter</a> 將前端的 dart 轉換成 <a href="https://www.android.com/">Android</a> 或 <a href="https://developer.apple.com/ios/">IOS</a> 手機介面, 即是在 <a href="http://lab.kmol.info/blog/pages/about/index.html">KMOLab</a> 希望利用<a href="https://mde.tw/cp2019">計算機程式</a>、網際內容管理、<a href="https://mde.tw/cad2019">電腦輔助設計實習</a>與協同產品設計實習等課程所要達成的目標之一. 透過網際與手機介面程式當前端, 可以利用照片與影片取得與機械設計流程相關的資料, 然後隨送到後端的設計分析程式進行辨識或運算, 得出結果後, 再設法通知位於前端的工程師. 或者可以利用隨身的瀏覽器、手機或平板應用程式, 監控或操控位於遠端的機電資虛擬或實體系統.</span></p>
+<h4><span>參考資料</span></h4>
+<p style="padding-left: 30px;"><span><a href="http://mde.tw/2017springcd/blog/intro-fossil-scm.html">http://mde.tw/2017springcd/blog/intro-fossil-scm.html</a></span></p><h1>DartLang</h1>
 <h4>Dart 2 啟動</h4>
 <p><a href="https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html">https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html</a> 宣布後, Dart 第二版正式啟動, 目前現存的許多與 Dart 第一版有關的資料頓時失去作用. </p>
 <p>其中也包括:</p>
@@ -723,8 +738,7 @@ void main() {
 <p>利用 <a href="https://aqueduct.io/">https://aqueduct.io/</a> 開發類似 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 的網際內容管理系統.</p>
 <p><span>利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://flutter.dev/web">Flutter for Web</a> 開發一套能夠在 Web 與手機中執行, 並用來操控 <a href="http://www.coppeliarobotics.com/">V-rep</a> 與 <a href="https://cyberbotics.com/">Webots</a> 虛擬環境中的機電系統.</span></p>
 <p>利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://flutter.dev/web">Flutter for Web</a> 開發一套能夠在 Web 與手機中執行的平面多連桿機構模擬分析套件.</p>
-<p><span>利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://flutter.dev/web">Flutter for Web</a> 開發一套能夠與 <a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a> 伺服器中運算核心整合的平面多連桿機構合成與分析套件.</span></p>
-<h2>Dart2 Spec</h2>
+<p><span>利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://flutter.dev/web">Flutter for Web</a> 開發一套能夠與 <a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a> 伺服器中運算核心整合的平面多連桿機構合成與分析套件.</span></p><h2>Dart2 Spec</h2>
 <p><a href="/downloads/DartLangSpecDraft_2.3.0_dev.pdf">DartLangSpecDraft_2.3.0_dev.pdf</a></p>
 <p><span>&lt;&gt; 表示其中包含項目為必選項</span></p>
 <p>[] 表示其中包含項目為可選項</p>

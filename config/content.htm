@@ -681,7 +681,25 @@ void main() {
 <h4>各組利用 Python 程式模組, 練習建立並使用 git 子模組.</h4><h2>Github Guide</h2>
 <p><a href="https://guides.github.com/">https://guides.github.com/</a></p>
 <p><a href="https://guides.github.com/activities/hello-world/">https://guides.github.com/activities/hello-world/</a></p>
-<h1>DartLang</h1>
+<h2>Fossil SCM</h2>
+<p><a href="https://fossil-scm.org/">https://fossil-scm.org</a> 是一套專門用來管理 <a href="https://www.sqlite.org/index.html">SQLite</a> 資料庫系統的分散式版次管理系統.</p>
+<p>Fossil SCM 的原始碼位於 <a href="https://fossil-scm.org/home/dir?ci=tip">https://fossil-scm.org/home/dir?ci=tip</a></p>
+<p>(註: 如何利用 <a href="https://www.msys2.org/">MSYS2</a> 在 Windows 10 環境下<a href="https://fossil-scm.org/home/doc/trunk/www/build.wiki">編譯</a>帶有 <a href="https://www.wolfssl.com/">OpenSSL</a> 的 fossil.exe?)</p>
+<p>(註: 如何延伸 Fossil SCM, 編寫與機械設計流程相關的<a href="https://fossil-scm.org/home/doc/trunk/www/adding_code.wiki">延伸程式</a>)</p>
+<p>(註: 如何將 Fossil SCM 與機電資虛擬或實體裝置結合, 成為能夠自動擷取具分散式版次管理架構的大數據資料來源. <a href="https://www.processonline.com.au/content/industrial-networks-buses/article/the-future-of-control-systems-and-industry-4-0-1365495420">1</a>, <a href="https://pdfs.semanticscholar.org/ae66/775f9d839cde19e5f117e7377d2b2ec8df71.pdf">2</a>, <a href="/downloads/Scanning the Industry 4.0 A Literature Review on Technologies forManufacturing Systems.pdf">3</a>)</p>
+<p>在 Windows 10 環境下學習使用 Fossil SCM 的第一步就是從 <a href="https://fossil-scm.org/home/uv/download.html">https://fossil-scm.org/home/uv/download.html</a> 下載 fossil.exe.</p>
+<p>下載後可將 fossil.exe 放在隨身系統 data 目錄中 (也就是啟動 start.bat 後, 設為隨身碟虛擬根目錄的 y:\), 並且將 y:\ 納入命令搜尋路徑中. 就可以利用 </p>
+<p style="padding-left: 30px;">fossil version</p>
+<p>查看目前所使用的 fossil.exe 版本.</p>
+<p>一般在 KMOLab 的課程中, 是利用 Virtualbox 的 Ubuntu 虛擬主機配置 Fossil SCM 伺服器, 意即在 Ubuntu 中下載 Linux 版的 fossil, 並且透過與 <a href="https://www.stunnel.org/">Stunnel</a> 的整合設定, 讓 Fossil SCM 可以隨 Ubuntu 伺服器開機啟動.</p>
+<p>初學者在配置 Windows 10 client 端的 fossil.exe 與 Ubuntu 伺服器端的 fossil 時, 必須注意兩端所使用的 fossil 版次是否一致. 否則將會導致部分新功能無法匹配.</p>
+<p>以下用來在各班分組學習使用  Fossil SCM 的規劃是, 以組為單位下載已經配置 Fossil SCM 的 Virtualbox 虛擬主機 Ubuntu 伺服器系統:</p>
+<p style="padding-left: 30px;"><a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi 下載</a><span> (12GB)</span></p>
+<p><span>可以將此一虛擬主機檔案放在各組組長電腦硬碟中, 學習如何利用  Virtualbox 虛擬主機中的橋接網路 (bridged network) 設定, 讓此一帶有 Fossil SCM 系統的伺服器, 可以在電腦輔助設計室讓所有組員擷取, 以學習如何將先前送到 Github 的版本資料改由 Fossil SCM系統進行管理. 或者設法同步置放在 Github 與 Fossil SCM 伺服器中的版本資料.</span></p>
+<p><span>另外, 也可以在此一 Ubuntu 虛擬主機自行設法配置 Linux 版本下的 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a>, 了解 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 系統中前端 Javascript 程式 (由 dart 編寫轉出) 如何與後端的 <a href="https://github.com/dart-lang/dart-services">Dart service</a> 結合運作.</span></p>
+<p><span>而 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 所使用的網際伺服器, 前端 Javascript 與後端 dart 整合運用的模式, 當計算機程式的學習透過 <a href="https://flutter.dev">Flutter</a> 將前端的 dart 轉換成 <a href="https://www.android.com/">Android</a> 或 <a href="https://developer.apple.com/ios/">IOS</a> 手機介面, 即是在 <a href="http://lab.kmol.info/blog/pages/about/index.html">KMOLab</a> 希望利用<a href="https://mde.tw/cp2019">計算機程式</a>、網際內容管理、<a href="https://mde.tw/cad2019">電腦輔助設計實習</a>與協同產品設計實習等課程所要達成的目標之一. 透過網際與手機介面程式當前端, 可以利用照片與影片取得與機械設計流程相關的資料, 然後隨送到後端的設計分析程式進行辨識或運算, 得出結果後, 再設法通知位於前端的工程師. 或者可以利用隨身的瀏覽器、手機或平板應用程式, 監控或操控位於遠端的機電資虛擬或實體系統.</span></p>
+<h4><span>參考資料</span></h4>
+<p style="padding-left: 30px;"><span><a href="http://mde.tw/2017springcd/blog/intro-fossil-scm.html">http://mde.tw/2017springcd/blog/intro-fossil-scm.html</a></span></p><h1>DartLang</h1>
 <h4>Dart 2 啟動</h4>
 <p><a href="https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html">https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html</a> 宣布後, Dart 第二版正式啟動, 目前現存的許多與 Dart 第一版有關的資料頓時失去作用. </p>
 <p>其中也包括:</p>
@@ -723,8 +741,7 @@ void main() {
 <p>利用 <a href="https://aqueduct.io/">https://aqueduct.io/</a> 開發類似 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 的網際內容管理系統.</p>
 <p><span>利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://flutter.dev/web">Flutter for Web</a> 開發一套能夠在 Web 與手機中執行, 並用來操控 <a href="http://www.coppeliarobotics.com/">V-rep</a> 與 <a href="https://cyberbotics.com/">Webots</a> 虛擬環境中的機電系統.</span></p>
 <p>利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://flutter.dev/web">Flutter for Web</a> 開發一套能夠在 Web 與手機中執行的平面多連桿機構模擬分析套件.</p>
-<p><span>利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://flutter.dev/web">Flutter for Web</a> 開發一套能夠與 <a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a> 伺服器中運算核心整合的平面多連桿機構合成與分析套件.</span></p>
-<h2>Dart2 Spec</h2>
+<p><span>利用 <a href="https://flutter.dev/">Flutter</a> 與 <a href="https://flutter.dev/web">Flutter for Web</a> 開發一套能夠與 <a href="https://github.com/KmolYuan/Pyslvs-UI">https://github.com/KmolYuan/Pyslvs-UI</a> 伺服器中運算核心整合的平面多連桿機構合成與分析套件.</span></p><h2>Dart2 Spec</h2>
 <p><a href="/downloads/DartLangSpecDraft_2.3.0_dev.pdf">DartLangSpecDraft_2.3.0_dev.pdf</a></p>
 <p><span>&lt;&gt; 表示其中包含項目為必選項</span></p>
 <p>[] 表示其中包含項目為可選項</p>
