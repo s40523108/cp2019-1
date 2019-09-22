@@ -149,62 +149,34 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">cp1a 分組名單 << <a href='cp1a 分組名單.html'>Previous</a> <a href='Task2.html'>Next</a> >> Task2<br /><h1>cp1b 分組名單</h1>
-<p>====================<br/> group 1 :<br/> 40823206<br/> 40823248<br/> 40523113<br/> 40823237<br/> 40523124<br/> 40823223<br/> 40823251<br/> 40823241<br/> 40823202<br/> 40523242<br/> ====================<br/> group 2 :<br/> 40823236<br/> 40523108<br/> 40823222<br/> 40823213<br/> 40823221<br/> 40823249<br/> 40823247<br/> 40523207<br/> 40823220<br/> 40823207<br/> ====================<br/> group 3 :<br/> 40823243<br/> 40823218<br/> 40823216<br/> 40823214<br/> 40823250<br/> 40523241<br/> 40823246<br/> 40823209<br/> 40823238<br/> 40523138<br/> ====================<br/> group 4 :<br/> 40823244<br/> 40823230<br/> 40823233<br/> 40823232<br/> 40823212<br/> 40823208<br/> 40823245<br/> 40823240<br/> 40823226<br/> 40823217<br/> ====================<br/> group 5 :<br/> 40823234<br/> 40823235<br/> 40523111<br/> 40823204<br/> 40823201<br/> 40823203<br/> 40823205<br/> 40823225<br/> 40823227<br/> 40823210<br/> ====================<br/> group 6 :<br/> 40823211<br/> 40823239<br/> 40823215<br/> 40823229<br/> 40823231<br/> 40823219<br/> 40823242<br/> 40823228<br/> 40823224</p>
-<p><br/> [[40523113, 40523124, 40523242, 40823202, 40823206, 40823223, 40823237, 40823241, 40823248, 40823251], [40523108, 40523207, 40823207, 40823213, 40823220, 40823221, 40823222, 40823236, 40823247, 40823249], [40523138, 40523241, 40823209, 40823214, 40823216, 40823218, 40823238, 40823243, 40823246, 40823250], [40823208, 40823212, 40823217, 40823226, 40823230, 40823232, 40823233, 40823240, 40823244, 40823245], [40523111, 40823201, 40823203, 40823204, 40823205, 40823210, 40823225, 40823227, 40823234, 40823235], [40823211, 40823215, 40823219, 40823224, 40823228, 40823229, 40823231, 40823239, 40823242]]</p>
-<h4>亂數分組程式</h4>
-<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
-
-void main() {
-  // 每一組 10 人
-  int num = 10;
-  // 組序由 1 開始
-  int gth = 1;
-  // 迴圈序號變數
-  int i;
-  // 每組學員暫存數列
-  var gp_list = [];
-  // 全班分組數列
-  var cp2019 = [];
-
-  HttpRequest.getString(
-          'https://mde.tw/cp2019/downloads/2019fall_cp_1b_list.txt')
-      .then((String resp) {
-    // 利用 trim() 去除字串最後的跳行符號, 之後再利用 split() 根據 \n 轉為數列
-    var stud_list = resp.trim().split("\n");
-    // 數列利用 shuffle() 方法以隨機方法弄亂順序
-    stud_list.shuffle();
-    // 逐一讀取已經弄亂的學生學號數列, 利用模數運算每幾人分成一組
-    for (i = 0; i &lt; stud_list.length; i++) {
-      // 0, 1~(num-1), num
-      if (i % num == 0) {
-        gp_list = [];
-        // 列印區隔符號
-        print('=' * 20 + '&lt;br /&gt;');
-        print("group $gth :&lt;br /&gt;");
-        print(stud_list[i] + '&lt;br /&gt;');
-        // 在各分組數列中加入將對應的學員學號
-        gp_list.add(stud_list[i]);
-        gth = gth + 1;
-      } else {
-        print(stud_list[i] + '&lt;br /&gt;');
-        // 在各分組數列中加入將對應的學員學號
-        gp_list.add(stud_list[i]);
-      }
-      if (i % num == 0) {
-        // 逐步將各組暫存的分組數列加入全班分組數列中
-        cp2019.add(gp_list);
-      }
-    }
-    // 對各組學號排序
-    cp2019.forEach((element){element.sort();});
-    // 列出分組且排序後數列
-    print(cp2019);
-    print('&lt;br /&gt;');
-  });
-}
-</pre>
-<p></p><br />cp1a 分組名單 << <a href='cp1a 分組名單.html'>Previous</a> <a href='Task2.html'>Next</a> >> Task2</div>
+    <div id="tipue_search_content">Fossil SCM << <a href='Fossil SCM.html'>Previous</a> <a href='Fossil 操作.html'>Next</a> >> Fossil 操作<br /><h1>Fossil 伺服器</h1>
+<p>本計算機課程的 dart 程式, 可以寫在 <a href="https://help.github.com/en/articles/creating-gists">Gist</a>, 然後從 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 以"?id=gist_版次編號 "導入, 由於每一筆 <a href="https://help.github.com/en/articles/creating-gists">Gist</a> 都是 Git 倉儲, 除了具備版次外, 還能夠同時包含 html 與 css 檔案, 因此本課程所使用的 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 可以在將網際 Dart 程式配置到單一 html + javascript 程式之前, 直接在  <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 上進行測試.</p>
+<p>假如在近端或遠端所建立的 Fossil SCM 伺服器也能具有上述 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 結合 <a href="https://help.github.com/en/articles/creating-gists">Gist</a> 的功能, 機械設計工程師在網際環境執行協同產品設計時, 將可同時運用 Github 與自建 Fossil SCM 伺服器執行資料同步.</p>
+<h4>Fossil SCM 操作練習</h4>
+<p>下載 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi </a><span> (12GB), 存入已經格式化為 extFAT 的隨身碟中. 利用 Windows 10 所安裝的 Virtualbox 納入此 vdi 虛擬主機, 記憶體至少 4GB, 網路設定採用 host-only. 啟動後的管理者帳號與密碼都是 kmol2019.</span></p>
+<p><span></span>登入 Ubuntu 18.04 操作系統後, 以滑鼠點選左上角的 Menu-&gt;System Tools-&gt;MATE Terminal, 開啟終端機視窗. 在命令列中輸入:</p>
+<p style="padding-left: 30px;">ifconfig</p>
+<p>可以發現虛擬主機的網路的 IPv4 設定將網址設為 192.168.56.102, 表示 Windows 10 操作系統中的 Virtualbox Host-Only Ethernet Adapter 中的 IPv4 網路位址必須配合設為  192.168.56.101, 才能與目前啟動的 Ubuntu 伺服器互動.</p>
+<p>確認 Windows 10 與 Host-Only 的 Ubuntu 網路已經連通, 可以在 Windows 命令列中以:</p>
+<p style="padding-left: 30px;">ping -t 192.168.56.101</p>
+<p style="padding-left: 30px;">ping -t 192.168.56.102</p>
+<p>若封包回應為:</p>
+<p style="padding-left: 30px;">Reply from 192.168.56.101: bytes=32 time&lt;1ms TTL=64</p>
+<p style="padding-left: 30px;"><span>Reply from 192.168.56.101: bytes=32 time&lt;1ms TTL=64</span></p>
+<p>使用者就可以在 Windows 10 環境, 確認瀏覽器不會透過代理主機對 192.168.56.* 網址連線, 就可以開啟 <a href="https://192.168.56.102:8443">https://192.168.56.102:8443</a> 中的 CMSiMDE 動態網際內容管理系統.</p>
+<p>此一Ubuntu buntu 伺服器 CMSiMDE 的設定可以從 /etc/nginx/sites-available/default 與 /home/kmol2019/wsgi_ini/uwsgi.ini 等兩個檔案中的內容確定.</p>
+<p>若希望列出 Ubuntu 中目前已經啟動的系統服務, 可以在終端機視窗中輸入:</p>
+<p style="padding-left: 30px;">service --status-all</p>
+<p>其中 stunnel4 與 uwsgi 等兩個服務都已經啟動, 但是 stunnel4 目前隨機啟動的設定已經關閉, 若要在 5443 埠號啟動 Fossil SCM, 必須:</p>
+<p style="padding-left: 30px;">修改 /etc/default/stunnel4, 修改 ENABLED=1</p>
+<p>然後以:</p>
+<p style="padding-left: 30px;">sudo /etc/init.d/stunnel4 restart</p>
+<p>就可以瀏覽器開啟 <a href="https://192.168.56.102:5443">https://192.168.56.102:5443</a> 中的 Fossil SCM. 而此 Ubuntu 伺服器中的 Fossil SCM 管理者帳號密碼也都預先設定為 kmol2019.</p>
+<p style="padding-left: 30px;">(註: 目前此一 Ubuntu 18.04 伺服器中所安裝的 fossil 為 2.8 版, 若 Windows 10 使用 2.9 版的 fossil.exe, 則伺服器中的 fossil 也建議升級為對應的 2.9 版)</p>
+<p style="padding-left: 30px;">(註: 由於使用 Host-Only 的 Virtualbox 虛擬主機, 只允許其實體電腦上的 Windows 10 操作系統中的網路連線, 與此 Windows 10 同區的電腦或外部網路上的電腦都無法對此一 Host-Only 網路上的虛擬主機連線, 因此可以使用 admin 作為 CMSiMDE 系統的管理者密碼, 也可以使用 kmol2019 作為伺服器上 Fossil SCM 系統的管理者帳號密碼.</p>
+<p style="padding-left: 30px;">但是, 若此一 Virtualbox 虛擬主機改以橋接上網 (bridged network), 則其網路位階將提升與 Windows 10 操作系統的網路卡相同, 此時的 Ubuntu 伺服器若無進一步的防火牆保護設定, 與 Windows 10 同區的電腦將可以直接透過 8443 與 5443 對此伺服器中的 CMSiMDE 與 Fossil SCM伺服器連線, 這時使用者就必須要修改此兩項服務系統的管理帳號.)</p>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://2019wcm.blogspot.com/search/label/Ubuntu">https://2019wcm.blogspot.com/search/label/Ubuntu</a></p><br />Fossil SCM << <a href='Fossil SCM.html'>Previous</a> <a href='Fossil 操作.html'>Next</a> >> Fossil 操作</div>
         
     <!-- footer -->
       <div class="container">

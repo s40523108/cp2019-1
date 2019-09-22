@@ -682,8 +682,14 @@ void main() {
 <p><a href="https://guides.github.com/">https://guides.github.com/</a></p>
 <p><a href="https://guides.github.com/activities/hello-world/">https://guides.github.com/activities/hello-world/</a></p>
 <h2>Fossil SCM</h2>
-<p><a href="https://fossil-scm.org/">https://fossil-scm.org</a> 是一套專門用來管理 <a href="https://www.sqlite.org/index.html">SQLite</a> 資料庫系統的分散式版次管理系統.</p>
+<p><a href="https://fossil-scm.org/">https://fossil-scm.org</a> 是由 <a href="https://twitter.com/DRichardHipp">Richard Hipp</a> 所創建的一套專門用來管理 <a href="https://www.sqlite.org/index.html">SQLite</a> 資料庫系統的分散式版次管理系統.</p>
+<p style="padding-left: 30px;">(註: <a href="https://www.sqlite.org/whynotgit.html">為何 SQLite 原始碼不使用 Github 管理?</a>)</p>
+<p style="padding-left: 30px;">(註: <a href="https://fossil-scm.org/home/doc/trunk/www/qandc.wiki">針對 Fossil SCM的疑問與批評</a>)</p>
+<p style="padding-left: 30px;">(註: <a href="https://dev.to/schollz/self-hosting-with-fossil-an-alternative-to-git-33bk">自架類似 Github 的伺服系統</a>)</p>
 <p>Fossil SCM 的原始碼位於 <a href="https://fossil-scm.org/home/dir?ci=tip">https://fossil-scm.org/home/dir?ci=tip</a></p>
+<p style="padding-left: 30px;">(註: 如何利用 <a href="https://www.msys2.org/">MSYS2</a> 在 Windows 10 環境下<a href="https://fossil-scm.org/home/doc/trunk/www/build.wiki">編譯</a>帶有 <a href="https://www.wolfssl.com/">OpenSSL</a> 的 fossil.exe?)</p>
+<p style="padding-left: 30px;">(註: 如何延伸 Fossil SCM, 編寫與機械設計流程相關的<a href="https://fossil-scm.org/home/doc/trunk/www/adding_code.wiki">延伸程式</a>)</p>
+<p style="padding-left: 30px;">(註: 如何將 Fossil SCM 與機電資虛擬或實體裝置結合, 成為能夠自動擷取具分散式版次管理架構的大數據資料來源. <a href="https://www.processonline.com.au/content/industrial-networks-buses/article/the-future-of-control-systems-and-industry-4-0-1365495420">1</a>, <a href="https://pdfs.semanticscholar.org/ae66/775f9d839cde19e5f117e7377d2b2ec8df71.pdf">2</a>, <a href="/downloads/Scanning the Industry 4.0 A Literature Review on Technologies forManufacturing Systems.pdf">3</a>)</p>
 <p>在 Windows 10 環境下學習使用 Fossil SCM 的第一步就是從 <a href="https://fossil-scm.org/home/uv/download.html">https://fossil-scm.org/home/uv/download.html</a> 下載 fossil.exe.</p>
 <p>下載後可將 fossil.exe 放在隨身系統 data 目錄中 (也就是啟動 start.bat 後, 設為隨身碟虛擬根目錄的 y:\), 並且將 y:\ 納入命令搜尋路徑中. 就可以利用 </p>
 <p style="padding-left: 30px;">fossil version</p>
@@ -696,7 +702,69 @@ void main() {
 <p><span>另外, 也可以在此一 Ubuntu 虛擬主機自行設法配置 Linux 版本下的 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a>, 了解 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 系統中前端 Javascript 程式 (由 dart 編寫轉出) 如何與後端的 <a href="https://github.com/dart-lang/dart-services">Dart service</a> 結合運作.</span></p>
 <p><span>而 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 所使用的網際伺服器, 前端 Javascript 與後端 dart 整合運用的模式, 當計算機程式的學習透過 <a href="https://flutter.dev">Flutter</a> 將前端的 dart 轉換成 <a href="https://www.android.com/">Android</a> 或 <a href="https://developer.apple.com/ios/">IOS</a> 手機介面, 即是在 <a href="http://lab.kmol.info/blog/pages/about/index.html">KMOLab</a> 希望利用<a href="https://mde.tw/cp2019">計算機程式</a>、網際內容管理、<a href="https://mde.tw/cad2019">電腦輔助設計實習</a>與協同產品設計實習等課程所要達成的目標之一. 透過網際與手機介面程式當前端, 可以利用照片與影片取得與機械設計流程相關的資料, 然後隨送到後端的設計分析程式進行辨識或運算, 得出結果後, 再設法通知位於前端的工程師. 或者可以利用隨身的瀏覽器、手機或平板應用程式, 監控或操控位於遠端的機電資虛擬或實體系統.</span></p>
 <h4><span>參考資料</span></h4>
-<p style="padding-left: 30px;"><span><a href="http://mde.tw/2017springcd/blog/intro-fossil-scm.html">http://mde.tw/2017springcd/blog/intro-fossil-scm.html</a></span></p><h1>DartLang</h1>
+<p style="padding-left: 30px;"><span><a href="http://mde.tw/2017springcd/blog/intro-fossil-scm.html">http://mde.tw/2017springcd/blog/intro-fossil-scm.html</a></span></p><h3>Fossil 伺服器</h3>
+<p>本計算機課程的 dart 程式, 可以寫在 <a href="https://help.github.com/en/articles/creating-gists">Gist</a>, 然後從 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 以"?id=gist_版次編號 "導入, 由於每一筆 <a href="https://help.github.com/en/articles/creating-gists">Gist</a> 都是 Git 倉儲, 除了具備版次外, 還能夠同時包含 html 與 css 檔案, 因此本課程所使用的 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 可以在將網際 Dart 程式配置到單一 html + javascript 程式之前, 直接在  <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 上進行測試.</p>
+<p>假如在近端或遠端所建立的 Fossil SCM 伺服器也能具有上述 <a href="https://github.com/dart-lang/dart-pad">Dartpad</a> 結合 <a href="https://help.github.com/en/articles/creating-gists">Gist</a> 的功能, 機械設計工程師在網際環境執行協同產品設計時, 將可同時運用 Github 與自建 Fossil SCM 伺服器執行資料同步.</p>
+<h4>Fossil SCM 操作練習</h4>
+<p>下載 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi </a><span> (12GB), 存入已經格式化為 extFAT 的隨身碟中. 利用 Windows 10 所安裝的 Virtualbox 納入此 vdi 虛擬主機, 記憶體至少 4GB, 網路設定採用 host-only. 啟動後的管理者帳號與密碼都是 kmol2019.</span></p>
+<p><span></span>登入 Ubuntu 18.04 操作系統後, 以滑鼠點選左上角的 Menu-&gt;System Tools-&gt;MATE Terminal, 開啟終端機視窗. 在命令列中輸入:</p>
+<p style="padding-left: 30px;">ifconfig</p>
+<p>可以發現虛擬主機的網路的 IPv4 設定將網址設為 192.168.56.102, 表示 Windows 10 操作系統中的 Virtualbox Host-Only Ethernet Adapter 中的 IPv4 網路位址必須配合設為  192.168.56.101, 才能與目前啟動的 Ubuntu 伺服器互動.</p>
+<p>確認 Windows 10 與 Host-Only 的 Ubuntu 網路已經連通, 可以在 Windows 命令列中以:</p>
+<p style="padding-left: 30px;">ping -t 192.168.56.101</p>
+<p style="padding-left: 30px;">ping -t 192.168.56.102</p>
+<p>若封包回應為:</p>
+<p style="padding-left: 30px;">Reply from 192.168.56.101: bytes=32 time&lt;1ms TTL=64</p>
+<p style="padding-left: 30px;"><span>Reply from 192.168.56.101: bytes=32 time&lt;1ms TTL=64</span></p>
+<p>使用者就可以在 Windows 10 環境, 確認瀏覽器不會透過代理主機對 192.168.56.* 網址連線, 就可以開啟 <a href="https://192.168.56.102:8443">https://192.168.56.102:8443</a> 中的 CMSiMDE 動態網際內容管理系統.</p>
+<p>此一Ubuntu buntu 伺服器 CMSiMDE 的設定可以從 /etc/nginx/sites-available/default 與 /home/kmol2019/wsgi_ini/uwsgi.ini 等兩個檔案中的內容確定.</p>
+<p>若希望列出 Ubuntu 中目前已經啟動的系統服務, 可以在終端機視窗中輸入:</p>
+<p style="padding-left: 30px;">service --status-all</p>
+<p>其中 stunnel4 與 uwsgi 等兩個服務都已經啟動, 但是 stunnel4 目前隨機啟動的設定已經關閉, 若要在 5443 埠號啟動 Fossil SCM, 必須:</p>
+<p style="padding-left: 30px;">修改 /etc/default/stunnel4, 修改 ENABLED=1</p>
+<p>然後以:</p>
+<p style="padding-left: 30px;">sudo /etc/init.d/stunnel4 restart</p>
+<p>就可以瀏覽器開啟 <a href="https://192.168.56.102:5443">https://192.168.56.102:5443</a> 中的 Fossil SCM. 而此 Ubuntu 伺服器中的 Fossil SCM 管理者帳號密碼也都預先設定為 kmol2019.</p>
+<p style="padding-left: 30px;">(註: 目前此一 Ubuntu 18.04 伺服器中所安裝的 fossil 為 2.8 版, 若 Windows 10 使用 2.9 版的 fossil.exe, 則伺服器中的 fossil 也建議升級為對應的 2.9 版)</p>
+<p style="padding-left: 30px;">(註: 由於使用 Host-Only 的 Virtualbox 虛擬主機, 只允許其實體電腦上的 Windows 10 操作系統中的網路連線, 與此 Windows 10 同區的電腦或外部網路上的電腦都無法對此一 Host-Only 網路上的虛擬主機連線, 因此可以使用 admin 作為 CMSiMDE 系統的管理者密碼, 也可以使用 kmol2019 作為伺服器上 Fossil SCM 系統的管理者帳號密碼.</p>
+<p style="padding-left: 30px;">但是, 若此一 Virtualbox 虛擬主機改以橋接上網 (bridged network), 則其網路位階將提升與 Windows 10 操作系統的網路卡相同, 此時的 Ubuntu 伺服器若無進一步的防火牆保護設定, 與 Windows 10 同區的電腦將可以直接透過 8443 與 5443 對此伺服器中的 CMSiMDE 與 Fossil SCM伺服器連線, 這時使用者就必須要修改此兩項服務系統的管理帳號.)</p>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="https://2019wcm.blogspot.com/search/label/Ubuntu">https://2019wcm.blogspot.com/search/label/Ubuntu</a></p><h3>Fossil 操作</h3>
+<p>若採用 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi<span> </span></a> (12GB) 在  Virtualbox 中建立虛擬主機, 可以在 <a href="https://192.168.56.102">https://192.168.56.102</a> 使用動態的 CMSiMDE 網際內容管理系統, 接下來就可以針對此一動態系統在 Windows 10 或 Ubuntu 環境下, 將 CMSiMDE 網際內容管理系統的靜態網頁 (也就是送到 Github 倉儲中使用 Github Pages 建立 cp2019 網頁的同一套靜態網站系統) 送到 <a href="https://192.168.56.102:5443">https://192.168.56.102:5443</a> Fossil SCM 伺服器中.</p>
+<p>在 Fossil SCM 伺服 CMSiMDE 靜態網站系統之前, 必須了解 Fossil SCM 並無像 Git submodule 子模組的功能設計, 因此若單獨使用 Fossil SCM 管理 CMSiMDE 動態或靜態網站內容, 將無法取得父模組與子模組彼此版次區隔且能自動整批更新子模組內容的好處.</p>
+<p>因此, CMSiMDE 動態與靜態內容的管理建議同時採用 Github 與 Fossil SCM, 設法在兩套系統中針對 CMSiMDE 倉儲資料保持同步, 如此便可以同時取得使用 Github 與 Fossil SCM的雙重優點.</p>
+<p style="padding-left: 30px;">(註: Fossil SCM 中內建的 Forum 以及 doc 系統中可以直接指定版次, 以及部分內容可以 uversioned 方式儲存等功能, 可以視為相較於 Github 系統的優點)</p>
+<p>利用 Fossil SCM 伺服 CMSiMDE 靜態網站</p>
+<p>首先建議在 y:\ 中以 mkdir fossil 建立目錄, 之後與 Fossil SCM 有關的近端資料, 都將存在 y:\fossil 目錄, 接著在 y:\fossil 再建立 wd 目錄, 代表之後各相關 .fossil 檔案將放在 y:\fossil 目錄中, 而解開 .fossil 壓縮檔案後, 將依照該倉儲名稱, 分別存在 working directory y:\fossil\wd 目錄下, 例如: 目前在 Windows 10 命令列視窗中執行:</p>
+<p style="padding-left: 30px;">y:\fossil&gt;fossil clone https://192.168.56.102:5443/kmol2019 kmol2019.fossil</p>
+<p>並回答 a 或 y 表示要接受認證資料後, 就可以取得 192.168.56.102 主機上的 kmol2019 Fossil SCM 倉儲檔案, 而且這個檔案是依照 SQLite 資料庫格式的壓縮檔.</p>
+<p>接下來進入  y:\fossil\wd 目錄建立 kmol2019 目錄, 準備要將 kmol2019.fossil 在此一目錄中解開, 因此進入 <span>y:\fossil\wd\kmol2019 目錄執行</span> :</p>
+<p style="padding-left: 30px;">y:\fossil\wd\kmol2019&gt;fossil open ./../../kmol2019.fossil</p>
+<p>表示要將位於兩層目錄之外的 kmol2019.fossil 倉儲壓縮檔案, 在　<span>y:\fossil\wd\kmol2019 目錄中解開.</span></p>
+<p>解開壓縮檔案後, 進入 y:\fossil\wd\kmol2019 目錄, 只發現一個 _FOSSIL_ 檔案, 而此一壓縮檔案就等同 Github 倉儲中的 .git 目錄, 儲存與 Fossil SCM 倉儲有關的版本與設定資料.</p>
+<h4>將 Github Scrum-4 cad2019 倉儲送到 Fossil SCM</h4>
+<p style="padding-left: 30px;">首先利用:</p>
+<p>git clone <a href="https://github.com/scrum-4/cad2019.git">https://github.com/scrum-4/cad2019.git</a> 將倉儲基本內容複製到近端 cad2019 目錄中, 接者必須進入 cad2019 目錄中繼續執行 git submodule init 與 git submodule update, 以便將 cmsimde 目錄中的資料也取至近端.</p>
+<p>接下來只要將 cad2019 目錄中的所有資料, 複製到 <span>y:\fossil\wd\kmol2019  目錄中, 然後利用:</span></p>
+<p style="padding-left: 30px;"><span>y:\fossil\wd\kmol2019&gt;fossil add .</span></p>
+<p>對 kmol2019.fossil 的工作目錄新增前述所加入的 cad2019 倉儲資料內容.</p>
+<p>接著透過:</p>
+<p style="padding-left: 30px;"><span>y:\fossil\wd\kmol2019&gt;fossil commit -m "add scrum-4 cad2019 content"</span></p>
+<p><span>在近端提交所增加的內容.</span></p>
+<p><span>最後再執行:</span></p>
+<p style="padding-left: 30px;"><span>y:\fossil\wd\kmol2019&gt;fossil <span>push https://kmol2019@192.168.56.102:5443</span></span></p>
+<p>輸入與 kmol2019 帳號對應的密碼後, 即可將近端 <span>y:\fossil\wd\kmol2019 (也就是 y:\fossil\kmol2019.fossil 的工作目錄) 的改版資料, 同時更動近端的 kmol2019.fossil 與遠端對應的 /home/kmol2019/repository/kmol2019.fossil 倉儲壓縮檔案.</span></p>
+<p><span>完成上述 Fossil SCM 的倉儲新增提交與推送, 就可以在</span></p>
+<p style="padding-left: 30px;"><a href="https://192.168.56.102:5443/kmol2019/doc/trunk/index.html">https://192.168.56.102:5443/kmol2019/doc/trunk/index.html</a></p>
+<p>連結到對應 CMSiMDE 靜態網站. 其中 <a href="https://192.168.56.102:5443/kmol2019/doc/trunk/index.html">https://192.168.56.102:5443/kmol2019</a> 是倉儲所在地, 而 doc 表示 Fossil SCM 針對每一個倉儲提供 document 的 html 格是資料檔案連結功能, 而且 doc/trunk 表示擷取此倉儲目前的最新版本, 而 doc/trunk/ 之後的 index.html 表示希望從倉儲根目錄中的 index.html 檔案作為網站索引超文件檔案.</p>
+<p>從 <a href="https://192.168.56.102:5443/kmol2019/timeline">https://192.168.56.102:5443/kmol2019/timeline</a> 倉儲的時間軸中, 可以檢視各提交推送版本的序號, 前述 doc 後若將 trunk 換成先前所提交的版本序號, 使用者將可利用:</p>
+<p style="padding-left: 30px;"><a href="https://192.168.56.102:5443/kmol2019/doc/版本序號/index.html">https://192.168.56.102:5443/kmol2019/doc/版本序號/index.html</a> </p>
+<p>直接連線到 kmol2019 倉儲所對應的版本序號網站.</p>
+<p>在 Ubuntu 新增 Fossil SCM 倉儲</p>
+<p>使用者在 Ubuntu 伺服器上建立其他倉儲的方法:</p>
+<p style="padding-left: 30px;">/home/kmol2019/repository/$ fossil init cp2019.fossil</p>
+<p>表示要在 /home/kmol2019/repository 目錄中, 起始一個 Fossil SCM 倉儲, 名稱為 cp2019.fossil.</p>
+<p>而此一倉儲可以利用 https//192.168.56.102:5443/cp2019 擷取. 而其他 fossil clone, fossil add, fossil commit 與 fossil push 的應用與上述流程相同. </p><h1>DartLang</h1>
 <h4>Dart 2 啟動</h4>
 <p><a href="https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html">https://news.dartlang.org/2018/02/announcing-dart-2-optimized-for-client.html</a> 宣布後, Dart 第二版正式啟動, 目前現存的許多與 Dart 第一版有關的資料頓時失去作用. </p>
 <p>其中也包括:</p>

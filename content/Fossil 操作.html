@@ -149,62 +149,47 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">cp1a 分組名單 << <a href='cp1a 分組名單.html'>Previous</a> <a href='Task2.html'>Next</a> >> Task2<br /><h1>cp1b 分組名單</h1>
-<p>====================<br/> group 1 :<br/> 40823206<br/> 40823248<br/> 40523113<br/> 40823237<br/> 40523124<br/> 40823223<br/> 40823251<br/> 40823241<br/> 40823202<br/> 40523242<br/> ====================<br/> group 2 :<br/> 40823236<br/> 40523108<br/> 40823222<br/> 40823213<br/> 40823221<br/> 40823249<br/> 40823247<br/> 40523207<br/> 40823220<br/> 40823207<br/> ====================<br/> group 3 :<br/> 40823243<br/> 40823218<br/> 40823216<br/> 40823214<br/> 40823250<br/> 40523241<br/> 40823246<br/> 40823209<br/> 40823238<br/> 40523138<br/> ====================<br/> group 4 :<br/> 40823244<br/> 40823230<br/> 40823233<br/> 40823232<br/> 40823212<br/> 40823208<br/> 40823245<br/> 40823240<br/> 40823226<br/> 40823217<br/> ====================<br/> group 5 :<br/> 40823234<br/> 40823235<br/> 40523111<br/> 40823204<br/> 40823201<br/> 40823203<br/> 40823205<br/> 40823225<br/> 40823227<br/> 40823210<br/> ====================<br/> group 6 :<br/> 40823211<br/> 40823239<br/> 40823215<br/> 40823229<br/> 40823231<br/> 40823219<br/> 40823242<br/> 40823228<br/> 40823224</p>
-<p><br/> [[40523113, 40523124, 40523242, 40823202, 40823206, 40823223, 40823237, 40823241, 40823248, 40823251], [40523108, 40523207, 40823207, 40823213, 40823220, 40823221, 40823222, 40823236, 40823247, 40823249], [40523138, 40523241, 40823209, 40823214, 40823216, 40823218, 40823238, 40823243, 40823246, 40823250], [40823208, 40823212, 40823217, 40823226, 40823230, 40823232, 40823233, 40823240, 40823244, 40823245], [40523111, 40823201, 40823203, 40823204, 40823205, 40823210, 40823225, 40823227, 40823234, 40823235], [40823211, 40823215, 40823219, 40823224, 40823228, 40823229, 40823231, 40823239, 40823242]]</p>
-<h4>亂數分組程式</h4>
-<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
-
-void main() {
-  // 每一組 10 人
-  int num = 10;
-  // 組序由 1 開始
-  int gth = 1;
-  // 迴圈序號變數
-  int i;
-  // 每組學員暫存數列
-  var gp_list = [];
-  // 全班分組數列
-  var cp2019 = [];
-
-  HttpRequest.getString(
-          'https://mde.tw/cp2019/downloads/2019fall_cp_1b_list.txt')
-      .then((String resp) {
-    // 利用 trim() 去除字串最後的跳行符號, 之後再利用 split() 根據 \n 轉為數列
-    var stud_list = resp.trim().split("\n");
-    // 數列利用 shuffle() 方法以隨機方法弄亂順序
-    stud_list.shuffle();
-    // 逐一讀取已經弄亂的學生學號數列, 利用模數運算每幾人分成一組
-    for (i = 0; i &lt; stud_list.length; i++) {
-      // 0, 1~(num-1), num
-      if (i % num == 0) {
-        gp_list = [];
-        // 列印區隔符號
-        print('=' * 20 + '&lt;br /&gt;');
-        print("group $gth :&lt;br /&gt;");
-        print(stud_list[i] + '&lt;br /&gt;');
-        // 在各分組數列中加入將對應的學員學號
-        gp_list.add(stud_list[i]);
-        gth = gth + 1;
-      } else {
-        print(stud_list[i] + '&lt;br /&gt;');
-        // 在各分組數列中加入將對應的學員學號
-        gp_list.add(stud_list[i]);
-      }
-      if (i % num == 0) {
-        // 逐步將各組暫存的分組數列加入全班分組數列中
-        cp2019.add(gp_list);
-      }
-    }
-    // 對各組學號排序
-    cp2019.forEach((element){element.sort();});
-    // 列出分組且排序後數列
-    print(cp2019);
-    print('&lt;br /&gt;');
-  });
-}
-</pre>
-<p></p><br />cp1a 分組名單 << <a href='cp1a 分組名單.html'>Previous</a> <a href='Task2.html'>Next</a> >> Task2</div>
+    <div id="tipue_search_content">Fossil 伺服器 << <a href='Fossil 伺服器.html'>Previous</a> <a href='DartLang.html'>Next</a> >> DartLang<br /><h1>Fossil 操作</h1>
+<p>若採用 <a href="https://drive.google.com/open?id=1YnOxs0q95JcSSx2XABNNQ1S4k8qw8Vjk">pyslvs, uwsgi, fossil_scm 以及 squid 伺服器的 Ubuntu 18.04.vdi<span> </span></a> (12GB) 在  Virtualbox 中建立虛擬主機, 可以在 <a href="https://192.168.56.102">https://192.168.56.102</a> 使用動態的 CMSiMDE 網際內容管理系統, 接下來就可以針對此一動態系統在 Windows 10 或 Ubuntu 環境下, 將 CMSiMDE 網際內容管理系統的靜態網頁 (也就是送到 Github 倉儲中使用 Github Pages 建立 cp2019 網頁的同一套靜態網站系統) 送到 <a href="https://192.168.56.102:5443">https://192.168.56.102:5443</a> Fossil SCM 伺服器中.</p>
+<p>在 Fossil SCM 伺服 CMSiMDE 靜態網站系統之前, 必須了解 Fossil SCM 並無像 Git submodule 子模組的功能設計, 因此若單獨使用 Fossil SCM 管理 CMSiMDE 動態或靜態網站內容, 將無法取得父模組與子模組彼此版次區隔且能自動整批更新子模組內容的好處.</p>
+<p>因此, CMSiMDE 動態與靜態內容的管理建議同時採用 Github 與 Fossil SCM, 設法在兩套系統中針對 CMSiMDE 倉儲資料保持同步, 如此便可以同時取得使用 Github 與 Fossil SCM的雙重優點.</p>
+<p style="padding-left: 30px;">(註: Fossil SCM 中內建的 Forum 以及 doc 系統中可以直接指定版次, 以及部分內容可以 uversioned 方式儲存等功能, 可以視為相較於 Github 系統的優點)</p>
+<p>利用 Fossil SCM 伺服 CMSiMDE 靜態網站</p>
+<p>首先建議在 y:\ 中以 mkdir fossil 建立目錄, 之後與 Fossil SCM 有關的近端資料, 都將存在 y:\fossil 目錄, 接著在 y:\fossil 再建立 wd 目錄, 代表之後各相關 .fossil 檔案將放在 y:\fossil 目錄中, 而解開 .fossil 壓縮檔案後, 將依照該倉儲名稱, 分別存在 working directory y:\fossil\wd 目錄下, 例如: 目前在 Windows 10 命令列視窗中執行:</p>
+<p style="padding-left: 30px;">y:\fossil&gt;fossil clone https://192.168.56.102:5443/kmol2019 kmol2019.fossil</p>
+<p>並回答 a 或 y 表示要接受認證資料後, 就可以取得 192.168.56.102 主機上的 kmol2019 Fossil SCM 倉儲檔案, 而且這個檔案是依照 SQLite 資料庫格式的壓縮檔.</p>
+<p>接下來進入  y:\fossil\wd 目錄建立 kmol2019 目錄, 準備要將 kmol2019.fossil 在此一目錄中解開, 因此進入 <span>y:\fossil\wd\kmol2019 目錄執行</span> :</p>
+<p style="padding-left: 30px;">y:\fossil\wd\kmol2019&gt;fossil open ./../../kmol2019.fossil</p>
+<p>表示要將位於兩層目錄之外的 kmol2019.fossil 倉儲壓縮檔案, 在　<span>y:\fossil\wd\kmol2019 目錄中解開.</span></p>
+<p>解開壓縮檔案後, 進入 y:\fossil\wd\kmol2019 目錄, 只發現一個 _FOSSIL_ 檔案, 而此一壓縮檔案就等同 Github 倉儲中的 .git 目錄, 儲存與 Fossil SCM 倉儲有關的版本與設定資料.</p>
+<h4>將 Github Scrum-4 cad2019 倉儲送到 Fossil SCM</h4>
+<p style="padding-left: 30px;">首先利用:</p>
+<p>git clone <a href="https://github.com/scrum-4/cad2019.git">https://github.com/scrum-4/cad2019.git</a> 將倉儲基本內容複製到近端 cad2019 目錄中, 接者必須進入 cad2019 目錄中繼續執行 git submodule init 與 git submodule update, 以便將 cmsimde 目錄中的資料也取至近端.</p>
+<p>接下來只要將 cad2019 目錄中的所有資料, 複製到 <span>y:\fossil\wd\kmol2019  目錄中, 然後利用:</span></p>
+<p style="padding-left: 30px;"><span>y:\fossil\wd\kmol2019&gt;fossil add .</span></p>
+<p>對 kmol2019.fossil 的工作目錄新增前述所加入的 cad2019 倉儲資料內容.</p>
+<p>接著透過:</p>
+<p style="padding-left: 30px;"><span>y:\fossil\wd\kmol2019&gt;fossil commit -m "add scrum-4 cad2019 content"</span></p>
+<p><span>在近端提交所增加的內容.</span></p>
+<p><span>最後再執行:</span></p>
+<p style="padding-left: 30px;"><span>y:\fossil\wd\kmol2019&gt;fossil <span>push https://kmol2019@192.168.56.102:5443</span></span></p>
+<p>輸入與 kmol2019 帳號對應的密碼後, 即可將近端 <span>y:\fossil\wd\kmol2019 (也就是 y:\fossil\kmol2019.fossil 的工作目錄) 的改版資料, 同時更動近端的 kmol2019.fossil 與遠端對應的 /home/kmol2019/repository/kmol2019.fossil 倉儲壓縮檔案.</span></p>
+<p><span>完成上述 Fossil SCM 的倉儲新增提交與推送, 就可以在</span></p>
+<p style="padding-left: 30px;"><a href="https://192.168.56.102:5443/kmol2019/doc/trunk/index.html">https://192.168.56.102:5443/kmol2019/doc/trunk/index.html</a></p>
+<p>連結到對應 CMSiMDE 靜態網站. 其中 <a href="https://192.168.56.102:5443/kmol2019/doc/trunk/index.html">https://192.168.56.102:5443/kmol2019</a> 是倉儲所在地, 而 doc 表示 Fossil SCM 針對每一個倉儲提供 document 的 html 格是資料檔案連結功能, 而且 doc/trunk 表示擷取此倉儲目前的最新版本, 而 doc/trunk/ 之後的 index.html 表示希望從倉儲根目錄中的 index.html 檔案作為網站索引超文件檔案.</p>
+<p>從 <a href="https://192.168.56.102:5443/kmol2019/timeline">https://192.168.56.102:5443/kmol2019/timeline</a> 倉儲的時間軸中, 可以檢視各提交推送版本的序號, 前述 doc 後若將 trunk 換成先前所提交的版本序號, 使用者將可利用:</p>
+<p style="padding-left: 30px;"><a href="https://192.168.56.102:5443/kmol2019/doc/版本序號/index.html">https://192.168.56.102:5443/kmol2019/doc/版本序號/index.html</a> </p>
+<p>直接連線到 kmol2019 倉儲所對應的版本序號網站.</p>
+<p>在 Ubuntu 新增 Fossil SCM 倉儲</p>
+<p>使用者在 Ubuntu 伺服器上建立其他倉儲的方法:</p>
+<p style="padding-left: 30px;">/home/kmol2019/repository/$ fossil init cp2019.fossil</p>
+<p>表示要在 /home/kmol2019/repository 目錄中, 起始一個 Fossil SCM 倉儲, 名稱為 cp2019.fossil.</p>
+<p>而此一倉儲可以利用 https//192.168.56.102:5443/cp2019 擷取. 而其他 fossil clone, fossil add, fossil commit 與 fossil push 的應用與上述流程相同. </p>
+<p>接下來必須深入探討的是:</p>
+<p style="padding-left: 30px;">除了 https, Fossil SCM 能否以 ssh 連線?</p>
+<p style="padding-left: 30px;">Fossil SCM 倉儲若要管理 .git 目錄, 該如何設定?</p>
+<p style="padding-left: 30px;">Github 與 Fossil SCM 倉儲該如何保持同步?</p>
+<p style="padding-left: 30px;">Fossil SCM 的網際介面如何使用?</p><br />Fossil 伺服器 << <a href='Fossil 伺服器.html'>Previous</a> <a href='DartLang.html'>Next</a> >> DartLang</div>
         
     <!-- footer -->
       <div class="container">
