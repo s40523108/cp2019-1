@@ -149,79 +149,51 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Tasks << <a href='Tasks.html'>Previous</a> <a href='cp1a 分組名單.html'>Next</a> >> cp1a 分組名單<br /><h1>Task1</h1>
-<h4>Task1:</h4>
-<p style="padding-left: 30px;"><span style="background-color: #ffff00;">1/5: 了解計算機程式課程如何進行, 如何評分?</span></p>
-<p style="padding-left: 60px;">課程評分比例 (包含學員自評、同組互評與教師評分等三項):</p>
-<p style="padding-left: 120px;"><a href="http://mde.tw/dartpad?id=d7c4f7b267d43acd6ee7f78d581c4c5c">設一甲亂數分組</a></p>
-<p style="padding-left: 120px;"><a href="https://mde.tw/dartpad?id=8463c358dfeb477801b2c42737697e82">設一乙亂數分組</a></p>
-<p style="padding-left: 90px;">計算機程式每週自評與互評表單:<span> <a href="https://forms.gle/hztfjHLkrAaLyntv6">https://forms.gle/hztfjHLkrAaLyntv6</a></span></p>
-<p style="padding-left: 120px;">學員出席 (10%)</p>
-<p style="padding-left: 120px;">Github 倉儲與網站管理  (20%)</p>
-<p style="padding-left: 120px;">任務執行 (40%)</p>
-<p style="padding-left: 150px;">亂數分組與應用</p>
-<p style="padding-left: 150px;">靜態繪圖與應用</p>
-<p style="padding-left: 150px;"><span>動態繪圖與應用</span></p>
-<p style="padding-left: 120px;">程式開發 (30%)</p>
-<p style="padding-left: 60px;">課程計分流程:</p>
-<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">'''
-根據評分表單中的 自評分數, 互評得分, 教師評分, 計算學員課程成績
-'''
-
-def diff(自評分數, 互評得分):
-    return abs(自評分數 - 互評得分)
-    
-def max(自評分數, 互評得分):
-    if 自評分數 &gt; 互評得分:
-        return 自評分數
-    else:
-        return 互評得分
-
-def 分組比分(自評分數, 互評得分):
-    if diff(自評分數, 互評得分) &lt; 5:
-        學員得分 = max(自評分數, 互評得分)
-    else:
-        學員得分 = 互評得分 - diff(自評分數, 互評得分)
-    return 學員得分
-    
-def 全班比分(學員得分, 教師評分):
-    if diff(學員得分, 教師評分) &lt; 5:
-        學員成績 = max(學員得分, 教師評分)
-    else:
-        學員成績 = 教師評分 - diff(學員得分, 教師評分)/4
-    return 學員成績
-
-def 學員成績(自評分數, 互評得分, 教師評分):
-    學員分組得分 = 分組比分(自評分數, 互評得分)
-    學員課程成績 = 全班比分(學員分組得分, 教師評分)
-    return 學員課程成績
-    
-print(學員成績(80, 70, 60))
-print(學員成績(60, 70, 80))</pre>
-<p style="padding-left: 30px;"><span style="background-color: #ffff00;">2/5: 了解電腦輔助設計室電腦硬體與網路環境</span></p>
-<p style="padding-left: 60px;">購置時間: 2016 年暑假<br/>四年保固的華碩 Skylake MD790/I7-6700<br/>Intel 第六代 Core i7/3.4GHz/8M<br/>Intel Q170 晶片組<br/>16GB DDR4/2133/288 Pin 記憶體 (8 GBx2)<br/>2 TB-SATA3 硬碟<br/>Asus MINI-GTX950-2G 顯示卡 (支援 PCIE 3.0, OpenGL 4.5, 768 個CUDA 核心數) 500瓦電源供應器<br/>USB 3.1x2 (10GB/s)<br/>USB 3.0x6 (5GB/s)<br/>USB 2.0x2 (480MB/s)<br/>群準的 EVOsys PRO/SATA 還原卡<br/>同時支援 D-sub、HDMI 及 DisplayPort 三台獨立顯示器多工作業</p>
-<p style="padding-left: 60px;">網路以 NAT IPv4 為主, 可隨時切換為 IPv6 網路連線<br/>系上 IPv4: 140.130.17.X Gateway: 254 DNS: 3, 2, Proxy: 7, 17<br/>系上 IPv6: 2001:288:6004:17::X Gateway:254DNS: 3, 2, Proxy: 7, 17<br/>中華電信 DNS: 2001:b000:168::1</p>
-<p style="padding-left: 30px;"><span style="background-color: #ffff00;">3/5: 了解如何下載使用學校所提供的教育版 Windows 10 與 MS Office 2016</span></p>
-<p style="padding-left: 60px;">在校區內所使用的電腦 (若只需下載 .iso 可以設定系上提供的 Proxy  server 後下載), 可以透過 <a href="https://software.nfu.edu.tw/">https://software.nfu.edu.tw/</a> 取得各項教育版軟體, 其中包括 Windows 操作系統與 MS Office 以及 AutoDesk 教育版相關套件.</p>
-<p style="padding-left: 60px;"><a href="https://software.nfu.edu.tw/Windows/tw/Win_Pro_Ent_Edu_N_10_1809_64bit_Chinese_Traditional.iso">Windows 10 1809.iso</a>    <span> </span><a href="https://software.nfu.edu.tw/KMS/windows_kms.bat">kms.bat</a> (每半年認證, 若在校外必須透過<span> </span><a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a><span> </span>連線後進行)</p>
-<p style="padding-left: 60px;"><a href="https://software.nfu.edu.tw/Office/tw/Visio_Pro_2016_64Ch.iso">Office 2016.iso</a>   <span> </span><a href="https://software.nfu.edu.tw/KMS/Office_2016_KMS.bat">kms.bat</a> <span>(每半年認證, 若在校外必須透過</span><span><span> </span></span><a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">VPN</a><span><span> </span>連線後進行)</span></p>
-<p style="padding-left: 60px;"><a href="https://software.nfu.edu.tw/Autodesk/autodesk.iso">AutoDesk PDSU.iso</a> (利用 @gm 電子郵箱驗證後, 取得學生版三年使用授權)</p>
-<p style="padding-left: 60px;">當使用者位於校區外, 希望連線使用校區內的相關電腦資料, 包括下載教育版軟體或使用各項電子期刊或電子書, 可以利用 <a href="https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn">https://nfucc.nfu.edu.tw/zh/download/download-network/ssl-vpn</a> 連線後使用.</p>
-<p style="padding-left: 30px;"><span style="background-color: #ffff00;">4/5: 了解如何建立 USB 上的可攜程式環境</span></p>
-<p style="padding-left: 60px;"><a href="https://drive.google.com/file/d/1lNCUsmRtsl5K128Oa2lbN2ZmriXynrQP/view?usp=sharing">dartpad_based.7z</a> (登入 @gm 帳號後下載, 210 MB 解開壓縮後約 900 MB)</p>
-<p style="padding-left: 60px;">利用 python -m pip install flask_cors 安裝 flask_cors, 以便使用最新版的 CMSiMDE</p>
-<p style="padding-left: 60px;"><a href="https://drive.google.com/file/d/1oUbvEWYbWAZM6nIfhQqC8oCcb9fcCJ5F/view?usp=sharing">GitExtensions.7z</a></p>
-<p style="padding-left: 30px;"><span style="background-color: #ffff00;">5:5: 了解如何建立 Github 帳號, 如何建立 cp2019 網站</span></p>
-<p style="padding-left: 60px;"><a href="https://github.com/mdecourse/cmsimde">https://github.com/mdecourse/cmsimde</a> </p>
-<p style="padding-left: 60px;">在此一階段, 若希望利用 SSH (Secure Shell) 模式對 Github 連線, 必須了解:</p>
-<p style="padding-left: 90px;">1. Github 支援 HTTPS 與 SSH 等兩種連線方式, 採用 HTTPS 必須推送時輸入驗證權限的帳號與密碼, 若採用 SSH 模式連線, 則透過 Github 帳號上所存放的 pub key, 與近端使用者指定位置的 private key 進行認證.</p>
-<p style="padding-left: 90px;">2. 每一個倉儲從 Github clone 下來之後, 便會將預計使用的 HTTPS 或 SSH連線的 URL 註記在 .git 目錄中的 config 檔案中</p>
-<p style="padding-left: 90px;">3. 通常利用可攜環境啟動 portablegit 之後,  SSH 所使用的 private key 路徑設定, 通常存於 y:\home\.ssh 目錄下的  config 檔案中.</p>
-<p style="padding-left: 90px;">4. 如何利用 portablegit 中的 sh.exe 建立所需的 public key 與 private key?</p>
-<p style="padding-left: 90px;">5. public key 該送到 Github 的何處?</p>
-<p style="padding-left: 90px;">6. y:\home\.ssh\config  定檔案中除了宣告 private  key 所在位置外, 還必須注意個人使用多帳號與多 private keys 設定方式, 以及如何在 SSH 連線模式下設定 Proxy Server.</p>
-<p style="padding-left: 90px;">7. <a href="https://2019wcm.blogspot.com/search/label/ssh">參考資料</a></p>
-<br />Tasks << <a href='Tasks.html'>Previous</a> <a href='cp1a 分組名單.html'>Next</a> >> cp1a 分組名單</div>
+    <div id="tipue_search_content">Fossil 操作 << <a href='Fossil 操作.html'>Previous</a> <a href='DartLang.html'>Next</a> >> DartLang<br /><h1>Fossil 指令</h1>
+<p>每一個 .fossil 在該操作系統中都存在一組管理者密碼, 若要修改特定 .fossil 檔案中所存的用戶密碼, 可以利用 fossil sql 指令.</p>
+<h4>以 fossil sql 指令擷取 .fossil 檔案內容</h4>
+<p>使用者以 fossil init foo.fossil 建立倉儲檔案後, 除了使用 sqlite3 命令檢視 fossil 倉儲內容外, 也可以利用 fossil 指令查驗倉儲資料庫檔案的內容.</p>
+<p style="padding-left: 30px;">fossil sql -R foo.fossil</p>
+<p>進入 sqlite 指令環境後, 可以利用 .schema user 查驗 user 資料表的欄位設計.</p>
+<p>以</p>
+<p style="padding-left: 30px;">select login, pw, cap from user;</p>
+<p>可以查詢目前 foo.fossil 檔案中 user 資料表 login, pw 與 cap 等3個欄位的資料內容.</p>
+<p>若要更改特定 login 登入帳號的 pw 或 cap 可以使用下列 sqlite3 SQL 語法:</p>
+<p style="padding-left: 30px;">update user set pw='mynewpassword' where login='myloginaccount';</p>
+<p style="padding-left: 30px;">update user set cap='s' where login='myloginaccount';</p>
+<hr/>
+<p>Fossil SCM 設定中, 內定的 autosync 為 on, 表示使用者若採用:</p>
+<p style="padding-left: 30px;">fossil clone <a href="https://user:password@localhost">https://user:password@</a>192.168.56.102:5443 kmol2019.fossil</p>
+<p>將遠端倉儲 clone 至近端 kmol2019.fossil 壓縮檔案後. 一旦在工作目錄中 fossil add 與 fossil commit 之後, Fossil 會自動執行後續 fossil push 的動作, 而且此一推送會同時將改版資料送到近端與工作目錄對應的 .fossil 檔案倉儲外, 也會同時將改版資料推送到 .fossil 對應的遠端倉儲中.</p>
+<p>換言之, Fossil SCM 針對從 fossil clone 開始的一連串指令執行, 會因為 settings 的差異而有不同的新增, 提交與推送流程, 假如 fossil clone 時採用:</p>
+<p style="padding-left: 30px;">fossil clone <a href="https://192.168.56.102:5443">https://192.168.56.102:5443</a> kmol2019.fossil</p>
+<p>之後, 在近端以 fossil open 解開到近端工作目錄後, 必須利用:</p>
+<p style="padding-left: 30px;">fossil push <a href="https://usesid@fossil_server_url">https://usesid@fossil_server_url</a></p>
+<p>然後輸入與 userid 對應的密碼後, 才能退送到遠端倉儲. 至於先前已經配合以:</p>
+<p style="padding-left: 30px;"><span>fossil clone </span><a href="https://user:password@localhost">https://user:password@</a><span>192.168.56.102:5443 kmol2019.fossil</span></p>
+<p>取得倉儲, 但並非以原 fossil 倉儲內建 autosync 綁定的使用者進行提交推送時, 可以透過 fossil remote-url off 切斷內建倉儲與工作目錄綁定的內建用戶資料, 然後在提交後, 以手動執行 fossil push. 意即:</p>
+<p style="padding-left: 30px;"><span>fossil push </span><a href="https://usesid@fossil_server_url/">https://usesid@fossil_server_url</a></p>
+<hr/>
+<h4>純 IPv6 環境下的 Fossil Server</h4>
+<p>針對只採用 IPv6 協定上網的電腦中啟動 Fossil Server, 使用者可以使用 ssh 協定執行 fossil clone.</p>
+<p>例如: ipv6.only.server domain 所屬的伺服器, 其操作系統僅啟用 IPv6 協定上網, 建立 Fossil Server 的模式與 IPv4 上網的伺服器相同, 但是, fossil clone 的指令則可採用 ssh 協定下的絕對倉儲路徑或相對倉儲路徑擷取遠端的倉儲檔案:</p>
+<p>以絕對倉儲路徑 fossil clone:</p>
+<p>假設 IPv6 主機上的 target.fossil 倉儲檔案位於 /home/account/repository/target.fossil, 則使用者可以利用:</p>
+<p style="padding-left: 30px;">fossil clone ssh://account@your_ipv6_only_server_url//home/account/repository/target.fossil cloned.fossil</p>
+<p>將遠端的 target.fossil 複製到近端存為 cloned.fossil 檔案, 其中特別注意到絕對路徑在 server_url 後面必須有兩個斜線.</p>
+<p>以相對倉儲路徑 fossil clone:</p>
+<p>此時假設 Fossil Server 是以 /home/account 用戶啟動, 則使用者可以利用:</p>
+<p style="padding-left: 30px;">fossil clone ssh://account@your_ipv6_only_server_url/repository/target.fossil cloned.fossil</p>
+<p>將遠端的 target.fossil 複製到近端存為 cloned.fossil 檔案, 其中特別注意到, 相對路徑除了在 server_url 後只需一個斜線, 且是以 /home/account 目錄作為相對目錄的根目錄, 使用者必須加入 /repository/target.fossil, 才能正確擷取到倉儲檔案.</p>
+<p>上述兩種 fossil clone 指令執行後, 系統會要求輸入與 account 用戶對應的 Fossil Server 密碼, 完成後就可以將遠端的倉儲檔複製到近端.</p>
+<p>附帶說明: 截至 fossil 2.2 版, 以 ssh 協定可以 fossil clone 遠端純 IPv6 主機上的倉儲, 但是卻無法以 fossil autosync 或 fossil push 將近端的版本提交推送到遠端. 因此目前的 Fossil Server 仍建議採用 IPv4/IPv6 並存的方式建立.</p>
+<p>至於 Fossil SCM 的網路連線會依照系統環境變數中 http_proxy  設定使用 Proxy Server, 若無 http_proxy 環境變數設定, 則會直接連線.</p>
+<p>也可以在 fossil clone 指令之後加上 --proxy 140.130.17.7:3128 進行連線. (IPv6 環境必須確認是否也可行)</p>
+<p>參考資料:</p>
+<p style="padding-left: 30px;"><a href="http://www.fossil-scm.org/fossil/doc/trunk/www/quickstart.wiki">http://www.fossil-scm.org/fossil/doc/trunk/www/quickstart.wiki</a></p>
+<p style="padding-left: 30px;"><a href="https://www.mail-archive.com/fossil-users@lists.fossil-scm.org/msg12114.html">https://www.mail-archive.com/fossil-users@lists.fossil-scm.org/msg12114.html</a></p>
+<p style="padding-left: 30px;"><a href="https://fossil-users.fossil-scm.narkive.com/ywA3W2pc/ssh-implementation">https://fossil-users.fossil-scm.narkive.com/ywA3W2pc/ssh-implementation</a></p>
+<p style="padding-left: 30px;"><a href="https://blog.gtwang.org/linux/linux-ssh-public-key-authentication/">https://blog.gtwang.org/linux/linux-ssh-public-key-authentication/</a></p><br />Fossil 操作 << <a href='Fossil 操作.html'>Previous</a> <a href='DartLang.html'>Next</a> >> DartLang</div>
         
     <!-- footer -->
       <div class="container">
