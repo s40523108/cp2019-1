@@ -149,51 +149,9 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Fossil 操作 << <a href='Fossil 操作.html'>Previous</a> <a href='DartLang.html'>Next</a> >> DartLang<br /><h1>Fossil 指令</h1>
-<p>每一個 .fossil 在該操作系統中都存在一組管理者密碼, 若要修改特定 .fossil 檔案中所存的用戶密碼, 可以利用 fossil sql 指令.</p>
-<h4>以 fossil sql 指令擷取 .fossil 檔案內容</h4>
-<p>使用者以 fossil init foo.fossil 建立倉儲檔案後, 除了使用 sqlite3 命令檢視 fossil 倉儲內容外, 也可以利用 fossil 指令查驗倉儲資料庫檔案的內容.</p>
-<p style="padding-left: 30px;">fossil sql -R foo.fossil</p>
-<p>進入 sqlite 指令環境後, 可以利用 .schema user 查驗 user 資料表的欄位設計.</p>
-<p>以</p>
-<p style="padding-left: 30px;">select login, pw, cap from user;</p>
-<p>可以查詢目前 foo.fossil 檔案中 user 資料表 login, pw 與 cap 等3個欄位的資料內容.</p>
-<p>若要更改特定 login 登入帳號的 pw 或 cap 可以使用下列 sqlite3 SQL 語法:</p>
-<p style="padding-left: 30px;">update user set pw='mynewpassword' where login='myloginaccount';</p>
-<p style="padding-left: 30px;">update user set cap='s' where login='myloginaccount';</p>
-<hr/>
-<p>Fossil SCM 設定中, 內定的 autosync 為 on, 表示使用者若採用:</p>
-<p style="padding-left: 30px;">fossil clone <a href="https://user:password@localhost">https://user:password@</a>192.168.56.102:5443 kmol2019.fossil</p>
-<p>將遠端倉儲 clone 至近端 kmol2019.fossil 壓縮檔案後. 一旦在工作目錄中 fossil add 與 fossil commit 之後, Fossil 會自動執行後續 fossil push 的動作, 而且此一推送會同時將改版資料送到近端與工作目錄對應的 .fossil 檔案倉儲外, 也會同時將改版資料推送到 .fossil 對應的遠端倉儲中.</p>
-<p>換言之, Fossil SCM 針對從 fossil clone 開始的一連串指令執行, 會因為 settings 的差異而有不同的新增, 提交與推送流程, 假如 fossil clone 時採用:</p>
-<p style="padding-left: 30px;">fossil clone <a href="https://192.168.56.102:5443">https://192.168.56.102:5443</a> kmol2019.fossil</p>
-<p>之後, 在近端以 fossil open 解開到近端工作目錄後, 必須利用:</p>
-<p style="padding-left: 30px;">fossil push <a href="https://usesid@fossil_server_url">https://usesid@fossil_server_url</a></p>
-<p>然後輸入與 userid 對應的密碼後, 才能退送到遠端倉儲. 至於先前已經配合以:</p>
-<p style="padding-left: 30px;"><span>fossil clone </span><a href="https://user:password@localhost">https://user:password@</a><span>192.168.56.102:5443 kmol2019.fossil</span></p>
-<p>取得倉儲, 但並非以原 fossil 倉儲內建 autosync 綁定的使用者進行提交推送時, 可以透過 fossil remote-url off 切斷內建倉儲與工作目錄綁定的內建用戶資料, 然後在提交後, 以手動執行 fossil push. 意即:</p>
-<p style="padding-left: 30px;"><span>fossil push </span><a href="https://usesid@fossil_server_url/">https://usesid@fossil_server_url</a></p>
-<hr/>
-<h4>純 IPv6 環境下的 Fossil Server</h4>
-<p>針對只採用 IPv6 協定上網的電腦中啟動 Fossil Server, 使用者可以使用 ssh 協定執行 fossil clone.</p>
-<p>例如: ipv6.only.server domain 所屬的伺服器, 其操作系統僅啟用 IPv6 協定上網, 建立 Fossil Server 的模式與 IPv4 上網的伺服器相同, 但是, fossil clone 的指令則可採用 ssh 協定下的絕對倉儲路徑或相對倉儲路徑擷取遠端的倉儲檔案:</p>
-<p>以絕對倉儲路徑 fossil clone:</p>
-<p>假設 IPv6 主機上的 target.fossil 倉儲檔案位於 /home/account/repository/target.fossil, 則使用者可以利用:</p>
-<p style="padding-left: 30px;">fossil clone ssh://account@your_ipv6_only_server_url//home/account/repository/target.fossil cloned.fossil</p>
-<p>將遠端的 target.fossil 複製到近端存為 cloned.fossil 檔案, 其中特別注意到絕對路徑在 server_url 後面必須有兩個斜線.</p>
-<p>以相對倉儲路徑 fossil clone:</p>
-<p>此時假設 Fossil Server 是以 /home/account 用戶啟動, 則使用者可以利用:</p>
-<p style="padding-left: 30px;">fossil clone ssh://account@your_ipv6_only_server_url/repository/target.fossil cloned.fossil</p>
-<p>將遠端的 target.fossil 複製到近端存為 cloned.fossil 檔案, 其中特別注意到, 相對路徑除了在 server_url 後只需一個斜線, 且是以 /home/account 目錄作為相對目錄的根目錄, 使用者必須加入 /repository/target.fossil, 才能正確擷取到倉儲檔案.</p>
-<p>上述兩種 fossil clone 指令執行後, 系統會要求輸入與 account 用戶對應的 Fossil Server 密碼, 完成後就可以將遠端的倉儲檔複製到近端.</p>
-<p>附帶說明: 截至 fossil 2.2 版, 以 ssh 協定可以 fossil clone 遠端純 IPv6 主機上的倉儲, 但是卻無法以 fossil autosync 或 fossil push 將近端的版本提交推送到遠端. 因此目前的 Fossil Server 仍建議採用 IPv4/IPv6 並存的方式建立.</p>
-<p>至於 Fossil SCM 的網路連線會依照系統環境變數中 http_proxy  設定使用 Proxy Server, 若無 http_proxy 環境變數設定, 則會直接連線.</p>
-<p>也可以在 fossil clone 指令之後加上 --proxy 140.130.17.7:3128 進行連線. (IPv6 環境必須確認是否也可行)</p>
-<p>參考資料:</p>
-<p style="padding-left: 30px;"><a href="http://www.fossil-scm.org/fossil/doc/trunk/www/quickstart.wiki">http://www.fossil-scm.org/fossil/doc/trunk/www/quickstart.wiki</a></p>
-<p style="padding-left: 30px;"><a href="https://www.mail-archive.com/fossil-users@lists.fossil-scm.org/msg12114.html">https://www.mail-archive.com/fossil-users@lists.fossil-scm.org/msg12114.html</a></p>
-<p style="padding-left: 30px;"><a href="https://fossil-users.fossil-scm.narkive.com/ywA3W2pc/ssh-implementation">https://fossil-users.fossil-scm.narkive.com/ywA3W2pc/ssh-implementation</a></p>
-<p style="padding-left: 30px;"><a href="https://blog.gtwang.org/linux/linux-ssh-public-key-authentication/">https://blog.gtwang.org/linux/linux-ssh-public-key-authentication/</a></p><br />Fossil 操作 << <a href='Fossil 操作.html'>Previous</a> <a href='DartLang.html'>Next</a> >> DartLang</div>
+    <div id="tipue_search_content">DartPad << <a href='DartPad.html'>Previous</a> <br /><h1>MOCAD</h1>
+<p>Mobile Oriented Computer Aided Design</p>
+<p><a href="https://dart.dev/tutorials/web/fetch-data">https://dart.dev/tutorials/web/fetch-data</a></p><br />DartPad << <a href='DartPad.html'>Previous</a> </div>
         
     <!-- footer -->
       <div class="container">
