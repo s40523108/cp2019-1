@@ -45,6 +45,9 @@
 <v t="leo.20191003074818.1"><vh>網際機構模擬</vh>
 <v t="leo.20191003074818.2"><vh>網際機構模擬</vh></v>
 </v>
+<v t="leo.20191003085151.1"><vh>M.Sketch</vh>
+<v t="leo.20191003085151.2"><vh>M.Sketch</vh></v>
+</v>
 <v t="leo.20180902120523.11"><vh>快捷鍵</vh>
 <v t="leo.20180902120523.12"><vh>投影片快捷鍵</vh></v>
 </v>
@@ -488,6 +491,20 @@ vertical: body pane on the botton</t>
 <t tx="leo.20191003074818.2"># PMKS+
 
 &lt;iframe src="https://mde.tw/cad2019/downloads/pmksplus" width="800" height="550"&gt;&lt;/iframe&gt;
+
+</t>
+<t tx="leo.20191003085151.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20191003085151.2"># [M.Sketch](http://hanjong.kim/portfolio/m-sketch/)
+
+&lt;iframe width="560" height="315" src="https://www.youtube.com/embed/dP7Z4xVQXc0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen&gt;&lt;/iframe&gt;
 
 </t>
 </tnodes>
