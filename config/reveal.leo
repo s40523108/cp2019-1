@@ -39,6 +39,12 @@
 <v t="leo.20190903080658.1"><vh>Why Dart?</vh>
 <v t="leo.20190903080658.2"><vh>Why Dart?</vh></v>
 </v>
+<v t="leo.20191003073858.1"><vh>電腦與網路定位</vh>
+<v t="leo.20191003073858.2"><vh>電腦與網路定位</vh></v>
+</v>
+<v t="leo.20191003074818.1"><vh>網際機構模擬</vh>
+<v t="leo.20191003074818.2"><vh>網際機構模擬</vh></v>
+</v>
 <v t="leo.20180902120523.11"><vh>快捷鍵</vh>
 <v t="leo.20180902120523.12"><vh>投影片快捷鍵</vh></v>
 </v>
@@ -449,6 +455,39 @@ vertical: body pane on the botton</t>
 * 現代人"不會全部"被機器與電腦程式所取代
 * 現代人必須不斷朝智能機器無法取代的路前進
 
+
+</t>
+<t tx="leo.20191003073858.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20191003073858.2"># 電腦與網路定位
+
+* 電腦與網路是現代人的必備工具
+* 電腦用於提升工作效率, 網路提供協同溝通管道
+* 工程師可以透過電腦與網路, 減少重複式工作
+* 電腦程式可在實體成形前執行分析、模擬與評估
+* 行動裝置納入機械設計流程的趨勢已經成形
+* 分散式運算與集中式協同管理的程式架構
+
+</t>
+<t tx="leo.20191003074818.1">&lt;section data-markdown&gt;
+    &lt;script type="text/template"&gt;
+@others
+    &lt;/script&gt;
+&lt;/section&gt;
+
+
+						
+</t>
+<t tx="leo.20191003074818.2"># PMKS+
+
+&lt;iframe src="https://mde.tw/cad2019/downloads/pmksplus" width="800" height="550"&gt;&lt;/iframe&gt;
 
 </t>
 </tnodes>
