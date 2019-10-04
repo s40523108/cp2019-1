@@ -1220,6 +1220,10 @@ if __name__ == '__main__':
 <p><a href="https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0">https://medium.com/flutter-community/flutter-for-desktop-create-and-run-a-desktop-application-ebeb1604f1e0</a></p>
 <p><a href="https://github.com/go-flutter-desktop">https://github.com/go-flutter-desktop</a> (through <a href="https://golang.org/">Go</a>)</p>
 <h2>Dart</h2>
+<p>Dart and Python flask:</p>
+<p style="padding-left: 30px;"><a href="https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b">https://medium.com/analytics-vidhya/deploy-ml-models-using-flask-as-rest-api-and-access-via-flutter-app-7ce63d5c1f3b</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/SHARONZACHARIA/Deploy-ML-model">https://github.com/SHARONZACHARIA/Deploy-ML-model</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/klokantech/flask-backend">https://github.com/klokantech/flask-backend</a></p>
 <h4>Dart Language</h4>
 <p style="padding-left: 30px;"><a href="https://dart.dev/guides/language/language-tour">https://dart.dev/guides/language/language-tour</a></p>
 <p style="padding-left: 30px;"><a href="https://renato.athaydes.com/posts/interesting-dart-features.html">https://renato.athaydes.com/posts/interesting-dart-features.html</a> (<a href="/downloads/interesting_dart_features.pdf">pdf</a>)</p>
@@ -1757,6 +1761,102 @@ void main() {
 &lt;/html&gt;
 </pre>
 <p><a href="/downloads/dart_ex/rocflag/index.html">/downloads/dart_ex/rocflag/index.html</a></p>
-<h3>MOCAD</h3>
+<h3>petitparse</h3>
+<p><a href="https://github.com/petitparser/dart-petitparser">https://github.com/petitparser/dart-petitparser</a></p>
+<p><a href="https://pub.dev/packages/petitparser">https://pub.dev/packages/petitparser</a></p>
+<h4>應用</h4>
+<p>mkdir mocad</p>
+<p>將 pubspec.yaml 放入 modad 目錄</p>
+<p>cd mocad 後執行 pub install</p>
+<p>執行 dart mocad.dart</p>
+<p>得到結果:</p>
+<p style="padding-left: 30px;">[null, null, 12, null, null, 23, null, null, 5]<br/>Success[1:12]: 40</p>
+<p></p>
+<p>表示 pititparser 成功解析出字串中的數字, 並且求出所有數字的和</p>
+<p style="padding-left: 30px;">(digit().plus().flatten() | any().map((_) =&gt; null)).star()</p>
+<p>表示, 先匹配多個連在一起的數字, 如果無法匹配, 則以 null 代替. 然後不斷重複此一過程直到解析完整個字串</p>
+<p>其中使用下列解析語法:</p>
+<p>digit() 解析一個數字<br/>any() 解析任一字串<br/>plus() 重複一次或多次<br/>star() 重複零次或多次<br/>flatten() 將匹配的結果轉為字串, 而不是數列<br/>map() 對匹配的結果進行轉換</p>
+<p>pubspec.yaml</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">name: mocad
+version: 0.0.1
+dependencies:
+  petitparser: ^2.4.0</pre>
+<p>mocad.dart</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import "package:petitparser/petitparser.dart";
+
+main() {
+  var str = 'aa12bb23cc5';
+  var parser =
+      (digit().plus().flatten() | any().map((_) =&gt; null)).star().map((each) {
+    print(each);
+    var total = 0;
+    for (String numStr in each) {
+      if (numStr != null) {
+        total += int.parse(numStr);
+      }
+    }
+    return total;
+  });
+  var total = parser.parse(str);
+  print(total);
+}
+</pre>
+<p>Another example:</p>
+<p>calc.dart</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">/// Calculator from the tutorial.
+library petitparser.example.calc;
+
+import 'dart:math';
+
+import 'package:petitparser/petitparser.dart';
+
+Parser buildParser() {
+  final builder = ExpressionBuilder();
+  builder.group()
+    ..primitive((pattern('+-').optional() &amp;
+            digit().plus() &amp;
+            (char('.') &amp; digit().plus()).optional() &amp;
+            (pattern('eE') &amp; pattern('+-').optional() &amp; digit().plus())
+                .optional())
+        .flatten('number expected')
+        .trim()
+        .map(num.tryParse))
+    ..wrapper(
+        char('(').trim(), char(')').trim(), (left, value, right) =&gt; value);
+  builder.group()..prefix(char('-').trim(), (op, a) =&gt; -a);
+  builder.group()..right(char('^').trim(), (a, op, b) =&gt; pow(a, b));
+  builder.group()
+    ..left(char('*').trim(), (a, op, b) =&gt; a * b)
+    ..left(char('/').trim(), (a, op, b) =&gt; a / b);
+  builder.group()
+    ..left(char('+').trim(), (a, op, b) =&gt; a + b)
+    ..left(char('-').trim(), (a, op, b) =&gt; a - b);
+  return builder.build().end();
+}
+
+void main(List&lt;String&gt; arguments) {
+  final parser = buildParser();
+  final input = arguments.join(' ');
+  final result = parser.parse(input);
+  if (result.isSuccess) {
+    print(' = ${result.value}');
+  } else {
+    print(input);
+    print('${' ' * (result.position - 1)}^-- ${result.message}');
+  }
+}
+</pre>
+<p>dart calc.dart 3+5*9-4</p>
+<p style="padding-left: 30px;">會列出 = 44</p>
+<p>接下來要嘗試利用 petitparser 解析</p>
+<p>M[J[R,color[Green],P[0,0],L[ground,L1]],J[R,color[Green],P[12.92,32.53],L[L1,L2]],J[R,color[Green],P[73.28,67.97],L[L2,L3]],J[R,color[Green],P[33.3,66.95],L[L2]],J[R,color[Green],P[90,0],L[ground,L3]]]</p>
+<p>以計算機構自由度, 各點座標位置, 以及所使用轉動軸類型與總數.</p>
+<h4>參考資料</h4>
+<p style="padding-left: 30px;"><a href="/downloads/PetitParser.pdf">PetitParser.pdf</a></p>
+<p style="padding-left: 30px;"><a href="https://www.lukas-renggli.ch/blog/petitparser-java-dart">https://www.lukas-renggli.ch/blog/petitparser-java-dart</a></p>
+<p style="padding-left: 30px;">var parser = letter().seq(letter().or(digit()).star());</p>
+<p style="padding-left: 30px;">var parser = letter() &amp; (letter() | digit()).star();</p>
+<p style="padding-left: 30px;">var parser = digit().plus().flatten().map((input) =&gt; Math.parseInt(input));</p><h3>MOCAD</h3>
 <p>Mobile Oriented Computer Aided Design</p>
 <p><a href="https://dart.dev/tutorials/web/fetch-data">https://dart.dev/tutorials/web/fetch-data</a></p>
