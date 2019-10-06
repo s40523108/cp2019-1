@@ -410,7 +410,248 @@ Host github.com
 <p>為什麼需要使用虛擬主機?</p>
 <p style="padding-left: 30px;">學習計算機程式編寫網際近端與遠端程式互動時, 可以利用近端的虛擬主機作為伺服器, 配置動態的 CMSiMDE 與 Fossil SCM 伺服器, 可以自行建立與 Github 相當的網際內容管理系統, 若再加上了解如何自行建立同時支援 IPv4 與 IPv6 通訊協定的 <a href="http://www.squid-cache.org/">Squid Proxy 伺服器</a>, 將可以在網際程式開發流程中學習全面的整合知識.</p>
 <p><a href="https://drive.google.com/file/d/1oUbvEWYbWAZM6nIfhQqC8oCcb9fcCJ5F/view?usp=sharing">GitExtensions.7z</a> 有何用途?</p>
-<p style="padding-left: 30px;"><a href="https://github.com/gitextensions/gitextensions">https://github.com/gitextensions/gitextensions</a> 是一個以 C# 編寫的開源 Git 指令工具, 由於當多人同時維護一個分組倉儲與網站內容時, 採取多人同步程式或網站內容的編修流程時, 經常需要使用較複雜的 Git 指令, 若使用 <a href="https://drive.google.com/file/d/1oUbvEWYbWAZM6nIfhQqC8oCcb9fcCJ5F/view?usp=sharing">GitExtensions.7z</a> 可以較簡便執行這些複雜的 Git  指令, 並且在近端進行分支合併或衝突解決時, 可以透過圖形化的介面了解各倉儲分支的內容修改情形.</p><h2>課程筆記</h2>
+<p style="padding-left: 30px;"><a href="https://github.com/gitextensions/gitextensions">https://github.com/gitextensions/gitextensions</a> 是一個以 C# 編寫的開源 Git 指令工具, 由於當多人同時維護一個分組倉儲與網站內容時, 採取多人同步程式或網站內容的編修流程時, 經常需要使用較複雜的 Git 指令, 若使用 <a href="https://drive.google.com/file/d/1oUbvEWYbWAZM6nIfhQqC8oCcb9fcCJ5F/view?usp=sharing">GitExtensions.7z</a> 可以較簡便執行這些複雜的 Git  指令, 並且在近端進行分支合併或衝突解決時, 可以透過圖形化的介面了解各倉儲分支的內容修改情形.</p><h3>Ubuntu 伺服器</h3>
+<p>目前最新的 <a href="https://ubuntu.com/">Ubuntu</a> <a href="https://ubuntu.com/about/release-cycle">LTS</a> 伺服器為 18.04.3, 使用者可以自行下載 Ubuntu Server 18.04.3 iso 檔案, 自行在 Windows 10 操作系統下利用 <a href="https://www.virtualbox.org/">Virtualbox</a> 進行練習.</p>
+<p>以下則為提供學員實習的實體主機:</p>
+<p style="padding-left: 30px;"><a href="http://cd03.kmol.info">http://cd03.kmol.info</a>  (A 班伺服器)</p>
+<p style="padding-left: 30px;"><a href="http://cd04.kmol.info">http://cd04.kmol.info</a>  (B 班伺服器)</p>
+<h4>建立管理者</h4>
+<p style="padding-left: 30px;">$sudo adduser username<br/>$sudo usermod -aG sudo username</p>
+<h4>Change hostname</h4>
+<p style="padding-left: 30px;">sudo hostnamectl set-hostname your_server_hostname<br/>sudo vi /etc/hosts<br/>add 127.0.0.1 your_server_hostname</p>
+<h4>Reset Ubuntu password</h4>
+<p style="padding-left: 30px;">while booting, for bios startup computer, press shift, for uefi start computer, press esc to go to the boot menu, select from menu to boot for network and root setup, use sudo passwd username to change user password.</p>
+<h4>/etc/netplan/50-cloud-init.yaml</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false"># This file is generated from information provided by
+# the datasource.  Changes to it will not persist across an instance.
+# To disable cloud-init's network configuration capabilities, write a file
+# /etc/cloud/cloud.cfg.d/99-disable-network-config.cfg with the following:
+# network: {config: disabled}
+network:
+    ethernets:
+        enp0s3:
+            dhcp4: false 
+            dhcp6: false 
+            addresses: 
+                - 192.168.1.13/24
+                - 2001:288:6004::1/64
+            gateway4: 192.168.1.1
+            gateway6: 2001:288:6004::254
+            nameservers:
+                addresses:
+                    - 140.130.1.2
+                    - 168.95.1.1
+                    - 2001:288:6004:1::2
+                    - 2001:b000:168::1
+    version: 2</pre>
+<p>修改後, 利用 sudo netplan apply 讀取更新檔案, 並檢測格式是否正確.</p>
+<h4>Nginx WWW 伺服器</h4>
+<p style="padding-left: 30px;">在 Ubuntu 安裝 nginx 伺服器:</p>
+<p style="padding-left: 60px;">sudo apt install nginx</p>
+<p style="padding-left: 30px;">其中必須注意的是, apt 將使用 /etc/apt.conf 中所設定的 proxy 進行網路連線.</p>
+<p style="padding-left: 30px;">apt.conf 設定格式為:</p>
+<p style="padding-left: 60px;">Acquire::http::Proxy "http://[2001:288:6004:17::proxy_ip]:3128";</p>
+<h4>/etc/nginx/sites-available/default 參考檔案:</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">server {
+    listen 80;
+    listen [::]:80;
+    root /home/kmol2019/newcms;
+    index index.html;
+ 
+    location /static {
+        alias /home/kmol2019/newcms/cmsimde/static/;
+    }
+ 
+    location /downloads {
+        alias /home/kmol2019/newcms/downloads/;
+    }
+ 
+    location /images {
+        alias /home/kmol2019/newcms/images/;
+    }
+ 
+    location / {
+            try_files $uri $uri/ =404;
+    } 
+     
+    location /blog {
+        alias /home/kmol2019/cmsimfly/blog/;
+    }
+ 
+    location /reveal {
+        alias /home/kmol2019/cmsimfly/reveal/;
+    }
+}
+ 
+server {
+    listen 443 ssl;
+    #listen [::]:443 ssl ipv6only=on;
+  
+    location /static {
+        alias /home/kmol2019/cmsimfly/static/;
+    }
+  
+    location / {
+        include uwsgi_params;
+        uwsgi_pass  127.0.0.1:8080;
+    }
+  
+    #server_name ipv4_ip; 
+    #ssl on;
+    ssl_certificate /etc/stunnel/localhost.crt;
+    ssl_certificate_key /etc/stunnel/localhost.key;
+    ssl_session_timeout 5m;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+    ssl_prefer_server_ciphers on;
+    try_files $uri $uri/ =404;
+}
+  
+server {
+    #listen 89 default_server;
+    #listen [::]:89 default_server ipv6only=on;
+  
+    listen 8943 ssl;
+    #listen [::]:8943 ssl ipv6only=on;
+  
+    location /static {
+        alias /home/kmol2019/cmsimfly2/static/;
+    }
+  
+    location / {
+        include uwsgi_params;
+        uwsgi_pass  127.0.0.1:8082;
+    }
+  
+    #server_name ipv4_ip;
+    #ssl on;
+    ssl_certificate /etc/stunnel/localhost.crt;
+    ssl_certificate_key /etc/stunnel/localhost.key;
+    ssl_session_timeout 5m;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+    ssl_prefer_server_ciphers on;
+    try_files $uri $uri/ =404;
+}
+ 
+server {
+    #listen 88 default_server;
+    #listen [::]:88 default_server ipv6only=on;
+  
+    listen 8843 ssl;
+    #listen [::]:8843 ssl ipv6only=on;
+  
+    location /static {
+        alias /home/kmol2019/newcms/cmsimde/static/;
+    }
+  
+    location / {
+        include uwsgi_params;
+        uwsgi_pass  127.0.0.1:8081;
+    }
+  
+    #server_name ipv4_ip;
+    #ssl on;
+    ssl_certificate /etc/stunnel/localhost.crt;
+    ssl_certificate_key /etc/stunnel/localhost.key;
+    ssl_session_timeout 5m;
+    ssl_protocols SSLv3 TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers "HIGH:!aNULL:!MD5 or HIGH:!aNULL:!MD5:!3DES";
+    ssl_prefer_server_ciphers on;
+    try_files $uri $uri/ =404;
+}</pre>
+<h4>Install Squid</h4>
+<p style="padding-left: 30px;">sudo apt install squid<br/>cd /etc/squid<br/>sudo rename squid.conf squid_orig.conf<br/>cd<br/>sftp username@ipv4_of_another_server<br/>cd /etc/squid<br/>get squid.conf</p>
+<p style="padding-left: 30px;">quit<br/>sudo cp squid.conf /etc/squid<br/>sudo /etc/init.d/squid restart</p>
+<h4>uwsgi.ini 參考檔案:</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[uwsgi]
+socket = 127.0.0.1:8080
+uid = kmol2019
+gid = kmol2019
+plugins-dir = /usr/lib/uwsgi/plugins/
+plugin = python3
+master = true
+logto = /var/log/uwsgi/emperor.log
+logfile-chown = kmol2019:kmol2019
+processes = 4
+threads = 2
+chdir = /home/kmol2019/cmsimfly
+wsgi-file = /home/kmol2019/cmsimfly/wsgi.py</pre>
+<p>根據上述說明流程所完成的<a href="https://drive.google.com/file/d/1l7DLMa6JSOE7m3AwPfWjazweEjymK9sP/view?usp=sharing">虛擬主機下載</a>.</p><h3>python3 環境準備:</h3>
+<p style="padding-left: 30px;">安裝 pip3:</p>
+<p style="padding-left: 30px;">sudo apt install python3-pip</p>
+<h4>安裝 CMSiMDE 所需模組:</h4>
+<p style="padding-left: 30px;">sudo pip3 install flask bs4 lxml flask_cors pelican markdown leo</p>
+<h4>uwsgi 環境準備:</h4>
+<p style="padding-left: 30px;">sudo apt install uwsgi uwsgi-plugin-python3</p>
+<p style="padding-left: 30px;">sudo pip3 install uwsgi</p>
+<p style="padding-left: 30px;">編輯的設定檔案為 uwsgi_ini 目錄中的各個 .ini 設定檔案.</p>
+<h4>nginx 環境準備:</h4>
+<p style="padding-left: 30px;">sudo apt install nginx</p>
+<p style="padding-left: 30px;">編輯的設定檔案為 /etc/nginx/sites-available/default 檔案.</p>
+<h4>CMSiMDE 的設定:</h4>
+<p style="padding-left: 30px;">init.py 中必須將 uwsgi = False 改為 True, 因為準備採用 uwsgi 模式啟動 CMSiMDE</p>
+<h4>apt proxy 設定檔案:</h4>
+<p style="padding-left: 30px;">/etc/apt/apt.conf.d/90curtin-aptproxy</p>
+<p style="padding-left: 30px;">啟動 uwsgi 指令, 將會逐一啟動 wsgi_ini 目錄中個別 .ini 檔案:</p>
+<p style="padding-left: 30px;">sudo /usr/bin/uwsgi --emperor /home/kmol2019/wsgi_ini</p>
+<p>最後則設定 Ubuntu 系統服務, 用來啟動 uwsgi:</p>
+<p>/etc/systemd/system 的 cmsimde.service 服務啟動檔案內容:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[Unit]
+Description=uWSGI to serve CMSiMDE
+After=network.target
+ 
+[Service]
+User=kmol2019
+Group=kmol2019
+WorkingDirectory=/home/kmol2019/uwsgi_ini
+ExecStart=/usr/local/bin/uwsgi --emperor /home/kmol2019/uwsgi_ini
+ 
+[Install]
+WantedBy=multi-user.target</pre>
+<p>接著將 cmsimde 服務設為隨系統開機啟動:</p>
+<p>sudo systemctl enable cmsimde</p>
+<p>若要取消 cmsimde 服務隨系統開機啟動:</p>
+<p>sudo systemctl disable cmsimde</p>
+<p>手動啟動 cmsimde.service 服務</p>
+<p>sudo systemctl start cmsimde</p>
+<p>手動停止 cmsimde.service 服務</p>
+<p>sudo systemctl stop cmsimde</p>
+<p>最後, 在 Ubuntu 虛擬主機中設定 Fossil SCM:</p>
+<p>安裝 fossil:</p>
+<p>sudo apt install fossil</p>
+<p>查 fossil 版本:</p>
+<p>fossil version</p>
+<p>因為採用 sudo apt install fossil 的版本為 2.5 版, 希望採用目前 (2019.05.28) 的最新版本 2.8, 因此:</p>
+<p>直接在 Windows 10 下載 https://fossil-scm.org/home/uv/fossil-linux-x64-2.8.tar.gz, 解開壓縮檔案後, 將 fossil 送到 /homt/kmol2019/ 目錄下, 再使用指令, 將檔案複製到 /usr/bin/ 目錄下, 在 Ubuntu 要查詢 fossil 可執行檔案的位置, 使用 whereis fossil.</p>
+<p>sudo cp fossil /usr/bin/</p>
+<p>複製後, 再用 fossil version 查驗版本, 確認為最新的 2.8 版.</p>
+<p>接著在 /home/kmol2019 目錄下建立 repository 目錄, 並且利用 fossil 起始一個 kmol2019.fossil 倉儲壓縮檔案.</p>
+<p>mkdir repository<br/> cd repository<br/> fossil init kmol2019.fossil</p>
+<p>完成後, 紀錄 kmol2019.fossil 的管理密碼, 以便啟動 Fossil SCM 伺服器時, 利用 kmol2019 當作帳號, 而以記錄的管理者密碼登入進行設定.</p>
+<p>接下來為了要在 https 的模式下使用 Fossil SCM 伺服器, 因此必須安裝配置 stunnel:</p>
+<p>sudo apt install stunnel</p>
+<p>修改 /etc/environment, 加入:</p>
+<p>HTTPS=on</p>
+<p>修改 /etc/default/stunnel4, 修改 ENABLED=1</p>
+<p>假如此時 /etc/stunnel 目錄下尚無 localhost.crt 與 localhost.key, 可以利用下列指令建立:</p>
+<p>建立 localhost.key 與 localhost.crt:</p>
+<p>sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout localhost.key -out localhost.crt</p>
+<p>接著設定 /etc/stunnel/stunnel.conf 如下:</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">[https]
+accept = kmol2019:5443
+# 只先啟用 ipv4
+#accept = :::443
+cert = /etc/stunnel/localhost.crt
+key = /etc/stunnel/localhost.key
+exec = /usr/bin/fossil
+execargs = /usr/bin/fossil http /home/kmol2019/repository/ --https --nojail --notfound kmol2019
+</pre>
+<p>表示利用 stunnel 執行 fossil 指令, 並且透過 http 協定啟動 位於 /home/kmol2019/repository 目錄下的倉儲壓縮檔案, 且附加採用 https 與 nojail 模式啟動.</p>
+<p>其中 --nojail 目的在 drop the root privilege but do not enter the chroot jail, 其後的 --notfound 表示若沒有特別在 URL 中列出所要擷取的 .fossil 檔案 (指位於 /home/kmol2019/repository/ 目錄下), 則採用 kmol2019.fossil</p>
+<p>重新啟用 stunnel:</p>
+<p style="padding-left: 30px;">sudo /etc/init.d/stunnel4 restart</p>
+<p>啟動後的 Fossil SCM 位於 port 5443, 且將 kmol2019 管理者密碼設為 kmol2019.</p><h2>課程筆記</h2>
 <h4>利用倉儲與網頁紀錄筆記</h4>
 <p>優點:</p>
 <p style="padding-left: 30px;">快速方便且能引入大量線上靜態與動態影片資料</p>
@@ -423,8 +664,7 @@ Host github.com
 <p style="padding-left: 30px;">可以按照順序紀載歷程資料</p>
 <p>缺點:</p>
 <p style="padding-left: 30px;">必須隨身攜帶筆記本</p>
-<p style="padding-left: 30px;">比較難以放入網路上的各項連結資料</p>
-<h1>Tasks</h1>
+<p style="padding-left: 30px;">比較難以放入網路上的各項連結資料</p><h1>Tasks</h1>
 <p>電腦輔助設計室 ipv4 網路架構 (內部 ip 應該為 192.168.1.x)</p>
 <p><img alt="" height="300" src="/images/mde_network.png" width="400"/></p>
 <p><span>電腦輔助設計室 ipv6 網路架構</span></p>
@@ -1865,6 +2105,360 @@ void main(List&lt;String&gt; arguments) {
 <p style="padding-left: 60px;"><a href="https://en.wikipedia.org/wiki/Parsing_expression_grammar">PEG</a> vs <a href="https://en.wikipedia.org/wiki/LALR_parser">LAIR</a>: <a href="https://github.com/lark-parser/lark/issues/218">https://github.com/lark-parser/lark/issues/218</a></p>
 <p style="padding-left: 30px;">var parser = letter().seq(letter().or(digit()).star());</p>
 <p style="padding-left: 30px;">var parser = letter() &amp; (letter() | digit()).star();</p>
-<p style="padding-left: 30px;">var parser = digit().plus().flatten().map((input) =&gt; Math.parseInt(input));</p><h3>MOCAD</h3>
+<p style="padding-left: 30px;">var parser = digit().plus().flatten().map((input) =&gt; Math.parseInt(input));</p>
+<p style="padding-left: 30px;"><a href="https://github.com/KmolYuan/Pyslvs-UI">Pyslvs</a> 中用於解析機構表示式的 <a href="https://github.com/KmolYuan/pyslvs/blob/master/pyslvs/expression_parser.py">expression_parser.py</a></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false"># -*- coding: utf-8 -*-
+
+"""Lark parser to parse the expression."""
+
+__author__ = "Yuan Chang"
+__copyright__ = "Copyright (C) 2016-2019"
+__license__ = "AGPL"
+__email__ = "pyslvs@gmail.com"
+
+from typing import (
+    Tuple,
+    List,
+    Dict,
+    Iterator,
+    Union,
+    Optional,
+)
+from lark import Lark, Transformer, LexError
+from lark.lexer import Token
+try:
+    from .expression import (
+        get_vlinks,
+        VJoint,
+        VPoint,
+        VLink,
+    )
+    from .graph import Graph
+except ImportError:
+    from expression import (
+        get_vlinks,
+        VJoint,
+        VPoint,
+        VLink,
+    )
+    from graph import Graph
+
+# Color dictionary.
+_color_list: Dict[str, Tuple[int, int, int]] = {
+    'Red': (172, 68, 68),
+    'Green': (110, 190, 30),
+    'Blue': (68, 120, 172),
+    'Cyan': (0, 255, 255),
+    'Magenta': (255, 0, 255),
+    'Brick-Red': (255, 130, 130),
+    'Yellow': (255, 255, 0),
+    'Gray': (160, 160, 160),
+    'Orange': (225, 165, 0),
+    'Pink': (225, 192, 230),
+    'Black': (0, 0, 0),
+    'White': (255, 255, 255),
+    'Dark-Red': (128, 0, 0),
+    'Dark-Green': (0, 128, 0),
+    'Dark-Blue': (0, 0, 128),
+    'Dark-Cyan': (128, 0, 128),
+    'Dark-Magenta': (255, 0, 255),
+    'Dark-Yellow': (128, 128, 0),
+    'Dark-Gray': (128, 128, 128),
+    'Dark-Orange': (225, 140, 0),
+    'Dark-Pink': (225, 20, 147),
+}
+
+color_names = tuple(sorted(_color_list.keys()))
+
+
+def color_rgb(name: str) -&gt; Tuple[int, int, int]:
+    """Get color by name.
+
+    + Invalid color
+    + Color key
+    + RGB string "(r, g, b)".
+    """
+    if name in _color_list:
+        return _color_list[name]
+    else:
+        try:
+            # Input RGB as a "(255, 255, 255)" string.
+            color_text: Tuple[int, int, int] = tuple(int(i) for i in (
+                name.replace('(', '')
+                .replace(')', '')
+                .replace(" ", '')
+                .split(',', maxsplit=3)
+            ))
+        except ValueError:
+            return 0, 0, 0
+        else:
+            return color_text
+
+
+_GRAMMAR = Lark(r"""
+    // Number
+    DIGIT: "0".."9"
+    INT: DIGIT+
+    SIGNED_INT: ["+" | "-"] INT
+    DECIMAL: INT "." INT? | "." INT
+    _EXP: ("e" | "E") SIGNED_INT
+    FLOAT: INT _EXP | DECIMAL _EXP?
+    NUMBER: FLOAT | INT
+    SIGNED_NUMBER: ["+" | "-"] NUMBER
+
+    // Letters
+    LCASE_LETTER: "a".."z"
+    UCASE_LETTER: "A".."Z"
+    LETTER: UCASE_LETTER | LCASE_LETTER | "_"
+    CNAME: LETTER (LETTER | DIGIT)*
+
+    // White space and new line
+    WS: /\s+/
+    CR: /\r/
+    LF: /\n/
+    NEWLINE: (CR? LF)+
+    %ignore WS
+    %ignore NEWLINE
+
+    // Comment
+    LINE_COMMENT: /#[^\n]*/
+    MULTILINE_COMMENT: /#\[[\s\S]*#\][^\n]*/
+    %ignore LINE_COMMENT
+    %ignore MULTILINE_COMMENT
+
+    // Custom data type
+    JOINT_TYPE: "RP" | "R" | "P"
+    COLOR: """ + "|".join(f'"{color}"' for color in color_names) + r"""
+    type: JOINT_TYPE
+    name: CNAME
+    number: SIGNED_NUMBER
+    color_value: INT
+
+    // Main grammar
+    joint: "J[" type ["," angle] ["," color] "," point "," link "]"
+    link: "L[" [name ("," name)* ","?] "]"
+    point: "P[" number "," number "]"
+    angle: "A[" number "]"
+    color: "color[" (("(" color_value ("," color_value) ~ 2 ")") | COLOR) "]"
+    mechanism: "M[" [joint ("," joint)* ","?] "]"
+    ?start: mechanism
+""", parser='lalr')
+
+
+class _ParamsTrans(Transformer):
+
+    """Transformer will parse into a list of VPoint data."""
+
+    @staticmethod
+    def type(n: List[Token]) -&gt; str:
+        return str(n[0])
+
+    name = type
+
+    @staticmethod
+    def color(n: List[Token]) -&gt; str:
+        return str(n[0]) if len(n) == 1 else str(tuple(n))
+
+    @staticmethod
+    def color_value(n: List[Token]) -&gt; int:
+        return int(n[0])
+
+    @staticmethod
+    def number(n: List[Token]) -&gt; float:
+        return float(n[0])
+
+    @staticmethod
+    def point(c: List[Token]) -&gt; Tuple[Token]:
+        return tuple(c)
+
+    angle = number
+
+    @staticmethod
+    def link(a: List[Token]) -&gt; Tuple[Token]:
+        return tuple(a)
+
+    @staticmethod
+    def joint(args: List[Token]) -&gt; List[Union[str, int, float]]:
+        """Sort the argument list.
+
+        [0]: type
+        ([1]: angle)
+        ([2]: color)
+        [-2]: point (coordinate)
+        [-1]: link
+        """
+        type_str = args[0]
+        x, y = args[-2]
+        links = ','.join(args[-1])
+        if type_str == 'R':
+            if len(args) == 3:
+                return [links, 'R', 'Green', x, y]
+            elif len(args) == 4:
+                return [links, 'R', args[-3], x, y]
+        else:
+            type_angle = f'{args[0]}:{args[1]}'
+            if len(args) == 4:
+                return [links, type_angle, 'Green', x, y]
+            elif len(args) == 5:
+                return [links, type_angle, args[-3], x, y]
+
+        raise LexError(f"invalid options: {args}")
+
+    @staticmethod
+    def mechanism(joints: List[Token]) -&gt; List[Token]:
+        return joints
+
+
+class _PositionTrans(_ParamsTrans):
+
+    """Transformer will parse into a list of position data."""
+
+    @staticmethod
+    def joint(args: List[Token]) -&gt; Tuple[float, float]:
+        x, y = args[-2]
+        return x, y
+
+
+class _VPointsTrans(_ParamsTrans):
+
+    """Using same grammar return as VPoints."""
+
+    @staticmethod
+    def type(n: List[Token]) -&gt; VJoint:
+        """Return as int type."""
+        type_str = str(n[0])
+        if type_str == 'R':
+            return VJoint.R
+        elif type_str == 'P':
+            return VJoint.P
+        elif type_str == 'RP':
+            return VJoint.RP
+
+    @staticmethod
+    def joint(args: List[Token]) -&gt; VPoint:
+        """Same as parent."""
+        type_int = args[0]
+        x, y = args[-2]
+        links: Tuple[str, ...] = args[-1]
+        if type_int == VJoint.R:
+            if len(args) == 3:
+                return VPoint.r_joint(links, x, y)
+            elif len(args) == 4:
+                return VPoint(links, VJoint.R, 0., args[-3], x, y, color_rgb)
+        else:
+            if len(args) == 4:
+                return VPoint.slider_joint(links, type_int, args[1], x, y)
+            elif len(args) == 5:
+                return VPoint(links, type_int, args[1], args[-3], x, y, color_rgb)
+
+        raise LexError(f"invalid options: {args}")
+
+
+_params_translator = _ParamsTrans()
+_pos_translator = _PositionTrans()
+_vpoint_translator = _VPointsTrans()
+
+
+def parse_params(expr: str) -&gt; List[List[Union[str, float]]]:
+    """Using to parse the expression and return arguments."""
+    return _params_translator.transform(_GRAMMAR.parse(expr))
+
+
+def parse_pos(expr: str) -&gt; List[Tuple[float, float]]:
+    """Using to parse the expression and return arguments."""
+    return _pos_translator.transform(_GRAMMAR.parse(expr))
+
+
+def parse_vpoints(expr: str) -&gt; List[VPoint]:
+    """Parse as VPoints."""
+    return _vpoint_translator.transform(_GRAMMAR.parse(expr))
+
+
+def parse_vlinks(expr: str) -&gt; List[VLink]:
+    """Parse as VLinks."""
+    return get_vlinks(parse_vpoints(expr))
+
+
+def edges_view(graph: Graph) -&gt; Iterator[Tuple[int, Tuple[int, int]]]:
+    """This generator can keep the numbering be consistent."""
+    yield from enumerate(sorted(tuple(sorted(e)) for e in graph.edges))
+
+
+def graph2vpoints(
+    graph: Graph,
+    pos: Dict[int, Tuple[float, float]],
+    cus: Optional[Dict[int, int]] = None,
+    same: Optional[Dict[int, int]] = None,
+    grounded: Optional[int] = None
+) -&gt; List[VPoint]:
+    """Change NetworkX graph into VPoints.
+
+    cus: custom nodes (not joint)
+        {node_name: link_number}
+    same: multiple joints
+        {n1: n2, n3: n2} =&gt; (n1 as n2) and (n3 as n2)
+    """
+    if cus is None:
+        cus: Dict[int, int] = {}
+    if same is None:
+        same: Dict[int, int] = {}
+
+    same_r = {}
+    for k, v in same.items():
+        if v in same_r:
+            same_r[v].append(k)
+        else:
+            same_r[v] = [k]
+    tmp_list = []
+    ev = dict(edges_view(graph))
+    for i, edge in ev.items():
+        if i in same:
+            # Do not connect to anyone!
+            continue
+        edge = set(edge)
+        if i in same_r:
+            for j in same_r[i]:
+                edge.update(set(ev[j]))
+        x, y = pos[i]
+        links = [(f"L{link}" if link != grounded else 'ground') for link in edge]
+        tmp_list.append(VPoint.r_joint(links, x, y))
+    for name in sorted(cus):
+        link = f"L{cus[name]}" if cus[name] != grounded else 'ground'
+        x, y = pos[name]
+        tmp_list.append(VPoint.r_joint((link,), x, y))
+    return tmp_list
+
+
+try:
+    from pygments.lexer import RegexLexer
+    from pygments.token import (
+        Comment,
+        Keyword,
+        Name,
+        Number,
+    )
+except ImportError:
+    HAS_PYGMENTS = False
+else:
+    HAS_PYGMENTS = True
+
+    class PMKSLexer(RegexLexer):
+
+        """Mechanism expression highlighter by Pygments."""
+
+        name = 'Mechanism Expression'
+
+        tokens = {
+            'root': [
+                (r'#[^\n]*', Comment.Single),
+                (r'#\[[\s\S]*#\][^\n]*', Comment.Multiple),
+                (r'M|J|L|P|A|color', Name.Function),
+                ('|'.join(f"{color}" for color in reversed(color_names)), Name.Variable),
+                (r'RP|R|P', Keyword.Constant),
+                (r'(\d+\.\d*|\.\d+)([eE][+-]?\d+)?', Number.Float),
+            ]
+        }
+</pre>
+<p style="padding-left: 30px;"></p><h3>MOCAD</h3>
 <p>Mobile Oriented Computer Aided Design</p>
 <p><a href="https://dart.dev/tutorials/web/fetch-data">https://dart.dev/tutorials/web/fetch-data</a></p>
