@@ -902,7 +902,108 @@ main() {
 <p style="padding-left: 90px;"><a href="http://mde.tw/dartpad?id=d7c4f7b267d43acd6ee7f78d581c4c5c">設一甲亂數分組</a></p>
 <p style="padding-left: 90px;"><a href="https://mde.tw/dartpad?id=8463c358dfeb477801b2c42737697e82">設一乙亂數分組</a></p>
 <p style="padding-left: 90px;">開學第一週時, 設一甲有 52 人, 若以每 10 人為一組, 則最後剩下之 2 人將以手動, 分別在第一組與第二組各加上一人, 因此最後結果為第一組與第二組有 11 人, 其餘三組則維持 10 人.</p>
-<p style="padding-left: 90px;">請各組討論如何以 Dartpad 上的程式, 直接自動完成亂數分組, 無需人為插手調整.</p><h2>Task3</h2>
+<p style="padding-left: 90px;">請各組討論如何以 Dartpad 上的程式, 直接自動完成亂數分組, 無需人為插手調整.</p>
+<h3>Dart2 基本語法</h3>
+<p><a href="https://dart.dev/samples">Dart language samples</a>, <a href="https://dart.dev/guides/language/language-tour">Dart language tour</a>, <a href="https://dart.dev/codelabs/async-await">Dart async-await</a>.</p>
+<p><a href="https://link.springer.com/book/10.1007/978-1-4302-6482-8">Dart for Absolute Beginners</a></p>
+<p><iframe height="600" src="https://mde.tw/dartpad" width="800"></iframe></p><h3>SciTE 設定</h3>
+<p>目前 Dartpad 只能納入特定的網際程式庫, 若需導入其他程式庫執行 Dart, 除了在之後的 Visual Studio Code 執行 Dart 與  Flutter 程式外, 也可以設法在 SciTE 編輯器中執行.</p>
+<p>但是必須要修改 SciTE 中的 cpp.properties (<span style="background-color: #ffff00;">註: 假如 </span><span><span style="background-color: #ffff00;">data\wscite415\wscite 目錄中已經有先前設定的 dart.properties 檔案, 必須先行刪除</span>)</span>, 將 Dart 程式語言的關鍵字納入, 並且指定由 Tools-&gt;Go 對應採 dart.exe 來執行 Dart 程式. 而 Tools-&gt;Compile 則設定為透過 dart2js 將 Dart 程式轉為 Javascript 格式.</p>
+<h4>修改 SciTE cpp.properties</h4>
+<p>必須額外加入的 Dart 程式語言設定:</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false"># for Dart 1/7
+file.patterns.dart=*.dart
+# for Dart 2/7
+filter.dart=Dart(dart)|*.dart|
+# for Dart 3/7
+*filter.dart=$(filter.dart)
+# for Dart 4/7
+lexer.$(file.patterns.dart)=cpp
+# for Dart 5/7
+*language.dart=&amp;Dart|dart||
+# for Dart 6/7
+keywordclass.dart=\
+abstract continue false new this \
+as default	final	null throw \
+assert deferred finally	operator true \
+async do for	part try \
+async* dynamic get rethrow typedef \
+await else	if return var \
+break enum	implements set void \
+case	export import static while \
+catch external in super with \
+class extends is	switch yield \
+const factory library sync* yield* 
+keywords.$(file.patterns.dart)=$(keywordclass.dart)
+# for Dart 7/7
+command.go.*.dart=dart.exe "$(FileNameExt)"
+command.compile.*.dart=dart2js -o $(FileName).js $(FileNameExt)</pre>
+<p>修改後的 <a href="/downloads/Scite_cpp.properties_dart_added.7z">cpp.properties 下載</a> (解開壓縮後, 放入隨身系統 data\wscite415\wscite 目錄中)</p>
+<h4>Dart 一般程式執行</h4>
+<p>配置完成後, 重新啟動隨身程式系統, 利用以下 Dart 程式進行測試:</p>
+<ol>
+<li>在 y:\tmp 中建立 dart_examples\petitparser_ex 目錄</li>
+<li>利用 SciTE 建立  pubspec.yaml 檔案, 內容如下:<br/>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">name: mocad
+version: 0.0.1
+dependencies:
+  petitparser: ^2.4.0</pre>
+<p>表示接下來的程式執行, 需要導入 petitparser 2.0.0 至 2.4.0 版的程式庫.</p>
+</li>
+<li>利用命令列進入 petitparser_ex 目錄後, 執行 pub install, 表示要根據 pubspec.yaml 中的設定, 安裝對應的 petitparser 程式庫, 安裝完成後, 會在 .packages 檔案中註記安裝目錄與內容.</li>
+<li> 接著在 petitparser_ex 目錄中, 利用 SciTE 編輯器, 建立 petitparser_ex1.dart 內容如下:<br/>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import "package:petitparser/petitparser.dart";
+ 
+main() {
+  var str = 'aa12bb23cc5';
+  var parser =
+      (digit().plus().flatten() | any().map((_) =&gt; null)).star().map((each) {
+    print(each);
+    var total = 0;
+    for (String numStr in each) {
+      if (numStr != null) {
+        total += int.parse(numStr);
+      }
+    }
+    return total;
+  });
+  var total = parser.parse(str);
+  print(total);
+}</pre>
+<p>其中, 導入步驟 3 所安裝的 petitparser 程式庫後, 執行 str 字串的解析.</p>
+</li>
+<li>最後在 SciTE 編輯器中, 以下拉式功能表 Tools-&gt;Go 執行, 將可得到下列結果:<br/>[null, null, 12, null, null, 23, null, null, 5]<br/>Success[1:12]: 40</li>
+</ol>
+<h4>Dart 網際程式執行</h4>
+<p>由於一般瀏覽器中只搭載 Javascript 解譯器, 因此下方的 Dart 網際程式, js_ex1.dart, 必須轉為 Javascript 後才能在網頁中執行:</p>
+<p>首先宣告並安裝所需的 js 程式庫, 建立 pubspec.yaml 檔案.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">name: mocad
+version: 0.0.1
+dependencies:
+  js: any</pre>
+<p>以命令列進入範例程式目錄, 執行 pub install, 安裝 js 程式庫.</p>
+<p>建立 js_ex1.dart 後, 利用 Tools-&gt;Compile 編譯為 js_ex1.js 程式檔案.</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">// 將 js_ex1.dart 轉為 javascript 檔案 js_ex1.js
+//dart2js -o js_ex1.js js_ex1.dart
+// 導入 package 中的程式庫
+import 'package:js/js.dart';
+
+// 宣告外部 Javascript 程式庫中的 alert 函式
+@JS()
+external void alert(String str);
+
+main(){
+    // 呼叫 alert 函式, 顯示出字串
+    alert('哈囉! 利用 dart2js 批次檔案將 dart 轉為 javascript');
+}</pre>
+<p>利用 dart2js -o js_ex1.js js_ex1.dart 轉為 Javascript, 或者可以直接在已經設定使用 dart2js 轉換 dart 程式的 SciTE 編輯器, 以 Tools-&gt;Compile 將 dart 轉為 Javascript 程式.</p>
+<p>配合網際 Dart 程式轉為 Javascript 後執行的 index.html:</p>
+<pre class="brush:html;auto-links:false;toolbar:false" contenteditable="false">&lt;html&gt;
+&lt;body&gt;
+&lt;script src="js_ex1.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</pre>
+<p>下載上述 <a href="/downloads/Dart_js_ex1.7z">Dart_js_ex1.7z</a> (包含 js_ex1.dart, index.html 與 pubspec.yaml 檔案)</p><h2>Task3</h2>
 <h4>Task3: <span>(佔學期成績 10%)</span></h4>
 <p style="padding-left: 30px;"><span>請充分了解 </span></p>
 <p style="padding-left: 60px;">Dart for Absolute Beginners (2014)</p>
@@ -1285,7 +1386,7 @@ print(學員成績(60, 70, 80))</pre>
 <script src="/static/konva.min.js"></script>
 <script>
 window.onload=function(){
-brython({debug:1, pythonpath:['./../static/']});
+brython({debug:1, pythonpath:['/static/']});
 }
 </script>
 </p>
