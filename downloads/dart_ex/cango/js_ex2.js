@@ -1343,6 +1343,9 @@
         return a0 != null && receiver === a0;
       return J.getInterceptor$(receiver).$eq(receiver, a0);
     },
+    appendPath$1$x: function(receiver, a0) {
+      return J.getInterceptor$x(receiver).appendPath$1(receiver, a0);
+    },
     joinPath$1$x: function(receiver, a0) {
       return J.getInterceptor$x(receiver).joinPath$1(receiver, a0);
     },
@@ -1389,6 +1392,9 @@
   P = {
     LinkedHashMap_LinkedHashMap$_literal: function(keyValuePairs, $K, $V) {
       return H.assertSubtype(H.fillLiteralMap(keyValuePairs, new H.JsLinkedHashMap([$K, $V])), "$isLinkedHashMap", [$K, $V], "$asLinkedHashMap");
+    },
+    LinkedHashMap__makeEmpty: function() {
+      return new H.JsLinkedHashMap([null, null]);
     },
     LinkedHashMap__makeLiteral: function(keyValuePairs) {
       return H.fillLiteralMap(keyValuePairs, new H.JsLinkedHashMap([null, null]));
@@ -1544,11 +1550,15 @@
     }},
   E = {Cango: function Cango() {
     }, Path: function Path() {
+    }, Shape: function Shape() {
+    }, Img: function Img() {
+    }, Group: function Group() {
+    }, Tweener: function Tweener() {
     }, SVGsegs: function SVGsegs() {
     }},
   B = {
     cangoGear: function(n, m, pa) {
-      var i, newTooth,
+      var i, newTooth, gearPath, gearShape,
         pr = n * m / 2,
         rb = pr * Math.cos(pa * 3.141592653589793 / 180),
         tooth = self.createGearTooth(m, n, pa),
@@ -1560,14 +1570,21 @@
         H.printString("" + i);
         gearData = J.joinPath$1$x(gearData, newTooth);
       }
+      gearData = J.appendPath$1$x(gearData, self.circle(0.6 * pr));
       t1 = P.LinkedHashMap_LinkedHashMap$_literal(["degs", 180 * (Math.sqrt(pr * pr - rb * rb) / rb - Math.acos(rb / pr)) / 3.141592653589793, "x", -rb, "strokeColor", "red"], P.String, P.Object);
-      return new self.Path(gearData, t1);
+      gearPath = new self.Path(gearData, t1);
+      gearShape = new self.Shape(gearData, P.LinkedHashMap__makeEmpty());
+      new self.Group(gearShape);
+      return gearPath;
     },
     main: function() {
-      var cgo = new self.Cango("canvas"),
-        t1 = J.getInterceptor$x(cgo);
+      var t1,
+        cgo = new self.Cango("canvas");
+      P.LinkedHashMap_LinkedHashMap$_literal(["degs", H.setRuntimeTypeInfo([0, 360], [P.int])], P.String, [P.List, P.int]);
+      new self.Tweener(0, 90000, "loop");
+      t1 = J.getInterceptor$x(cgo);
       t1.gridboxPadding$4(cgo, 10, 10, 10, 10);
-      t1.setWorldCoordsRHC$4(cgo, -100, -100, 300, 150);
+      t1.setWorldCoordsRHC$3(cgo, -100, -100, 300);
       t1.drawAxes$5(cgo, 0, 70, 0, 70, P.LinkedHashMap__makeLiteral(["xOrigin", 0, "yOrigin", 0, "fontSize", 10, "strokeColor", "gray"]));
       t1.render$1(cgo, B.cangoGear(20, 5, 20));
     }
@@ -1617,8 +1634,8 @@
     gridboxPadding$4: function(receiver, p0, p1, p2, p3) {
       return receiver.gridboxPadding(p0, p1, p2, p3);
     },
-    setWorldCoordsRHC$4: function(receiver, p0, p1, p2, p3) {
-      return receiver.setWorldCoordsRHC(p0, p1, p2, p3);
+    setWorldCoordsRHC$3: function(receiver, p0, p1, p2) {
+      return receiver.setWorldCoordsRHC(p0, p1, p2);
     },
     drawAxes$5: function(receiver, p0, p1, p2, p3, p4) {
       return receiver.drawAxes(p0, p1, p2, p3, p4);
@@ -1634,6 +1651,9 @@
     },
     rotate$1: function(receiver, p0) {
       return receiver.rotate(p0);
+    },
+    appendPath$1: function(receiver, p0) {
+      return receiver.appendPath(p0);
     },
     joinPath$1: function(receiver, p0) {
       return receiver.joinPath(p0);
@@ -1669,7 +1689,8 @@
     get$length: function(receiver) {
       return receiver.length;
     },
-    $isIterable: 1
+    $isIterable: 1,
+    $isList: 1
   };
   J.JSUnmodifiableArray.prototype = {};
   J.ArrayIterator.prototype = {
@@ -2037,6 +2058,10 @@
   };
   E.Cango.prototype = {};
   E.Path.prototype = {};
+  E.Shape.prototype = {};
+  E.Img.prototype = {};
+  E.Group.prototype = {};
+  E.Tweener.prototype = {};
   E.SVGsegs.prototype = {};
   (function aliases() {
     var _ = J.JavaScriptObject.prototype;
@@ -2048,7 +2073,7 @@
     _inherit(P.Object, null);
     _inheritMany(P.Object, [H.JS_CONST, J.Interceptor, J.ArrayIterator, H.Closure, P.Error, P.MapMixin, H.LinkedHashMapCell, P.bool, P.num, P.List, P.Null, P.String, P.StringBuffer]);
     _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JSArray, J.JSNumber, J.JSString, W.DomException]);
-    _inheritMany(J.JavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction, E.Cango, E.Path, E.SVGsegs]);
+    _inheritMany(J.JavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction, E.Cango, E.Path, E.Shape, E.Img, E.Group, E.Tweener, E.SVGsegs]);
     _inherit(J.JSUnmodifiableArray, J.JSArray);
     _inheritMany(J.JSNumber, [J.JSInt, J.JSDouble]);
     _inheritMany(H.Closure, [H.TearOffClosure, H.initHooks_closure, H.initHooks_closure0, H.initHooks_closure1, P.MapBase_mapToString_closure]);
@@ -2239,6 +2264,9 @@
   Function.prototype.call$4 = function(a, b, c, d) {
     return this(a, b, c, d);
   };
+  Function.prototype.call$3 = function(a, b, c) {
+    return this(a, b, c);
+  };
   Function.prototype.call$5 = function(a, b, c, d, e) {
     return this(a, b, c, d, e);
   };
@@ -2250,9 +2278,6 @@
   };
   Function.prototype.call$0 = function() {
     return this();
-  };
-  Function.prototype.call$3 = function(a, b, c) {
-    return this(a, b, c);
   };
   convertAllToFastObject(holders);
   convertToFastObject($);
