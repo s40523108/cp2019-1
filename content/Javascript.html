@@ -149,25 +149,149 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">Dart2 Spec << <a href='Dart2 Spec.html'>Previous</a> <a href='Python.html'>Next</a> >> Python<br /><h1>Reference</h1>
-<h4></h4>
-<h4>計算機程式能夠解決甚麼問題?</h4>
-<p style="padding-left: 30px;">首先必須確立運用計算機程式的重要關鍵, 取決於領域知識 (Domain Knowledge) 範圍內所要解決的問題. </p>
-<p style="padding-left: 30px;">學習計算機程式的目的, 在於透過與電腦的溝通, 然後逐一解決各專業領域中所碰到的問題.</p>
-<p>因此, 在學習如何寫程式的過程, 必須經歷以下過程:</p>
-<p style="padding-left: 30px;">如何與電腦溝通? - 了解電腦如何運作, 網路如何連接, 程式系統如何搭建?</p>
-<p style="padding-left: 30px;">要解決甚麼問題? - 學習如何定義問題, 透過對問題的瞭解, 逐步尋求解決方法.</p>
-<p style="padding-left: 30px;">如何利用電腦程式解決這個問題? - 解決同一問題的方法不只一種, 所有解決方案都必須設法持續改進.</p>
-<p>Python: 一般運算與資料處理應用, 網際內容管理, GUI for 電腦輔助機械設計工程分析</p>
-<p>ANSI C: 建立 Fossil SCM</p>
-<p>C++: Solvespace 與 Pyslvs 平面機構合成與分析內之幾何運算核心</p>
-<p>Dart: 配合 Flutter SDK 開發手機應用程式</p>
-<p>手機程式作為介面 &lt;-&gt; Python Flask 作為 Server 端程式負責與其他 C/C++/Python 核心執行運算</p>
-<h4>參考資料:</h4>
-<p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Function_as_a_service">https://en.wikipedia.org/wiki/Function_as_a_service</a></p>
-<p style="padding-left: 30px;"><a href="https://en.wikipedia.org/wiki/Serverless_computing">https://en.wikipedia.org/wiki/Serverless_computing</a></p>
-<p style="padding-left: 30px;"><a href="https://medium.com/yakka/dart-is-ready-for-faas-with-cloud-run-fb069abb3176">https://medium.com/yakka/dart-is-ready-for-faas-with-cloud-run-fb069abb3176</a></p>
-<p style="padding-left: 30px;"><a href="./../downloads/Concurrent Programming for Scalable Web Architectures.pdf">Concurrent Programming for Scalable Web Architectures.pdf</a></p><br />Dart2 Spec << <a href='Dart2 Spec.html'>Previous</a> <a href='Python.html'>Next</a> >> Python</div>
+    <div id="tipue_search_content">Python << <a href='Python.html'>Previous</a> <a href='Ebooks.html'>Next</a> >> Ebooks<br /><h1>Javascript</h1>
+<p>Beginning Javascript: <a href="https://link.springer.com/book/10.1007/978-1-4842-4395-4">https://link.springer.com/book/10.1007/978-1-4842-4395-4</a> </p>
+<p>以 <a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a> 繪圖程式庫中的程式碼為例.</p>
+<script src="./../downloads/dart_ex/cango/Cango-15v00-min.js"></script>
+<script src="./../downloads/dart_ex/cango/CangoAxes-6v01-min.js"></script>
+<script src="./../downloads/dart_ex/cango/Cango3D-8v00-min.js"></script>
+<script src="./../downloads/dart_ex/cango/gearUtils-09.js"></script>
+<p><!-- 導入 FileSaver 與 filereader --></p>
+<p>
+<script src="./../cmsimde/static/ace/FileSaver.min.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/filereader.js" type="text/javascript"></script>
+</p>
+<p><!-- 導入 ace --></p>
+<p>
+<script src="./../cmsimde/static/ace/ace.js" type="text/javascript"></script>
+<script src="./../cmsimde/static/ace/ext-language_tools.js" type="text/javascript"></script>
+<!--
+<script type="text/javascript" src="./../cmsimde/static/ace/mode-python3.js"></script>
+<script type="text/javascript" src="./../cmsimde/static/ace/snippets/python.js"></script>
+--></p>
+<!-- 嘗試直接使用 ace.js 編寫 Javascript -->
+<div id="js_editor" style="width: 600px; height: 300px;"></div>
+<p>
+<script>
+editor = window.ace.edit("js_editor");
+session = editor.getSession();
+//session.setMode("ace/mode/javascript");
+editor.setOptions({
+// Javascript 中的 true 與 false 為小寫開頭
+             enableLiveAutocompletion: true,
+             enableSnippets: true,
+             highlightActiveLine: false,
+             highlightSelectedWord: true,
+             autoScrollEditorIntoView: true,
+             // 'maxLines': session.getLength() 可以根據程式長度設定 editor 列數
+             // 設定讓使用者最多可以在畫面中顯示 20 行程式碼
+             maxLines: 20,
+             fontSize: '12pt'
+            });
+if (localStorage["js_src"] != null){
+    editor.setValue(localStorage["js_src"]);
+}else{
+    editor.setValue(`
+  var g = new Cango('canvas'),
+      i, data = [];
+
+  g.gridboxPadding(10);
+  g.setWorldCoordsRHC(0, -50, 2*Math.PI, 100);
+  // draw axes
+  g.drawAxes(0, 6.5, -50, 50, {
+    xOrigin:0, yOrigin:0,
+    fontSize:10,
+    strokeColor:'gray'});
+
+  for (i=0; i<=2*Math.PI; i+=0.03) {
+    data.push(i, 50*Math.sin(i));
+  }
+  g.drawPath(data, {strokeColor:'red'});
+  console.log("繪圖完成");
+`);
+}
+editor.scrollToRow(0);
+editor.gotoLine(0);
+
+function runjs(){
+    code = editor.getValue();
+    localStorage['js_src'] = code;
+    // 在目前頁面中執行 code
+    // grabbed from https://stackoverflow.com/questions/6432984/adding-script-element-to-the-dom-and-have-the-javascript-run
+    var script = document.createElement('script');
+    try {
+      script.appendChild(document.createTextNode(code));
+      document.body.appendChild(script);
+    } catch (e) {
+      script.text = code;
+      document.body.appendChild(script);
+    }
+}
+
+// 用於清除 console 輸出區
+function clearBox(elementID)
+{
+    document.getElementById(elementID).innerHTML = "";
+}
+
+// 設定擴大 console 區
+function showConsole()
+{
+    document.getElementById("js_console").cols = 60;
+    document.getElementById("js_console").rows = 10;
+}
+
+// 清除 canvas
+function clearCanvas(canvasID)
+{
+    var canvas = document.getElementById(canvasID);
+    const context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+// redirect console.log to page id="js_console" area
+// https://stackoverflow.com/questions/11403107/capturing-javascript-console-log
+(function(){
+    var oldLog = console.log;
+    console.log = function (message) {
+        document.getElementById("js_console").innerHTML= message;
+        oldLog.apply(console, arguments);
+    };
+})();
+
+// get gist data with id
+function getGist(gistid, filename)
+{
+    $.ajax({
+      url: 'https://api.github.com/gists/'+gistid,
+      type: 'GET',
+      dataType: 'jsonp'
+    }).success( function(gistdata) {
+        var content = gistdata.data.files[filename].content;
+            editor.setValue(content);
+      }).error( function(e) {
+      // ajax error
+      console.log("ajax error");
+});
+}
+</script>
+</p>
+<p><!-- 請注意, 這裡使用 Javascript 將 localStorage["js_src"] 中存在近端瀏覽器的程式碼, 由使用者決定存檔名稱--></p>
+<p>
+<script type="text/javascript">
+function doSave(storage_id, filename){
+    var blob = new Blob([localStorage[storage_id]], {type: "text/plain;charset=utf-8"});
+    filename = document.getElementById(filename).value
+    saveAs(blob, filename+".js");
+}
+</script>
+</p>
+<p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
+<form><label>Filename: <input id="js_filename" placeholder="input file name" type="text"/>.js</label> <input onclick="doSave('js_src', 'js_filename');" type="submit" value="Save"/></form>
+<p><button onclick="runjs()">Run</button> <button onclick="showConsole()">Output</button> <button onclick="clearBox('js_console')">清除輸出區</button><button onclick="clearCanvas('canvas')">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="js_console"></textarea></div>
+<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button></p>
+<p><canvas height="400" id="canvas" width="600"></canvas></p><br />Python << <a href='Python.html'>Previous</a> <a href='Ebooks.html'>Next</a> >> Ebooks</div>
         
     <!-- footer -->
       <div class="container">
