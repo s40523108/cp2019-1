@@ -3236,8 +3236,10 @@ var width = window.innerWidth;
     updateDottedLines();
 </script>
 </p><h2>Javascript</h2>
-<p>Beginning Javascript: <a href="https://link.springer.com/book/10.1007/978-1-4842-4395-4">https://link.springer.com/book/10.1007/978-1-4842-4395-4</a> </p>
-<p>以 <a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a> 繪圖程式庫中的程式碼為例.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">for (var i=0; i&lt;10; i++)
+    // 將原本列在 console 區的資料導引到下列程式執行輸出區
+    console.log(i + ": Hello, 開始學習 Javascript!");</pre>
+<p>下列範例,  以 <a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a> 繪圖程式庫中的程式碼為例.</p>
 <script src="/downloads/dart_ex/cango/Cango-15v00-min.js"></script>
 <script src="/downloads/dart_ex/cango/CangoAxes-6v01-min.js"></script>
 <script src="/downloads/dart_ex/cango/Cango3D-8v00-min.js"></script>
@@ -3340,7 +3342,7 @@ function clearCanvas(canvasID)
 (function(){
     var oldLog = console.log;
     console.log = function (message) {
-        document.getElementById("js_console").innerHTML= message;
+        document.getElementById("js_console").innerHTML+= message + "\n";
         oldLog.apply(console, arguments);
     };
 })();

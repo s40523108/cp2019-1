@@ -3236,8 +3236,10 @@ var width = window.innerWidth;
     updateDottedLines();
 </script>
 </p><h2>Javascript</h2>
-<p>Beginning Javascript: <a href="https://link.springer.com/book/10.1007/978-1-4842-4395-4">https://link.springer.com/book/10.1007/978-1-4842-4395-4</a> </p>
-<p>以 <a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a> 繪圖程式庫中的程式碼為例.</p>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">for (var i=0; i&lt;10; i++)
+    // 將原本會列在 console 區的資料引導到下列區域
+    console.log(i + ": Hello, 開始學習 Javascript!");</pre>
+<p>下列範例,  以 <a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a> 繪圖程式庫中的程式碼為例.</p>
 <script src="/downloads/dart_ex/cango/Cango-15v00-min.js"></script>
 <script src="/downloads/dart_ex/cango/CangoAxes-6v01-min.js"></script>
 <script src="/downloads/dart_ex/cango/Cango3D-8v00-min.js"></script>
@@ -3340,7 +3342,7 @@ function clearCanvas(canvasID)
 (function(){
     var oldLog = console.log;
     console.log = function (message) {
-        document.getElementById("js_console").innerHTML= message;
+        document.getElementById("js_console").innerHTML+= message + "\n";
         oldLog.apply(console, arguments);
     };
 })();
@@ -3376,7 +3378,7 @@ function doSave(storage_id, filename){
 <form><label>Filename: <input id="js_filename" placeholder="input file name" type="text"/>.js</label> <input onclick="doSave('js_src', 'js_filename');" type="submit" value="Save"/></form>
 <p><button onclick="runjs()">Run</button> <button onclick="showConsole()">Output</button> <button onclick="clearBox('js_console')">清除輸出區</button><button onclick="clearCanvas('canvas')">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="js_console"></textarea></div>
-<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button></p>
+<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button></p>
 <p><canvas height="400" id="canvas" width="600"></canvas></p><h2>Ebooks</h2>
 <p>2014 年出版的 Dart for absolute begineers 電子書:</p>
 <p style="padding-left: 30px;"><a href="https://link.springer.com/book/10.1007/978-1-4302-6482-8">https://link.springer.com/book/10.1007/978-1-4302-6482-8</a></p>
