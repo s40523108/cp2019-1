@@ -1130,7 +1130,65 @@ external dynamic Tweener(num delay, num duration, String loopStr);
 <p>
 <script src="/downloads/dart_ex/cango/js_ex2.js"></script>
 </p>
-<h3>Cango Library</h3>
+<h3>Dart FFI</h3>
+<p><a href="https://dart.dev/guides/libraries/c-interop">https://dart.dev/guides/libraries/c-interop</a></p>
+<p><a href="https://github.com/dart-lang/samples/tree/master/ffi">https://github.com/dart-lang/samples/tree/master/ffi</a></p>
+<p><a href="https://flutter.dev/docs/development/platform-integration/c-interop">https://flutter.dev/docs/development/platform-integration/c-interop</a></p>
+<p>一旦 Dart 可以透過 FFI (Foreign Function Interface) 與 C/C++ 所編寫的動態連結程式庫直接互動, 就可以利用 Dart 呼叫 <a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a> 中的 Geometric Contraint Solver, 用來解平面機構分析問題.</p>
+<h4>簡單範例:</h4>
+<p style="padding-left: 30px;">進入範例目錄, 以 pub install 配合 pubspec.yaml , 安裝所需程式庫.</p>
+<h4>hello.c</h4>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/ Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+#include &lt;stdio.h&gt;
+#include "hello.h"
+
+int main()
+{
+    hello_world();
+    return 0;
+}
+
+// Note:
+// ---only on Windows---
+// Every function needs to be exported to be able to access the functions by dart.
+// Refer: https://stackoverflow.com/q/225432/8608146
+void hello_world()
+{
+    printf("Hello World\n");
+}</pre>
+<h4>利用 <a href="https://drive.google.com/file/d/1fxMdqdCoCL__O1IpZ-Sv-A_4-c77Wx4E/view?usp=sharing">2019Fall可攜套件.7z</a><span>  </span>編譯為 hello_world.dll </h4>
+<p style="padding-left: 30px;">gcc -shared hello.o -o ../hello_world.dll</p>
+<p>以下列 hello.dart 呼叫 hello_world.dll 執行:</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">// Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+import 'dart:ffi' as ffi;
+import 'dart:io' show Platform;
+
+// FFI signature of the hello_world C function
+typedef hello_world_func = ffi.Void Function();
+// Dart type definition for calling the C foreign function
+typedef HelloWorld = void Function();
+
+main() {
+  // Open the dynamic library
+  var path = "hello_world.dylib";
+  if (Platform.isWindows) path = "hello_world.dll";
+  final dylib = ffi.DynamicLibrary.open(path);
+  // Look up the C function 'hello_world'
+  final HelloWorld hello = dylib
+      .lookup&lt;ffi.NativeFunction&lt;hello_world_func&gt;&gt;('hello_world')
+      .asFunction();
+  // Call the function
+  hello();
+}
+</pre>
+<p></p>
+<p></p><h3>Cango Library</h3>
 <p><a href="https://www.arc.id.au/CanvasGraphics.html">https://www.arc.id.au/CanvasGraphics.html</a>  是一套利用 Javascript 編寫的 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API/Tutorial">Canvas 繪圖</a>程式庫.</p>
 <p>Cango user guide: <a href="https://www.arc.id.au/CangoUserGuide.html">https://www.arc.id.au/CangoUserGuide.html</a></p><h2>Task3</h2>
 <h4>Task3: <span>(佔學期成績 10%)</span></h4>
@@ -3380,9 +3438,8 @@ function doSave(storage_id, filename){
 <form><label>Filename: <input id="js_filename" placeholder="input file name" type="text"/>.js</label> <input onclick="doSave('js_src', 'js_filename');" type="submit" value="Save"/></form>
 <p><button onclick="runjs()">Run</button> <button onclick="showConsole()">Output</button> <button onclick="clearBox('js_console')">清除輸出區</button><button onclick="clearCanvas('canvas')">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="js_console"></textarea></div>
-<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button></p>
-<p><canvas height="400" id="canvas" width="600"></canvas></p>
-<h3>JS examples</h3>
+<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'ROCFlag.js')">ROC Flag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button></p>
+<p><canvas height="400" id="canvas" width="600"></canvas></p><h3>JS examples</h3>
 <h4>Prompt 與運算</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">degreeC = prompt("請輸入攝氏溫度!");
 console.log("攝氏 " + degreeC + " = 華氏 " + 
@@ -4018,7 +4075,9 @@ x?.foo();</pre>
 <p>常數</p>
 <p>Final 變數</p>
 <h4>程式範例</h4>
-<p><a href="https://github.com/graphicbeacon/js-dart-interop-samples">https://github.com/graphicbeacon/js-dart-interop-samples</a></p>
+<h4>Javascript interop:</h4>
+<p style="padding-left: 30px;"><a href="https://github.com/graphicbeacon/js-dart-interop-samples">https://github.com/graphicbeacon/js-dart-interop-samples</a></p>
+<p style="padding-left: 30px;"><a href="https://github.com/matanlurey/dart_js_interop">https://github.com/matanlurey/dart_js_interop</a></p>
 <p><a href="https://github.com/dart-lang/dart-pad/wiki/Gists">https://github.com/dart-lang/dart-pad/wiki/Gists</a></p>
 <p>HttpClient 類別位於 dart:io 程式庫中, 只能在 Server 中執行.</p>
 <p style="padding-left: 30px;"><a href="https://api.dartlang.org/stable/2.1.1/dart-io/HttpClient-class.html">https://api.dartlang.org/stable/2.1.1/dart-io/HttpClient-class.html</a></p>

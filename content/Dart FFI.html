@@ -149,32 +149,65 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">亂數分組 << <a href='亂數分組.html'>Previous</a> <a href='QandA.html'>Next</a> >> QandA<br /><h1>FFmpeg</h1>
-<p>FFmpeg 手冊: <a href="http://ffmpeg.org/ffmpeg.html">http://ffmpeg.org/ffmpeg.html</a></p>
-<h4>擷取 mp4 片段檔案</h4>
-<p>從 origin.mp4 影片中的第一秒開始, 切出 15 分鐘的影片, 存為 new.mp4</p>
-<p style="padding-left: 30px;">ffmpeg -i origin.mp4 -ss 00:00:01 -t 00:15:00 -async 1 new.mp4</p>
-<h4>刪除影片中的聲音資料</h4>
-<p style="padding-left: 30px;">ffmpeg -i origin.mp4 -c copy -an new.mp4</p>
-<p>合併 mp4 檔案</p>
-<p>建立 allmp4.txt 內容為<br/>file '/path/to/1.mp4'<br/>file '/path/to/2.mp4'<br/>file '/path/to/3.mp4'</p>
-<p>將 1.mp4, 2.mp4 與 3.mp4 合併為 new.mp4</p>
-<p style="padding-left: 30px;">ffmpeg -f concat -i allmp4.txt -c copy new.mp4</p>
-<h4>影片中加入字幕</h4>
-<p>利用 <a href="http://www.aegisub.org/">http://www.aegisub.org/</a> 可攜版本工具加入字幕</p>
-<p>直接將 input.srt 字幕資料 burn 入 input.mp4</p>
-<p style="padding-left: 30px;">ffmpeg -i input.mp4 -vf subtitles=input.srt output.mp4</p>
-<h4>影片畫面中座標 x=5, y=950 位置中加入圖檔</h4>
-<h4 style="padding-left: 30px;"><img alt="" height="30" src="./../images/kmol_102x30_color.png" width="102"/></h4>
-<p style="padding-left: 30px;">ffmpeg -i input.mp4 -i kmol_102x30_color.png -filter_complex "overlay=5:950" output.mp4</p>
-<h4>其他圖形化工具:</h4>
-<p style="padding-left: 30px;"><a href="http://www.aegisub.org/">http://www.aegisub.org/</a> (Font: SimSun, Size: 40, Bold, Primary, Color (255, 200, 5))</p>
-<p style="padding-left: 30px;"><a href="http://www.avidemux.org/nightly/win64_support/">http://www.avidemux.org/nightly/win64_support/</a> (建立使用 2.6.21 版本, 可與 aegisub 配合使用)</p>
-<p style="padding-left: 30px;"><a href="https://www.openshot.org/">https://www.openshot.org/</a> (必須分段輸入字幕, 無法與 aegisub 配合使用)</p>
-<p>請登入 @gm 電子郵箱後, 下載 <a href="https://drive.google.com/file/d/1UdEVnmursZFgWrYTY1CqDOWSjt7nr84N/view?usp=sharing">aegisub_avidemux_openshot.7z</a></p>
-<p style="padding-left: 30px;"></p>
+    <div id="tipue_search_content">SciTE setup << <a href='SciTE setup.html'>Previous</a> <a href='Cango Library.html'>Next</a> >> Cango Library<br /><h1>Dart FFI</h1>
+<p><a href="https://dart.dev/guides/libraries/c-interop">https://dart.dev/guides/libraries/c-interop</a></p>
+<p><a href="https://github.com/dart-lang/samples/tree/master/ffi">https://github.com/dart-lang/samples/tree/master/ffi</a></p>
+<p><a href="https://flutter.dev/docs/development/platform-integration/c-interop">https://flutter.dev/docs/development/platform-integration/c-interop</a></p>
+<p>一旦 Dart 可以透過 FFI (Foreign Function Interface) 與 C/C++ 所編寫的動態連結程式庫直接互動, 就可以利用 Dart 呼叫 <a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a> 中的 Geometric Contraint Solver 程式庫, 用來解決平面機構分析問題.</p>
+<h4>簡單範例:</h4>
+<p style="padding-left: 30px;">進入範例目錄, 以 pub install 配合 pubspec.yaml , 安裝所需程式庫.</p>
+<h4>hello.c</h4>
+<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/ Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+#include &lt;stdio.h&gt;
+#include "hello.h"
+
+int main()
+{
+    hello_world();
+    return 0;
+}
+
+// Note:
+// ---only on Windows---
+// Every function needs to be exported to be able to access the functions by dart.
+// Refer: https://stackoverflow.com/q/225432/8608146
+void hello_world()
+{
+    printf("Hello World\n");
+}</pre>
+<h4>利用 <a href="https://drive.google.com/file/d/1fxMdqdCoCL__O1IpZ-Sv-A_4-c77Wx4E/view?usp=sharing">2019Fall可攜套件.7z</a><span>  </span>編譯為 hello_world.dll </h4>
+<p style="padding-left: 30px;">gcc -shared hello.o -o ../hello_world.dll</p>
+<p>以下列 hello.dart 呼叫 hello_world.dll 執行:</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">// Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
+// for details. All rights reserved. Use of this source code is governed by a
+// BSD-style license that can be found in the LICENSE file.
+
+import 'dart:ffi' as ffi;
+import 'dart:io' show Platform;
+
+// FFI signature of the hello_world C function
+typedef hello_world_func = ffi.Void Function();
+// Dart type definition for calling the C foreign function
+typedef HelloWorld = void Function();
+
+main() {
+  // Open the dynamic library
+  var path = "hello_world.dylib";
+  if (Platform.isWindows) path = "hello_world.dll";
+  final dylib = ffi.DynamicLibrary.open(path);
+  // Look up the C function 'hello_world'
+  final HelloWorld hello = dylib
+      .lookup&lt;ffi.NativeFunction&lt;hello_world_func&gt;&gt;('hello_world')
+      .asFunction();
+  // Call the function
+  hello();
+}
+</pre>
 <p></p>
-<br />亂數分組 << <a href='亂數分組.html'>Previous</a> <a href='QandA.html'>Next</a> >> QandA</div>
+<p></p><br />SciTE setup << <a href='SciTE setup.html'>Previous</a> <a href='Cango Library.html'>Next</a> >> Cango Library</div>
         
     <!-- footer -->
       <div class="container">
