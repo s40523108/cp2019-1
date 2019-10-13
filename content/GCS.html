@@ -149,65 +149,13 @@ init_mathjax();
           </div>
           
         </header>
-    <div id="tipue_search_content">SciTE setup << <a href='SciTE setup.html'>Previous</a> <a href='Cango Library.html'>Next</a> >> Cango Library<br /><h1>Dart FFI</h1>
-<p><a href="https://dart.dev/guides/libraries/c-interop">https://dart.dev/guides/libraries/c-interop</a></p>
-<p><a href="https://github.com/dart-lang/samples/tree/master/ffi">https://github.com/dart-lang/samples/tree/master/ffi</a></p>
-<p><a href="https://flutter.dev/docs/development/platform-integration/c-interop">https://flutter.dev/docs/development/platform-integration/c-interop</a></p>
-<p>一旦 Dart 可以透過 FFI (Foreign Function Interface) 與 C/C++ 所編寫的動態連結程式庫直接互動, 就可以利用 Dart 呼叫 <a href="https://github.com/solvespace/solvespace">https://github.com/solvespace/solvespace</a> 中的 Geometric Contraint Solver 程式庫, 用來解決平面機構分析問題.</p>
-<h4>簡單範例:</h4>
-<p style="padding-left: 30px;">進入範例目錄, 以 pub install 配合 pubspec.yaml , 安裝所需程式庫.</p>
-<h4>hello.c</h4>
-<pre class="brush:cpp;auto-links:false;toolbar:false" contenteditable="false">/ Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-#include &lt;stdio.h&gt;
-#include "hello.h"
-
-int main()
-{
-    hello_world();
-    return 0;
-}
-
-// Note:
-// ---only on Windows---
-// Every function needs to be exported to be able to access the functions by dart.
-// Refer: https://stackoverflow.com/q/225432/8608146
-void hello_world()
-{
-    printf("Hello World\n");
-}</pre>
-<h4>利用 <a href="https://drive.google.com/file/d/1fxMdqdCoCL__O1IpZ-Sv-A_4-c77Wx4E/view?usp=sharing">2019Fall可攜套件.7z</a><span>  </span>編譯為 hello_world.dll </h4>
-<p style="padding-left: 30px;">gcc -shared hello.o -o ../hello_world.dll</p>
-<p>以下列 hello.dart 呼叫 hello_world.dll 執行:</p>
-<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">// Copyright (c) 2019, the Dart project authors.  Please see the AUTHORS file
-// for details. All rights reserved. Use of this source code is governed by a
-// BSD-style license that can be found in the LICENSE file.
-
-import 'dart:ffi' as ffi;
-import 'dart:io' show Platform;
-
-// FFI signature of the hello_world C function
-typedef hello_world_func = ffi.Void Function();
-// Dart type definition for calling the C foreign function
-typedef HelloWorld = void Function();
-
-main() {
-  // Open the dynamic library
-  var path = "hello_world.dylib";
-  if (Platform.isWindows) path = "hello_world.dll";
-  final dylib = ffi.DynamicLibrary.open(path);
-  // Look up the C function 'hello_world'
-  final HelloWorld hello = dylib
-      .lookup&lt;ffi.NativeFunction&lt;hello_world_func&gt;&gt;('hello_world')
-      .asFunction();
-  // Call the function
-  hello();
-}
-</pre>
-<p></p>
-<p></p><br />SciTE setup << <a href='SciTE setup.html'>Previous</a> <a href='Cango Library.html'>Next</a> >> Cango Library</div>
+    <div id="tipue_search_content">JS examples << <a href='JS examples.html'>Previous</a> <a href='Ebooks.html'>Next</a> >> Ebooks<br /><h1>GCS</h1>
+<h4><span mce-data-marked="1">Geometric Constrain Solver</span></h4>
+<p><span mce-data-marked="1"><a href="https://github.com/tmpvar/2d-constraints-bfgs">https://github.com/tmpvar/2d-constraints-bfgs</a></span></p>
+<p><span mce-data-marked="1"><a href="https://github.com/xibyte/jsketcher">https://github.com/xibyte/jsketcher</a></span></p>
+<p><span mce-data-marked="1"><a href="https://github.com/tab58/assemble2d">https://github.com/tab58/assemble2d</a></span></p>
+<p><span mce-data-marked="1"></span></p>
+<p></p><br />JS examples << <a href='JS examples.html'>Previous</a> <a href='Ebooks.html'>Next</a> >> Ebooks</div>
         
     <!-- footer -->
       <div class="container">
