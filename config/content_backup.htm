@@ -706,6 +706,16 @@ execargs = /usr/bin/fossil http /home/kmol2019/repository/ --https --nojail --no
 <p style="padding-left: 60px;"><a href="https://link.springer.com/book/10.1007/978-1-4842-4972-7">https://link.springer.com/book/10.1007/978-1-4842-4972-7</a></p>
 <p style="padding-left: 30px;">中的範例說明, 完成各組期末專案.</p>
 <p style="padding-left: 30px;">期末分組專案: 請根據上述 Task1 ~ Task4 的內容做為參考, 討論如何完成一個能夠在網頁與手機上執行的期末專案.</p><h2>Task1</h2>
+<h4>任務摘要</h4>
+<p style="padding-left: 30px;">本課程使用 Git 分散式版次管理系統的目的有:</p>
+<p style="padding-left: 60px;">讓使用者利用 Github 儲存資料, 逐步學習如何利用分散式版次管理流程協同開發程式.</p>
+<p style="padding-left: 60px;">利用 Github Pages 建立網站, 紀錄計算機程式學習歷程.</p>
+<p style="padding-left: 30px;">為了分便在 Github Pages 建立網站, 簡報與網誌, 採用 CMSiMDE 內容管理系統, 將此一系統所建立的靜態網頁、簡報與網誌, 送到 Github 倉儲建立 WWW 網站.</p>
+<p style="padding-left: 30px;">CMSiMDE 網際內容管理系統採用 Python 與 Flask, bs4, lxml, pelican, Markdownㄝflask_cors 與 Leo 等模組建立, 可以在提拱 Python 程式與相應模組的環境中, 以動態管理系統的方式執行, 也可以將內容轉為純 html, css 與 Javascript 的靜態網頁執行.</p>
+<p style="padding-left: 30px;">所謂動態內容管理系統, 就是讓 CMSiMDE 直接在伺服器中執行 Python 與相應模組, 管理者可以直接利用瀏覽器登入內容管理系統, 修改內容後, 直接呈現在網站中.</p>
+<p style="padding-left: 30px;">而靜態內容管理系統則只包含 Html, css 與 Javascript 的資料, 使用者利用 Git 分散式版次管理系統的指令操作, 將資料送到 Github 倉儲後, 由 Github Pages 所提供的 WWW 伺服器將資料轉為特定網址下的網站, 此種靜態網站無管理者登入設置, 無法直接在網站中修改資料.</p>
+<p style="padding-left: 30px;">CMSiMDE 的系統採用子模組的方式建立, 使用者必須將此倉儲設為網際內容管理系統下, 名稱為 cmsimde 目錄的子模組, 並且將 up_dir 目錄中的資料複製到使用者倉儲主目錄下, 才能夠正常運作. 動態啟動時, 必須進入 cmsimde 目錄, 以 python 啟動 wsgi.py 程式, 並用瀏覽器在 <a>https://localhost:9443</a> 中開啟動態管理系統, 管理者密碼內定為 admin.</p>
+<p style="padding-left: 30px;">當 CMSiMDE 使用者在動態系統中完成資料更動後, 送到 Github Pages 伺服之前, 必須利用 generate_pages 功能, 將位於 config/content.htm 中的資料內容, 逐一分頁轉為 content 目錄中的靜態網頁資料後, 再退回使用者的倉儲主目錄, 利用 Git 指令, 將倉儲資料提交推送到使用者的 Github 倉儲.</p>
 <p>如何編輯個人 <a href="https://github.com/mdecourse/cmsimde">CMSiMDE</a> 網頁內容:</p>
 <p><iframe allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="allowfullscreen" frameborder="0" height="315" src="https://www.youtube.com/embed/qRpq9EFKcfM" width="560"></iframe></p>
 <p>如何在 CMSiMDE 網頁中加入圖片:</p>
@@ -909,6 +919,13 @@ main() {
 <p style="padding-left: 90px;"><a href="https://mde.tw/dartpad?id=8463c358dfeb477801b2c42737697e82">設一乙亂數分組</a></p>
 <p style="padding-left: 90px;">開學第一週時, 設一甲有 52 人, 若以每 10 人為一組, 則最後剩下之 2 人將以手動, 分別在第一組與第二組各加上一人, 因此最後結果為第一組與第二組有 11 人, 其餘三組則維持 10 人.</p>
 <p style="padding-left: 90px;">請各組討論如何以 Dartpad 上的程式, 直接自動完成亂數分組, 無需人為插手調整.</p><h3>Dart2 基本語法</h3>
+<h4>學習摘要:</h4>
+<p style="padding-left: 30px;">Dart 程式語言的執行與傳統的 C 程式相同, <span style="background-color: #ffff00;">必須從 main() 主函式開始執行</span>.</p>
+<p style="padding-left: 30px;">Dart 程式語法在每一個完整的可執行程式段, 使用 ";" 隔開, 並利用大括號 "{}" 來區隔程式區段.</p>
+<p style="padding-left: 30px;">Dart 程式具有資料型別推斷的設計, 但是當變數內容存放特定資料型別後, 便無法再自動轉為其他型別資料.</p>
+<p style="padding-left: 30px;">Dartpad 系統的執行分為前端與後端兩個部分, 以 <a href="https://mde.tw/dartpad">https://mde.tw/dartpad</a> 為例, 整體倉儲位於 <a href="https://github.com/mdecourse/dartpad">https://github.com/mdecourse/dartpad</a>, 其中的 docs 目錄被設定為 Github Pages 的資料伺服目錄, 亦即 <a href="https://mdecourse.github.io/dartpad">https://mdecourse.github.io/dartpad</a> 的前端採用 Github Pages, 因此目前只能透過 IPv4 網路協定連線.</p>
+<p style="padding-left: 30px;">而此一 Dartpad 系統還透過 <a href="https://github.com/mdecourse/dartpad/blob/master/lib/services/common.dart">https://github.com/mdecourse/dartpad/blob/master/lib/services/common.dart</a> 中的設定, 利用 <a href="https://dart-services.appspot.com/">https://dart-services.appspot.com/</a> 所提供的服務作為後端.</p>
+<p style="padding-left: 30px;">使用者也可以自行利用 <a href="https://github.com/dart-lang/dart-services">https://github.com/dart-lang/dart-services</a> 程式碼, 自行建立 Dartpad 所需的後端伺服器, 並修改 Dartpad 前端的 <a href="https://github.com/mdecourse/dartpad/blob/master/lib/services/common.dart">https://github.com/mdecourse/dartpad/blob/master/lib/services/common.dart</a><span>  設定, 指向自行設定的 Dart Server 即可在區域網路中運行 Dartpad 服務.</span></p>
 <p><a href="https://dart.dev/samples">Dart language samples</a>, <a href="https://dart.dev/guides/language/language-tour">Dart language tour</a>, <a href="https://dart.dev/codelabs/async-await">Dart async-await</a>.</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4302-6482-8">Dart for Absolute Beginners</a></p>
 <p><a href="https://da-bootcamp.firebaseapp.com/?course=start_programming_dart">https://da-bootcamp.firebaseapp.com/?course=start_programming_dart</a> </p>
@@ -3436,9 +3453,9 @@ function doSave(storage_id, filename){
 </p>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
 <form><label>Filename: <input id="js_filename" placeholder="input file name" type="text"/>.js</label> <input onclick="doSave('js_src', 'js_filename');" type="submit" value="Save"/></form>
-<p><button onclick="runjs()">Run</button> <button onclick="showConsole()">Output</button> <button onclick="clearBox('js_console')">清除輸出區</button><button onclick="clearCanvas('canvas')">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<p><button onclick="runjs()">Run</button><button onclick="showConsole()">Output</button><button onclick="clearBox('js_console')">清除輸出區</button><button onclick="clearCanvas('canvas')">清除繪圖區</button><button onclick="clearBox('html')">清除 html 區</button><button onclick="window.location.reload()">Reload</button></p>
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="js_console"></textarea></div>
-<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'ROCFlag.js')">ROC Flag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button></p>
+<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'ROCFlag.js')">ROC Flag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'threejs_cube.js')">Three.js Cube</button></p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.js">
 </script>
 <div id="html"></div>
