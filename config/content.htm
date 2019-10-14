@@ -3455,11 +3455,13 @@ function doSave(storage_id, filename){
 <form><label>Filename: <input id="js_filename" placeholder="input file name" type="text"/>.js</label> <input onclick="doSave('js_src', 'js_filename');" type="submit" value="Save"/></form>
 <p><button onclick="runjs()">Run</button><button onclick="showConsole()">Output</button><button onclick="clearBox('js_console')">清除輸出區</button><button onclick="clearCanvas('canvas')">清除繪圖區</button><button onclick="clearBox('html')">清除 html 區</button><button onclick="window.location.reload()">Reload</button></p>
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="js_console"></textarea></div>
-<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'ROCFlag.js')">ROC Flag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'threejs_cube.js')">Three.js Cube</button></p>
+<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'ROCFlag.js')">ROC Flag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'threejs_cube.js')">Three.js Cube</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'canvas_drawLine.js')">Canvas Draw Line</button></p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.js">
 </script>
 <div id="html"></div>
 <p><canvas height="400" id="canvas" width="600"></canvas></p><h3>JS examples</h3>
+<p style="padding-left: 30px;"><a href="https://github.com/xibyte/jsketcher">https://github.com/xibyte/jsketcher</a></p>
+<p style="padding-left: 30px;"><a href="https://emscripten.org/">https://emscripten.org/</a></p>
 <h4>Prompt 與運算</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">degreeC = prompt("請輸入攝氏溫度!");
 console.log("攝氏 " + degreeC + " = 華氏 " + 
@@ -3535,6 +3537,33 @@ ctx.fill();
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// 清除已經存在 flag 繪圖區域的 canvas
 var ctx =document.getElementById("flag").getContext('2d');
 ctx.clearRect(0, 0, canvas.width, canvas.height);</pre>
+<h4>Mouse Position</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function writeMessage(canvas, message) {
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.font = '18pt Calibri';
+    context.fillStyle = 'black';
+    context.fillText(message, 10, 25);
+  }
+      
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+  }
+  
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+canvas.addEventListener('mousemove', function(evt) {
+var mousePos = getMousePos(canvas, evt);
+var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+writeMessage(canvas, message);
+createLines();
+}, false);
+</pre>
 <h4>Ajax 與 Flask</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">/* flask side
 from flask import Flask
@@ -3830,6 +3859,7 @@ if __name__ == '__main__':
 <h4>Math and Vector</h4>
 <p style="padding-left: 30px;"><a href="https://pub.dev/packages/vector_math">https://pub.dev/packages/vector_math</a></p>
 <p style="padding-left: 30px;"><a href="https://pub.dev/packages/extended_math">https://pub.dev/packages/extended_math</a></p>
+<p style="padding-left: 30px;">利用 Dartpad 將 <a href="https://codepen.io/ggetchell/pen/KVgrYq">https://codepen.io/ggetchell/pen/KVgrYq</a> 改寫為 Dart based.</p>
 <h4>Web</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/BoldInventions/dart-webgl-tutorials">https://github.com/BoldInventions/dart-webgl-tutorials</a></p>
 <p style="padding-left: 30px;"><a href="https://api.dartlang.org/stable/2.5.0/dart-web_gl/dart-web_gl-library.html">https://api.dartlang.org/stable/2.5.0/dart-web_gl/dart-web_gl-library.html</a></p>

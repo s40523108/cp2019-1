@@ -708,8 +708,8 @@ execargs = /usr/bin/fossil http /home/kmol2019/repository/ --https --nojail --no
 <p style="padding-left: 30px;">期末分組專案: 請根據上述 Task1 ~ Task4 的內容做為參考, 討論如何完成一個能夠在網頁與手機上執行的期末專案.</p><h2>Task1</h2>
 <h4>任務摘要</h4>
 <p style="padding-left: 30px;">本課程使用 Git 分散式版次管理系統的目的有:</p>
-<p style="padding-left: 60px;">讓使用者利用 Github 儲存資料, 逐步學習如何利用分散式版次管理流程協同開發程式.</p>
-<p style="padding-left: 60px;">利用 Github Pages 建立網站, 紀錄計算機程式學習歷程.</p>
+<p style="padding-left: 60px;">1. 讓使用者利用 Github 儲存資料, 逐步學習如何利用分散式版次管理流程協同開發程式.</p>
+<p style="padding-left: 60px;">2. 利用 Github Pages 建立網站, 紀錄計算機程式學習歷程.</p>
 <p style="padding-left: 30px;">為了分便在 Github Pages 建立網站, 簡報與網誌, 採用 CMSiMDE 內容管理系統, 將此一系統所建立的靜態網頁、簡報與網誌, 送到 Github 倉儲建立 WWW 網站.</p>
 <p style="padding-left: 30px;">CMSiMDE 網際內容管理系統採用 Python 與 Flask, bs4, lxml, pelican, Markdownㄝflask_cors 與 Leo 等模組建立, 可以在提拱 Python 程式與相應模組的環境中, 以動態管理系統的方式執行, 也可以將內容轉為純 html, css 與 Javascript 的靜態網頁執行.</p>
 <p style="padding-left: 30px;">所謂動態內容管理系統, 就是讓 CMSiMDE 直接在伺服器中執行 Python 與相應模組, 管理者可以直接利用瀏覽器登入內容管理系統, 修改內容後, 直接呈現在網站中.</p>
@@ -3455,11 +3455,12 @@ function doSave(storage_id, filename){
 <form><label>Filename: <input id="js_filename" placeholder="input file name" type="text"/>.js</label> <input onclick="doSave('js_src', 'js_filename');" type="submit" value="Save"/></form>
 <p><button onclick="runjs()">Run</button><button onclick="showConsole()">Output</button><button onclick="clearBox('js_console')">清除輸出區</button><button onclick="clearCanvas('canvas')">清除繪圖區</button><button onclick="clearBox('html')">清除 html 區</button><button onclick="window.location.reload()">Reload</button></p>
 <div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="js_console"></textarea></div>
-<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'ROCFlag.js')">ROC Flag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'threejs_cube.js')">Three.js Cube</button></p>
+<p><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'ROCFlag.js')">ROC Flag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotSin.js')">Plot Sin</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'plotCos.js')">Plot Cos</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'excavator.js')">Excavator</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'bouncingBall.js')">Bouncing Ball</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'editCurve.js')">Edit Curve</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'groupDrag.js')">Group Drag</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'involuteGear1.js')">Involute Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'gearMeshing.js')">Gear Meshing</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'internalGear.js')">Internal Gear</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'threejs_cube.js')">Three.js Cube</button><button onclick="getGist('d2f8b8898ff1a17a078374ee8dc714c4', 'canvas_drawLine.js')">Canvas Draw Line</button></p>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/109/three.js">
 </script>
 <div id="html"></div>
 <p><canvas height="400" id="canvas" width="600"></canvas></p><h3>JS examples</h3>
+<p><a href="https://github.com/xibyte/jsketcher">https://github.com/xibyte/jsketcher</a></p>
 <h4>Prompt 與運算</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">degreeC = prompt("請輸入攝氏溫度!");
 console.log("攝氏 " + degreeC + " = 華氏 " + 
@@ -3535,6 +3536,33 @@ ctx.fill();
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// 清除已經存在 flag 繪圖區域的 canvas
 var ctx =document.getElementById("flag").getContext('2d');
 ctx.clearRect(0, 0, canvas.width, canvas.height);</pre>
+<h4>Mouse Position</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function writeMessage(canvas, message) {
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.font = '18pt Calibri';
+    context.fillStyle = 'black';
+    context.fillText(message, 10, 25);
+  }
+      
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+  }
+  
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+canvas.addEventListener('mousemove', function(evt) {
+var mousePos = getMousePos(canvas, evt);
+var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+writeMessage(canvas, message);
+createLines();
+}, false);
+</pre>
 <h4>Ajax 與 Flask</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">/* flask side
 from flask import Flask
@@ -3830,6 +3858,7 @@ if __name__ == '__main__':
 <h4>Math and Vector</h4>
 <p style="padding-left: 30px;"><a href="https://pub.dev/packages/vector_math">https://pub.dev/packages/vector_math</a></p>
 <p style="padding-left: 30px;"><a href="https://pub.dev/packages/extended_math">https://pub.dev/packages/extended_math</a></p>
+<p style="padding-left: 30px;">利用 Dartpad 將 <a href="https://codepen.io/ggetchell/pen/KVgrYq">https://codepen.io/ggetchell/pen/KVgrYq</a> 改寫為 Dart based.</p>
 <h4>Web</h4>
 <p style="padding-left: 30px;"><a href="https://github.com/BoldInventions/dart-webgl-tutorials">https://github.com/BoldInventions/dart-webgl-tutorials</a></p>
 <p style="padding-left: 30px;"><a href="https://api.dartlang.org/stable/2.5.0/dart-web_gl/dart-web_gl-library.html">https://api.dartlang.org/stable/2.5.0/dart-web_gl/dart-web_gl-library.html</a></p>

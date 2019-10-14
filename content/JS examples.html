@@ -150,6 +150,8 @@ init_mathjax();
           
         </header>
     <div id="tipue_search_content">Javascript << <a href='Javascript.html'>Previous</a> <a href='GCS.html'>Next</a> >> GCS<br /><h1>JS examples</h1>
+<p style="padding-left: 30px;"><a href="https://github.com/xibyte/jsketcher">https://github.com/xibyte/jsketcher</a></p>
+<p style="padding-left: 30px;"><a href="https://emscripten.org/">https://emscripten.org/</a></p>
 <h4>Prompt 與運算</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">degreeC = prompt("請輸入攝氏溫度!");
 console.log("攝氏 " + degreeC + " = 華氏 " + 
@@ -225,6 +227,33 @@ ctx.fill();
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">// 清除已經存在 flag 繪圖區域的 canvas
 var ctx =document.getElementById("flag").getContext('2d');
 ctx.clearRect(0, 0, canvas.width, canvas.height);</pre>
+<h4>Mouse Position</h4>
+<pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">function writeMessage(canvas, message) {
+    var context = canvas.getContext('2d');
+    context.clearRect(0, 0, canvas.width, canvas.height);
+    context.font = '18pt Calibri';
+    context.fillStyle = 'black';
+    context.fillText(message, 10, 25);
+  }
+      
+function getMousePos(canvas, evt) {
+    var rect = canvas.getBoundingClientRect();
+    return {
+      x: evt.clientX - rect.left,
+      y: evt.clientY - rect.top
+    };
+  }
+  
+var canvas = document.getElementById('canvas');
+var ctx = canvas.getContext('2d');
+
+canvas.addEventListener('mousemove', function(evt) {
+var mousePos = getMousePos(canvas, evt);
+var message = 'Mouse position: ' + mousePos.x + ',' + mousePos.y;
+writeMessage(canvas, message);
+createLines();
+}, false);
+</pre>
 <h4>Ajax 與 Flask</h4>
 <pre class="brush:js;auto-links:false;toolbar:false" contenteditable="false">/* flask side
 from flask import Flask
