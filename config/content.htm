@@ -929,11 +929,63 @@ main() {
 <p><a href="https://dart.dev/samples">Dart language samples</a>, <a href="https://dart.dev/guides/language/language-tour">Dart language tour</a>, <a href="https://dart.dev/codelabs/async-await">Dart async-await</a>.</p>
 <p><a href="https://link.springer.com/book/10.1007/978-1-4302-6482-8">Dart for Absolute Beginners</a></p>
 <p><a href="https://da-bootcamp.firebaseapp.com/?course=start_programming_dart">https://da-bootcamp.firebaseapp.com/?course=start_programming_dart</a> </p>
-<p><iframe height="600" src="https://mde.tw/dartpad" width="800"></iframe></p>
 <h4><span>有關 HTML:</span></h4>
 <p style="padding-left: 30px;"><span><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/HTML_basics">https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/HTML_basics</a></span></p>
 <h4>有關 CSS:</h4>
-<p style="padding-left: 30px;"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/CSS_basics">https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/CSS_basics</a></p><h3>SciTE setup</h3>
+<p style="padding-left: 30px;"><a href="https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/CSS_basics">https://developer.mozilla.org/zh-TW/docs/Learn/Getting_started_with_the_web/CSS_basics</a></p>
+<h4>亂數分組程式</h4>
+<p>Gist: <a href="https://gist.github.com/mdecourse/d7c4f7b267d43acd6ee7f78d581c4c5c">https://gist.github.com/mdecourse/d7c4f7b267d43acd6ee7f78d581c4c5c</a></p>
+<p>Dartpad: <a href="http://mde.tw/dartpad/?id=d7c4f7b267d43acd6ee7f78d581c4c5c">http://mde.tw/dartpad/?id=d7c4f7b267d43acd6ee7f78d581c4c5c</a></p>
+<p>原始碼:</p>
+<pre class="brush:dart;auto-links:false;toolbar:false" contenteditable="false">import 'dart:html';
+
+void main() {
+  // 每一組 10 人
+  int num = 10;
+  // 組序由 1 開始
+  int gth = 1;
+  // 迴圈序號變數
+  int i;
+  // 每組學員暫存數列
+  var gp_list = [];
+  // 全班分組數列
+  var cp2019 = [];
+
+  HttpRequest.getString(
+          'https://mde.tw/cp2019/downloads/2019fall_cp_1a_list.txt')
+      .then((String resp) {
+    // 利用 trim() 去除字串最後的跳行符號, 之後再利用 split() 根據 \n 轉為數列
+    var stud_list = resp.trim().split("\n");
+    // 數列利用 shuffle() 方法以隨機方法弄亂順序
+    stud_list.shuffle();
+    // 逐一讀取已經弄亂的學生學號數列, 利用模數運算每幾人分成一組
+    for (i = 0; i &lt; stud_list.length; i++) {
+      // 0, 1~(num-1), num
+      if (i % num == 0) {
+        gp_list = [];
+        // 列印區隔符號
+        print('=' * 20);
+        print("group $gth :");
+        print(stud_list[i]);
+        // 在各分組數列中加入將對應的學員學號
+        gp_list.add(stud_list[i]);
+        gth = gth + 1;
+      } else {
+        print(stud_list[i]);
+        // 在各分組數列中加入將對應的學員學號
+        gp_list.add(stud_list[i]);
+      }
+      if (i % num == 0) {
+        // 逐步將各組暫存的分組數列加入全班分組數列中
+        cp2019.add(gp_list);
+      }
+    }
+    // 對各組學號排序
+    cp2019.forEach((element){element.sort();});
+    // 列出分組且排序後數列
+    print(cp2019);
+  });
+}</pre><h3>SciTE setup</h3>
 <p>目前 Dartpad 只能納入特定的網際程式庫, 若需導入其他程式庫執行 Dart, 除了在之後的 Visual Studio Code 執行 Dart 與  Flutter 程式外, 也可以設法在 SciTE 編輯器中執行.</p>
 <p>但是必須要修改 SciTE 中的 cpp.properties (<span style="background-color: #ffff00;">註: 假如 </span><span><span style="background-color: #ffff00;">data\wscite415\wscite 目錄中已經有先前設定的 dart.properties 檔案, 必須先行刪除</span>)</span>, 將 Dart 程式語言的關鍵字納入, 並且指定由 Tools-&gt;Go 對應採 dart.exe 來執行 Dart 程式. 而 Tools-&gt;Compile 則設定為透過 dart2js 將 Dart 程式轉為 Javascript 格式.</p>
 <h4>修改 SciTE cpp.properties</h4>
